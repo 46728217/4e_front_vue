@@ -200,6 +200,9 @@
                     }
                 }
             });
+            $('body').on('click', "li[data-id=609]", function(){
+				window.location = "http://vbc.faw-vw.com/";
+			});
         }
     }
 </script>
