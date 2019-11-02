@@ -45,11 +45,13 @@
 		data: function(){
 			return {
 				base: base,
-				menuId: 0,
 				data: {},
 				pageSize: 12,
 				pageNumber: 1,
 				pageCount: 1,
+				secondCatId: 0,
+				thirdCatId: 0,
+				fourCatId: 0,
 				cond: {
 					year: new Date().getFullYear(),
 					name: '',
@@ -69,9 +71,11 @@
 			});
 			this.id = this.$route.query.id;
 			//设置menuId
-			this.get(this.base+"/api/cate/change?menuId="+this.menuId, null, function(data){
+			this.get(this.base+"/api/material/detail?id="+this.id, null, function(data){
 				if (data.code==200) {
-					that.menuId = data.data.id;
+					that.secondCatId = data.data.secondCatId;
+					that.thirdCatId = data.data.thirdCatId;
+					that.fourCatId = data.data.fourthCatId;
 				}
 			}, false);
 			this.getData();
@@ -146,7 +150,11 @@
 				});
 			},
 			back: function() {
-				window.location = "/list?menuId="+this.menuId;
+				if (this.fourCatId!=null) {
+					window.location = "/list?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId+"&four_cat_id="+this.fourCatId+"&inner=1";
+				}else{
+					window.location = "/list?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId;
+				}
 			}
 		}
 	}

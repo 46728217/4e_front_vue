@@ -140,7 +140,7 @@ export default {
 				$(".block").hide();
 				var parent_code = this.submenu[parent].permissionCode;
 				var parent_x = this.getNumber(parent_code);
-				this.main_url = "/list?second_cat_id="+parent_x+"&third_cat_id="+this.getNumber(code);
+				this.main_url = "/list?second_cat_id="+parent_x+"&third_cat_id="+this.getNumber(code)+"&inner=1";
 				return;
 			}else{
 				this.submenu[id].active = 1;
@@ -238,7 +238,6 @@ export default {
 		}
 		//分类列表
 		if (this.$route.query.menuId!=null) {
-			alert(23);
 			this.get(this.base+"/api/cate/change?menuId="+this.$route.query.menuId, null, function(data){
 				if (data.code==200) {
 					var id_path = data.data.idPath;

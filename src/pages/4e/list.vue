@@ -3,7 +3,9 @@
 		<div class="tab" v-if="data.catListSize>0">
 			<ul>
 				<li v-if="data.catListSize>0" v-for="(item,index) in data.catList" @click="changeThirdMenu(item.id)" :data-id="item.id" :class="index==0?'first':''">
-					<span :class="index==four_cat_id?'current':''">{{item.name|dz}}</span>
+					<span v-if="inner==true" :class="item.id==four_cat_id || index==four_cat_id?'current':''">{{item.name|dz}}</span>
+					<span v-if="inner==false" :class="item.id==third_cat_id || index==third_cat_id?'current':''">{{item.name|dz}}</span>
+
 				</li>
 			</ul>
 		</div>
@@ -106,6 +108,11 @@
 			this.second_cat_id = this.$route.query.second_cat_id;
 			if (this.$route.query.third_cat_id!=null) {
 				this.third_cat_id = this.$route.query.third_cat_id;
+			}
+			if (this.$route.query.four_cat_id!=null) {
+				this.four_cat_id = this.$route.query.four_cat_id;
+			}
+			if (this.$route.query.inner==1) {
 				this.inner = true;
 			}
 			this.getData();
@@ -165,7 +172,8 @@
 				if (four_cat_id==null){
 					window.location = "/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id;
 				}else{
-					window.location = "/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id+"&four_cat_id="+four_cat_id;
+					window.location =
+					"/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id+"&four_cat_id="+four_cat_id;
 				}
 			},
 			parentHeight: function() {
@@ -174,7 +182,7 @@
 			changeThirdMenu: function(id) {
 				if (this.inner==true) {
 					this.four_cat_id = id;
-				}else{
+				}else {
 					this.third_cat_id = id;
 				}
 				this.getData();

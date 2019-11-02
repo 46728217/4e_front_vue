@@ -101,6 +101,8 @@ export default {
     	var languageType = localStorage.getItem("languageType");
     	if (languageType==2) {
     		this.languageType = 0;
+    		//纠正语言错误
+    		this.updateUserLanguage(0);
     	}
     	if (languageType!=null) {
     		this.languageType = languageType;
