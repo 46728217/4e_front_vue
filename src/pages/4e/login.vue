@@ -18,7 +18,7 @@
 	<div class="login-bottom">
 		<div class="login-marquee">
 			<marquee scrollamount="5" direction="left"  vspace="10" onmouseover="this.stop()" onmouseout="this.start()" >
-				<p><span>推荐使用：IE（版本11.0以上）、谷歌、火狐、360极速浏览器。</span>
+				<p><span>若您使用的浏览器操作效果不佳，可以下载免安装版chrome浏览器。</span>
 					<a href="/guide.html" target="_blank">跳转下载</a>
 				</p>
 			</marquee>
