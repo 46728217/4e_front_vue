@@ -157,7 +157,7 @@
 				this.getData();
 			},
 			go2detail: function(id) {
-				window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=";
+				window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue_a&activityId="+this.activity_id;
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
