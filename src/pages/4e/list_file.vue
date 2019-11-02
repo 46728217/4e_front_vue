@@ -45,9 +45,7 @@
 		data: function(){
 			return {
 				base: base,
-				second_cat_id: 0,
-				third_cat_id: 0,
-				four_cat_id: 0,
+				menuId: 0,
 				data: {},
 				pageSize: 12,
 				pageNumber: 1,
@@ -70,9 +68,12 @@
 				}
 			});
 			this.id = this.$route.query.id;
-			this.second_cat_id = this.$route.query.second_cat_id;
-			this.third_cat_id = this.$route.query.third_cat_id;
-			this.four_cat_id = this.$route.query.four_cat_id;
+			//设置menuId
+			this.get(this.base+"/api/cate/change?menuId="+this.menuId, null, function(data){
+				if (data.code==200) {
+					that.menuId = data.data.id;
+				}
+			}, false);
 			this.getData();
 		},
 		methods: {
@@ -81,18 +82,10 @@
 				var params = {};
 				params.pageSize = this.pageSize;
 				params.pageNumber = this.pageNumber;
-				params.secondCatId = this.second_cat_id;
-				if (this.third_cat_id) {
-					params.thirdCatId = this.third_cat_id;
-				}
-				if (this.four_cat_id) {
-					params.fourCatId = this.four_cat_id;
-				}
 				params.id = this.id;
 				this.get(this.base + "/api/material/file/list", params, function(data){
 					if (data.code==200) {
 						that.data = data.data;
-						console.log(that.data);
 						that.pageCount = data.data.pagination.totalPages;
 						that.pageNumber = data.data.pagination.pageNumber;
 						that.$nextTick(function(){
@@ -153,7 +146,7 @@
 				});
 			},
 			back: function() {
-				window.location = "/list?second_cat_id="+this.second_cat_id+"&third_cat_id="+this.third_cat_id;
+				window.location = "/list?menuId="+this.menuId;
 			}
 		}
 	}
