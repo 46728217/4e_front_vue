@@ -3,7 +3,7 @@
 	<div class="e-index" v-show="showPage">
 		<app-header :page_tab="page_tab"></app-header>
 		<!--banner-->
-		<div class="banner">
+		<div class="banner" style="min-width: auto">
 			<swiper :options="swiperOption" class="swiper-wrap"  ref="bannerSwiper" v-if="banners.length!=0">
 				<swiper-slide v-for="(item,index) in banners" :key="index" >
 					<div class="swiper-item">
