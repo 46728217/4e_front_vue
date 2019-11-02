@@ -2,17 +2,130 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a62b5550-ebb6-4c57-b175-48251e8c2ae9" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/app.c9cea443f9697075d5ca.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/app.c9cea443f9697075d5ca.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.c9cea443f9697075d5ca.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.c9cea443f9697075d5ca.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/2.80763076c600c3f92399.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/2.80763076c600c3f92399.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/app.b83e02fba1ffc1f1e89f.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/app.b83e02fba1ffc1f1e89f.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/index.vue" afterPath="$PROJECT_DIR$/src/pages/4e/index.vue" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/4e/ercode.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/4e/favicon.ico" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/4e/iframeResizer.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/4e/platform.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/4e/qq.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/4e/wx.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/app.9f315a0840c06d09c7f6.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/app.9f315a0840c06d09c7f6.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.9f315a0840c06d09c7f6.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.9f315a0840c06d09c7f6.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHei-60S.5d63f61.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHei-60S.5f25d74.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHei-60S.97d5ff9.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHei-60S.b444e80.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-35W-1.67fe977.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-35W-1.a699203.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-35W-1.c03c5f0.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-35W-1.e8e4c6b.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-75W-5.4f03dd5.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-75W-5.7e27106.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-75W-5.b6d9cae.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiX4-75W-5.d61bbb2.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-35W-1.01a34da.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-35W-1.219d117.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-35W-1.46f0a49.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-35W-1.f2df5a7.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-55W-3.0e437e7.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-55W-3.4c3c58d.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-55W-3.553bdfc.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-55W-3.640754d.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-75W-5.4a27f30.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-75W-5.552d6ed.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-75W-5.5854c35.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/HYQiHeiY1-75W-5.9c6b74f.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/VWHead-Regular.445efd1.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/VWHead-Regular.7190d9e.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/VWHead-Regular.71e105b.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/VWHead-Regular.e4c390a.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/iconfont.65e9b5d.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/iconfont.98f8bf8.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/fonts/iconfont.ac7a167.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/HYQiHei-60S.19b75ef.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/HYQiHeiX4-35W-1.3190729.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/HYQiHeiX4-75W-5.257efad.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/HYQiHeiY1-35W-1.214a41f.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/HYQiHeiY1-55W-3.6ba30be.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/HYQiHeiY1-75W-5.e9a3c0b.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/LOGO_left.5b0c9b7.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/VWHead-Regular.7cea875.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/android_app.0c446d0.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/auth-result-bg.15b3e5c.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/banner.9c32193.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/banner2.757a545.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/banner3.8efef41.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/bgg.059b3f4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/business_bg.371dd7b.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/car-icon.53f4321.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/dt-icon.8329580.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/dy-icon.f873539.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/ercode.efebaa9.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/faw.d52936a.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/fk-icon.67d1385.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/good-icon.19bcc2a.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/header_bg.d6270f1.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/icon.259e3cc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/iconfont.cb6c5f6.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/img10.c8f2892.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/img11.9b073fd.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/iphone_app.41f4e8f.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/jieda_logo.b684c43.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/jk-icon.61f2b5b.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/kb_bg.3215113.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/kb_map5.8df1b25.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/kb_map6.3705d88.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/layer_icon.551539f.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/library_bg.8c9f633.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/link_bg.630c830.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/login_bg.568376d.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/login_bg.6d697e3.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/manage-icon.0a2959a.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/map.d8d1ec8.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/narrows.76def6c.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/news1.aa53733.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/news2.8c19cb2.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/news3.ac5a365.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/next.c0c5f0d.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/nocheck.0cc1029.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/office_tab1.67fb730.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/order-icon.508fee9.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/prev.ceeeece.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/qa1.168fa25.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/qa2.8e283e9.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/qa3.9ac8c90.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/qq.a43f0a9.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/search_btn_b.aee357c.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/study1.6d25b47.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/study2.c36663b.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/study3.48516e9.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/tp-icon.0dba52d.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/vote1.bcbe8e4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/vote2.e94fd33.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/vote3.b78fa0d.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/wltb-icon.856492d.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/wx.c5e4751.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/xc-icon.69dbb52.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/xx-icon.1a844ce.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/jieda/ercode.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/jieda/favicon.ico" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/jieda/wx.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/1.19a4a74c88f11f8b6d8b.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/1.19a4a74c88f11f8b6d8b.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/2.25134cd9a9c8c883b6ea.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/2.25134cd9a9c8c883b6ea.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/3.bf72f4e3b080ddd6a369.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/3.bf72f4e3b080ddd6a369.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/app.a89b1dd1c3fdfa9b54e6.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/app.a89b1dd1c3fdfa9b54e6.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/pages/4e/library.vue" afterPath="$PROJECT_DIR$/src/pages/4e/library.vue" />
+      <change beforePath="$PROJECT_DIR$/src/pages/4e/list.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list.vue" />
+      <change beforePath="$PROJECT_DIR$/src/pages/4e/office.vue" afterPath="$PROJECT_DIR$/src/pages/4e/office.vue" />
+      <change beforePath="$PROJECT_DIR$/src/pages/4e/shop.vue" afterPath="$PROJECT_DIR$/src/pages/4e/shop.vue" />
+      <change beforePath="$PROJECT_DIR$/src/pages/4e/study.vue" afterPath="$PROJECT_DIR$/src/pages/4e/study.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,8 +145,8 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/4e/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="757" column="19" lean-forward="false" selection-start-line="757" selection-start-column="19" selection-end-line="757" selection-end-column="19" />
+            <state relative-caret-position="401">
+              <caret line="960" column="39" lean-forward="false" selection-start-line="960" selection-start-column="39" selection-end-line="960" selection-end-column="39" />
               <folding>
                 <element signature="e#10095#10142#0" expanded="true" />
               </folding>
@@ -41,17 +154,68 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="iframe.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/iframe.vue">
+      <file leaf-file-name="library.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/4e/library.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="244">
+              <caret line="344" column="20" lean-forward="false" selection-start-line="344" selection-start-column="20" selection-end-line="345" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/4e/list.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="264" column="33" lean-forward="false" selection-start-line="264" selection-start-column="33" selection-end-line="264" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="e#140#161#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shop.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/4e/shop.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="381" column="24" lean-forward="false" selection-start-line="381" selection-start-column="24" selection-end-line="381" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="study.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/4e/study.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="365" column="27" lean-forward="false" selection-start-line="365" selection-start-column="27" selection-end-line="365" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>多关键词用”%“连接</find>
+      <find>list</find>
+      <find>code</find>
+      <find>cond</find>
+      <find>search_code</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,6 +224,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/pages/4e/index.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/library.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/list.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/shop.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/office.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/study.vue" />
       </list>
     </option>
   </component>
@@ -165,9 +334,23 @@
       <node-interpreter value="project" />
       <envs />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="npm.build" />
+      <item index="1" class="java.lang.String" itemvalue="npm.dev" />
+    </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="npm.build" />
+        <item index="1" class="java.lang.String" itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -184,24 +367,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572680399145</updated>
-      <workItem from="1572680400906" duration="597000" />
+      <workItem from="1572680400906" duration="3697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="597000" />
+    <option name="totallyTimeSpent" value="3697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.7946768" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.7793494" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10340909" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19659092" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.20532319" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.22065064" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -226,20 +409,91 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/iframe.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/list_t_show.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5836">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="757" column="19" lean-forward="false" selection-start-line="757" selection-start-column="19" selection-end-line="757" selection-end-column="19" />
+        <state relative-caret-position="401">
+          <caret line="960" column="39" lean-forward="false" selection-start-line="960" selection-start-column="39" selection-end-line="960" selection-end-column="39" />
           <folding>
             <element signature="e#10095#10142#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/4e/iframe.vue">
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/list.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="264" column="33" lean-forward="false" selection-start-line="264" selection-start-column="33" selection-end-line="264" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="e#140#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/4e/img/find.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/library.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="344" column="20" lean-forward="false" selection-start-line="344" selection-start-column="20" selection-end-line="345" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/office.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="259" column="16" lean-forward="true" selection-start-line="259" selection-start-column="16" selection-end-line="260" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/study.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="365" column="27" lean-forward="false" selection-start-line="365" selection-start-column="27" selection-end-line="365" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/shop.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="381" column="24" lean-forward="false" selection-start-line="381" selection-start-column="24" selection-end-line="381" selection-end-column="24" />
           <folding />
         </state>
       </provider>

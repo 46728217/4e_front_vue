@@ -257,6 +257,8 @@ export default {
 					background: transparent;
 					border: unset;
 					color: #fff;
+					background: transparent \9;
+					border: none \9;
 				}
 				
 				div {
@@ -381,6 +383,14 @@ export default {
 		    display: block;
 		    margin-left: 340px;
 		    width: calc(100% - 340px);
+		}
+	}
+
+	/*ie11 css hack*/
+	@media all and (-ms-high-contrast:none) {
+		*::-ms-backdrop, .e-office .tab .search_code input{
+			background: transparent;
+			border: none;
 		}
 	}
 </style>
