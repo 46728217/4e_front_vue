@@ -72,10 +72,13 @@
 			this.id = this.$route.query.id;
 			//设置menuId
 			this.get(this.base+"/api/material/detail?id="+this.id, null, function(data){
-				if (data.code==200) {
+				if (data.code!=0) {
 					that.secondCatId = data.data.secondCatId;
 					that.thirdCatId = data.data.thirdCatId;
 					that.fourCatId = data.data.fourthCatId;
+					if (data.code==199){
+						that.isActivity = true;
+					}
 				}
 			}, false);
 			this.getData();
@@ -150,10 +153,16 @@
 				});
 			},
 			back: function() {
-				if (this.fourCatId!=null) {
-					window.location = "/list?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId+"&four_cat_id="+this.fourCatId+"&inner=1";
+				var path = "";
+				if (this.isActivity==true) {
+					path = "/list_o";
 				}else{
-					window.location = "/list?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId;
+					path = "/list"
+				}
+				if (this.fourCatId!=null) {
+					window.location = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId+"&four_cat_id="+this.fourCatId+"&inner=1";
+				}else{
+					window.location = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId;
 				}
 			}
 		}

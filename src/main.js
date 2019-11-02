@@ -79,6 +79,14 @@ Vue.filter('dz', function (value) {
   return dz(value);
 })
 
+Vue.filter('de', function (value, length) {
+  if (!value) return ''
+  if (value.length > length) {
+    return value.slice(0,length) + '...'
+  }
+  return value
+})
+
 var routes = []
 
 //首页
