@@ -135,6 +135,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 				background: transparent;
 				margin-top: 15px;
 				color: #cacdd4;
+				background: transparent \9;
+				border: none \9;
+				border-bottom: 1px solid #2c466f \9;
 			}
 			.submit {
 				margin-top: 40px;
@@ -156,6 +159,15 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 				width: 130px;
 			}
 		}
+	}
+}
+
+/*ie11 css hack*/
+@media all and (-ms-high-contrast:none) {
+	*::-ms-backdrop, .e-login .form .block input{
+		background: transparent;
+		border: none;
+		border-bottom: 1px solid #2c466f;
 	}
 }
 </style>

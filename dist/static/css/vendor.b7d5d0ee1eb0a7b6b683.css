@@ -2841,13 +2841,17 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#cacdd4
 }
 .e-login .form .block{position:absolute;width:380px;top:calc(380px + (100% - 700px) * 0.6);margin-left:59%
 }
-.e-login .form .block input{width:100%;height:38px;display:block;font-size:20px;font-family:'font-hy-55';border:unset;border-bottom:1px solid #2c466f;background:transparent;margin-top:15px;color:#cacdd4
+.e-login .form .block input{width:100%;height:38px;display:block;font-size:20px;font-family:'font-hy-55';border:unset;border-bottom:1px solid #2c466f;background:transparent;margin-top:15px;color:#cacdd4;background:transparent \9;border:none \9;border-bottom:1px solid #2c466f \9
 }
 .e-login .form .block .submit{margin-top:40px;height:44px;width:90px;background:#01b0f1;border-radius:30px;display:inline-block;text-align:center;cursor:pointer
 }
 .e-login .form .block .submit a{display:inline-block;color:#001e50;font-size:16px;margin-top:10px
 }
 .e-login .form .block .logging{width:130px
+}
+@media all and (-ms-high-contrast: none){
+*::-ms-backdrop,.e-login .form .block input{background:transparent;border:none;border-bottom:1px solid #2c466f
+}
 }
 
 .e-my{letter-spacing:1px;width:100%;min-width:1280px;height:100%
@@ -2856,7 +2860,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#cacdd4
 }
 .e-my .tab .search_code{width:320px;height:100%;float:left;font-family:'font-hy-55'
 }
-.e-my .tab .search_code input{height:34px;margin-top:6px;margin-left:60px;width:60%;font-size:14px;background:transparent;border:unset;color:#fff
+.e-my .tab .search_code input{height:34px;margin-top:6px;margin-left:60px;width:60%;font-size:14px;background:transparent;border:unset;color:#fff;background:transparent \9;border:none \9
 }
 .e-my .tab .search_code div{display:inline-block;height:30px;margin-top:14px;float:right;margin-right:23px
 }
@@ -2895,6 +2899,10 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#cacdd4
 .e-my .frame_split img{height:100%
 }
 .e-my .frame_main{margin-top:35px;height:100%;display:block;margin-left:340px
+}
+@media all and (-ms-high-contrast: none){
+*::-ms-backdrop,.e-my .tab .search_code input{background:transparent;border:none
+}
 }
 
 .e-office{letter-spacing:1px;width:100%;min-width:1280px;height:100%
@@ -6178,4 +6186,4 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .jieda-office .frame_main{margin-top:35px;height:100%;display:block;margin-left:340px
 }
 
-/*# sourceMappingURL=vendor.79b664cf5d469edb719c.css.map*/
+/*# sourceMappingURL=vendor.b7d5d0ee1eb0a7b6b683.css.map*/
