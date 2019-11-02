@@ -12,7 +12,15 @@
 				<a>登录</a>
 			</div>
 		</div>
+		<div class="login-marquee">
+			<marquee direction="left" hspace="10" vspace="10" onmouseover="this.stop()" onmouseout="this.start()" >
+				<p><span>推荐使用：IE（版本11.0以上）、谷歌、火狐、360极速浏览器。</span>
+					<a href="/guide.html" target="_blank">点击下载</a>
+				</p>
+			</marquee>
+		</div>
 	</div>
+
 </div>
 </template>
 
@@ -159,7 +167,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 				width: 130px;
 			}
 		}
+		.login-marquee{
+			position: absolute;
+			right: 4rem;
+			bottom: 4rem;
+			width: 45rem;
+			bottom: 3rem \9;
+			width: 40rem \9;
+			background-color: #f4f4f4;
+            a{
+				color: #0c6ce1;
+			}
+		}
 	}
+
+
 }
 
 /*ie11 css hack*/
@@ -168,6 +190,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 		background: transparent;
 		border: none;
 		border-bottom: 1px solid #2c466f;
+	}
+	*::-ms-backdrop, .e-login .form .login-marquee{
+		background-color: rgba(255,255,255,0) !important;
 	}
 }
 </style>

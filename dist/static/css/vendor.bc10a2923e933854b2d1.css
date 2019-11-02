@@ -2849,8 +2849,14 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#cacdd4
 }
 .e-login .form .block .logging{width:130px
 }
+.e-login .form .login-marquee{position:absolute;right:4rem;bottom:4rem;width:45rem;bottom:3rem \9;width:40rem \9;background-color:#f4f4f4
+}
+.e-login .form .login-marquee a{color:#0c6ce1
+}
 @media all and (-ms-high-contrast: none){
 *::-ms-backdrop,.e-login .form .block input{background:transparent;border:none;border-bottom:1px solid #2c466f
+}
+*::-ms-backdrop,.e-login .form .login-marquee{background-color:rgba(255,255,255,0) !important
 }
 }
 
@@ -6186,4 +6192,4 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .jieda-office .frame_main{margin-top:35px;height:100%;display:block;margin-left:340px
 }
 
-/*# sourceMappingURL=vendor.b7d5d0ee1eb0a7b6b683.css.map*/
+/*# sourceMappingURL=vendor.bc10a2923e933854b2d1.css.map*/
