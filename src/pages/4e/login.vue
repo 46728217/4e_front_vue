@@ -11,16 +11,20 @@
 			<div v-show="isLock==false" class="submit" @click="submit">
 				<a>登录</a>
 			</div>
+
 		</div>
+
+	</div>
+	<div class="login-bottom">
 		<div class="login-marquee">
-			<marquee direction="left" hspace="10" vspace="10" onmouseover="this.stop()" onmouseout="this.start()" >
+			<marquee scrollamount="5" direction="left"  vspace="10" onmouseover="this.stop()" onmouseout="this.start()" >
 				<p><span>推荐使用：IE（版本11.0以上）、谷歌、火狐、360极速浏览器。</span>
-					<a href="/guide.html" target="_blank">点击下载</a>
+					<a href="/guide.html" target="_blank">跳转下载</a>
 				</p>
 			</marquee>
 		</div>
+		<div class="end">©一汽-大众汽车有限公司 版权所有</div>
 	</div>
-
 </div>
 </template>
 
@@ -167,20 +171,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 				width: 130px;
 			}
 		}
-		.login-marquee{
-			position: absolute;
-			right: 4rem;
-			bottom: 4rem;
-			width: 45rem;
-			bottom: 3rem \9;
-			width: 40rem \9;
-			background-color: #f4f4f4;
-            a{
-				color: #0c6ce1;
-			}
-		}
-	}
 
+	}
+  .login-bottom{
+	  position: absolute;
+	  width: 450px;
+	  height: 80px;
+	   bottom: 20px;
+	  margin-left: 59%;
+	  .login-marquee{
+		  margin-top: 10px;
+		  margin-bottom: 10px;
+		  a{
+			  color: #0c6ce1;
+		  }
+	  }
+  }
 
 }
 

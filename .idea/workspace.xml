@@ -4,14 +4,16 @@
     <list default="true" id="a62b5550-ebb6-4c57-b175-48251e8c2ae9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/app.b7d5d0ee1eb0a7b6b683.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/app.b7d5d0ee1eb0a7b6b683.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.b7d5d0ee1eb0a7b6b683.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.b7d5d0ee1eb0a7b6b683.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/2.7168d20378af1ba0acea.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/2.7168d20378af1ba0acea.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/app.466a04a82e4f6eddfecb.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/app.466a04a82e4f6eddfecb.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/app.bc10a2923e933854b2d1.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/app.bc10a2923e933854b2d1.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.bc10a2923e933854b2d1.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.bc10a2923e933854b2d1.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/img/login_bg.568376d.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/2.718d73c205e5c6f88cb9.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/2.718d73c205e5c6f88cb9.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/app.a3f82bbdaf9e17bed175.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/app.a3f82bbdaf9e17bed175.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/assets/4e/img/login_bg.png" afterPath="$PROJECT_DIR$/src/assets/4e/img/login_bg.png" />
       <change beforePath="$PROJECT_DIR$/src/pages/4e/login.vue" afterPath="$PROJECT_DIR$/src/pages/4e/login.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,10 +34,10 @@
       <file leaf-file-name="login.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/4e/login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1198">
-              <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="-127">
+              <caret line="19" column="55" lean-forward="false" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
               <folding>
-                <element signature="e#813#834#0" expanded="true" />
+                <element signature="e#899#920#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -227,24 +229,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572680399145</updated>
-      <workItem from="1572680400906" duration="18482000" />
+      <workItem from="1572680400906" duration="21295000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18482000" />
+    <option name="totallyTimeSpent" value="21295000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="-11" y="-11" width="2902" height="1582" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.77975374" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16666667" sideWeight="0.7828482" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16931818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.104929574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.22024624" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16666667" sideWeight="0.21715185" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -385,11 +387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/4e/img/login_bg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/library.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -406,12 +403,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/4e/img/login_bg.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/login.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1198">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="-127">
+          <caret line="19" column="55" lean-forward="false" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
           <folding>
-            <element signature="e#813#834#0" expanded="true" />
+            <element signature="e#899#920#0" expanded="true" />
           </folding>
         </state>
       </provider>
