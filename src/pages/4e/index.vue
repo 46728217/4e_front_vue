@@ -409,32 +409,32 @@ export default {
 		},
 		goShop: function(menuId) {
 			var that = this;
-			this.get(this.base+"/api/cate/change?id="+menuId, null, function(data){
+			this.get(this.base+"/api/cate/change?menuId="+menuId, null, function(data){
 				if (data.code==0) {
 					that.showMsg("您的权限不够，请联系管理员");
 					return;
 				}
-				window.location = '/shop?menuId='+menuId;
+				window.location = '/shop?leftId='+menuId;
 			});
 		},
 		goOffice: function(menuId) {
 			var that = this;
-			this.get(this.base+"/api/cate/change?id="+menuId, null, function(data){
+			this.get(this.base+"/api/cate/change?menuId="+menuId, null, function(data){
 				if (data.code==0) {
 					that.showMsg("您的权限不够，请联系管理员");
 					return;
 				}
-				window.location = '/office?menuId='+menuId;
+				window.location = '/office?leftId='+menuId;
 			});
 		},
 		goStudy: function(menuId) {
 			var that = this;
-			this.get(this.base+"/api/cate/change?id="+menuId, null, function(data){
+			this.get(this.base+"/api/cate/change?menuId="+menuId, null, function(data){
 				if (data.code==0) {
 					that.showMsg("您的权限不够，请联系管理员");
 					return;
 				}
-				window.location = '/study?menuId='+menuId;
+				window.location = '/study?leftId='+menuId;
 			});
 		},
 		detail: function(id, file_id) {
