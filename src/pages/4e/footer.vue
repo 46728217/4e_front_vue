@@ -33,7 +33,7 @@
 export default {
 	methods: {
 		go2back: function() {
-			window.location = "http://114.118.23.116/jsp/admin/index.jsp";
+			window.location = "https://4em.cig.com.cn/jsp/admin/index.jsp";
 		}
 	}
 }
