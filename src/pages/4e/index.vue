@@ -3,15 +3,15 @@
 	<div class="e-index" v-show="showPage">
 		<app-header :page_tab="page_tab"></app-header>
 		<!--banner-->
-		<div class="banner" style="min-width: auto">
+		<div class="banner">
 			<swiper :options="swiperOption" class="swiper-wrap"  ref="bannerSwiper" v-if="banners.length!=0">
-				<swiper-slide v-for="(item,index) in banners" :key="index" >
-					<div class="swiper-item">
-						<img :src="item.url" alt="" />
-						<span class="dd"><a>即刻下载</a></span>
-					</div>
-				</swiper-slide>
-				<div class="swiper-pagination"  v-for="(item,index) in banners" :key="index" slot="pagination" ></div>
+			  <swiper-slide v-for="(item,index) in banners" :key="index" >
+			    <div class="swiper-item">
+			    	<img :src="item.url" alt="" />
+			    	<span class="dd"><a>即刻下载</a></span>
+			    </div>
+			  </swiper-slide>
+			  <div class="swiper-pagination"  v-for="(item,index) in banners" :key="index" slot="pagination" ></div>
 			</swiper>
 		</div>
 
@@ -41,7 +41,7 @@
 				</li>
 				<div class="tab_more">
 					<div>
-						<a href="/library?leftId=426">全部列表</a>
+						<a href="/library?menuId=426">全部列表</a>
 					</div>
 				</div>
 			</ul>
@@ -55,7 +55,7 @@
 				</li>
 				<div class="tab_more">
 					<div>
-						<a href="/library?leftId=577">{{'全部列表'|dz}}</a>
+						<a href="/library?menuId=577">{{'全部列表'|dz}}</a>
 					</div>
 				</div>
 			</ul>
@@ -69,7 +69,7 @@
 				</li>
 				<div class="tab_more">
 					<div>
-						<a href="/library?leftId=426&subId=427">{{'全部列表'|dz}}</a>
+						<a href="/library?menuId=426&subId=427">{{'全部列表'|dz}}</a>
 					</div>
 				</div>
 			</ul>
@@ -83,7 +83,7 @@
 				</li>
 				<div class="tab_more">
 					<div>
-						<a href="/library?leftId=472">{{'全部列表'|dz}}</a>
+						<a href="/library?menuId=472">{{'全部列表'|dz}}</a>
 					</div>
 				</div>
 			</ul>
@@ -97,7 +97,7 @@
 				</li>
 				<div class="tab_more">
 					<div>
-						<a href="/library?leftId=576">{{'全部列表'|dz}}</a>
+						<a href="/library?menuId=576">{{'全部列表'|dz}}</a>
 					</div>
 				</div>
 			</ul>
@@ -111,7 +111,7 @@
 				</li>
 				<div class="tab_more">
 					<div>
-						<a href="/library?leftId=545&subId=548">{{'全部列表'|dz}}</a>
+						<a href="/library?menuId=545&subId=548">{{'全部列表'|dz}}</a>
 					</div>
 				</div>
 			</ul>
@@ -295,193 +295,178 @@
 
 <script>
 
-    import font_css from '@/assets/4e/css/font.css'
-    import global_css from '@/assets/4e/css/global.css'
+import font_css from '@/assets/4e/css/font.css'
+import global_css from '@/assets/4e/css/global.css'
 
-    import Header from './header.vue';
-    import Footer from './footer.vue';
+import Header from './header.vue';
+import Footer from './footer.vue';
 
-    import { swiper, swiperSlide } from "vue-awesome-swiper";
-    require("swiper/dist/css/swiper.css");
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+require("swiper/dist/css/swiper.css");
 
-    var base = localStorage.getItem("base")
-    export default {
-        data: function(){
-            var that = this;
-            return {
-                showPage: false,
-                page_tab: "index",
-                base: base,
-                swiperOption: {
-                    notNextTick: true,
-                    loop: true,
-                    initialSlide: 0,
-                    autoplay: {
-                        delay: 6000,
-                        stopOnLastSlide: false,
-                        disableOnInteraction: true
-                    },
-                    speed: 800,
-                    direction: "horizontal",
-                    grabCursor: false,
-                    on: {
-                        slideChangeTransitionStart: function() {
-                            that.imgIndex= that.realIndex - 1;
-                        },
-                    },
-                    pagination: {
-                        el: ".swiper-pagination",
-                        clickable: true,
-                        type: "bullets"
-                    }
-                },
-                banners: [],
-                shiyecnt: 1,
-                brands: [],
-                actives: [],
-                shiyes: [],
-                qiyes: [],
-                statusTab: [],
-                peixus: [],
-                filecode: ''
-            }
-        },
-        components : {
-            "app-header": Header,
-            "app-footer": Footer,
-            swiper,
-            swiperSlide
-        },
-        methods : {
-            init: function(){
+var base = localStorage.getItem("base")
+export default {
+	data: function(){
+		var that = this;
+		return {
+			showPage: false,
+			page_tab: "index",
+			base: base,
+			swiperOption: {
+				notNextTick: true,
+				loop: true,
+				initialSlide: 0,
+				autoplay: {
+				  delay: 6000,
+				  stopOnLastSlide: false,
+				  disableOnInteraction: true
+				},
+				speed: 800,
+				direction: "horizontal",
+				grabCursor: false,
+				on: {
+				  slideChangeTransitionStart: function() {
+				    that.imgIndex= that.realIndex - 1;
+				  },
+				},
+				pagination: {
+				  el: ".swiper-pagination",
+				  clickable: true,
+				  type: "bullets"
+				}
+			},
+			banners: [],
+			shiyecnt: 1,
+			brands: [],
+			actives: [],
+			shiyes: [],
+			qiyes: [],
+			statusTab: [],
+			peixus: [],
+			filecode: ''
+		}
+	},
+	components : {
+		"app-header": Header,
+		"app-footer": Footer,
+		swiper,
+  		swiperSlide
+	},
+	methods : {
+		init: function(){
 
-            },
-            search: function() {
-                var that = this;
-                if (this.filecode=='') {
-                    this.showMsg('请输入素材编码');
-                    return;
-                }
-                this.get(this.base+"/api/search/code?filecode="+this.filecode, null, function(data){
-                    if(data.code==0) {
-                        that.showMsg("未找到您输入编码对应的素材");
-                        return;
-                    }
-                    var material = data.data;
-                    that.detail(material.id, material.file_id);
-                });
-            },
-            getBannerList: function() {
-                var that = this;
-                this.get(this.base+"/api/banner/list", null, function(data){
-                    if (data.code == 200) {
-                        that.banners = data.data;
-                    }
-                });
-            },
-            getMatrialList: function() {
-                var that = this;
-                this.get(this.base+"/api/material/index/list", null, function(data){
-                    if (data.code==200) {
-                        that.brands = data.data.brands;
-                        that.qiyes = data.data.qiyes;
-                        that.statusTab = data.data.statusTab;
-                        that.peixus = data.data.peixus;
-                        that.actives = data.data.actives;
-                        that.shiyes = data.data.shiyes;
-                        that.shiyecnt = data.data.shiyecnt;
-                        that.showpage = true;
-                    }else{
-                        window.location = '/login';
-                    }
-                });
-            },
-            changeTab: function(type) {
-                $(".tab-item").each(function(){
-                    if ($(this).hasClass(type)==false) {
-                        $(this).addClass("hide");
-                    }else{
-                        $(this).removeClass("hide");
-                    }
-                });
-                $(".tab li").not("[data-tab='"+type+"']").removeClass("current");
-                $(".tab li[data-tab='"+type+"']").addClass("current");
-            },
-            goShop: function(leftId) {
-                var that = this;
-                this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
-                    if (data.code==0) {
-                        that.showMsg("您的权限不够，请联系管理员");
-                        return;
-                    }
-                    window.location = '/shop?leftId='+leftId;
-                });
-            },
-            goOffice: function(leftId) {
-                var that = this;
-                this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
-                    if (data.code==0) {
-                        that.showMsg("您的权限不够，请联系管理员");
-                        return;
-                    }
-                    window.location = '/office?leftId='+leftId;
-                });
-            },
-            goStudy: function(leftId) {
-                var that = this;
-                this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
-                    if (data.code==0) {
-                        that.showMsg("您的权限不够，请联系管理员");
-                        return;
-                    }
-                    window.location = '/study?leftId='+leftId;
-                });
-            },
-            detail: function(id, file_id) {
-                this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
-                    var path = data.id_path;
-                    path = path.split(",");
-                    var second = 0;
-                    var third = 0;
-                    var four = 0;
-                    if (path.length>=2) {
-                        second = path[1];
-                    }
-                    if (path.length>=3) {
-                        third = path[2];
-                    }
-                    if (path.length>=4) {
-                        four = path[3];
-                    }
-                    var url = "/library?id="+id;
-                    if (second!=0) {
-                        url = url + "&thirdCatId="+0;
-                    }
-                    if (third!=0) {
-                        url = url + "&fourCatId="+third;
-                    }
-                    window.location = url;
-                });
-            }
-        },
-        created: function(){
-            var that = this;
-            this.get(this.base+"/api/user/islogin", null, function(data){
-                if (data.code==0) {
-                    window.location = "/login";
-                    return;
-                }else{
-                    //同步语言
-                }
-            });
-            this.getBannerList();
-            this.getMatrialList();
-            this.$nextTick(function(){
-                that.init();
-                that.showPage = true;
-            })
-        }
-    }
+		},
+		search: function() {
+			var that = this;
+			if (this.filecode=='') {
+				this.showMsg('请输入素材编码');
+				return;
+			}
+			this.get(this.base+"/api/search/code?filecode="+this.filecode, null, function(data){
+				if(data.code==0) {
+					that.showMsg("未找到您输入编码对应的素材");
+					return;
+				}
+				var material = data.data;
+				that.detail(material.id, material.file_id);
+			});
+		},
+		getBannerList: function() {
+			var that = this;
+			this.get(this.base+"/api/banner/list", null, function(data){
+				if (data.code == 200) {
+					that.banners = data.data;
+				}
+			});
+		},
+		getMatrialList: function() {
+			var that = this;
+			this.get(this.base+"/api/material/index/list", null, function(data){
+				if (data.code==200) {
+					that.brands = data.data.brands;
+					that.qiyes = data.data.qiyes;
+					that.statusTab = data.data.statusTab;
+					that.peixus = data.data.peixus;
+					that.actives = data.data.actives;
+					that.shiyes = data.data.shiyes;
+					that.shiyecnt = data.data.shiyecnt;
+					that.showpage = true;
+				}else{
+					window.location = '/login';
+				}
+			});
+		},
+		changeTab: function(type) {
+			$(".tab-item").each(function(){
+				if ($(this).hasClass(type)==false) {
+					$(this).addClass("hide");
+				}else{
+					$(this).removeClass("hide");
+				}
+			});
+			$(".tab li").not("[data-tab='"+type+"']").removeClass("current");
+			$(".tab li[data-tab='"+type+"']").addClass("current");
+		},
+		goShop: function(menuId) {
+			var that = this;
+			this.get(this.base+"/api/cate/change?id="+menuId, null, function(data){
+				if (data.code==0) {
+					that.showMsg("您的权限不够，请联系管理员");
+					return;
+				}
+				window.location = '/shop?menuId='+menuId;
+			});
+		},
+		goOffice: function(menuId) {
+			var that = this;
+			this.get(this.base+"/api/cate/change?id="+menuId, null, function(data){
+				if (data.code==0) {
+					that.showMsg("您的权限不够，请联系管理员");
+					return;
+				}
+				window.location = '/office?menuId='+menuId;
+			});
+		},
+		goStudy: function(menuId) {
+			var that = this;
+			this.get(this.base+"/api/cate/change?id="+menuId, null, function(data){
+				if (data.code==0) {
+					that.showMsg("您的权限不够，请联系管理员");
+					return;
+				}
+				window.location = '/study?menuId='+menuId;
+			});
+		},
+		detail: function(id, file_id) {
+			this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
+				if (data.code==200) {
+					var url = "/library?id="+id;
+					if (file_id!=null) {
+						url += "&file_id="+file_id;
+					}
+					window.location = url;
+				}
+			});
+		}
+	},
+	created: function(){
+		var that = this;
+		this.get(this.base+"/api/user/islogin", null, function(data){
+			if (data.code==0) {
+				window.location = "/login";
+				return;
+			}else{
+				//同步语言
+			}
+		});
+		this.getBannerList();
+		this.getMatrialList();
+		this.$nextTick(function(){
+			that.init();
+			that.showPage = true;
+		})
+	}
+}
 
 </script>
 

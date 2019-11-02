@@ -71,9 +71,7 @@ export default {
 			current_sub_menu_id : 0,
 			main_url: "",
 			id: 0,
-			filecode: '',
-			thirdId: 0,
-			fourId: 0
+			filecode: ''
 		}
 	},
 	components : {
@@ -120,17 +118,7 @@ export default {
 				if (a.sortId<b.sortId) return -1;
 				return 0;
 			});
-			if (this.id!=0) {
-				var permissionCode = this.submenu[this.current_sub_menu_id].permissionCode;
-				var url = "/list_file?id="+this.id+"&second_cat_id="+this.getNumber(permissionCode);
-				if (this.thirdId!=0) {
-					url += "&third_cat_id="+this.thirdId;
-				}
-				if (this.fourId!=0) {
-					url += "&four_cat_id="+this.fourId;
-				}
-				this.main_url = url;
-			}else{
+			if (this.id==0) {
 				this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode);
 			}
 		},
@@ -174,50 +162,106 @@ export default {
 				this.showMsg('请输入素材编码');
 				return;
 			}
-			this.get(this.base+"/api//search/code?filecode="+this.filecode, null, function(data){
+			this.get(this.base+"/api/search/code?filecode="+this.filecode, null, function(data){
 				if(data.code==0) {
 					that.showMsg("未找到您输入编码对应的素材");
 					return;
 				}
 				var material = data.data;
-				that.detail(material.file_id, material.secondCatId);
+				that.detail(material.id, material.file_id);
 			});
 		},
-		detail: function(fileId, secondCatId) {
+		detail: function(id, file_id) {
 			var that = this;
-			this.get(this.base+"/api/cate/change?secondCatId="+secondCatId, null, function(data){
-				if (data.code==0) {
-					that.showMsg("您的权限不够，请联系管理员");
-					return;
+			this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
+				if (data.code==200) {
+					var url = "/library?id="+id;
+					if (file_id!=null) {
+						url += "&file_id="+file_id;
+					}
+					window.location = url;
 				}
-				var map = data.data;
-				window.location = "/library?leftId="+map.left_id+"&subId="+map.sub_id+"&fileId="+fileId;
 			});
 		}
 	},
 	created: function(){
-		if (this.$route.query.leftId!=null) {
-			this.current_left_menu_id = this.$route.query.leftId;
-		}
-		if (this.$route.query.subId!=null) {
-			this.current_sub_menu_id = this.$route.query.subId;
-		}
-		if (this.$route.query.thirdId!=null) {
-			this.thirdId = this.$route.query.thirdId;
-		}
-		if (this.$route.query.fourId!=null) {
-			this.fourId = this.$route.query.fourId;
-		}
-		if (this.$route.query.id!=null) {
-			this.id = this.$route.query.id;
-		}
-		var that = this;
 		this.get(this.base+"/api/user/islogin", null, function(data){
 			if (data.code==0) {
 				window.location = "/login";
 				return;
 			}
 		},false);
+		var that = this;
+		//打开素材详情
+		if (this.$route.query.fileId!=null) {
+			this.file_id = this.$route.query.file_id;
+		}
+		//文件列表
+		if (this.$route.query.id!=null) {
+			this.id = this.$route.query.id;
+			//检查素材权限
+			this.get(this.base+"/api/cate/change?materialId="+this.id, null, function(data){
+				if (data.code==200) {
+					var id_path = data.data.id_path;
+					var path = id_path.split(",");
+					var first = 0;
+					var second = 0;
+					var third = 0;
+					var four = 0;
+					if (path.length>=1) {
+						first = path[0];
+					}
+					if (path.length>=2) {
+						second = path[1];
+						that.current_left_menu_id = second;
+					}
+					if (path.length>=3) {
+						third = path[2];
+						that.current_sub_menu_id = third;
+					}
+					if (path.length>=4) {
+						four = path[3];
+					}
+					var url = "/list_file?id="+that.id;
+					if (second>0) {
+						url = url + "&second_cat_id="+second;
+					}
+					if (third>0) {
+						url = url + "&third_cat_id="+third;
+					}
+					if (four>0) {
+						url = url + "&four_cat_id="+four;
+					}
+					that.main_url = url;
+				}
+			}, false);
+		}
+		//分类列表
+		if (this.$route.query.menuId!=null) {
+			alert(23);
+			this.get(this.base+"/api/cate/change?menuId="+this.$route.query.menuId, null, function(data){
+				if (data.code==200) {
+					var id_path = data.data.idPath;
+					var path = id_path.split(",");
+					var first = 0;
+					var second = 0;
+					var third = 0;
+					var four = 0;
+					if (path.length>=1) {
+						first = path[0];
+					}
+					if (path.length>=2) {
+						second = path[1];
+						that.current_left_menu_id = second;
+					}
+					if (path.length>=3) {
+						third = path[2];
+						that.current_sub_menu_id = third;
+					}
+				}
+			}, false);
+		}
+
 		$.ajax({
 			url: this.base+"/api/menu/left",
 			data: {topName: 'e-library'},
