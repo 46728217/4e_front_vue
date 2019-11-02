@@ -187,6 +187,8 @@ export default {
 					background: transparent;
 					border: unset;
 					color: #fff;
+					background: transparent \9;
+					border: none \9;
 				}
 				
 				div {
@@ -311,6 +313,13 @@ export default {
 		    height: 100%;
 		    display: block;
 		    margin-left: 340px;
+		}
+	}
+	/*ie11 css hack*/
+	@media all and (-ms-high-contrast:none) {
+		*::-ms-backdrop, .e-my .tab .search_code input{
+			background: transparent;
+			border: none;
 		}
 	}
 </style>
