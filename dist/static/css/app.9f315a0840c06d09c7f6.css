@@ -1333,7 +1333,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .e-index .search .search_input span{vertical-align:middle;color:#001d53
 }
-.e-index .search .search_input input{width:16%;border:unset;border-bottom:1px solid #001d53;margin-left:5px;line-height:30px
+.e-index .search .search_input input{width:16%;border:unset;border-bottom:1px solid #001d53;margin-left:5px;line-height:30px;border-top:none \9;border-left:none \9;border-right:none \9
 }
 .e-index .search .search_input input::placeholder{color:rgba(0,29,83,0.529)
 }
@@ -1360,6 +1360,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .e-index .download ul li .tip{margin-top:5px;color:#727272
 }
 .e-index .download ul .line{width:1px;height:27px;border-left:1px dashed #b4bac7;margin-top:176px
+}
+@media all and (-ms-high-contrast: none){
+*::-ms-backdrop,.e-index .search .search_input input{border:none;border-bottom:1px solid #001d53
+}
 }
 
 .e-library{letter-spacing:1px;width:100%;min-width:1280px;height:100%
@@ -6143,4 +6147,4 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .jieda-office .frame_main{margin-top:35px;height:100%;display:block;margin-left:340px
 }
 
-/*# sourceMappingURL=app.c9cea443f9697075d5ca.css.map*/
+/*# sourceMappingURL=app.9f315a0840c06d09c7f6.css.map*/

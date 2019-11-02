@@ -5,13 +5,13 @@
 		<!--banner-->
 		<div class="banner">
 			<swiper :options="swiperOption" class="swiper-wrap"  ref="bannerSwiper" v-if="banners.length!=0">
-			  <swiper-slide v-for="(item,index) in banners" :key="index" >
-			    <div class="swiper-item">
-			    	<img :src="item.url" alt="" />
-			    	<span class="dd"><a>即刻下载</a></span>
-			    </div>
-			  </swiper-slide>
-			  <div class="swiper-pagination"  v-for="(item,index) in banners" :key="index" slot="pagination" ></div>
+				<swiper-slide v-for="(item,index) in banners" :key="index" >
+					<div class="swiper-item">
+						<img :src="item.url" alt="" />
+						<span class="dd"><a>即刻下载</a></span>
+					</div>
+				</swiper-slide>
+				<div class="swiper-pagination"  v-for="(item,index) in banners" :key="index" slot="pagination" ></div>
 			</swiper>
 		</div>
 
@@ -32,10 +32,10 @@
 			</ul>
 			<ul class="brands tab-item hide">
 				<li v-for="(item) in brands" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)">
 					</div>
 					<div class="tab_text">
-						<span class="txt" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name}}</span>
+						<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 						<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 					</div>
 				</li>
@@ -47,9 +47,9 @@
 			</ul>
 			<ul class="actives tab-item hide">
 				<li v-for="(item) in actives" :mid='item.id' :pid='item.mid' :thirdCatId='item.third_cat_id'>
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.second_cat_id, item.third_cat_id, item.four_cat_id)"></div>
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 					<div class="tab_text">
-						<span class="txt" @click="detail(item.id, item.second_cat_id, item.third_cat_id, item.four_cat_id)">{{item.name}}</span>
+						<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 						<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 					</div>
 				</li>
@@ -61,9 +61,9 @@
 			</ul>
 			<ul class="statusTab tab-item hide">
 				<li v-for="(item) in statusTab" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 					<div class="tab_text">
-						<span class="txt" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name}}</span>
+						<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 						<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 					</div>
 				</li>
@@ -75,9 +75,9 @@
 			</ul>
 			<ul class="shiyes tab-item hide">
 				<li v-for="(item) in shiyes" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 					<div class="tab_text">
-						<span class="txt" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name}}</span>
+						<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 						<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 					</div>
 				</li>
@@ -89,9 +89,9 @@
 			</ul>
 			<ul class="qiyes tab-item">
 				<li v-for="(item) in qiyes" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 					<div class="tab_text">
-						<span class="txt" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name}}</span>
+						<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 						<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 					</div>
 				</li>
@@ -103,9 +103,9 @@
 			</ul>
 			<ul class="peixus tab-item hide">
 				<li v-for="(item) in peixus" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 					<div class="tab_text">
-						<span class="txt" @click="detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name}}</span>
+						<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 						<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 					</div>
 				</li>
@@ -295,190 +295,193 @@
 
 <script>
 
-import font_css from '@/assets/4e/css/font.css'
-import global_css from '@/assets/4e/css/global.css'
+    import font_css from '@/assets/4e/css/font.css'
+    import global_css from '@/assets/4e/css/global.css'
 
-import Header from './header.vue';
-import Footer from './footer.vue';
+    import Header from './header.vue';
+    import Footer from './footer.vue';
 
-import { swiper, swiperSlide } from "vue-awesome-swiper";
-require("swiper/dist/css/swiper.css");
+    import { swiper, swiperSlide } from "vue-awesome-swiper";
+    require("swiper/dist/css/swiper.css");
 
-var base = localStorage.getItem("base")
-export default {
-	data: function(){
-		var that = this;
-		return {
-			showPage: false,
-			page_tab: "index",
-			base: base,
-			swiperOption: {
-				notNextTick: true,
-				loop: true,
-				initialSlide: 0,
-				autoplay: {
-				  delay: 6000,
-				  stopOnLastSlide: false,
-				  disableOnInteraction: true
-				},
-				speed: 800,
-				direction: "horizontal",
-				grabCursor: false,
-				on: {
-				  slideChangeTransitionStart: function() {
-				    that.imgIndex= that.realIndex - 1;
-				  },
-				},
-				pagination: {
-				  el: ".swiper-pagination",
-				  clickable: true,
-				  type: "bullets"
-				}
-			},
-			banners: [],
-			shiyecnt: 1,
-			brands: [],
-			actives: [],
-			shiyes: [],
-			qiyes: [],
-			statusTab: [],
-			peixus: [],
-			filecode: ''
-		}
-	},
-	components : {
-		"app-header": Header,
-		"app-footer": Footer,
-		swiper,
-  		swiperSlide
-	},
-	methods : {
-		init: function(){
+    var base = localStorage.getItem("base")
+    export default {
+        data: function(){
+            var that = this;
+            return {
+                showPage: false,
+                page_tab: "index",
+                base: base,
+                swiperOption: {
+                    notNextTick: true,
+                    loop: true,
+                    initialSlide: 0,
+                    autoplay: {
+                        delay: 6000,
+                        stopOnLastSlide: false,
+                        disableOnInteraction: true
+                    },
+                    speed: 800,
+                    direction: "horizontal",
+                    grabCursor: false,
+                    on: {
+                        slideChangeTransitionStart: function() {
+                            that.imgIndex= that.realIndex - 1;
+                        },
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                        type: "bullets"
+                    }
+                },
+                banners: [],
+                shiyecnt: 1,
+                brands: [],
+                actives: [],
+                shiyes: [],
+                qiyes: [],
+                statusTab: [],
+                peixus: [],
+                filecode: ''
+            }
+        },
+        components : {
+            "app-header": Header,
+            "app-footer": Footer,
+            swiper,
+            swiperSlide
+        },
+        methods : {
+            init: function(){
 
-		},
-		search: function() {
-			var that = this;
-			if (this.filecode=='') {
-				this.showMsg('请输入素材编码');
-				return;
-			}
-			this.get(this.base+"/api/search/code?filecode="+this.filecode, null, function(data){
-				if(data.code==0) {
-					that.showMsg("未找到您输入编码对应的素材");
-					return;
-				}
-				var material = data.data;
-				that.detail(material.file_id, material.secondCatId);
-			});
-		},
-		getBannerList: function() {
-			var that = this;
-			this.get(this.base+"/api/banner/list", null, function(data){
-				if (data.code == 200) {
-					that.banners = data.data;
-				}
-			});
-		},
-		getMatrialList: function() {
-			var that = this;
-			this.get(this.base+"/api/material/index/list", null, function(data){
-				if (data.code==200) {
-					that.brands = data.data.brands;
-					that.qiyes = data.data.qiyes;
-					that.statusTab = data.data.statusTab;
-					that.peixus = data.data.peixus;
-					that.actives = data.data.actives;
-					that.shiyes = data.data.shiyes;
-					that.shiyecnt = data.data.shiyecnt;
-					that.showpage = true;
-				}else{
-					window.location = '/login';
-				}
-			});
-		},
-		changeTab: function(type) {
-			$(".tab-item").each(function(){
-				if ($(this).hasClass(type)==false) {
-					$(this).addClass("hide");
-				}else{
-					$(this).removeClass("hide");
-				}
-			});
-			$(".tab li").not("[data-tab='"+type+"']").removeClass("current");
-			$(".tab li[data-tab='"+type+"']").addClass("current");
-		},
-		goShop: function(leftId) {
-			var that = this;
-			this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
-				if (data.code==0) {
-					that.showMsg("您的权限不够，请联系管理员");
-					return;
-				}
-				window.location = '/shop?leftId='+leftId;
-			});
-		},
-		goOffice: function(leftId) {
-			var that = this;
-			this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
-				if (data.code==0) {
-					that.showMsg("您的权限不够，请联系管理员");
-					return;
-				}
-				window.location = '/office?leftId='+leftId;
-			});
-		},
-		goStudy: function(leftId) {
-			var that = this;
-			this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
-				if (data.code==0) {
-					that.showMsg("您的权限不够，请联系管理员");
-					return;
-				}
-				window.location = '/study?leftId='+leftId;
-			});
-		},
-		detail: function(id, secondCatId, thirdCatId, fourCatId) {
-			var that = this;
-			var tmp = secondCatId;
-			if (secondCatId==13) {
-				tmp = thirdCatId;
-			}
-			this.get(this.base+"/api/cate/change?secondCatId="+tmp, null, function(data){
-				if (data.code==0) {
-					//that.showMsg("您的权限不够，请联系管理员");
-					return;
-				}
-				var map = data.data;
-				var url = "/library?leftId="+map.left_id+"&subId="+map.sub_id;
-				if (thirdCatId!=null) {
-					url = url + "&thirdCatId="+thirdCatId;
-				}
-				if (fourCatId!=null) {
-					url = url + "&fourCatId="+fourCatId;
-				}
-				url = url + "&id="+id;
-				window.location = url;
-			});
-		}
-	},
-	created: function(){
-		var that = this;
-		this.get(this.base+"/api/user/islogin", null, function(data){
-			if (data.code==0) {
-				window.location = "/login";
-				return;
-			}else{
-				//同步语言
-			}
-		});
-		this.getBannerList();
-		this.getMatrialList();
-		this.$nextTick(function(){
-			that.init();
-			that.showPage = true;
-		})
-	}
-}
+            },
+            search: function() {
+                var that = this;
+                if (this.filecode=='') {
+                    this.showMsg('请输入素材编码');
+                    return;
+                }
+                this.get(this.base+"/api/search/code?filecode="+this.filecode, null, function(data){
+                    if(data.code==0) {
+                        that.showMsg("未找到您输入编码对应的素材");
+                        return;
+                    }
+                    var material = data.data;
+                    that.detail(material.id, material.file_id);
+                });
+            },
+            getBannerList: function() {
+                var that = this;
+                this.get(this.base+"/api/banner/list", null, function(data){
+                    if (data.code == 200) {
+                        that.banners = data.data;
+                    }
+                });
+            },
+            getMatrialList: function() {
+                var that = this;
+                this.get(this.base+"/api/material/index/list", null, function(data){
+                    if (data.code==200) {
+                        that.brands = data.data.brands;
+                        that.qiyes = data.data.qiyes;
+                        that.statusTab = data.data.statusTab;
+                        that.peixus = data.data.peixus;
+                        that.actives = data.data.actives;
+                        that.shiyes = data.data.shiyes;
+                        that.shiyecnt = data.data.shiyecnt;
+                        that.showpage = true;
+                    }else{
+                        window.location = '/login';
+                    }
+                });
+            },
+            changeTab: function(type) {
+                $(".tab-item").each(function(){
+                    if ($(this).hasClass(type)==false) {
+                        $(this).addClass("hide");
+                    }else{
+                        $(this).removeClass("hide");
+                    }
+                });
+                $(".tab li").not("[data-tab='"+type+"']").removeClass("current");
+                $(".tab li[data-tab='"+type+"']").addClass("current");
+            },
+            goShop: function(leftId) {
+                var that = this;
+                this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
+                    if (data.code==0) {
+                        that.showMsg("您的权限不够，请联系管理员");
+                        return;
+                    }
+                    window.location = '/shop?leftId='+leftId;
+                });
+            },
+            goOffice: function(leftId) {
+                var that = this;
+                this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
+                    if (data.code==0) {
+                        that.showMsg("您的权限不够，请联系管理员");
+                        return;
+                    }
+                    window.location = '/office?leftId='+leftId;
+                });
+            },
+            goStudy: function(leftId) {
+                var that = this;
+                this.get(this.base+"/api/cate/change?id="+leftId, null, function(data){
+                    if (data.code==0) {
+                        that.showMsg("您的权限不够，请联系管理员");
+                        return;
+                    }
+                    window.location = '/study?leftId='+leftId;
+                });
+            },
+            detail: function(id, file_id) {
+                this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
+                    var path = data.id_path;
+                    path = path.split(",");
+                    var second = 0;
+                    var third = 0;
+                    var four = 0;
+                    if (path.length>=2) {
+                        second = path[1];
+                    }
+                    if (path.length>=3) {
+                        third = path[2];
+                    }
+                    if (path.length>=4) {
+                        four = path[3];
+                    }
+                    var url = "/library?id="+id;
+                    if (second!=0) {
+                        url = url + "&thirdCatId="+0;
+                    }
+                    if (third!=0) {
+                        url = url + "&fourCatId="+third;
+                    }
+                    window.location = url;
+                });
+            }
+        },
+        created: function(){
+            var that = this;
+            this.get(this.base+"/api/user/islogin", null, function(data){
+                if (data.code==0) {
+                    window.location = "/login";
+                    return;
+                }else{
+                    //同步语言
+                }
+            });
+            this.getBannerList();
+            this.getMatrialList();
+            this.$nextTick(function(){
+                that.init();
+                that.showPage = true;
+            })
+        }
+    }
 
 </script>
 
@@ -498,15 +501,15 @@ export default {
 						width: 3px;
 						height: 3px;
 						background-color: #fff;
-	  					opacity: 1;
-	  					border-radius: 50%;
+						opacity: 1;
+						border-radius: 50%;
 					}
 					.swiper-pagination-bullet-active {
 						width: 10px;
 						height: 10px;
 						background-color: #fff;
-	  					opacity: 1;
-	  					border-radius: 50%;
+						opacity: 1;
+						border-radius: 50%;
 					}
 				}
 				img {
@@ -530,7 +533,7 @@ export default {
 						display: inline-block;
 					}
 				}
-			}	
+			}
 		}
 
 		.library {
@@ -590,7 +593,7 @@ export default {
 					padding-left: 3%;
 					padding-right: 3%;
 					line-height: 10px;
-					
+
 					text-align: center;
 					display: inline-block;
 					vertical-align: middle;
@@ -630,17 +633,17 @@ export default {
 						.txt {
 							color: #191919;
 							font-size: 14px;
-							overflow: hidden; 
-					        text-overflow: ellipsis; 
-					        -o-text-overflow: ellipsis;
-					        white-space:nowrap;
-					        width: 100%;
-					        display: inline-block;
-					        margin-top: 10px;
-					        color: #fff;
-					        font-family: "font-hy-55";
-					        font-weight: bold;
-					        cursor: pointer;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							-o-text-overflow: ellipsis;
+							white-space:nowrap;
+							width: 100%;
+							display: inline-block;
+							margin-top: 10px;
+							color: #fff;
+							font-family: "font-hy-55";
+							font-weight: bold;
+							cursor: pointer;
 						}
 						div {
 							color: #fff;
@@ -837,7 +840,7 @@ export default {
 					}
 				}
 			}
-			
+
 		}
 
 		.search {
@@ -869,7 +872,7 @@ export default {
 				}
 				input {
 					width: 16%;
-                    border: unset;
+					border: unset;
 					border-bottom: 1px solid #001d53;
 					margin-left: 5px;
 					line-height: 30px;
@@ -941,10 +944,10 @@ export default {
 					}
 				}
 				.line {
-				    width: 1px;
-				    height: 27px;
-				    border-left: 1px dashed #b4bac7;
-				    margin-top: 176px;
+					width: 1px;
+					height: 27px;
+					border-left: 1px dashed #b4bac7;
+					margin-top: 176px;
 				}
 			}
 		}
