@@ -4,16 +4,15 @@
     <list default="true" id="a62b5550-ebb6-4c57-b175-48251e8c2ae9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/app.79b664cf5d469edb719c.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/app.79b664cf5d469edb719c.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.79b664cf5d469edb719c.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.79b664cf5d469edb719c.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/2.b58498a9602a1ae1021e.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/2.b58498a9602a1ae1021e.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/app.f65b1a22e9ba2ad0fcd4.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/static/js/app.f65b1a22e9ba2ad0fcd4.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/login.vue" afterPath="$PROJECT_DIR$/src/pages/4e/login.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/my.vue" afterPath="$PROJECT_DIR$/src/pages/4e/my.vue" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/app.00366f7b77015dd87d76.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/app.00366f7b77015dd87d76.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.00366f7b77015dd87d76.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/css/vendor.00366f7b77015dd87d76.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/2.bf48cae02b9deecb50d5.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/2.bf48cae02b9deecb50d5.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/app.d0af02fbbe9a184d40d4.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/static/js/app.d0af02fbbe9a184d40d4.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/pages/4e/index.vue" afterPath="$PROJECT_DIR$/src/pages/4e/index.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/4e/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+            <state relative-caret-position="150">
+              <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -82,10 +81,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="my.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/4e/my.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="9540">
               <caret line="322" column="9" lean-forward="false" selection-start-line="322" selection-start-column="9" selection-end-line="322" selection-end-column="9" />
               <folding />
             </state>
@@ -142,8 +141,8 @@
       <find>cond</find>
       <find>1640</find>
       <find>banner</find>
-      <find>search_code</find>
       <find>\9</find>
+      <find>search_code</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -157,10 +156,10 @@
         <option value="$PROJECT_DIR$/src/pages/4e/shop.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/office.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/study.vue" />
-        <option value="$PROJECT_DIR$/src/pages/4e/index.vue" />
         <option value="$PROJECT_DIR$/src/assets/4e/css/global.css" />
         <option value="$PROJECT_DIR$/src/pages/4e/my.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/login.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/index.vue" />
       </list>
     </option>
   </component>
@@ -181,7 +180,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-11" />
     <option name="y" value="-11" />
     <option name="width" value="1942" />
@@ -335,15 +334,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572680399145</updated>
-      <workItem from="1572680400906" duration="11034000" />
+      <workItem from="1572680400906" duration="11475000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11034000" />
+    <option name="totallyTimeSpent" value="11475000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.77883095" order="0" side_tool="false" content_ui="combo" />
@@ -438,14 +437,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/4e/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -503,8 +494,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/my.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="9540">
           <caret line="322" column="9" lean-forward="false" selection-start-line="322" selection-start-column="9" selection-end-line="322" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
           <folding />
         </state>
       </provider>
