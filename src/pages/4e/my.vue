@@ -21,7 +21,7 @@
 		<div class="left">
 			<ul>
 				<li v-for="(item,index) in menu" :class="item.active==1?'active':''" :data-id="item.id" @click="changeLeftMenu(item.id)">
-					<img :src="item.active==1?item.ico_white:item.ico"/>
+					<img :src="item.active==1?item.icoblue:item.ico"/>
 					<span>{{item.name|dz}}</span>
 				</li>
 
@@ -116,7 +116,7 @@
                         for(var key in data.data) {
                             var item = data.data[key];
                             item.ico = that.base+"/static/pc/adminStyles/images/ico_dark/ico"+item.id+".png";
-                            item.ico_white = that.base+"/static/pc/adminStyles/images/ico_white/ico"+item.id+".png";
+                            item.icoblue = that.base+"/static/pc/adminStyles/images/ico_blue/ico"+item.id+".png";
 
                             switch(item['level']) {
                                 case 2:
@@ -253,9 +253,9 @@
 						opacity: 0.3;
 						width: 20px;
 						height: 20px;
-						margin-left: -20px;
-						margin-right: 20px;
-						filter: drop-shadow(20px 0px 0rem gray);
+						//margin-left: -20px;
+						//margin-right: 20px;
+						//filter: drop-shadow(20px 0px 0rem gray);
 					}
 					span {
 						margin-left: 15px;
@@ -271,9 +271,9 @@
 						opacity: 1;
 						width: 20px;
 						height: 20px;
-						margin-left: -20px;
-						margin-right: 20px;
-						filter: drop-shadow(20px 0px 0rem #00b0f0);
+						//margin-left: -20px;
+						//margin-right: 20px;
+						//filter: drop-shadow(20px 0px 0rem #00b0f0);
 					}
 				}
 				.active {
@@ -283,9 +283,9 @@
 						opacity: 1;
 						width: 20px;
 						height: 20px;
-						margin-left: -20px;
-						margin-right: 20px;
-						filter: drop-shadow(20px 0px 0rem #00b0f0);
+						//margin-left: -20px;
+					//	margin-right: 20px;
+						//filter: drop-shadow(20px 0px 0rem #00b0f0);
 					}
 				}
 			}

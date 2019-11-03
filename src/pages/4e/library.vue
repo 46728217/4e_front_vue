@@ -23,8 +23,8 @@
 		<!--left-->
 		<div class="left">
 			<ul>
-				<li v-for="(item,index) in menu" :class="item.active==1?'active':''" :data-id="item.id" @click="changeLeftMenu(item.id)">
-					<img :src="item.ico"/>
+				<li  v-for="(item,index) in menu" :class="item.active==1?'active':''" :data-id="item.id" @click="changeLeftMenu(item.id)">
+					<img  :src="(item.active==1?item.icoblue:item.ico)"/>
 					<span>{{item.name|dz}}</span>
 				</li>
 				
@@ -128,8 +128,8 @@ export default {
 			this.current_left_menu_id = id;
 			this.changeLeft = true;
 			this.id = 0;
-			this.init();
-		},
+            this.init();
+        },
 		changeSubMenu: function(id, code, parent=null) {
 			if (parent!=null) {
 				this.submenu[parent].active = 1;
@@ -275,8 +275,8 @@ export default {
 					var active = 1;
 					for(var key in data.data) {
 						var item = data.data[key];
-						item.ico = that.base+"/static/pc/adminStyles/images/ico_white/ico"+item.id+".png";
-						
+						item.ico = that.base+"/static/pc/adminStyles/images/ico_dark/ico"+item.id+".png";
+                        item.icoblue = that.base+"/static/pc/adminStyles/images/ico_blue/ico"+item.id+".png";
 						switch(item['level']) {
 							case 2:
 								if (menu[item['id']]==null) {
@@ -311,7 +311,8 @@ export default {
 					that.menu = menu;
 					that.$nextTick(function(){
 						that.init();
-					})
+
+                    })
 				}
 			}
 		});
@@ -458,9 +459,9 @@ export default {
 						opacity: 0.3;
 					    width: 20px;
 					    height: 20px;
-					    margin-left: -20px;
-					    margin-right: 20px;
-					    filter: drop-shadow(20px 0px 0rem gray); 
+					   // margin-left: -20px;
+					   // margin-right: 20px;
+					  //  filter: drop-shadow(20px 0px 0rem gray);
 					}
 					span {
 						margin-left: 15px;
@@ -476,9 +477,9 @@ export default {
 						opacity: 1;
 					    width: 20px;
 					    height: 20px;
-					    margin-left: -20px;
-					    margin-right: 20px;
-					    filter: drop-shadow(20px 0px 0rem #00b0f0); 
+					    //margin-left: -20px;
+					    //margin-right: 20px;
+					  //  filter: drop-shadow(20px 0px 0rem #00b0f0);
 					}
 				}
 				.active {
@@ -488,9 +489,9 @@ export default {
 						opacity: 1;
 					    width: 20px;
 					    height: 20px;
-					    margin-left: -20px;
-					    margin-right: 20px;
-					    filter: drop-shadow(20px 0px 0rem #00b0f0);
+					   // margin-left: -20px;
+					    //margin-right: 20px;
+					   // filter: drop-shadow(20px 0px 0rem #00b0f0);
 					}
 				}
 			}
