@@ -256,7 +256,6 @@ export default {
 										if (path.length>=2) {
 											second = path[1];
 											that.current_left_menu_id = second;
-											alert(second);
 										}
 										if (path.length>=3) {
 											third = path[2];

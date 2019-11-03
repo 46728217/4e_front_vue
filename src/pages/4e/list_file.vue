@@ -52,6 +52,7 @@
 				secondCatId: 0,
 				thirdCatId: 0,
 				fourCatId: 0,
+				activityId: 0,
 				cond: {
 					year: new Date().getFullYear(),
 					name: '',
@@ -68,19 +69,23 @@
 					parent.window.location = "/login";
 					return;
 				}
-			});
+			},false);
 			this.id = this.$route.query.id;
-			//设置menuId
-			this.get(this.base+"/api/material/detail?id="+this.id, null, function(data){
-				if (data.code!=0) {
-					that.secondCatId = data.data.secondCatId;
-					that.thirdCatId = data.data.thirdCatId;
-					that.fourCatId = data.data.fourthCatId;
-					if (data.code==199){
-						that.isActivity = true;
+			if (this.$route.query.activity_id) {
+				this.activityId = this.$route.query.activity_id;
+			}else{
+				//设置menuId
+				this.get(this.base+"/api/material/detail?id="+this.id, null, function(data){
+					if (data.code!=0) {
+						that.secondCatId = data.data.secondCatId;
+						that.thirdCatId = data.data.thirdCatId;
+						that.fourCatId = data.data.fourthCatId;
+						if (data.code==199){
+							that.isActivity = true;
+						}
 					}
-				}
-			}, false);
+				}, false);
+			}
 			this.getData();
 		},
 		methods: {
@@ -101,6 +106,7 @@
 					}
 				});
 			},
+			
 			go2page: function(page) {
 				this.pageNumber = page;
 				this.getData();
@@ -123,7 +129,11 @@
 				this.getData();
 			},
 			go2detail: function(id) {
-				window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue";
+				if (this.activityId==0) {
+					window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue";
+				}else{
+					window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue_a&activityId="+this.activityId;
+				}
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
@@ -154,16 +164,22 @@
 			},
 			back: function() {
 				var path = "";
-				if (this.isActivity==true) {
-					path = "/list_o";
+				if (this.isActivity==true || this.activityId>0) {
+					path = "/list_activity";
 				}else{
 					path = "/list"
 				}
 				if (this.fourCatId!=null) {
-					window.location = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId+"&four_cat_id="+this.fourCatId+"&inner=1";
+					path = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId+"&four_cat_id="+this.fourCatId+"&inner=1";
 				}else{
-					window.location = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId;
+					path = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId;
 				}
+				if (this.isActivity==true || this.activityId>0) {
+					path = path+"&activityId="+this.activityId;
+				}else{
+					path = path;
+				}
+				window.location = path;
 			}
 		}
 	}

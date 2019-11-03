@@ -174,10 +174,10 @@
 			},
 			go2detail: function(id, second_cat_id, third_cat_id, four_cat_id) {
 				if (four_cat_id==null){
-					window.location = "/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id;
+					window.location = "/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id+"&activity_id="+this.activity_id;
 				}else{
 					window.location =
-					"/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id+"&four_cat_id="+four_cat_id;
+					"/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id+"&four_cat_id="+four_cat_id+"&activity_id="+this.activity_id;
 				}
 			},
 			goback: function(){
