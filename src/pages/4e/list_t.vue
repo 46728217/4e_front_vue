@@ -319,7 +319,7 @@
 					display: inline-block;
 					border-bottom: 1px solid #2e3e4d;
 					select {
-						border: unset;
+						border: none;
 						font-size: 14px;
 						width: 100%;
 						text-indent: 10px;
@@ -339,7 +339,7 @@
 					display: inline-block;
 					border-bottom: 1px solid #2e3e4d;
 					select {
-						border: unset;
+						border: none;
 						font-size: 14px;
 						width: 100%;
 						text-indent: 10px;
@@ -358,7 +358,7 @@
 					display: inline-block;
 					border-bottom: 1px solid #2e3e4d;
 					select {
-						border: unset;
+						border: none;
 						font-size: 14px;
 						width: 100%;
 						text-indent: 10px;
@@ -377,7 +377,7 @@
 					display: inline-block;
 					border-bottom: 1px solid #2e3e4d;
 					select {
-						border: unset;
+						border: none;
 						font-size: 14px;
 						width: 100%;
 						text-indent: 10px;
@@ -396,7 +396,7 @@
 					display: inline-block;
 					border-bottom: 1px solid #2e3e4d;
 					select {
-						border: unset;
+						border: none;
 						font-size: 14px;
 						width: 100%;
 						text-indent: 10px;
