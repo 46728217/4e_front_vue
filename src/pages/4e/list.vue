@@ -149,24 +149,40 @@
 			},
 			go2page: function(page) {
 				this.pageNumber = page;
-				this.getData();
+				if (this.cond.enable == true) {
+					this.search();
+				}else{
+					this.getData();
+				}
 			},
 			go2prev: function() {
 				this.pageNumber = this.pageNumber - 1;
 				if (this.pageNumber < 1) {
 					this.pageNumber = 1;
 				}
-				this.getData();
+				if (this.cond.enable == true) {
+					this.search();
+				}else{
+					this.getData();
+				}
 			},
 			go2next: function() {
 				this.pageNumber = this.pageNumber + 1;
 				if (this.pageNumber > this.pageCount) {
 					this.pageNumber = this.pageCount;
 				}
-				this.getData();
+				if (this.cond.enable == true) {
+					this.search();
+				}else{
+					this.getData();
+				}
 			},
 			go2pagesize: function() {
-				this.getData();
+				if (this.cond.enable == true) {
+					this.search();
+				}else{
+					this.getData();
+				}
 			},
 			go2detail: function(id, second_cat_id, third_cat_id, four_cat_id) {
 				if (four_cat_id==null){
@@ -197,10 +213,13 @@
 				params.fileCode = $('.code input').val();
 				params.sortType = $('input[name=sort]').val();
 				params.pageSize = this.pageSize;
+				params.pageNumber = this.pageNumber;
 				that.cond.enable = true;
 				this.get(this.base + "/api/material/search", params, function(data){
 					if (data.code==200) {
 						that.data = data.data;
+						that.pageCount = data.data.pagination.totalPages;
+						that.pageNumber = data.data.pagination.pageNumber;
 						that.$nextTick(function(){
 							that.parentHeight();
 						})

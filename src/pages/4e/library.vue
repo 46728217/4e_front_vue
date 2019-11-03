@@ -239,17 +239,48 @@ export default {
 						}
 						that.main_url = url;
 					}else{
-						var url = "/list_activity?activityId="+that.activityId;
-						if (second>0) {
-							url = url + "&secondCatId="+second;
-						}
-						if (third>0) {
-							url = url + "&thirdCatId="+third;
-						}
-						if (four>0) {
-							url = url + "&fourCatId="+four;
-						}
-						that.main_url = url;
+						//获取活动详情数据
+						that.get(that.base+"/api/activity/detail?activityId="+that.activityId, null, function(data){
+							if (data.code==200) {
+								that.get(that.base+"/api/cate/change?cateId="+data.data.materialCatId, null, function(data){
+									if (data.code==200) {
+										var id_path = data.data.idPath;
+										var path = id_path.split(",");
+										var first = 0;
+										var second = 0;
+										var third = 0;
+										var four = 0;
+										if (path.length>=1) {
+											first = path[0];
+										}
+										if (path.length>=2) {
+											second = path[1];
+											that.current_left_menu_id = second;
+											alert(second);
+										}
+										if (path.length>=3) {
+											third = path[2];
+											that.current_sub_menu_id = third;
+										}
+										if (path.length>=4) {
+											four = path[3];
+										}
+										var url = "/list_activity?activityId="+that.activityId;
+										if (second>0) {
+											url = url + "&secondCatId="+second;
+										}
+										if (third>0) {
+											url = url + "&thirdCatId="+third;
+										}
+										if (four>0) {
+											url = url + "&fourCatId="+four;
+										}
+										url = url + "&id="+that.id;
+										that.main_url = url;
+									}
+								}, false);
+							}
+						}, false)
 					}
 				}
 			}, false);

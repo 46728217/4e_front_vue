@@ -1,12 +1,18 @@
 <!--activityList-->
 <template>
 	<div class="e-activity-list">
-		<div class="tab" v-if="data.catListSize>0">
+		<!--<div class="tab" v-if="data.catListSize>0">
 			<ul>
 				<li v-if="data.catListSize>0" v-for="(item,index) in data.catList" @click="changeThirdMenu(item.id)" :data-id="item.id" :class="index==0?'first':''">
 					<span :class="index==0?'current':''">{{item.name}}</span>
 				</li>
 			</ul>
+		</div>-->
+		<div class="nav">
+			<div class="back" @click="goback()">
+				<img src="../../assets/4e/img/back.png"/>
+				<span>返回</span>
+			</div>
 		</div>
 		<div class="cond">
 			<div class="select">
@@ -43,7 +49,7 @@
 		</div>
 		<div class="list">
 			<ul>
-				<li v-for="(item,index) in data.materials" @click="go2detail(item.file_id)">
+				<li v-for="(item,index) in data.materials" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">
 					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
 					<div class="name">{{item.name}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
@@ -104,7 +110,17 @@
 				}
 			});
 			this.activity_id = this.$route.query.activityId;
-			this.second_cat_id = this.$route.query.secondCatId;
+			this.id = this.$route.query.id;
+			if (this.id!=null) {
+				this.get(this.base+"/api/material/detail?id="+this.id, null, function(data){
+					if (data.code==200) {
+						console.log(data.data);
+						that.second_cat_id = data.data.seondCatId;
+					}
+				}, false);
+			}else{
+				this.second_cat_id = this.$route.query.secondCatId;
+			}
 			this.getData();
 		},
 		methods: {
@@ -156,8 +172,16 @@
 			go2pagesize: function() {
 				this.getData();
 			},
-			go2detail: function(id) {
-				window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue_a&activityId="+this.activity_id;
+			go2detail: function(id, second_cat_id, third_cat_id, four_cat_id) {
+				if (four_cat_id==null){
+					window.location = "/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id;
+				}else{
+					window.location =
+					"/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id+"&four_cat_id="+four_cat_id;
+				}
+			},
+			goback: function(){
+				window.location = "/list_o?second_cat_id=10";
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
@@ -197,6 +221,23 @@
 	}
 	.e-activity-list {
 		min-height: 600px;
+		.nav {
+			height: 30px;
+			width: 100px;
+			display: inline-block;
+			.back {
+				cursor: pointer;
+				img {
+					margin-top: -5px;
+					display: inline-block;
+				}
+				span {
+					display: inline-block;
+					margin-left: 3px;
+					color: #193461;
+				}
+			}
+		}
 		.tab {
 			font-size: 14px;
 			font-family: 'font-hy-55';

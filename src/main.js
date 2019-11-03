@@ -12,9 +12,9 @@ import 'babel-polyfill'
 import 'vue-layer/lib/vue-layer.css';
 
 var baseKey = "base"
-//localStorage.setItem(baseKey, 'http://localhost')
+localStorage.setItem(baseKey, 'http://localhost')
 //localStorage.setItem(baseKey, 'http://117.78.16.42') //jieda
-localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
+//localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
 //localStorage.setItem(baseKey, 'http://114.118.23.116')
 
 var themeKey = '4e-front-theme'
