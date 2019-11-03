@@ -218,7 +218,7 @@
                 }
             });
             $('body').on('click', "li[data-id=634]", function(){
-                window.location = "http://114.118.23.116/jsp/pc/interface/faw/do.jsp?method=doLogin";
+                window.location = "https://4em.cig.com.cn/jsp/pc/interface/faw/do.jsp?method=doLogin";
             });
         }
     }
