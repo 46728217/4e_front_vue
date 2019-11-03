@@ -11,7 +11,7 @@
 			<ul>
 				<li v-for="(item,index) in data.list">
 					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="go2detail(item.file_id)"></div>
-					<div class="name" @click="go2detail(item.file_id)">{{item.file_name2}}</div>
+					<div class="name" @click="go2detail(item.file_id)">{{(item.file_name2.length>35?item.file_name2.substring(0,35)+'...':item.file_name2)}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_time.png"/><span>{{item.addTimeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadTimes}}次</span></div>
@@ -265,7 +265,7 @@
 						margin-top: 10px;
 						width: 100%;
 						text-align: left;
-						margin-bottom: 50px;
+						margin-bottom: 55px;
 						display:block;
 						height: 0px;
 						font-size: 14px;

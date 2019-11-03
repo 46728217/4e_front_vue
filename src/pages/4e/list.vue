@@ -46,7 +46,7 @@
 			<ul>
 				<li v-for="(item,index) in data.materials">
 					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
-					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name}}</div>
+					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{(item.name.length>35?item.name.substring(0,35)+'...':item.name)}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_time.png"/><span>{{item.addTimeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadTimes}}{{'次'|dz}}</span></div>
@@ -389,7 +389,7 @@
 						margin-top: 10px;
 						width: 100%;
 						text-align: left;
-						margin-bottom: 50px;
+						margin-bottom: 55px;
 						display:block;
 						height: 0px;
 						font-size: 14px;
