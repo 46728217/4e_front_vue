@@ -69,6 +69,7 @@ export default {
 			childMenu: [],
 			changeLeft: false,
 			current_sub_menu_id : 0,
+			activityId: 0,
 			main_url: "",
 			id: 0,
 			filecode: ''
@@ -196,6 +197,9 @@ export default {
 		if (this.$route.query.fileId!=null) {
 			this.file_id = this.$route.query.file_id;
 		}
+		if (this.$route.query.activityId!=null) {
+			this.activityId = this.$route.query.activityId;
+		}
 		//文件列表
 		if (this.$route.query.id!=null) {
 			this.id = this.$route.query.id;
@@ -222,17 +226,31 @@ export default {
 					if (path.length>=4) {
 						four = path[3];
 					}
-					var url = "/list_file?id="+that.id;
-					if (second>0) {
-						url = url + "&second_cat_id="+second;
+					if (that.activityId==0) {
+						var url = "/list_file?id="+that.id;
+						if (second>0) {
+							url = url + "&second_cat_id="+second;
+						}
+						if (third>0) {
+							url = url + "&third_cat_id="+third;
+						}
+						if (four>0) {
+							url = url + "&four_cat_id="+four;
+						}
+						that.main_url = url;
+					}else{
+						var url = "/list_activity?activityId="+that.activityId;
+						if (second>0) {
+							url = url + "&secondCatId="+second;
+						}
+						if (third>0) {
+							url = url + "&thirdCatId="+third;
+						}
+						if (four>0) {
+							url = url + "&fourCatId="+four;
+						}
+						that.main_url = url;
 					}
-					if (third>0) {
-						url = url + "&third_cat_id="+third;
-					}
-					if (four>0) {
-						url = url + "&four_cat_id="+four;
-					}
-					that.main_url = url;
 				}
 			}, false);
 		}

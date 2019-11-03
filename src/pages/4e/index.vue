@@ -47,9 +47,9 @@
 			</ul>
 			<ul class="actives tab-item hide">
 				<li v-for="(item) in actives" :mid='item.id' :pid='item.mid' :thirdCatId='item.third_cat_id'>
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.activity_id)"></div>
 					<div class="tab_text">
-						<span class="txt" @click="detail(item.id)">{{item.name}}</span>
+						<span class="txt" @click="detail(item.id, item.activity_id)">{{item.name}}</span>
 						<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 					</div>
 				</li>
@@ -437,12 +437,12 @@ export default {
 				window.location = '/study?leftId='+menuId;
 			});
 		},
-		detail: function(id, file_id) {
+		detail: function(id, activity_id) {
 			this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
 				if (data.code==200) {
 					var url = "/library?id="+id;
-					if (file_id!=null) {
-						url += "&file_id="+file_id;
+					if (activity_id!=null) {
+						url += "&activityId="+activity_id;
 					}
 					window.location = url;
 				}
