@@ -303,6 +303,9 @@
 					background: transparent;
 					border: unset;
 					border-bottom: 1px solid #2e3e4d;
+					border-top: none \9;/*IE6.7.8.9.10都生效*/
+					border-left: none \9;
+					border-right: none \9;
 				}
 			}
 			.code {
@@ -312,8 +315,9 @@
 					background: transparent;
 					border: unset;
 					border-bottom: 1px solid #2e3e4d;
-					background: transparent \9;
-					border: none \9;
+					border-top: none \9;/*IE6.7.8.9.10都生效*/
+					border-left: none \9;
+					border-right: none \9;
 				}
 			}
 			.check {
@@ -491,9 +495,10 @@
 
 	/*ie11 css hack*/
 	@media all and (-ms-high-contrast:none) {
-		*::-ms-backdrop, .e-activity-list .cond .name input{
-			background: transparent;
+		*::-ms-backdrop, .e-activity-list .cond .name input,.e-activity-list .cond .code input{
 			border: none;
+			border-bottom: 1px solid #2e3e4d;
+
 		}
 	}
 

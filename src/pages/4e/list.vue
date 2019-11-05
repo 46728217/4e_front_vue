@@ -306,6 +306,9 @@
 					background: transparent;
 					border: unset;
 					border-bottom: 1px solid #2e3e4d;
+					border-top: none \9;/*IE6.7.8.9.10都生效*/
+					border-left: none \9;
+					border-right: none \9;
 				}
 			}
 			.code {
