@@ -222,6 +222,7 @@ export default {
 			width: 20px;
 			height: 20px;
 			line-height: 20px;
+			//line-height: 24px \9;
 			background: #4e009a;
 			display: inline-block;
 			font-size: 12px;
@@ -234,6 +235,9 @@ export default {
 			cursor: pointer;
 			font-family: 'font-hy-75';
 			margin-top: -3px;
+			span{
+				line-height: 24px \9;
+			}
 		}
 		.logout {
 			cursor: pointer;
@@ -277,6 +281,15 @@ export default {
 			background: #fff;
 			float: right;
 		}
+	}
+}
+
+
+/*ie11注意里面的标点符号*/
+/*ie10 css hack*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.e-header .menu .language span{
+		line-height: 24px;
 	}
 }
 </style>

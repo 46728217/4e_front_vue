@@ -942,11 +942,22 @@ export default {
 
 	}
 
-	/*ie11 css hack*/
-	@media all and (-ms-high-contrast:none) {
-		*::-ms-backdrop, .e-index .search .search_input input{
+	/*!*ie11 css hack*!*/
+	/*@media all and (-ms-high-contrast:none) {*/
+		/**::-ms-backdrop, .e-index .search .search_input input{*/
+			/*border: none;*/
+			/*border-bottom: 1px solid #001d53;*/
+		/*}*/
+	/*}*/
+
+	/*ie11注意里面的标点符号*/
+	/*ie10 css hack*/
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		//.class名字 { 里面的样式:样式值;}
+		.search .search_input input{
 			border: none;
 			border-bottom: 1px solid #001d53;
 		}
+
 	}
 </style>
