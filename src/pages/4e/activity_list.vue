@@ -312,6 +312,8 @@
 					background: transparent;
 					border: unset;
 					border-bottom: 1px solid #2e3e4d;
+					background: transparent \9;
+					border: none \9;
 				}
 			}
 			.check {
@@ -486,4 +488,13 @@
 
 		}
 	}
+
+	/*ie11 css hack*/
+	@media all and (-ms-high-contrast:none) {
+		*::-ms-backdrop, .e-activity-list .cond .name input{
+			background: transparent;
+			border: none;
+		}
+	}
+
 </style>
