@@ -50,7 +50,17 @@
 				</li>
 			</ul>
 		</div>
-		<div class="paging">
+		<div class="paging" v-if="data.pagination">
+			<span class="total">{{'共'|dz}} {{data.pagination.totalPages}} {{'页'|dz}} - {{'共'|dz}}{{data.pagination.totalCount}} {{'条'|dz}} {{'数据'|dz}}</span>
+			<ul class="numbers">
+				<li><div class="prev" @click="go2prev"></div></li>
+				<li v-for="(item,index) in data.pagination.slider" :class="item==data.pagination.pageNumber?'current':''" @click="go2page(item)">
+					<div><span>{{item}}</span></div>
+				</li>
+				<li><div class="next" @click="go2next"></div></li>
+			</ul>
+			<span class="limit">{{'每页显示'|dz}}<input type="text" v-model.trim="pageSize">{{'条'|dz}}</span>
+			<div class="submit" @click="go2pagesize"><span>{{'确认'|dz}}</span></div>
 		</div>
 	</div>
 </template>
@@ -107,6 +117,30 @@
 				this.getData(id);
 				$(".tab li span").removeClass("current");
 				$(".tab li[data-id="+id+"]").find('span').addClass("current");
+			},
+			go2page: function(page) {
+				this.pageNumber = page;
+				this.getData();
+			},
+			go2prev: function() {
+				this.pageNumber = this.pageNumber - 1;
+				if (this.pageNumber < 1) {
+					this.pageNumber = 1;
+				}
+				this.getData();
+			},
+			go2next: function() {
+				this.pageNumber = this.pageNumber + 1;
+				if (this.pageNumber > this.pageCount) {
+					this.pageNumber = this.pageCount;
+				}
+				this.getData();
+			},
+			go2pagesize: function() {
+				this.getData();
+			},
+			parentHeight: function() {
+				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
 			},
 			search: function() {
 				var that = this;
@@ -244,7 +278,7 @@
 			ul {
 				list-style: none;
 				width: 100%;
-				overflow: scroll;
+				overflow: auto;
 
 				li {
 				    width: 18%;
@@ -300,7 +334,80 @@
 
 		.paging {
 			margin-top: 20px;
+			margin-left: -100px;
 			text-align: center;
+			.total {
+				font-size: 14px;
+				color: #272f3a;
+				vertical-align: super;
+				margin-right: 10px;
+			}
+			.numbers {
+				list-style: none;
+				display: inline-block;
+				li {
+					float: left;
+					display: inline-block;
+					div {
+						width: 20px;
+						height: 20px;
+						margin-right: 5px;
+						border: 1px solid #272f3a;
+						border-radius: 50%;
+						color: #272f3a;
+						span {
+							display: inline-block;
+							font-size: 12px;
+							margin-top: 1px;
+						}
+						cursor: pointer;
+					}
+				}
+				.prev {
+					background: url(../../assets/4e/img/prev.png) no-repeat;
+					background-size: 100%;
+				}
+				.next {
+					background: url(../../assets/4e/img/next.png) no-repeat;
+					background-size: 100%;
+				}
+				.current {
+					div {
+						background: #001e50;
+						color: #fff;
+					}
+				}
+			}
+			.limit {
+				font-size: 14px;
+				color: #778288;
+				vertical-align: super;
+				input {
+					border-radius: 15px;
+					width: 40px;
+					border: 1px solid #272f3a;
+					text-align: center;
+					margin-left: 10px;
+					margin-right: 10px;
+				}
+				margin-right: 10px;
+			}
+			.submit {
+				display: inline-block;
+				width: 50px;
+				height: 24px;
+				background: #272f3a;
+				color: #fff;
+				vertical-align: top;
+				border-radius: 15px;
+				font-size: 12px;
+				cursor: pointer;
+				span {
+					display: inline-block;
+					margin-top: 3px;
+				}
+			}
+
 		}
 	}
 </style>

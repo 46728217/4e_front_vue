@@ -169,7 +169,7 @@ export default {
 					return;
 				}
 				var material = data.data;
-				that.detail(material.id, material.file_id);
+				that.detail(material.id);
 			});
 		},
 		detail: function(id, file_id) {
