@@ -23,7 +23,7 @@
 		<!--left-->
 		<div class="left">
 			<ul>
-				<li  v-for="(item,index) in menu" :class="item.active==1?'active':''" :data-id="item.id" @click="changeLeftMenu(item.id)">
+				<li v-for="(item,index) in menu" :class="item.active==1?'active':''" :data-id="item.id" @click="changeLeftMenu(item.id)">
 					<img  :src="(item.active==1?item.icoblue:item.ico)"/>
 					<span>{{item.name|dz}}</span>
 				</li>

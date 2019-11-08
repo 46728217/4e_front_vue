@@ -1,61 +1,26 @@
+<!--素材文件列表页-->
 <template>
-	<div class="e-list">
-		<div class="tab" v-if="data.catListSize>0">
-			<ul>
-				<li v-if="data.catListSize>0" v-for="(item,index) in data.catList" @click="changeThirdMenu(item.id)" :data-id="item.id" :class="index==0?'first':''">
-					<span v-if="inner==true" :class="item.id==four_cat_id || index==four_cat_id?'current':''">{{item.name|dz}}</span>
-					<span v-if="inner==false" :class="item.id==third_cat_id || index==third_cat_id?'current':''">{{item.name|dz}}</span>
-
-				</li>
-			</ul>
-		</div>
-		<div class="cond">
-			<div class="select">
-				<select class="year" v-model.trim="cond.year">
-					<option value="2019">2019</option>
-					<option value="2018">2018</option>
-					<option value="2017">2017</option>
-					<option value="2016">2016</option>
-					<option value="2015">2015</option>
-				</select>
-			</div>
-			<div class="name">
-				<span>{{'素材名称'|dz}}</span>
-				<input type="text" placeholder="多关键词用”%“连接" v-model.trim="cond.name"/>
-			</div>
-			<div class="code">
-				<span>{{'素材编码'|dz}}</span>
-				<input type="text" placeholder="输入素材编码" v-model.trim="cond.code"/>
-			</div>
-			<div class="check">
-				<span>{{'排序'|dz}}</span>
-				<div>
-					<input type="radio" value="add_time" id="uploadtime" name="sort" v-model.trim="cond.sort"/>
-		  			<label>{{'按上传时间'|dz}}</label>
-	  			</div>
-	  			<div>
-					<input type="radio" value="download_times" id="downloads" name="sort" v-model.trim="cond.sort"/>
-		  			<label>{{'按下载次数'|dz}}</label>
-	  			</div>
-			</div>
-			<div class="search_btn" @click="search">
-				<span>{{'搜索'|dz}}</span>
+	<div class="file-list">
+		<div class="nav">
+			<div class="back" @click="back()">
+				<img src="../../assets/4e/img/back.png"/>
+				<span>返回</span>
 			</div>
 		</div>
 		<div class="list">
 			<ul>
-				<li v-for="(item,index) in data.materials">
-					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
-					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{(item.name.length>35?item.name.substring(0,35)+'...':item.name)}}</div>
+				<li v-for="(item,index) in data.list">
+					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="go2detail(item.file_id)"></div>
+					<div class="name" @click="go2detail(item.file_id)">{{(item.file_name2.length>35?item.file_name2.substring(0,35)+'...':item.file_name2)}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_time.png"/><span>{{item.addTimeStr}}</span></div>
-					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadTimes}}{{'次'|dz}}</span></div>
+					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadTimes}}次</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_code.png"/><span>{{item.fileCode}}</span></div>
 				</li>
 			</ul>
 		</div>
 		<div class="paging" v-if="data.pagination">
-			<span class="total">{{'共'|dz}} {{data.pagination.totalPages}} {{'页'|dz}} - {{'共'|dz}}{{data.pagination.totalCount}} {{'条'|dz}} {{'数据'|dz}}</span>
+			<span class="total">共 {{data.pagination.totalPages}} 页 - 共 {{data.pagination.totalCount}} 条 数据</span>
 			<ul class="numbers">
 				<li><div class="prev" @click="go2prev"></div></li>
 				<li v-for="(item,index) in data.pagination.slider" :class="item==data.pagination.pageNumber?'current':''" @click="go2page(item)">
@@ -63,8 +28,8 @@
 				</li>
 				<li><div class="next" @click="go2next"></div></li>
 			</ul>
-			<span class="limit">{{'每页显示'|dz}}<input type="text" v-model.trim="pageSize">{{'条'|dz}}</span>
-			<div class="submit" @click="go2pagesize"><span>{{'确认'|dz}}</span></div>
+			<span class="limit">每页显示<input type="text" v-model.trim="pageSize">条</span>
+			<div class="submit" @click="go2pagesize"><span>确认</span></div>
 		</div>
 	</div>
 </template>
@@ -80,14 +45,14 @@
 		data: function(){
 			return {
 				base: base,
-				second_cat_id: 0,
-				third_cat_id: 0,
-				four_cat_id: 0,
-				inner: false,
 				data: {},
 				pageSize: 12,
 				pageNumber: 1,
 				pageCount: 1,
+				secondCatId: 0,
+				thirdCatId: 0,
+				fourCatId: 0,
+				activityId: 0,
 				cond: {
 					year: new Date().getFullYear(),
 					name: '',
@@ -104,16 +69,22 @@
 					parent.window.location = "/login";
 					return;
 				}
-			});
-			this.second_cat_id = this.$route.query.second_cat_id;
-			if (this.$route.query.third_cat_id!=null) {
-				this.third_cat_id = this.$route.query.third_cat_id;
-			}
-			if (this.$route.query.four_cat_id!=null) {
-				this.four_cat_id = this.$route.query.four_cat_id;
-			}
-			if (this.$route.query.inner==1) {
-				this.inner = true;
+			},false);
+			this.id = this.$route.query.id;
+			if (this.$route.query.activity_id) {
+				this.activityId = this.$route.query.activity_id;
+			}else{
+				//设置menuId
+				this.get(this.base+"/api/material/detail?id="+this.id, null, function(data){
+					if (data.code!=0) {
+						that.secondCatId = data.data.secondCatId;
+						that.thirdCatId = data.data.thirdCatId;
+						that.fourCatId = data.data.fourthCatId;
+						if (data.code==199){
+							that.isActivity = true;
+						}
+					}
+				}, false);
 			}
 			this.getData();
 		},
@@ -123,20 +94,8 @@
 				var params = {};
 				params.pageSize = this.pageSize;
 				params.pageNumber = this.pageNumber;
-				params.secondCatId = this.second_cat_id;
-				if (this.third_cat_id!=0) {
-					params.thirdCatId = this.third_cat_id;
-				}
-				if (this.four_cat_id!=0) {
-					params.fourCatId = this.four_cat_id;
-				}
-				if (this.cond.enable == true) {
-					params.addTime = $('.year').val();
-					params.name =  $('.name input').val();
-					params.fileCode = $('.code input').val();
-					params.sortType = $('input[name=sort]').val();
-				}
-				this.get(this.base + "/api/material/list", params, function(data){
+				params.id = this.id;
+				this.get(this.base + "/api/material/file/list", params, function(data){
 					if (data.code==200) {
 						that.data = data.data;
 						that.pageCount = data.data.pagination.totalPages;
@@ -147,60 +106,40 @@
 					}
 				});
 			},
+			
 			go2page: function(page) {
 				this.pageNumber = page;
-				if (this.cond.enable == true) {
-					this.search();
-				}else{
-					this.getData();
-				}
+				this.getData();
 			},
 			go2prev: function() {
 				this.pageNumber = this.pageNumber - 1;
 				if (this.pageNumber < 1) {
 					this.pageNumber = 1;
 				}
-				if (this.cond.enable == true) {
-					this.search();
-				}else{
-					this.getData();
-				}
+				this.getData();
 			},
 			go2next: function() {
 				this.pageNumber = this.pageNumber + 1;
 				if (this.pageNumber > this.pageCount) {
 					this.pageNumber = this.pageCount;
 				}
-				if (this.cond.enable == true) {
-					this.search();
-				}else{
-					this.getData();
-				}
+				this.getData();
 			},
 			go2pagesize: function() {
-				if (this.cond.enable == true) {
-					this.search();
-				}else{
-					this.getData();
-				}
+				this.getData();
 			},
-			go2detail: function(id, second_cat_id, third_cat_id, four_cat_id) {
-				if (four_cat_id==null){
-					window.location = "/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id;
+			go2detail: function(id) {
+				if (this.activityId==0) {
+					window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue";
 				}else{
-					window.location =
-					"/list_file?id="+id+"&second_cat_id="+second_cat_id+"&third_cat_id="+third_cat_id+"&four_cat_id="+four_cat_id;
+					window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue_a&activityId="+this.activityId;
 				}
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
 			},
 			changeThirdMenu: function(id) {
-				if (this.inner==true) {
-					this.four_cat_id = id;
-				}else {
-					this.third_cat_id = id;
-				}
+				this.third_cat_id = id;
 				this.getData();
 				$(".tab li span").removeClass("current");
 				$(".tab li[data-id="+id+"]").find('span').addClass("current");
@@ -213,18 +152,34 @@
 				params.fileCode = $('.code input').val();
 				params.sortType = $('input[name=sort]').val();
 				params.pageSize = this.pageSize;
-				params.pageNumber = this.pageNumber;
 				that.cond.enable = true;
 				this.get(this.base + "/api/material/search", params, function(data){
 					if (data.code==200) {
 						that.data = data.data;
-						that.pageCount = data.data.pagination.totalPages;
-						that.pageNumber = data.data.pagination.pageNumber;
 						that.$nextTick(function(){
 							that.parentHeight();
 						})
 					}
 				});
+			},
+			back: function() {
+				var path = "";
+				if (this.isActivity==true || this.activityId>0) {
+					path = "/list_activity";
+				}else{
+					path = "/list"
+				}
+				if (this.fourCatId!=null) {
+					path = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId+"&four_cat_id="+this.fourCatId+"&inner=1";
+				}else{
+					path = path+"?second_cat_id="+this.secondCatId+"&third_cat_id="+this.thirdCatId;
+				}
+				if (this.isActivity==true || this.activityId>0) {
+					path = path+"&activityId="+this.activityId;
+				}else{
+					path = path;
+				}
+				window.location = path;
 			}
 		}
 	}
@@ -235,8 +190,25 @@
 	body {
 		min-height: 700px;
 	}
-	.e-list {
+	.file-list {
 		min-height: 600px;
+		.nav {
+			height: 30px;
+			width: 100px;
+			display: inline-block;
+			.back {
+				cursor: pointer;
+				img {
+					margin-top: -5px;
+					display: inline-block;
+				}
+				span {
+					display: inline-block;
+					margin-left: 3px;
+					color: #272f3a;
+				}
+			}
+		}
 		.tab {
 			font-size: 14px;
 			font-family: 'font-hy-55';
@@ -271,90 +243,6 @@
 				    height: 26px;
 				}
 			}
-		}
-
-		.cond {
-			width: 90%;
-			min-width: 980px;
-			height: 50px;
-			margin-top: 30px;
-			color: #2e3e4d;
-			text-align: center;
-			font-size: 14px;
-			font-family: 'font-hy-55';
-			.select {
-				display: inline-block;
-				width: 70px;
-				border-bottom: 1px solid #272f3a;
-				text-align: left;
-				select {
-					width: 100%;
-					border: none;
-					font-size: 14px;
-					padding: 0;
-					option{
-						width: 80%;
-					}
-				}
-				select:focus {
-					outline: none;
-				}
-			}
-			.name {
-				margin-left: 20px;
-				display: inline-block;
-				input {
-					background: transparent;
-					border: unset;
-					border-bottom: 1px solid #272f3a;
-					border-top: none \9;/*IE6.7.8.9.10都生效*/
-					border-left: none \9;
-					border-right: none \9;
-				}
-			}
-			.code {
-				margin-left: 30px;
-				display: inline-block;
-				input {
-					background: transparent;
-					border: unset;
-					border-bottom: 1px solid #272f3a;
-					border-top: none \9;/*IE6.7.8.9.10都生效*/
-					border-left: none \9;
-					border-right: none \9;
-				}
-			}
-			.check {
-				margin-left: 30px;
-				display: inline-block;
-				div {
-					display: inline-block;
-					input {
-						display: inline-block;
-						text-align: center;
-					}
-					label {
-					    left: 30px;
-					    height: 20px;
-					}
-				}
-			}
-			.search_btn {
-			    width: 60px;
-			    height: 30px;
-			    display: inline-block;
-			    margin-left: 27px;
-			    background: #272f3a;
-			    border-radius: 20px;
-			    color: #fff;
-			    vertical-align: middle;
-			    cursor: pointer;
-			    span {
-			    	margin-top: 5px;
-			    	display: inline-block;
-			    }
-			}
-
 		}
 
 		.list {
@@ -495,14 +383,6 @@
 					margin-top: 3px;
 				}
 			}
-		}
-	}
-
-	/*ie11 css hack*/
-	@media all and (-ms-high-contrast:none) {
-		*::-ms-backdrop, .e-list .cond .name input,.e-list .cond .code input{
-			border: none;
-			border-bottom: 1px solid #2e3e4d;
 		}
 	}
 </style>

@@ -12,17 +12,25 @@ import 'babel-polyfill'
 import 'vue-layer/lib/vue-layer.css';
 
 var baseKey = "base"
-//localStorage.setItem(baseKey, 'http://localhost')
-//localStorage.setItem(baseKey, 'http://localhost:8089') //jieda test
-localStorage.setItem(baseKey, 'http://117.78.16.42') //jieda
+//4e dev
+localStorage.setItem(baseKey, 'http://localhost')
+//jieda dev
+//localStorage.setItem(baseKey, 'http://localhost:8089')
+//4e test
 //localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
-//localStorage.setItem(baseKey, 'https://4em.cig.com.cn');
+//jieda test
+//localStorage.setItem(baseKey, 'http://jieda.skyengine.cn')
+//4e prod
+//localStorage.setItem(baseKey, 'https://4em.cig.com.cn')
+//jieda prod
+//localStorage.setItem(baseKey, 'http://117.78.16.42') //jieda
 
 var themeKey = '4e-front-theme'
 var theme = localStorage.getItem(themeKey)
 theme = null
 if (theme == null) {
-  theme = 'jieda'
+  //theme = 'jieda';
+  theme = '4e'
   localStorage.setItem(themeKey, theme)
 }
 
