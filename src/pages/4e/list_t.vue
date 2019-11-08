@@ -136,7 +136,7 @@
 				materialBatchList: [],
 				bigCommunityList: [],
 				smallCommunityList: [],
-				dealerList: []
+				dealerList: [],
 			}
 		},
 		created: function() {

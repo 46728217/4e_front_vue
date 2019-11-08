@@ -18,99 +18,100 @@
 	<!--J-marketing-->
 	<div class="library">
 		<div class="title">
-			<span class="text">{{"素材中心"|dz}}</span>
+			<span class="text">素材中心</span>
 			<span class="line"></span>
 			<span class="en">J-marketing</span>
 		</div>
 		<ul class="tab">
 			<li data-tab="brands" @click="changeTab('brands')" class="left current">{{"产品与品牌"|dz}}</li>
 			<li data-tab="actives" @click="changeTab('actives')">{{"活动专区"|dz}}</li>
-			<!--<li data-tab="statusTab" @click="changeTab('statusTab')" >{{"展厅物料状态表"|dz}}</li>-->
+			<li data-tab="statusTab" @click="changeTab('statusTab')" >{{"展厅物料状态表"|dz}}</li>
 			<li data-tab="shiyes" @click="changeTab('shiyes')" >{{"区域事业部"|dz}}</li>
 			<li data-tab="qiyes" @click="changeTab('qiyes')" >{{"企业标示"|dz}}</li>
 			<li data-tab="peixus" @click="changeTab('peixus')"  class="right">{{"培训文件"|dz}}</li>
 		</ul>
 		<ul class="brands tab-item">
 			<li v-for="(item) in brands" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-				<div class="img" :style="{backgroundImage: 'url(' + item.imageUrl + ')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
+				<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)">
+				</div>
 				<div class="tab_text">
-					<span class="txt">{{item.name}}</span>
+					<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 					<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 				</div>
 			</li>
 			<div class="tab_more">
 				<div>
-					<a>全部列表</a>
+					<a href="/library?menuId=426">全部列表</a>
 				</div>
 			</div>
 		</ul>
 		<ul class="actives tab-item hide">
 			<li v-for="(item) in actives" :mid='item.id' :pid='item.mid' :thirdCatId='item.third_cat_id'>
-				<div class="img" :style="{backgroundImage: 'url(' + item.imageUrl + ')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
+				<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id, item.activity_id)"></div>
 				<div class="tab_text">
-					<span class="txt">{{item.name}}</span>
+					<span class="txt" @click="detail(item.id, item.activity_id)">{{item.name}}</span>
 					<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 				</div>
 			</li>
 			<div class="tab_more">
 				<div>
-					<a>全部列表</a>
+					<a href="/library?menuId=577">{{'全部列表'|dz}}</a>
 				</div>
 			</div>
 		</ul>
 		<ul class="statusTab tab-item hide">
 			<li v-for="(item) in statusTab" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-				<div class="img" :style="{backgroundImage: 'url(' + item.imageUrl + ')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
+				<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 				<div class="tab_text">
-					<span class="txt">{{item.name}}</span>
+					<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 					<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 				</div>
 			</li>
 			<div class="tab_more">
 				<div>
-					<a>全部列表</a>
+					<a href="/library?menuId=426&subId=427">{{'全部列表'|dz}}</a>
 				</div>
 			</div>
 		</ul>
 		<ul class="shiyes tab-item hide">
 			<li v-for="(item) in shiyes" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-				<div class="img" :style="{backgroundImage: 'url(' + item.imageUrl + ')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
+				<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 				<div class="tab_text">
-					<span class="txt">{{item.name}}</span>
+					<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 					<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 				</div>
 			</li>
 			<div class="tab_more">
 				<div>
-					<a>全部列表</a>
+					<a href="/library?menuId=472">{{'全部列表'|dz}}</a>
 				</div>
 			</div>
 		</ul>
 		<ul class="qiyes tab-item hide">
 			<li v-for="(item) in qiyes" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-				<div class="img" :style="{backgroundImage: 'url(' + item.imageUrl + ')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
+				<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 				<div class="tab_text">
-					<span class="txt">{{item.name}}</span>
+					<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 					<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 				</div>
 			</li>
 			<div class="tab_more">
 				<div>
-					<a>全部列表</a>
+					<a href="/library?menuId=576">{{'全部列表'|dz}}</a>
 				</div>
 			</div>
 		</ul>
 		<ul class="peixus tab-item hide">
 			<li v-for="(item) in peixus" :mid='item.id' :pid='item.mid' :thirdCatId='item.thirdCatId'>
-				<div class="img" :style="{backgroundImage: 'url(' + item.imageUrl + ')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
+				<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrl + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="detail(item.id)"></div>
 				<div class="tab_text">
-					<span class="txt">{{item.name}}</span>
+					<span class="txt" @click="detail(item.id)">{{item.name}}</span>
 					<div>{{"素材编码"|dz}}：<span>{{item.fileCode}}</span></div>
 				</div>
 			</li>
 			<div class="tab_more">
 				<div>
-					<a>全部列表</a>
+					<a href="/library?menuId=545&subId=548">{{'全部列表'|dz}}</a>
 				</div>
 			</div>
 		</ul>
@@ -143,13 +144,12 @@
 	</div>
 	<!--search-->
 	<div class="search">
-		<div class="title">想快速找到你要的素材？</div>
+		<div class="title">{{'想快速找到你要的素材'|dz}}？</div>
 		<div class="search_input">
-			<span>请输入</span>
-			<input type="text" placeholder="素材所对应的编码"/>
-			<div><img src="../../assets/jieda/img/search_btn_b.png"/></div>
+			<span>{{'请输入'|dz}}</span>
+			<input @keyup.enter="search" type="text" :placeholder="'素材所对应的编码'|dz" v-model.trim="filecode"/>
+			<div @click="search"><img src="../../assets/4e/img/search_btn_b.png"/></div>
 		</div>
-		<div class="line"></div>
 	</div>
 	<!--download-->
 	<div class="download">
@@ -204,7 +204,7 @@ export default {
 				loop: true,
 				initialSlide: 0,
 				autoplay: {
-				  delay: 1000*60*2,
+				  delay: 6000,
 				  stopOnLastSlide: false,
 				  disableOnInteraction: true
 				},
@@ -230,6 +230,7 @@ export default {
 			qiyes: [],
 			statusTab: [],
 			peixus: [],
+			filecode: ''
 		}
 	},
 	components : {
@@ -238,7 +239,25 @@ export default {
 		swiper,
   		swiperSlide
 	},
-	methods: {
+	methods : {
+		init: function(){
+
+		},
+		search: function() {
+			var that = this;
+			if (this.filecode=='') {
+				this.showMsg('请输入素材编码');
+				return;
+			}
+			this.get(this.base+"/api/search/code?filecode="+this.filecode, null, function(data){
+				if(data.code==0) {
+					that.showMsg("未找到您输入编码对应的素材");
+					return;
+				}
+				var material = data.data;
+				that.detail(material.id);
+			});
+		},
 		getBannerList: function() {
 			var that = this;
 			this.get(this.base+"/api/banner/list", null, function(data){
@@ -264,8 +283,6 @@ export default {
 				}
 			});
 		},
-		init: function() {
-		},
 		changeTab: function(type) {
 			$(".tab-item").each(function(){
 				if ($(this).hasClass(type)==false) {
@@ -277,15 +294,56 @@ export default {
 			$(".tab li").not("[data-tab='"+type+"']").removeClass("current");
 			$(".tab li[data-tab='"+type+"']").addClass("current");
 		},
-		go2office: function(menu_id) {
-			window.location = '/office?menu_id='+menu_id;
+		goShop: function(menuId) {
+			var that = this;
+			this.get(this.base+"/api/cate/change?menuId="+menuId, null, function(data){
+				if (data.code==0) {
+					that.showMsg("您的权限不够，请联系管理员");
+					return;
+				}
+				window.location = '/shop?leftId='+menuId;
+			});
+		},
+		goOffice: function(menuId) {
+			var that = this;
+			this.get(this.base+"/api/cate/change?menuId="+menuId, null, function(data){
+				if (data.code==0) {
+					that.showMsg("您的权限不够，请联系管理员");
+					return;
+				}
+				window.location = '/office?leftId='+menuId;
+			});
+		},
+		goStudy: function(menuId) {
+			var that = this;
+			this.get(this.base+"/api/cate/change?menuId="+menuId, null, function(data){
+				if (data.code==0) {
+					that.showMsg("您的权限不够，请联系管理员");
+					return;
+				}
+				window.location = '/study?leftId='+menuId;
+			});
+		},
+		detail: function(id, activity_id) {
+			this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
+				if (data.code==200) {
+					var url = "/library?id="+id;
+					if (activity_id!=null) {
+						url += "&activityId="+activity_id;
+					}
+					window.location = url;
+				}
+			});
 		}
 	},
-	created: function() {
+	created: function(){
 		var that = this;
 		this.get(this.base+"/api/user/islogin", null, function(data){
 			if (data.code==0) {
 				window.location = "/login";
+				return;
+			}else{
+				//同步语言
 			}
 		});
 		this.getBannerList();
@@ -468,6 +526,7 @@ export default {
 						margin-top: 9px;
 						display: inline-block;
 						color: #fff;
+						text-decoration: none;
 					}
 				}
 			}

@@ -23,7 +23,7 @@
 		<!--left-->
 		<div class="left">
 			<ul>
-				<li  v-for="(item,index) in menu" :class="item.active==1?'active':''" :data-id="item.id" @click="changeLeftMenu(item.id)">
+				<li v-for="(item,index) in menu" :class="item.active==1?'active':''" :data-id="item.id" @click="changeLeftMenu(item.id)">
 					<img  :src="(item.active==1?item.icoblue:item.ico)"/>
 					<span>{{item.name|dz}}</span>
 				</li>
@@ -169,7 +169,7 @@ export default {
 					return;
 				}
 				var material = data.data;
-				that.detail(material.id, material.file_id);
+				that.detail(material.id);
 			});
 		},
 		detail: function(id, file_id) {
