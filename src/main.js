@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'//引入store
 import $ from 'jquery'
 import layer from 'vue-layer'
 import vPage from 'v-page';
@@ -183,6 +184,7 @@ Vue.prototype.$echarts = echarts
 window.$vm = new Vue({
   el: '#app',
   router,
+    store,
   components: { App },
   template: '<App/>',
   beforeCreate: function () {

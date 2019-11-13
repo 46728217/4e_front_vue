@@ -1,6 +1,6 @@
 <!--分析-->
 <template>
-    <div class="wenjuan_analytics">
+    <div class="wenjuan_analytics"  id="wenjuan_analytics">
         <div class="title">
             <span>问卷数据汇总表</span>
         </div>
@@ -33,8 +33,8 @@
                 </li>
                 <li class="body">
 					<span v-for="(item,index) in tableDataList">
-					  <ul class="tr onul">
-						<li class="td li1"><img class="icon" src="../../assets/4e/img/wenjuan-table-open.png"></img><span>{{item.name}}</span></li>
+					  <ul class="tr onul onulclose">
+						<li class="td li1"><img class="icon " src="../../assets/4e/img/wenjuan-table-open.png"></img><span>{{item.name}}</span></li>
 						<li class="td"><span>{{item.execute_count }}</span></li>
 						<li class="td"><span>{{item.invite_count  }}</span></li>
 						<li class="td"><span>{{item.coming_count  }}</span></li>
@@ -116,15 +116,36 @@
             }
         },
         created: function(){
+            var that=this;
             this.qaId = this.$route.query.id;
+
             $("body").on("click",'.wenjuan_analytics .first .onul',function () {
                 $(this).siblings('.children').slideToggle("slow");
+                var o = document.getElementById("wenjuan_analytics");
+                var h = o.clientHeight||o.offsetHeight;
+                console.log(h);
+                if($(this).hasClass("onulclose")){
+                    $(this).removeClass("onulclose");
+                    setTimeout(function(){
+                        $("#main_frame" , parent.parent.document).css('height', (h+500)+"px");
+                    }, 1000);
+                }else{
+                    $(this).addClass("onulclose");
+                    setTimeout(function(){
+                        $("#main_frame" , parent.parent.document).css('height', (h-200)+"px");
+                    }, 1000);
+                }
+
+            });
+
+            that.$nextTick(function(){
+                that.init();
             })
         },
         mounted() {
-            this.init();
         },
         methods: {
+
             init() {
                 var that = this;
                 this.get(this.base + "/api/policy/data/list?qaId=" + this.qaId, null, function (data) {
@@ -483,6 +504,8 @@
                                     text-align: center;
                                     padding: 3px;
                                     height: 30px !important;
+                                    line-height: 30px !important;
+                                    color: #001E50 !important;
                                 }
                                 .item:nth-child(2) {
                                     border-left: 1px solid #dfe4e8;
@@ -492,6 +515,10 @@
                             .box.top {
                                 border-bottom: 1px solid #dfe4e8;
                                 border-radius: 0 !important;
+
+                            }
+                            .box.top.item{
+                                color:#9CA7AC!important
                             }
                             .box.bottom{
                                 border-radius: 0 !important;
