@@ -12,10 +12,11 @@ import 'babel-polyfill'
 import 'vue-layer/lib/vue-layer.css';
 
 var baseKey = "base"
-//localStorage.setItem(baseKey, 'http://localhost')
-//localStorage.setItem(baseKey, 'http://117.78.16.42') //jieda
-localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
-//localStorage.setItem(baseKey, 'https://4em.cig.com.cn');
+//localStorage.setItem(baseKey, 'http://localhost'); //test
+//localStorage.setItem(baseKey, 'http://jieda.skyengine.cn'); //jieda test
+//localStorage.setItem(baseKey, 'http://117.78.16.42'); //jieda prod
+localStorage.setItem(baseKey, 'http://4e.skyengine.cn'); //4e test
+//localStorage.setItem(baseKey, 'https://4em.cig.com.cn'); //4e prod
 
 
 var themeKey = '4e-front-theme'
@@ -159,6 +160,10 @@ routes.push(adaptePath('/platform_notbest', 'platform_notbest', 'platform_notbes
 
 routes.push(adaptePath('/iframe', 'iframe', 'iframe', true))
 
+
+router.afterEach((to, from) => {
+  ga('set', 'page', to.path);
+})
 
 Vue.prototype.$layer = layer(Vue);
 Vue.use(vPage);

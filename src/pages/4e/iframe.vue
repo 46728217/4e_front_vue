@@ -15,6 +15,9 @@ export default {
 	created: function() {
 		this.height = this.$route.query.height;
 		$("#main_frame" , parent.parent.document).css('height', this.height);
+		setTimeout(function(){
+			$("#main_frame" , parent.parent.document).css('height', this.height);
+		}, 1000);
 	}
 }
 </script>

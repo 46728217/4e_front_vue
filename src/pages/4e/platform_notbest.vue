@@ -106,9 +106,10 @@
 			$("body").on("click", ".addbtn", function(){
 				var point = document.createElement('img');
 				point.src = require("../../assets/4e/img/pointer.png");
+				alert(1)
 				$(point).addClass("flag");
 				point.style.width = '20px';
-				point.style.height = '30px';
+				point.style.height = '17px';
 				point.style.position = 'absolute';
 				point.style.display = 'none';
 				point.style.cursor = 'pointer';
@@ -260,7 +261,7 @@
 							p.src = require("../../assets/4e/img/pointer.png");
 							$(p).addClass("flag");
 							p.style.width = '20px';
-							p.style.height = '30px';
+							p.style.height = '17px';
 							p.style.position = 'absolute';
 							p.style.display = 'block';
 							p.id = "point"+(new Date().getTime());
@@ -322,7 +323,7 @@
 			width: 100%;
 			height: 800px;
 			.platform {
-				background: url(/static/4e/platform.jpg) no-repeat;
+				background: url(/static/4e/platform_1.jpg) no-repeat;
 			    background-size: contain;
 			    height: 500px;
 			    width: 837px;

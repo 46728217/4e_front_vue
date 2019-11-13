@@ -16,6 +16,9 @@ export default {
         Vue.prototype.isEmpty = function (obj) {
             return JSON.stringify(obj) == "{}";
         }
+        Vue.prototype.title = function (title) {
+        	$("title").html(title);
+        }
         Vue.prototype.get = function(url, params, cb, async=true) {
         	$.ajax({
 				url: BASE.timestamp(url),

@@ -5,7 +5,6 @@
 				<li v-if="data.catListSize>0" v-for="(item,index) in data.catList" @click="changeThirdMenu(item.id)" :data-id="item.id" :class="index==0?'first':''">
 					<span v-if="inner==true" :class="item.id==four_cat_id || index==four_cat_id?'current':''">{{item.name|dz}}</span>
 					<span v-if="inner==false" :class="item.id==third_cat_id || index==third_cat_id?'current':''">{{item.name|dz}}</span>
-
 				</li>
 			</ul>
 		</div>
@@ -88,6 +87,7 @@
 				pageSize: 12,
 				pageNumber: 1,
 				pageCount: 1,
+				title: '',
 				cond: {
 					year: new Date().getFullYear(),
 					name: '',
@@ -144,6 +144,23 @@
 						that.$nextTick(function(){
 							that.parentHeight();
 						})
+						var cat_id = 0;
+						if (that.four_cat_id>0) {
+							cat_id = that.third_cat_id;
+						}else if(that.third_cat_id>0) {
+							cat_id = that.third_cat_id;
+						}else if(that.data.catListSize>0){
+							cat_id = that.data.catList[0].id;
+						}
+						if (cat_id>0) {
+							that.get(that.base+"/api/cate/change?pathId="+cat_id, null, function(data){
+								if (data.code==200) {
+									$(window.parent.document).find("title").html("一汽-大众 "+data.msg);
+									$("title").html("一汽-大众 "+data.msg)
+									ga('send', 'pageview');
+								}
+							});
+						}
 					}
 				});
 			},
