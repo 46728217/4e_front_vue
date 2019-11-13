@@ -81,6 +81,7 @@ export default {
 	},
 	methods: {
 		init: function() {
+			this.title("一汽-大众");
 			this.submenu = this.menu[this.current_left_menu_id].children;
 			var tmp = [];
 			var active = 1;

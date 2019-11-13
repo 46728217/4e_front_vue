@@ -107,6 +107,7 @@
                     return 0;
                 });
                 this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode, this.submenu[this.current_sub_menu_id].pageUrl);
+                this.title('一汽-大众 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
             },
             changeLeftMenu: function(id) {
                 this.menu[id].active = 1;

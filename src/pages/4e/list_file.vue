@@ -103,6 +103,34 @@
 						that.$nextTick(function(){
 							that.parentHeight();
 						})
+						var title = "一汽-大众 ";
+						var path = "";
+						var list = data.data.list;
+						if (list.length>0) {
+							if (list[0].firstCat!=null && list[0].firstCat!="") {
+								path += list[0].firstCat+"|";
+							}
+							if (list[0].secondCat!=null && list[0].secondCat!="") {
+								path += list[0].secondCat+"|";
+							}
+							if (list[0].thirdCat!=null && list[0].thirdCat!="") {
+								path += list[0].thirdCat+"|";
+							}
+							if (list[0].fourthCat!=null && list[0].fourthCat!="") {
+								path += list[0].fourthCat+"|";
+							}
+							if (list[0].name!=null && list[0].name!="") {
+								path += list[0].name+"|";
+							}
+							if (path.length>0) {
+								path = path.substr(0, path.length-1);
+							}
+							title = title + path;
+							$(window.parent.document).find("title").html(title);
+							that.title(title);
+							ga('send', 'pageview');
+						}
+
 					}
 				});
 			},
@@ -129,11 +157,19 @@
 				this.getData();
 			},
 			go2detail: function(id) {
-				if (this.activityId==0) {
-					window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue";
-				}else{
-					window.location = this.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue_a&activityId="+this.activityId;
-				}
+				var that = this;
+				var title = $(window.parent.document).find("title").html();
+				$(window.parent.document).find("title").html(title+" 详情");
+				this.title(title+" 详情");
+				ga('send', 'pageview');
+				setTimeout(function(){
+					if (that.activityId==0) {
+						window.location = that.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue";
+					}else{
+						window.location = that.base+"/jsp/pc/material/do.jsp?method=detail&id="+id+"&activityName=&back=vue_a&activityId="+that.activityId;
+					}
+				}, 200);
+				
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');

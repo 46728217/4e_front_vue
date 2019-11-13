@@ -108,7 +108,7 @@
 				point.src = require("../../assets/4e/img/pointer.png");
 				$(point).addClass("flag");
 				point.style.width = '20px';
-				point.style.height = '30px';
+				point.style.height = '17px';
 				point.style.position = 'absolute';
 				point.style.display = 'none';
 				point.style.cursor = 'pointer';
@@ -260,7 +260,7 @@
 							p.src = require("../../assets/4e/img/pointer.png");
 							$(p).addClass("flag");
 							p.style.width = '20px';
-							p.style.height = '30px';
+							p.style.height = '17px';
 							p.style.position = 'absolute';
 							p.style.display = 'block';
 							p.id = "point"+(new Date().getTime());

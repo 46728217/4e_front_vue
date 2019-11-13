@@ -9,6 +9,9 @@ export default {
         Vue.prototype.showMsg = function (msg) {
             this.$layer.msg(msg, {time: 1});
         }
+        Vue.prototype.title = function (title) {
+        	$("title").html(title);
+        }
         Vue.prototype.get = function(url, params, cb) {
         	$.ajax({
 				url: url,

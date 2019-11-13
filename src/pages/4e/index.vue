@@ -354,7 +354,8 @@ export default {
 	},
 	methods : {
 		init: function(){
-
+			this.title("一汽-大众");
+			ga('send', 'pageview');
 		},
 		search: function() {
 			var that = this;

@@ -78,6 +78,8 @@
 						that.$nextTick(function(){
 							that.parentHeight();
 						})
+						that.title("一汽-大众 "+data.data.firstCat.name+"|"+data.data.secondCat.name);
+						ga("send", "pageview");
 					}
 				});
 			},

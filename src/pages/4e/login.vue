@@ -98,6 +98,8 @@ export default {
 			}
 			that.$refs.username.focus();
 		});
+		this.title("一汽-大众");
+		ga("send", "pageview")
 	}
 }
 </script>

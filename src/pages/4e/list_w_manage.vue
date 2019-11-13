@@ -25,7 +25,7 @@
 					<td>{{item.endTimeStr}}</td>
 					<td>
 						<span @click="charts(item.id)">数据统计</span>
-						<span @click="analytics(item.id)" v-if="item.status!=1 && 1==2">问卷分析</span>
+						<span @click="analytics(item.id)">问卷分析</span>
 						<span @click="exports(item.id)">导出</span>
 					</td>
 				</tr>
@@ -102,7 +102,7 @@
 				window.open(this.base+"/api/policy/export?id="+id);
 			},
 			analytics: function(id) {
-				window.location = "/list_w_wenjuan_a?id"+id;
+				window.location = "/list_w_wenjuan_a?id="+id;
 			},
 			go2page: function(page) {
 				this.pageNumber = page;
