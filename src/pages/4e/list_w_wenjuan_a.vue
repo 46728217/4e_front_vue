@@ -38,7 +38,7 @@
 						<li class="td"><span>{{item.execute_count }}</span></li>
 						<li class="td"><span>{{item.invite_count  }}</span></li>
 						<li class="td"><span>{{item.coming_count  }}</span></li>
-						<li class="td"><span>{{item.coming_rate }}%</span></li>
+						<li class="td"><span>{{item.coming_rate|addZero}}%</span></li>
 						<li class="td"><span style="color: #00B1F1">{{item.order_count }}</span></li>
 						<li class="td"><span style="color: #00B1F1">{{item.unfinished_count }}</span></li>
 					  </ul>
@@ -95,12 +95,10 @@
 
 <script>
     import Vue from 'vue'
-
     var base = localStorage.getItem("base")
     import util_js from '@/assets/4e/js/util.js'
     import font_css from '@/assets/4e/css/font.css'
     import global_css from '@/assets/4e/css/global.css'
-
     Vue.use(util_js)
     export default {
         data: function () {
@@ -113,17 +111,13 @@
                 user: {},
                 userManage: 0,
                 list: [],
-                qaId: 174,
+                qaId: 0,
                 tableDataList: [],
             }
         },
         created: function(){
+            this.qaId = this.$route.query.id;
             $("body").on("click",'.wenjuan_analytics .first .onul',function () {
-                // if($(this).children('.li1').children('.icon').attr("src").indexOf("wenjuan-table-open.png")>-1){
-                //     $(this).children('.li1').children('.icon').attr("src",require("../../assets/4e/img/wenjuan-table-close.png"));
-                // }else{
-                //     $(this).children('.li1').children('.icon').attr("src",require("../../assets/4e/img/wenjuan-table-open.png"));
-                // }
                 $(this).siblings('.children').slideToggle("slow");
             })
         },
@@ -131,7 +125,7 @@
             this.init();
         },
         methods: {
-              init() {
+            init() {
                 var that = this;
                 this.get(this.base + "/api/policy/data/list?qaId=" + this.qaId, null, function (data) {
                     console.log(data);
@@ -144,6 +138,7 @@
                         that.drawLine5(data.data);
                     }
                 }, false);
+                this.parentHeight();
             },
             drawLine1(data) {
                 let xAxisName=[],seriesData_dealer_count=[],seriesData_execute_count=[];
@@ -154,7 +149,6 @@
                         seriesData_execute_count.push("0");
                     }else{
                         seriesData_execute_count.push((data[i].dealer_count/data[i].execute_count).toFixed(2));
-
                     }
                 }
                 console.log(seriesData_execute_count)
@@ -166,7 +160,6 @@
                         trigger: 'axis',
                         formatter: '{b0}<br/>{a0}: {c0}<br />{a1}: {c1}%'
                     },
-
                     legend: {
                         data: ['提报经销商数', '执行比例'],
                         x: 'right' //居右显示
@@ -189,7 +182,6 @@
                         }
                     ],
                     series: [
-
                         {
                             name: '提报经销商数',
                             type: 'bar',
@@ -213,8 +205,6 @@
                                     label : {show: true}
                                 }
                             },
-
-
                         }
                     ]
                 });
@@ -310,7 +300,7 @@
                 let xAxisData=[],seriesData=[];
                 for (var i=0;i<data.length;i++){
                     xAxisData.push(data[i].name);
-                    seriesData.push(data[i].coming_rate);
+                    seriesData.push(data[i].coming_rate.toFixed(2));
                 }
                 // 基于准备好的dom，初始化echarts实例
                 let myChart4 = this.$echarts.init(document.getElementById('drawEcharts4'));
@@ -371,9 +361,7 @@
                             })
                         }
                     }
-
                 }
-
                 series[0].data=newCarList0;
                 series[1].data=newCarList1;
                 series[2].data=newCarList2;
@@ -403,112 +391,16 @@
                     xAxis:  {
                         type: 'category',
                         data: xAxisData
-
                     },
                     yAxis: {
                         type: 'value',
                     },
                     series:series
-                    // series: [
-                    //     {
-                    //         name: '速腾',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#001E50',
-                    //             }
-                    //         },
-                    //         data: [320, 302, 301, 334, 390, 330, 320]
-                    //     },
-                    //     {
-                    //         name: '迈腾',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#00437A',
-                    //             }
-                    //         },
-                    //         data: [120, 132, 101, 134, 90, 230, 210]
-                    //     },
-                    //     {
-                    //         name: '宝来',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#3C484D',
-                    //             }
-                    //         },
-                    //         data: [220, 182, 191, 234, 290, 330, 310]
-                    //     },
-                    //     {
-                    //         name: '探歌',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#00B1F1',
-                    //             }
-                    //         },
-                    //         data: [150, 212, 201, 154, 190, 330, 410]
-                    //     },
-                    //     {
-                    //         name: '探岳',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#637077',
-                    //             }
-                    //         },
-                    //         data: [820, 832, 901, 934, 1290, 1330, 1320]
-                    //     },
-                    //     {
-                    //         name: 'CC',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#96A3A8',
-                    //             }
-                    //         },
-                    //         data: [820, 832, 901, 934, 1290, 1330, 1320]
-                    //     },
-                    //     {
-                    //         name: '高尔夫',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#C2CACF',
-                    //             }
-                    //         },
-                    //         data: [820, 832, 901, 934, 1290, 1330, 1320]
-                    //     },
-                    //     {
-                    //         name: '嘉旅',
-                    //         type: 'bar',
-                    //         stack: '总量',
-                    //         barWidth: 50,//柱图宽度
-                    //         itemStyle: {
-                    //             normal: {
-                    //                 color: '#DFE4E8',
-                    //             }
-                    //         },
-                    //         data: [820, 832, 901, 934, 1290, 1330, 1320]
-                    //     }
-                    // ]
                 });
-            }
+            },
+            parentHeight: function() {
+                $(window.parent.document).find("iframe").height(($(".wenjuan_analytics").height()+400)+'px');
+            },
         }
     }
 </script>
@@ -543,7 +435,6 @@
                             text-align: center;
                             color: #001E50;
                             font-weight: bold;
-
                         }
                     }
                 }
@@ -562,7 +453,6 @@
                             display: inline-block;
                             text-align: center;
                             .icon {
-
                                 position: absolute;
                                 left: 0;
                                 top: 0;
@@ -592,20 +482,22 @@
                                     flex: 1;
                                     text-align: center;
                                     padding: 3px;
-                                    height: 30px;
+                                    height: 30px !important;
                                 }
                                 .item:nth-child(2) {
                                     border-left: 1px solid #dfe4e8;
                                     border-right: 1px solid #dfe4e8;
-
                                 }
                             }
                             .box.top {
                                 border-bottom: 1px solid #dfe4e8;
+                                border-radius: 0 !important;
                             }
+                            .box.bottom{
+                                border-radius: 0 !important;
 
+                            }
                         }
-
                     }
                 }
             }

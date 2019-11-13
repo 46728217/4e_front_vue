@@ -12,9 +12,9 @@ import 'babel-polyfill'
 import 'vue-layer/lib/vue-layer.css';
 
 var baseKey = "base"
-//localStorage.setItem(baseKey, 'http://localhost')
+localStorage.setItem(baseKey, 'http://localhost')
 //localStorage.setItem(baseKey, 'http://117.78.16.42') //jieda
-localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
+//localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
 //localStorage.setItem(baseKey, 'https://4em.cig.com.cn');
 
 
@@ -88,6 +88,13 @@ Vue.filter('de', function (value, length) {
   }
   return value
 })
+
+//全局过滤器 保留两位小数
+Vue.filter('addZero',function(value){
+    return value.toFixed(2)
+})
+
+
 
 var routes = []
 
