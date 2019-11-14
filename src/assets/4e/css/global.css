@@ -305,3 +305,14 @@ select{
 }
 /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
 select::-ms-expand{display: none;}
+
+.li-first-last{
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 5px;
+  border: 1px solid #072455;
+  border-radius: 15px;
+  color: #6a767d;
+  cursor: pointer;
+}

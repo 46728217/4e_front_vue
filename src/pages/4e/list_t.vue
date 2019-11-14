@@ -95,11 +95,14 @@
 	<div class="paging" v-if="data.pagination">
 		<span class="total">{{'共'|dz}} {{data.pagination.totalPages}} {{'页'|dz}} - {{'共'|dz}}{{data.pagination.totalCount}} {{'条'|dz}} {{'数据'|dz}}</span>
 		<ul class="numbers">
+			<li class="li-first-last" @click="go2page(0)">首页</li>
 			<li><div class="prev" @click="go2prev"></div></li>
 			<li v-for="(item,index) in data.pagination.slider" :class="item==data.pagination.pageNumber?'current':''" @click="go2page(item)">
 				<div><span>{{item}}</span></div>
 			</li>
 			<li><div class="next" @click="go2next"></div></li>
+			<li  class="li-first-last" @click="go2page(data.pagination.totalPages)">末页</li>
+
 		</ul>
 		<span class="limit">{{'每页显示'|dz}}<input type="text" v-model.trim="pageSize">{{'条'|dz}}</span>
 		<div class="submit" @click="go2pagesize"><span>{{'确认'|dz}}</span></div>
