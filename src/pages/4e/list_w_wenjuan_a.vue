@@ -1,6 +1,12 @@
 <!--分析-->
 <template>
     <div class="wenjuan_analytics"  id="wenjuan_analytics">
+        <div class="nav">
+            <div class="back" @click="back()" style="cursor: pointer;margin-bottom: 10px">
+                <img src="../../assets/4e/img/back.png"/>
+                <span>返回</span>
+            </div>
+        </div>
         <div class="title">
             <span>问卷数据汇总表</span>
         </div>
@@ -422,6 +428,9 @@
             parentHeight: function() {
                 $(window.parent.document).find("iframe").height(($(".wenjuan_analytics").height()+400)+'px');
             },
+            back(){
+                this.$router.go(-1);//返回上一层
+            }
         }
     }
 </script>
