@@ -196,7 +196,7 @@
                                     }
                                     break;
                                 case 3:
-                                    if (menu[item['parentId']]!=null) {
+                                    if (menu[item['parentId']]!=null&&menu[item['parentId']].children!=undefined) {
                                         item.children = {};
                                         menu[item['parentId']].children[item['id']] = item;
                                     }
@@ -205,7 +205,7 @@
                                     var idPath = item['idPath'].split(",");
                                     var first = idPath[1];
                                     var second = idPath[2];
-                                    if (menu[first]!=null && menu[first].children[second]!=null) {
+                                    if (menu[first]!=null &&menu[first].children!=undefined &&menu[first].children[second].children!=undefined &&menu[first].children[second]!=null) {
                                         menu[first].children[second].children[item['id']] = item;
                                     }
                                     break;
