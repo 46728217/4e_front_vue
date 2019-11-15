@@ -15,13 +15,15 @@
                 <li class="head">
                     <ul class="tr">
                         <li class="th">
-                            <span>大区</span>
+                            <span style="padding-left: 15px">大区</span>
+                            <img style="vertical-align: middle" src="../../assets/4e/img/wenjuan-table-arrow.png">
                         </li>
                         <li class="th">
                             <span>执行家数</span>
                         </li>
                         <li class="th">
-                            <span>邀约总数</span>
+                            <span style="padding-left: 15px">邀约总数</span>
+                            <img style="vertical-align: middle"src="../../assets/4e/img/wenjuan-table-arrow1.png">
                         </li>
                         <li class="th">
                             <span>进店总数</span>
@@ -75,12 +77,12 @@
             </div>
         </div>
         <div class="echarts-row">
-            <div class="echarts-row2" style="width: 45%;float: left">
+            <div class="echarts-row2" style="width: 48%;float: left">
                 <div class="echarts-title"><span class="desc">邀约进店量</span><span class="line"></span></div>
                 <div class="" id="drawEcharts2" :style="{width: '100%', height: '400px'}">
                 </div>
             </div>
-            <div class="echarts-row2" style="width: 45%;float: right">
+            <div class="echarts-row2" style="width: 48%;float: right">
                 <div class="echarts-title"><span class="desc">店均邀约进店量</span><span class="line"></span></div>
                 <div class="" id="drawEcharts3" :style="{width: '100%', height: '400px'}">
                 </div>
@@ -132,11 +134,14 @@
                 console.log(h);
                 if($(this).hasClass("onulclose")){
                     $(this).removeClass("onulclose");
+                    $(this).children(".li1").children("img").attr("src",require("../../assets/4e/img/wenjuan-table-close.png"))
                     setTimeout(function(){
                         $("#main_frame" , parent.parent.document).css('height', (h+500)+"px");
                     }, 1000);
                 }else{
                     $(this).addClass("onulclose");
+                    $(this).children(".li1").children("img").attr("src",require("../../assets/4e/img/wenjuan-table-open.png"))
+
                     setTimeout(function(){
                         $("#main_frame" , parent.parent.document).css('height', (h-200)+"px");
                     }, 1000);
@@ -202,10 +207,11 @@
                     ],
                     yAxis: [
                         {
-                            // "show": false,
+                            "show": true,
                         },
+
                         {
-                            // "show": false,
+                            "show": false,
                         }
                     ],
                     series: [
@@ -213,11 +219,14 @@
                             name: '提报经销商数',
                             type: 'bar',
                             data: seriesData_dealer_count,
-                            barWidth: 30,//柱图宽度
+                            barWidth: 37,//柱图宽度
                             itemStyle: {
                                 normal: {
                                     color: '#00437A',
-                                    label : {show: true}
+                                    label : {
+                                        show: true,
+                                        position: 'top',
+                                    }
                                 }
                             }
                         },
@@ -245,8 +254,12 @@
                 let myChart2 = this.$echarts.init(document.getElementById('drawEcharts2'));
                 // 绘制图表
                 myChart2.setOption({
+                    grid: {
+                        left: '15%' //grid 组件离容器左侧的距离。默认值是10%。
+                    },
                     legend: {
-                        x: 'right' //居右显示
+                        x: 'right', //居右显示
+                        top:0
                     },
                     tooltip: {},
                     dataset: {
@@ -261,18 +274,26 @@
                     // to a column of dataset.source by default.
                     series: [
                         {   type: 'bar',
+                            barWidth: 20,//柱图宽度
                             itemStyle: {
                                 normal: {
                                     color: '#00437A',
-                                    label : {show: true}
+                                    label : {
+                                        show: true,
+                                        position: 'top',
+                                    }
                                 }
                             },
                         },
                         {type: 'bar',
+                            barWidth: 20,//柱图宽度
                             itemStyle: {
                                 normal: {
                                     color: '#00B1F1',
-                                    label : {show: true}
+                                    label : {
+                                        show: true,
+                                        position: 'top',
+                                    }
                                 }
                             },
                         }
@@ -288,6 +309,9 @@
                 let myChart3 = this.$echarts.init(document.getElementById('drawEcharts3'));
                 // 绘制图表
                 myChart3.setOption({
+                    grid: {
+                        left: '15%' //grid 组件离容器左侧的距离。默认值是10%。
+                    },
                     legend: {
                         x: 'right' //居右显示
                     },
@@ -304,19 +328,27 @@
                     // to a column of dataset.source by default.
                     series: [
                         {   type: 'bar',
+                            barWidth: 20,//柱图宽度
                             itemStyle: {
                                 normal: {
                                     color: '#00437A',
-                                    label : {show: true}
+                                    label : {
+                                        show: true,
+                                        position: 'top',
+                                    }
                                 }
                             },
                         },
                         {
                             type: 'bar',
+                            barWidth: 20,//柱图宽度
                             itemStyle: {
                                 normal: {
                                     color: '#00B1F1',
-                                    label : {show: true}
+                                    label : {
+                                        show: true,
+                                        position: 'top',
+                                    }
                                 }
                             },
                         }
@@ -338,6 +370,7 @@
                     },
                     tooltip: {
                         trigger: 'axis',
+                        formatter: '{b0}<br/>{c0}%'
                     },
                     xAxis: {
                         type: 'category',
@@ -353,7 +386,10 @@
                         itemStyle: {
                             normal: {
                                 color: '#00B1F1',
-                                label : {show: true}
+                                label : {show: true,
+                                    formatter: '{c0}%'
+                                },
+
                             }
                         },
                     }]
@@ -488,7 +524,7 @@
                                 top: 0;
                                 bottom: 0;
                                 margin: auto;
-                                height: 80%;
+                                height: 40%;
                             }
                         }
                     }
@@ -526,8 +562,8 @@
                                 border-radius: 0 !important;
 
                             }
-                            .box.top.item{
-                                color:#9CA7AC!important
+                            .box.top .item{
+                                color:#9CA7AC !important
                             }
                             .box.bottom{
                                 border-radius: 0 !important;
@@ -554,13 +590,13 @@
                     width: 100px;
                     text-align: center;
                     height: 100%;
-                    border-bottom: 1px solid #00B1F1;
+                    border-bottom: 3px solid #00B1F1;
                 }
                 .line {
                     display: inline-block;
                     width: 100%;
                     height: 100%;
-                    border-bottom: 1px solid #DFE4E8;
+                    border-bottom: 3px solid #DFE4E8;
                 }
             }
         }
