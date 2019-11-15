@@ -212,8 +212,12 @@
                             }
                         }
                         that.menu = menu;
+
                         that.$nextTick(function(){
-                            that.init();
+                          if(JSON.stringify(that.menu) != "{}"){
+                              that.init();
+						  }
+
                         })
                     }
                 }
