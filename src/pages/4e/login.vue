@@ -125,7 +125,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	height: 100%;
 	min-width: 1280px;
 
-	background: url(../../assets/4e/img/login_bg.png) no-repeat;
+	background: url(../../assets/4e/img/login_bg1.png) no-repeat;
 	background-size: cover;
 
 	.form {
