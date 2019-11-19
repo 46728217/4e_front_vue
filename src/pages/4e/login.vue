@@ -175,20 +175,23 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 		}
 
 	}
-  .login-bottom{
-	  position: absolute;
-	  width: 450px;
-	  height: 80px;
-	   bottom: 20px;
-	  margin-left: 59%;
-	  .login-marquee{
-		  margin-top: 10px;
-		  margin-bottom: 10px;
-		  a{
-			  color: #0c6ce1;
-		  }
-	  }
-  }
+	.login-bottom{
+		position: absolute;
+		width: 450px;
+		height: 80px;
+		bottom: 20px;
+		margin-left: 59%;
+		.login-marquee{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			a{
+				color: #0c6ce1;
+			}
+		}
+	}
+	.end {
+		color: #6e778d;
+	}
 
 }
 

@@ -106,7 +106,6 @@
 			$("body").on("click", ".addbtn", function(){
 				var point = document.createElement('img');
 				point.src = require("../../assets/4e/img/pointer.png");
-				alert(1)
 				$(point).addClass("flag");
 				point.style.width = '20px';
 				point.style.height = '17px';
