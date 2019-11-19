@@ -169,7 +169,7 @@
 		methods: {
 			getFawvwMaterialBatchList: function() {
 				var that = this;
-				this.get(this.base + "/api/fawvwmaterial/batch/list", null, function(data){
+				this.get(this.base + "/api/fawvwmaterial/batch/list", {status:1}, function(data){
 					if (data.code==200) {
 						that.materialBatchList = data.data;
 						if (data.data.length>0) {
