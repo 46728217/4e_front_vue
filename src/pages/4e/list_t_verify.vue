@@ -149,14 +149,20 @@ export default {
 				checks.push($(this).attr("data-id"));
 			});
 			params.checks = checks;
-			this.json(this.base + "/api/fawvwmaterial/verify", this.cc(params), function(data){
-				if (data.code==200) {
-					that.showMsg("提交成功");
-					history.go(-1);
-				}else{
-					that.showMsg("提交失败");
-				}
-			})
+            that.$$confirm("确认提交?",function (index) {
+                that.$layer.close(index);
+                that.json(that.base + "/api/fawvwmaterial/verify", that.cc(params), function(data){
+                    if (data.code==200) {
+                        that.showMsg("提交成功");
+                        history.go(-1);
+                    }else{
+                        that.showMsg("提交失败");
+                    }
+                })
+            });
+
+
+
 		},
 		parentHeight: function() {
 			$(window.parent.document).find("iframe").height(($(".t-list-verify").height()+800)+'px');

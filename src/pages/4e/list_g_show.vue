@@ -31,6 +31,7 @@
 						<span style="color:#001e50" v-if="log.verifystate==1">(已审核通过)</span>
 						<span style="color:red" v-if="log.verifystate==2 && log.ischeck==true">(被驳回)</span>
 					</div>
+					<div class="desc" style="margin-top:10px">提示：图片小于10M,支持jpg,gif,png,jpeg格式</div>
 				</div>
 			</li>
 			<li>
@@ -91,6 +92,16 @@ export default {
 		$("body").on("change", ".upload_h", function(){
 			var form = $(this).parent();
 			var formData = new FormData(form[0]);
+            var size=form.prevObject[0].files[0].size;
+            var type=form.prevObject[0].files[0].type;
+            if(!(type.indexOf("image")>-1)){
+                that.showMsg("请上传jpg,gif,png,jpeg格式图片");
+                return;
+            }
+            if(size>(1024*1024*10)){
+                that.showMsg("请上传小于10M的图片");
+                return;
+            }
 			$.ajax({
                 type: 'post',
                 url: that.base+"/api/image/upload",

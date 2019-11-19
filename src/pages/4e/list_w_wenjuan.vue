@@ -136,7 +136,6 @@
                         (name.indexOf("gif")>-1)||
                         (name.indexOf("png")>-1)||
                         (name.indexOf("jpeg")>-1)||
-                        (name.indexOf("txt")>-1)||
                         (name.indexOf("doc")>-1)||
 						(name.indexOf("wps")>-1)||
 						(name.indexOf("xls")>-1)||
@@ -218,6 +217,7 @@
 				});
 			},
 			submit: function() {
+			    var that=this;
 				var params = {};
 				params.qaId = this.qaId;
 				var item_length = $(".item").length;
@@ -238,13 +238,18 @@
 				});
 				params.data = list;
 				console.log(params);
-				this.json(this.base+"/api/policy/answer", this.cc(params), function(data){
-					if (data.code==200) {
-						window.location = "/list_w_answered";
-					}else{
-						parent.window.location = "/login";
-					}
-				});
+                that.$$confirm("确认提交?",function (index) {
+                    that.$layer.close(index);
+                    that.json(that.base+"/api/policy/answer", that.cc(params), function(data){
+                        if (data.code==200) {
+                            window.location = "/list_w_answered";
+                        }else{
+                            parent.window.location = "/login";
+                        }
+                    });
+                });
+
+
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".w-list-wenjuan").height()+100)+'px');

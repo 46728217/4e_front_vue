@@ -23,7 +23,7 @@
 			<span>{{'小区'|dz}}</span>
 			<div class="cc">
 			<select v-model.trim="cond.xq" @change="getDealerList(cond.xq)">
-				<option value="0">{{'全部'|dz}}</option>
+				<option  value="0">{{'全部'|dz}}</option>
 				<option v-for="item in smallCommunityList" v-bind:value="item.id">{{item.name}}</option>
 			</select>
 			</div>
@@ -170,18 +170,23 @@
 		methods: {
 			getFawvwMaterialBatchList: function() {
 				let that = this;
+                that.dealerList=[];
 				this.get(this.base + "/api/fawvwmaterial/batch/list", {status:0}, function(data){
 					if (data.code==200) {
 						that.materialBatchList = data.data;
 						if (data.data.length>0) {
 							that.cond.batch = data.data[0].id.toString();
 							that.getData();
+                            that.cond.xq = 0;//默认选中全部
+                            that.cond.dealer = 0;//默认选中全部
 						}
 					}
 				})
 			},
 			getCommunityList: function(parentId) {
 				let that = this;
+                that.dealerList=[];
+                that.smallCommunityList=[];
 				this.get(this.base + "/api/dealer/community/list", {parentId: parentId}, function(data){
 					if (data.code==200) {
 						if (parentId==0) {
@@ -189,6 +194,8 @@
 						}else{
 							that.smallCommunityList = data.data;
 						}
+                        that.cond.xq = 0;//默认选中全部
+                        that.cond.dealer = 0;//默认选中全部
 					}
 				})
 			},
@@ -197,6 +204,7 @@
 				this.get(this.base + "/api/dealer/list", {smallCommunityId: smallCommunityId}, function(data){
 					if (data.code==200) {
 						that.dealerList = data.data;
+                        that.cond.dealer = 0;//默认选中全部
 					}
 				})
 			},

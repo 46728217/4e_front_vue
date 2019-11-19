@@ -136,28 +136,40 @@
 				});
 			},
 			pass: function() {
+			    var that=this;
 				var params = {};
 				params.qaId = this.qaId;
 				params.userId = this.userId;
-				this.json(this.base+"/api/policy/pass", this.cc(params), function(data){
-					if (data.code==200) {
-						history.go(-1);
-					}else{
-						parent.window.location = "/login";
-					}
-				});
+                that.$$confirm("确认提交?",function (index) {
+                    that.$layer.close(index);
+                    that.json(that.base+"/api/policy/pass", that.cc(params), function(data){
+                        if (data.code==200) {
+                            history.go(-1);
+                        }else{
+                            parent.window.location = "/login";
+                        }
+                    });
+                });
+
+
 			},
 			deny: function() {
+                var that=this;
 				var params = {};
 				params.qaId = this.qaId;
 				params.userId = this.userId;
-				this.json(this.base+"/api/policy/deny", this.cc(params), function(data){
-					if (data.code==200) {
-						history.go(-1);
-					}else{
-						parent.window.location = "/login";
-					}
-				});
+                that.$$confirm("确认提交?",function (index) {
+                    that.$layer.close(index);
+                    that.json(that.base+"/api/policy/deny", that.cc(params), function(data){
+                        if (data.code==200) {
+                            history.go(-1);
+                        }else{
+                            parent.window.location = "/login";
+                        }
+                    });
+                });
+
+
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".w-list-wenjuan-w").height()+100)+'px');

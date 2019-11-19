@@ -77,19 +77,19 @@
             </div>
         </div>
         <div class="echarts-row">
-            <div class="echarts-row2" style="width: 48%;float: left">
-                <div class="echarts-title"><span class="desc">邀约进店量</span><span class="line"></span></div>
+            <div class="echarts-row2" style="width: 48%;float: left;position: relative">
+                <div class="echarts-title" style="position: absolute"><span class="desc">邀约进店量</span><span class="line"></span></div>
                 <div class="" id="drawEcharts2" :style="{width: '100%', height: '400px'}">
                 </div>
             </div>
-            <div class="echarts-row2" style="width: 48%;float: right">
-                <div class="echarts-title"><span class="desc">店均邀约进店量</span><span class="line"></span></div>
+            <div class="echarts-row2" style="width: 48%;float: right;position: relative">
+                <div class="echarts-title" style="position: absolute"><span class="desc">店均邀约进店量</span><span class="line"></span></div>
                 <div class="" id="drawEcharts3" :style="{width: '100%', height: '400px'}">
                 </div>
             </div>
         </div>
-        <div class="echarts-row">
-            <div class="echarts-title"><span class="desc">邀约进店率</span><span class="line"></span></div>
+        <div class="echarts-row" style="position: relative">
+            <div class="echarts-title" style="position: absolute;width: 92%"><span class="desc">邀约进店率</span><span class="line"></span></div>
             <div class="" id="drawEcharts4" :style="{width: '100%', height: '400px'}">
             </div>
         </div>
@@ -366,7 +366,8 @@
                 // 绘制图表
                 myChart4.setOption({
                     legend: {
-                        x: 'right' //居右显示
+                        data: ['邀约进店率'],
+                        right:10
                     },
                     tooltip: {
                         trigger: 'axis',
@@ -383,6 +384,7 @@
                     series: [{
                         data:seriesData,
                         type: 'line',
+                        name:'邀约进店率',
                         itemStyle: {
                             normal: {
                                 color: '#00B1F1',

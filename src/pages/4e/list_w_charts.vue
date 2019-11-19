@@ -177,6 +177,8 @@
 		methods: {
 			getCommunityList: function(parentId) {
 				var that = this;
+                  that.dealerList=[];
+                  that.smallCommunityList=[];
 				this.get(this.base + "/api/dealer/community/list", {parentId: parentId}, function(data){
 					if (data.code==200) {
 						if (parentId==0) {
@@ -184,6 +186,8 @@
 						}else{
 							that.smallCommunityList = data.data;
 						}
+                        that.cond.xq = 0;//默认选中全部
+                        that.cond.dealer = 0;//默认选中全部
 					}
 				})
 			},
@@ -192,6 +196,7 @@
 				this.get(this.base + "/api/dealer/list", {smallCommunityId: smallCommunityId}, function(data){
 					if (data.code==200) {
 						that.dealerList = data.data;
+                        that.cond.dealer = 0;//默认选中全部
 					}
 				})
 			},

@@ -137,7 +137,9 @@ export default {
 				this.showMsg("请填写审核驳回原因");
 				return;
 			}
+
 			var that = this;
+
 			var params = {};
 			params.batchId = that.batch;
 			params.dealerId = that.dealerId;
@@ -148,14 +150,19 @@ export default {
 				checks.push($(this).attr("data-id"));
 			});
 			params.checks = checks;
-			this.json(this.base + "/api/fawvwad/verify", this.cc(params), function(data){
-				if (data.code==200) {
-					that.showMsg("提交成功");
-					history.go(-1);
-				}else{
-					that.showMsg("提交失败");
-				}
-			})
+            that.$$confirm("确认提交?",function (index) {
+                that.$layer.close(index);
+                that.json(that.base + "/api/fawvwad/verify", that.cc(params), function(data){
+                    if (data.code==200) {
+                        that.showMsg("提交成功");
+                        history.go(-1);
+                    }else{
+                        that.showMsg("提交失败");
+                    }
+                })
+            });
+
+
 		},
 		parentHeight: function() {
 			console.log($(".t-list-verify").height());

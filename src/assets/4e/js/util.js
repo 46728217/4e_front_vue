@@ -13,12 +13,20 @@ export default {
         Vue.prototype.showMsg = function (msg) {
             this.$layer.msg(msg, {time: 1});
         }
+        Vue.prototype.$$confirm = function (msg,fun) {
+    		var that=this;
+            this.$layer.confirm(msg,{btn: ['确定','取消'] }, fun, function (index) {
+            	console.log("返回");
+                that.$layer.close(index);
+
+            });
+        },
         Vue.prototype.isEmpty = function (obj) {
             return JSON.stringify(obj) == "{}";
-        }
+        },
         Vue.prototype.title = function (title) {
         	$("title").html(title);
-        }
+        },
         Vue.prototype.get = function(url, params, cb, async=true) {
         	$.ajax({
 				url: BASE.timestamp(url),
