@@ -32,7 +32,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(上传文件题)</span>
+								<span class="type">(支持图片，word，excel，ppt，zip，rar格式的文件)</span>
 							</div>
 							<div class="contents">
 								<form enctype="multipart/form-data" method="post">
@@ -72,10 +72,11 @@
 <script>
 	import Vue from 'vue'
 	var base = localStorage.getItem("base")
-	import util_js from '@/assets/4e/js/util.js'
-	import font_css from '@/assets/4e/css/font.css'
-	import global_css from '@/assets/4e/css/global.css'
-	Vue.use(util_js)
+    import util_js from '@/assets/4e/js/util.js'
+    import font_css from '@/assets/4e/css/font.css'
+    import global_css from '@/assets/4e/css/global.css'
+    Vue.use(util_js);
+
 	export default {
 		data: function(){
 			return {
@@ -119,6 +120,28 @@
 			$("body").on("change", ".upload_h", function(){
 				var form = $(this).parent();
 				var formData = new FormData(form[0]);
+                var size=form.prevObject[0].files[0].size;
+                var name=form.prevObject[0].files[0].name;
+                    if(!((name.indexOf("jpg")>-1)||
+                        (name.indexOf("gif")>-1)||
+                        (name.indexOf("png")>-1)||
+                        (name.indexOf("jpeg")>-1)||
+                        (name.indexOf("txt")>-1)||
+                        (name.indexOf("doc")>-1)||
+						(name.indexOf("wps")>-1)||
+						(name.indexOf("xls")>-1)||
+                        (name.indexOf("xlsx")>-1)||
+						(name.indexOf("pptx")>-1)||
+                        (name.indexOf("rar")>-1)||
+						(name.indexOf("zip")>-1))){
+                    alert("请上传图片，word，excel，ppt，zip，rar格式的文件");
+                    return;
+                }
+                if(size>(1024*1024*10*2)){
+                    alert("请上传小于20M的文件");
+                    return;
+                }
+
 				$.ajax({
 	                type: 'post',
 	                url: that.base+"/api/image/upload",
