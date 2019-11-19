@@ -25,7 +25,7 @@
 					<td>{{item.endTimeStr}}</td>
 					<td>
 						<span @click="charts(item.id)">数据统计</span>
-						<span @click="analytics(item.id)">问卷分析</span>
+						<span @click="analytics(item.id)" v-if="item.category=='销售政策提报'">问卷分析</span>
 						<span @click="exports(item.id)">导出</span>
 					</td>
 				</tr>

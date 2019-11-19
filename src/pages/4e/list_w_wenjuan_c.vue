@@ -18,7 +18,17 @@
 			<ul>
 				<li v-for="(item, index) in data">
 					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText">
-						<div v-if="item.type==1" class="cccc">
+						<div v-if="item.type==1 && info.category=='销售政策提报'" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(问答题)</span>
+							</div>
+							<div class="contents">
+								<textarea placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></textarea>
+							</div>
+						</div>
+						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
