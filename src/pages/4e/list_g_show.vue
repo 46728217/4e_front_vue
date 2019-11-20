@@ -175,7 +175,7 @@ export default {
 		},
 		getList: function() {
 			var that = this;
-			this.get(this.base + "/api/fawvwmaterial/log/list?dealerId="+that.dealerId+"&batchId="+that.batch, null, function(data){
+			this.get(this.base + "/api/fawvwad/log/list?dealerId="+that.dealerId+"&batchId="+that.batch, null, function(data){
 				if (data.code==200) {
 					that.list = data.data;
 					for(var key in that.list) {
