@@ -135,6 +135,7 @@
 				var formData = new FormData(form[0]);
                 var size=form.prevObject[0].files[0].size;
                 var name=form.prevObject[0].files[0].name;
+
                 if(!((name.indexOf("jpg")>-1)||
                         (name.indexOf("gif")>-1)||
                         (name.indexOf("png")>-1)||
