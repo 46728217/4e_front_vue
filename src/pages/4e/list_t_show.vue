@@ -92,7 +92,7 @@ export default {
 			}else{
 				that.userManage = 0;
 			}
-		});
+		}, false);
 		this.getCarList();
 		this.getFawvwmaterialTypeList();
 		this.getList();
@@ -121,7 +121,7 @@ export default {
                 	form.parent().css({backgroundColor: '#fff',backgroundImage: 'url(\'' + data.data.path + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'});
                 	form.parent().attr('path', data.data.path);
                 	form.hide();
-                	form.parent().next(".ifooter").find("span").text(data.data.name);
+                	form.parent().next(".ifooter").find(".name").text(data.data.name);
                 	form.parent().next(".ifooter").find("span").attr('size',data.data.size);
                 	form.parent().next(".ifooter").show();
                 	form.parent().parent().parent().addClass("ok");

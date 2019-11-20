@@ -165,8 +165,7 @@ export default {
 
 		},
 		parentHeight: function() {
-			console.log($(".t-list-verify").height());
-			$(window.parent.document).find("iframe").height(($(".g-list-verify").height()+500)+'px');
+			$(window.parent.document).find("iframe").height(($(".g-list-verify").height()+800)+'px');
 		},
 	}
 }

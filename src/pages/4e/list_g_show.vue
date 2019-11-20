@@ -27,7 +27,7 @@
 						</form>
 					</div>
 					<div class="ifooter">
-						<img src="../../assets/4e/img/close1.png" class="close1" v-if="log.verifystate!=1 && userManage==1"/><span>{{log.name}}</span>
+						<img src="../../assets/4e/img/close1.png" class="close1" v-if="log.verifystate!=1 && userManage==1"/><span class="name">{{log.name}}</span>
 						<span style="color:#001e50" v-if="log.verifystate==1">(已审核通过)</span>
 						<span style="color:red" v-if="log.verifystate==2 && log.ischeck==true">(被驳回)</span>
 					</div>
@@ -85,7 +85,7 @@ export default {
 				that.userManage = 0;
 			}
 			that.parentHeight();
-		});
+		}, false);
 		this.getCarList();
 		this.getList();
 		setInterval(function(){that.parentHeight();}, 1000);
@@ -113,7 +113,7 @@ export default {
                 	form.parent().css({backgroundColor: '#fff',backgroundImage: 'url(\'' + data.data.path + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'});
                 	form.parent().attr('path', data.data.path);
                 	form.hide();
-                	form.parent().next(".ifooter").find("span").text(data.data.name);
+                	form.parent().next(".ifooter").find(".name").text(data.data.name);
                 	form.parent().next(".ifooter").find("span").attr('size',data.data.size);
                 	form.parent().next(".ifooter").show();
                 	form.parent().parent().parent().addClass("ok");
@@ -216,7 +216,7 @@ export default {
 				var sid = item.data('sid');
 				var car = item.find(".car").val();
 				var img = item.find(".body").attr('path');
-				var name = item.find(".ifooter").find('span').text();
+				var name = item.find(".ifooter").find('.name').text();
 				var size = item.find(".ifooter").find('span').attr('size');
 				var tmp = {};
 				tmp.sid = sid;
