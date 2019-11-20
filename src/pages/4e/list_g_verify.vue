@@ -84,9 +84,12 @@ export default {
 				that.userManage = 0;
 			}
 		});
-		that.parentHeight();
+
 		this.getList();
-		
+		setTimeout(function () {
+            that.parentHeight();
+        },1000);
+
 		$("body").on("click", '.nav div', function(){
 			history.go(-1);
 		})
@@ -166,7 +169,7 @@ export default {
 		},
 		parentHeight: function() {
 			console.log($(".t-list-verify").height());
-			$(window.parent.document).find("iframe").height(($(".g-list-verify").height()+500)+'px');
+			$(window.parent.document).find("iframe").height(($(".g-list-verify").height()+100)+'px');
 		},
 	}
 }
