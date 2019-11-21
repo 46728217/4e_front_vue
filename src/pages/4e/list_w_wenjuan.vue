@@ -42,7 +42,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(支持图片，word，excel，ppt，zip，rar格式的文件)</span>
+								<span class="type">(支持图片，word，excel，ppt，zip，rar格式的文件,上传文件不能超过20M)</span>
 							</div>
 							<div class="contents">
 								<form enctype="multipart/form-data" method="post">
@@ -212,7 +212,9 @@
 				this.get(this.base+"/api/policy/qstn/list?qaId="+this.qaId, null, function(data){
 					if (data.code==200) {
 						that.data = data.data;
-						//that.parentHeight();
+						setTimeout(function () {
+                            that.parentHeight();
+                        },1000);
 					}
 				});
 			},
@@ -339,7 +341,7 @@
 									margin-top: 5px;
 									.type {
 										margin-left: 20px;
-										color: #e2e2e2;
+										color: #333;
 									}
 									span:nth-child(1) {
 										margin-right: 6px;

@@ -319,3 +319,16 @@ select::-ms-expand{display: none;}
 /*.vl-notify, .vl-notify.vl-notify-msg-p{*/
   /*top: 20% !important;*/
 /*}*/
+
+
+/**重置layer confrim弹出框样式*/
+.vl-notify.vl-notify-alert{
+  width: 400px !important;
+  height: 200px !important;
+}
+.vl-notify .vl-notify-btns{
+  padding: 50px 8px 0 0 !important;
+}
+.vl-notify-content-div{
+  font-size: 15px;
+}

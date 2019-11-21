@@ -131,7 +131,10 @@
 								item.answer.answerTextJson = JSON.parse(item.answer.answerText);
 							}
 						}
-						that.parentHeight();
+						setTimeout(function () {
+                            that.parentHeight();
+                        },1000);
+
 					}
 				});
 			},
@@ -260,7 +263,7 @@
 									margin-top: 5px;
 									.type {
 										margin-left: 20px;
-										color: #e2e2e2;
+										color: #333;
 									}
 									span:nth-child(1) {
 										margin-right: 6px;

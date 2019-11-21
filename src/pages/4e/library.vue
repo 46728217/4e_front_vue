@@ -454,7 +454,7 @@ export default {
 				height: 100%;
 				display:inline-block;
 				margin-left: 15px;
-				cursor: pointer;
+
 				.slist {
 					list-style: none;
 					height: 100%;
@@ -466,6 +466,7 @@ export default {
 						line-height: 100%;
 						height: 100%;
 						padding-left: 20px;
+						cursor: pointer;
 						.tt {
 							height: 100%;
 							.txt {
@@ -547,7 +548,7 @@ export default {
 		}
 		.frame_split {
 			width:5px;
-			height: 85%;
+			height: 100%;
 			display: inline-block;
 			position: absolute;
 			margin-top: -35px;

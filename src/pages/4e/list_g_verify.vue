@@ -297,8 +297,9 @@ export default {
 		}
 		.operations {
 			width: 100%;
-			height: 300px;
+			height: 260px;
 			padding-top: 50px;
+			padding-bottom: 0;
 			.title {
 				height: 30px;
 				width: 100px;
@@ -378,6 +379,8 @@ export default {
 				.input {
 					width: 100%;
 					height: 100%;
+					padding: 10px;
+					line-height: 1.5;
 				}
 			}
 

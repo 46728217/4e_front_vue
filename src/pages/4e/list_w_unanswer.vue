@@ -137,7 +137,7 @@
 
 <style lang="scss" scope>
 	.w-list-unanswer {
-		min-height: 600px;
+		/*min-height: 600px;*/
 		.list {
 			padding-bottom: 30px;
 			width: 98%;
