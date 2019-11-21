@@ -71,7 +71,7 @@
                 </li>
             </ul>
         </div>
-        <div class="echarts-row" style="padding-bottom: 50px">
+        <div class="echarts-row">
             <div class="echarts-title"><span class="desc">执行情况</span><span class="line"></span></div>
             <div class="" id="drawEcharts1" :style="{width: '100%', height: '400px'}">
             </div>
