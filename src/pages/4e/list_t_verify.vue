@@ -11,7 +11,7 @@
 		<ul>
 			<li :class="index==0?'template ok':'ok'" v-for="(log,index) in list" :data-sid="log.sid" :data-state="log.verifystate">
 				<div class="item">
-					<div class="body" :style="{backgroundImage: 'url(\'' + log.img + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
+					<div style="cursor: pointer" :logimg="log.img" class="body" :style="{backgroundImage: 'url(\'' + log.img + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"></div>
 					<div class="ifooter">
 						<span class="left">{{log.carname}}</span>
 						<span class="right">{{log.typename}}</span>
@@ -122,6 +122,16 @@ export default {
 			$(".nocheck,.checkin").find("div").show();
 		});
 
+        //预览图片
+        $("body").on('click', ".t-list-verify li .item .body", function(){
+           var url= $(this).attr("logimg");
+            let preview = that.$router.resolve({
+                name: "preview",
+                 query: {logimg:url},
+            });
+            window.open(preview.href, "_blank")
+        });
+
 	},
 	methods: {
 		getList: function() {
@@ -171,6 +181,8 @@ export default {
 		parentHeight: function() {
 			$(window.parent.document).find("iframe").height(($(".t-list-verify").height()+100)+'px');
 		},
+
+
 	}
 }
 </script>
