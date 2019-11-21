@@ -35,7 +35,7 @@
 						</form>
 					</div>
 					<div class="ifooter">
-						<img src="../../assets/4e/img/close1.png" class="close1" v-if="log.verifystate!=1 && userManage==1"/><span class="name">{{log.name}}</span>
+						<img src="../../assets/4e/img/close1.png" class="close1" v-if="log.verifystate!=1 && userManage==1"/><span class="name">{{log.name.length>14?log.name.substring(0,14)+"...":log.name}}</span>
 						<span style="color:#001e50" v-if="log.verifystate==1">(已审核通过)</span>
 						<span style="color:red" v-if="log.verifystate==2 && log.ischeck==true">(被驳回)</span>
 					</div>
@@ -121,7 +121,7 @@ export default {
                 	form.parent().css({backgroundColor: '#fff',backgroundImage: 'url(\'' + data.data.path + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'});
                 	form.parent().attr('path', data.data.path);
                 	form.hide();
-                	form.parent().next(".ifooter").find(".name").text(data.data.name);
+                	form.parent().next(".ifooter").find(".name").text(data.data.name.length>14?data.data.name.substring(0,14)+"...":data.data.name);
                 	form.parent().next(".ifooter").find("span").attr('size',data.data.size);
                 	form.parent().next(".ifooter").show();
                 	form.parent().parent().parent().addClass("ok");

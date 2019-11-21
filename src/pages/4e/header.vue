@@ -33,7 +33,7 @@
 						<img src="../../assets/4e/img/narrow.png" :style="page_tab!='study'?'visibility:hidden':''">
 					</div>
 				</li>
-				<li :class="page_tab=='my'?'current':''" @click="go2url('/my')">
+				<li :class="page_tab=='my'?'current':''" @click="go2url('/my')" style="padding-right: 5px">
 					<div class="avatar">
 						<div class="img_d">
 							<img class="ttt" src="../../assets/4e/img/avatar.png"/>
@@ -44,6 +44,7 @@
 						</div>
 					</div>
 				</li>
+				<li style="padding-left: 5px">{{usernamestr}}</li>
 				<li>
 					<div class="logout" @click="logout">
 						<span>{{'退出'|dz}}</span>
@@ -88,15 +89,18 @@ export default {
 			isback: 0,
 			foreignTypeList: [{id: 0, name: '中文'},{id: 1, name: 'English'}],
 			languageType: 0,
+            usernamestr:''
 		}
 	},
     props:['page_tab'],
     created: function() {
+	    var that=this;
     	this.get(this.base+"/api/user/islogin", null, function(data){
 			if (data.code==200) {
 				//同步语言种类
 				localStorage.setItem("languageType", data.data.lastLanguageType);
-			}
+                that.usernamestr=(data.data.userName.length>11?data.data.userName.substring(0,11)+"...":data.data.userName);
+            }
 		}, false);
     	var languageType = localStorage.getItem("languageType");
     	if (languageType==2) {
