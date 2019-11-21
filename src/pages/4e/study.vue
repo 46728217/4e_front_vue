@@ -250,7 +250,7 @@
 				height: 100%;
 				display:inline-block;
 				margin-left: 15px;
-				cursor: pointer;
+
 				ul {
 					list-style: none;
 					height: 100%;
@@ -262,6 +262,7 @@
 						line-height: 100%;
 						height: 100%;
 						padding-left: 20px;
+						cursor: pointer;
 						div {
 							height: 100%;
 							span {
@@ -343,7 +344,7 @@
 		}
 		.frame_split {
 			width:5px;
-			height: 85%;
+			height: 100%;
 			display: inline-block;
 			position: absolute;
 			margin-top: -35px;

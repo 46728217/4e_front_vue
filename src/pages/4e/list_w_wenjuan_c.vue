@@ -8,9 +8,9 @@
 		</div>
 	</div>
 	<div class="submit" v-if="userManage==1">
-		<div @click="submit">
-			<span>上传提交</span>
-		</div>
+		<!--<div @click="submit">-->
+			<!--<span>上传提交</span>-->
+		<!--</div>-->
 	</div>
 	<div class="wenjuan" id="wenjuan_list">
 		<div class="title"><span>{{info.title}}</span></div>
@@ -35,7 +35,7 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea placeholder="请填写答案" :value="item.answer.answerText"></textarea>
+								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText"></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==2" class="cccc">
@@ -45,10 +45,10 @@
 								<span class="type">(上传文件题)</span>
 							</div>
 							<div class="contents">
-								<form enctype="multipart/form-data" method="post">
-									<input name="file" type="file" class="upload_h"/>
-									<input type="button" value="上传文件" class="upload"/>
-								</form>
+								<!--<form enctype="multipart/form-data" method="post">-->
+									<!--<input name="file" type="file" class="upload_h"/>-->
+									<!--<input type="button" value="上传文件" class="upload"/>-->
+								<!--</form>-->
 								<div class="uploadinfo">
 									<div>
 									<span>上传文件名称：</span>
@@ -61,10 +61,10 @@
 									<div>
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
-									<span class="download">
-										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
-										<a class="close" v-if="userManage==1">删除</a>
-									</span>
+									<!--<span class="download">-->
+										<!--<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>-->
+										<!--<a class="close" v-if="userManage==1">删除</a>-->
+									<!--</span>-->
 									</div>
 								</div>
 							</div>
@@ -222,7 +222,10 @@
 								item.answer.answerTextJson = JSON.parse(item.answer.answerText);
 							}
 						}
-						that.parentHeight();
+						setTimeout(function () {
+                            that.parentHeight();
+                        },1000);
+
 					}
 				});
 			},
@@ -343,7 +346,7 @@
 									margin-top: 5px;
 									.type {
 										margin-left: 20px;
-										color: #e2e2e2;
+										color: #333;
 									}
 									span:nth-child(1) {
 										margin-right: 6px;
