@@ -71,7 +71,7 @@
                 </li>
             </ul>
         </div>
-        <div class="echarts-row">
+        <div class="echarts-row" style="padding-bottom: 50px">
             <div class="echarts-title"><span class="desc">执行情况</span><span class="line"></span></div>
             <div class="" id="drawEcharts1" :style="{width: '100%', height: '400px'}">
             </div>
@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="echarts-row" style="position: relative">
-            <div class="echarts-title" style="position: absolute;width: 92%"><span class="desc">邀约进店率</span><span class="line"></span></div>
+            <div class="echarts-title" style="position: absolute;width: 95.5%"><span class="desc">邀约进店率</span><span class="line"></span></div>
             <div class="" id="drawEcharts4" :style="{width: '100%', height: '400px'}">
             </div>
         </div>
@@ -121,6 +121,7 @@
                 list: [],
                 qaId: 0,
                 tableDataList: [],
+                carListlen:0
             }
         },
         created: function(){
@@ -131,19 +132,20 @@
                 $(this).siblings('.children').slideToggle("slow");
                 var o = document.getElementById("wenjuan_analytics");
                 var h = o.clientHeight||o.offsetHeight;
-                console.log(h);
+                var childrenLen=that.carListlen*50;//获取子类的总高度
+                console.log(childrenLen+"========");
+
                 if($(this).hasClass("onulclose")){
                     $(this).removeClass("onulclose");
                     $(this).children(".li1").children("img").attr("src",require("../../assets/4e/img/wenjuan-table-close.png"))
                     setTimeout(function(){
-                        $("#main_frame" , parent.parent.document).css('height', (h+500)+"px");
+                        $("#main_frame" , parent.parent.document).css('height', (h+childrenLen)+"px");
                     }, 1000);
                 }else{
                     $(this).addClass("onulclose");
                     $(this).children(".li1").children("img").attr("src",require("../../assets/4e/img/wenjuan-table-open.png"))
-
                     setTimeout(function(){
-                        $("#main_frame" , parent.parent.document).css('height', (h-200)+"px");
+                        $("#main_frame" , parent.parent.document).css('height', (h-childrenLen+200)+"px");
                     }, 1000);
                 }
 
@@ -163,6 +165,7 @@
                     console.log(data);
                     if (data.code == 200) {
                         that.tableDataList = data.data;
+                        that.carListlen=data.data[0].carList.length;
                         that.drawLine1(data.data);
                         that.drawLine2(data.data);
                         that.drawLine3(data.data);
@@ -225,7 +228,7 @@
                                     color: '#00437A',
                                     label : {
                                         show: true,
-                                        position: 'top',
+                                         position: 'top',
                                     }
                                 }
                             }
@@ -238,7 +241,11 @@
                             itemStyle: {
                                 normal: {
                                     color: '#7A7A79',
-                                    label : {show: true}
+                                    label : {
+                                        show: true,
+                                        formatter: '{c0}%',
+                                         position: 'bottom',
+                                        }
                                 }
                             },
                         }
@@ -255,11 +262,12 @@
                 // 绘制图表
                 myChart2.setOption({
                     grid: {
-                        left: '15%' //grid 组件离容器左侧的距离。默认值是10%。
+                        left: '15%', //grid 组件离容器左侧的距离。默认值是10%。
+                        top:90
                     },
                     legend: {
                         x: 'right', //居右显示
-                        top:0
+                        top:0,
                     },
                     tooltip: {},
                     dataset: {
@@ -310,7 +318,8 @@
                 // 绘制图表
                 myChart3.setOption({
                     grid: {
-                        left: '15%' //grid 组件离容器左侧的距离。默认值是10%。
+                        left: '15%', //grid 组件离容器左侧的距离。默认值是10%。
+                        top:90
                     },
                     legend: {
                         x: 'right' //居右显示
@@ -365,6 +374,9 @@
                 let myChart4 = this.$echarts.init(document.getElementById('drawEcharts4'));
                 // 绘制图表
                 myChart4.setOption({
+                    grid: {
+                        top:90
+                    },
                     legend: {
                         data: ['邀约进店率'],
                         right:10
@@ -464,7 +476,7 @@
                 });
             },
             parentHeight: function() {
-                $(window.parent.document).find("iframe").height(($(".wenjuan_analytics").height()+400)+'px');
+                $(window.parent.document).find("iframe").height(($(".wenjuan_analytics").height()+300)+'px');
             },
             back(){
                 this.$router.go(-1);//返回上一层
@@ -577,9 +589,9 @@
             }
         }
         .echarts-row {
-            padding: 40px;
+            padding: 20px;
             height: 400px;
-            margin-top: 40px;
+            margin-top: 20px;
             .echarts-title {
                 width: 100%;
                 position: relative;
