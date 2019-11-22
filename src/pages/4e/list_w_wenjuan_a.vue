@@ -1,7 +1,7 @@
 <!--分析-->
 <template>
     <div class="wenjuan_analytics"  id="wenjuan_analytics">
-        <div class="nav">
+        <div class="nav" style="margin-bottom: 20px">
             <div class="back" @click="back()" style="cursor: pointer;margin-bottom: 10px">
                 <img src="../../assets/4e/img/back.png"/>
                 <span>返回</span>
@@ -132,7 +132,7 @@
                 $(this).siblings('.children').slideToggle("slow");
                 var o = document.getElementById("wenjuan_analytics");
                 var h = o.clientHeight||o.offsetHeight;
-                var childrenLen=that.carListlen*50;//获取子类的总高度
+                var childrenLen=that.carListlen*55;//获取子类的总高度
                 console.log(childrenLen+"========");
 
                 if($(this).hasClass("onulclose")){

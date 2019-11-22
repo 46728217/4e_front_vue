@@ -32,11 +32,11 @@
 		<div class="title">
 			<span>以上所选素材</span>
 		</div>
-		<div class="pass">
+		<div class="pass" style="cursor: pointer">
 			<div class="nochoice" data-value="1"></div>
 			<span>无问题通过</span>
 		</div>
-		<div class="deny">
+		<div class="deny" style="cursor: pointer">
 			<div class="nochoice" data-value="2"></div>
 			<span>提交有问题驳回</span>
 		</div>
@@ -115,9 +115,19 @@ export default {
 		});
 		$("body").on('click', ".pass", function(){
 			$(".nocheck,.checkin").find("div").hide();
+            $(this).find("div").addClass('choice').removeClass('nochoice');
+            $(this).siblings('.deny').find("div").removeClass('choice').addClass('nochoice');
+            $(".g-list-verify").find('.list ul li .item .check .left').each(function () {
+                $(this).hide();
+            })
 		});
 		$("body").on('click', ".deny", function(){
 			$(".nocheck,.checkin").find("div").show();
+            $(this).find("div").addClass('choice').removeClass('nochoice');
+            $(this).siblings('.pass').find("div").removeClass('choice').addClass('nochoice');
+            $(".g-list-verify").find('.list ul li .item .check .left').each(function () {
+                $(this).show();
+            })
 		});
 
         //预览图片
@@ -276,7 +286,7 @@ export default {
 								float: right;
 								margin-top: 10px;
 								text-align: right;
-								color: #e1e6e9;
+								color: #333;
 								span {
 									display: block;
 									margin-top: 10px;

@@ -434,7 +434,7 @@
 			margin-left: calc(5% - 80px);
 			min-width: 1100px;
 			height: 50px;
-			margin-top: 30px;
+			/*margin-top: 30px;*/
 			color: #2e3e4d;
 			text-align: center;
 			font-size: 14px;
