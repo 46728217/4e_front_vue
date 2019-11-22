@@ -14,7 +14,10 @@
 					<div class="iheader">
 						<span>车型</span>
 						<div class="car_c">
-							<select class="car" :value="log.car">
+							<select v-if="userManage==1" class="car" :value="log.car" >
+								<option v-for="(item,index) in carList" :value="item.id">{{item.name}}</option>
+							</select>
+							<select v-else class="car" :value="log.car" disabled>
 								<option v-for="(item,index) in carList" :value="item.id">{{item.name}}</option>
 							</select>
 						</div>
@@ -34,7 +37,7 @@
 					<div class="desc" style="margin-top:10px">提示：图片小于10M,支持jpg,gif,png,jpeg格式</div>
 				</div>
 			</li>
-			<li>
+			<li v-if="userManage==1">
 				<div class="new">
 					<span>+</span>
 				</div>
@@ -181,6 +184,9 @@ export default {
 					for(var key in that.list) {
 						var tmp = that.list[key];
 						tmp.checks = JSON.parse(tmp.checks);
+                        if(tmp.verifystate==1){
+                            that.userManage = 0;
+                        }
 						tmp.ischeck = false;
 						for(var i in tmp.checks) {
 							var check = tmp.checks[i];

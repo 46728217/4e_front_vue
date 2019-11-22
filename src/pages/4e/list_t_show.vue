@@ -15,14 +15,20 @@
 					<div class="iheader">
 						<span>车型</span>
 						<div class="car_c">
-							<select class="car" :value="log.car">
+							<select v-if="userManage==1" class="car" :value="log.car">
+								<option v-for="(item,index) in carList" :value="item.id">{{item.name}}</option>
+							</select>
+							<select v-else class="car" :value="log.car" disabled>
 								<option v-for="(item,index) in carList" :value="item.id">{{item.name}}</option>
 							</select>
 						</div>
 						<span class="gap"></span>
 						<span>物料品类</span>
 						<div class="type_c">
-							<select class="type" :value="log.type">
+							<select v-if="userManage==1" class="type" :value="log.type">
+								<option v-for="(item,index) in typeList" :value="item.tid">{{item.typename}}</option>
+							</select>
+							<select v-else class="type" :value="log.type" disabled>
 								<option v-for="(item,index) in typeList" :value="item.tid">{{item.typename}}</option>
 							</select>
 						</div>
@@ -197,6 +203,9 @@ export default {
 					for(var key in that.list) {
 						var tmp = that.list[key];
 						tmp.checks = JSON.parse(tmp.checks);
+						if(tmp.verifystate==1){
+                            that.userManage = 0;
+						}
 						tmp.ischeck = false;
 						for(var i in tmp.checks) {
 							var check = tmp.checks[i];
