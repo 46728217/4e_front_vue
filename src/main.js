@@ -14,9 +14,9 @@ import 'vue-layer/lib/vue-layer.css';
 
 var baseKey = "base"
 
-//localStorage.setItem(baseKey, 'http://localhost')
+localStorage.setItem(baseKey, 'http://localhost')
 //localStorage.setItem(baseKey, 'http://117.78.16.42') //jieda
-localStorage.setItem(baseKey, 'http://t4e.skyengine.cn')
+//localStorage.setItem(baseKey, 'http://t4e.skyengine.cn')
 
 //localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
 //localStorage.setItem(baseKey, 'https://4em.cig.com.cn');
