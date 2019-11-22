@@ -162,7 +162,6 @@
             init() {
                 var that = this;
                 this.get(this.base + "/api/policy/data/list?qaId=" + this.qaId, null, function (data) {
-                    console.log(data);
                     if (data.code == 200) {
                         that.tableDataList = data.data;
                         that.carListlen=data.data[0].carList.length;
@@ -410,70 +409,75 @@
                 });
             },
             drawLine5(data) {
-                let xAxisData=[],legendData=[],series=[];
-                var colorList=['#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8'];
-                var newCarList0=[],newCarList1=[],newCarList2=[],newCarList3=[],newCarList4=[],newCarList5=[];
-                for (var i=0;i<data.length;i++){
-                    xAxisData.push(data[i].name);
-                    newCarList0.push(data[i].carList[0].car_order_count);
-                    newCarList1.push(data[i].carList[1].car_order_count);
-                    newCarList2.push(data[i].carList[2].car_order_count);
-                    newCarList3.push(data[i].carList[3].car_order_count);
-                    newCarList4.push(data[i].carList[4].car_order_count);
-                    newCarList5.push(data[i].carList[5].car_order_count);
-                    for(var k=0;k<data[i].carList.length;k++) {
-                        if(i<1){
-                            legendData.push(data[i].carList[k].name);
-                            series.push({
-                                name: data[i].carList[k].name,
-                                type: 'bar',
-                                stack: '总量',
-                                barWidth: 50,//柱图宽度
-                                itemStyle: {
-                                    normal: {
-                                        color: colorList[k],
-                                    }
-                                },
-                                idss:data[i].carList[k].id
-                            })
+                if(data.length>0){
+                    let xAxisData=[],legendData=[],series=[];
+                    var colorList=['#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8','#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8','#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8','#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8'];
+                    var ListArr=[];
+                    var carList=[];
+                    for (var n=0; n<data[0].carList.length;n++ ) {
+                        ListArr.push(new Array());
+                    };
+                    for (var i=0;i<data.length;i++){
+                        xAxisData.push(data[i].name);
+                        carList.push(data[i].carList);
+                        for(var k=0;k<data[i].carList.length;k++) {
+                            if(i<1){
+                                legendData.push(data[i].carList[k].name);
+                                series.push({
+                                    name: data[i].carList[k].name,
+                                    type: 'bar',
+                                    stack: '总量',
+                                    barWidth: 50,//柱图宽度
+                                    itemStyle: {
+                                        normal: {
+                                            color: colorList[k],
+                                        }
+                                    },
+                                    idss:data[i].carList[k].id
+                                })
+                            }
                         }
                     }
-                }
-                series[0].data=newCarList0;
-                series[1].data=newCarList1;
-                series[2].data=newCarList2;
-                series[3].data=newCarList3;
-                series[4].data=newCarList4;
-                series[5].data=newCarList5;
-                // 基于准备好的dom，初始化echarts实例
-                let myChart5 = this.$echarts.init(document.getElementById('drawEcharts5'));
-                // 绘制图表
-                myChart5.setOption({
-                    tooltip : {
-                        trigger: 'axis',
-                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    for(var p=0;p<carList.length;p++){
+                        var arr=carList[p];
+                        for(var r=0;r<arr.length;r++){
+                            ListArr[r].push(arr[r].car_order_count);
                         }
-                    },
-                    legend: {
-                        x: 'right', //居左显示
-                        data: legendData
-                    },
-                    grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true
-                    },
-                    xAxis:  {
-                        type: 'category',
-                        data: xAxisData
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                    series:series
-                });
+                    }
+                    for(var nn=0;nn<ListArr.length;nn++){
+                        series[nn].data=ListArr[nn];
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    let myChart5 = this.$echarts.init(document.getElementById('drawEcharts5'));
+                    // 绘制图表
+                    myChart5.setOption({
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend: {
+                            x: 'right', //居左显示
+                            data: legendData
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis:  {
+                            type: 'category',
+                            data: xAxisData
+                        },
+                        yAxis: {
+                            type: 'value',
+                        },
+                        series:series
+                    });
+                }
+
             },
             parentHeight: function() {
                 $(window.parent.document).find("iframe").height(($(".wenjuan_analytics").height()+300)+'px');

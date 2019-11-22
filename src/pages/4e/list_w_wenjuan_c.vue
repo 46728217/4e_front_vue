@@ -25,7 +25,7 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></textarea>
+								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
