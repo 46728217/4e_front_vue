@@ -1,5 +1,5 @@
 <template>
-	<div class="e-list">
+	<div class="e-list-">
 		<div class="tab" v-if="data.catListSize>0">
 			<ul>
 				<li v-if="data.catListSize>0" v-for="(item,index) in data.catList" @click="changeThirdMenu(item.id)" :data-id="item.id" :class="index==0?'first':''">
@@ -260,7 +260,7 @@
 	body {
 		min-height: 700px;
 	}
-	.e-list {
+	.e-list- {
 		min-height: 600px;
 		.tab {
 			font-size: 14px;
@@ -528,7 +528,7 @@
 
 	/*ie11 css hack*/
 	@media all and (-ms-high-contrast:none) {
-		*::-ms-backdrop, .e-list .cond .name input,.e-list .cond .code input{
+		*::-ms-backdrop, .e-list- .cond .name input,.e-list- .cond .code input{
 			border: none;
 			border-bottom: 1px solid #2e3e4d;
 		}

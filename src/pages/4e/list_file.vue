@@ -1,6 +1,6 @@
 <!--素材文件列表页-->
 <template>
-	<div class="file-list">
+	<div class="file-list-">
 		<div class="nav">
 			<div class="back" @click="back()">
 				<img src="../../assets/4e/img/back.png"/>
@@ -235,7 +235,7 @@
 	body {
 		min-height: 700px;
 	}
-	.file-list {
+	.file-list- {
 		min-height: 600px;
 		.nav {
 			height: 30px;

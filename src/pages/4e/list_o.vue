@@ -1,5 +1,5 @@
 <template>
-	<div class="e-list-o">
+	<div class="e-list-o-">
 		<div class="nav" v-if="data!=null">
 			<span>{{data.firstCat.name}}/{{data.secondCat.name}}</span>
 		</div>
@@ -30,7 +30,13 @@
 				<li><div class="next" @click="go2next"></div></li>
 				<li  class="li-first-last" @click="go2page(data.pagination.totalPages)">末页</li>
 			</ul>
-			<span class="limit">每页显示<input type="text" v-model.trim="pageSize">条</span>
+			<span class="limit">{{'每页显示'|dz}}
+		      <select v-model.trim="pageSize">
+			    <option selected value="20">20{{'条'|dz}}</option>
+			    <option value="40">40{{'条'|dz}}</option>
+			    <option value="60">60{{'条'|dz}}</option>
+		      </select>
+	    	</span>
 			<div class="submit" @click="go2pagesize"><span>确认</span></div>
 		</div>
 	</div>
@@ -49,7 +55,7 @@
 				base: base,
 				second_cat_id: 0,
 				data: null,
-				pageSize: 12,
+				pageSize: 20,
 				pageNumber: 1,
 				pageCount: 1,
 			}
@@ -121,7 +127,7 @@
 	body {
 		min-height: 700px;
 	}
-	.e-list-o {
+	.e-list-o- {
 		min-height: 600px;
 
 		.nav {
@@ -173,13 +179,16 @@
 
 
 		.paging {
-			margin-top: 60px;
+			margin-top: 20px;
+			margin-left: -100px;
 			text-align: center;
 			.total {
 				font-size: 14px;
 				color: #778288;
-				vertical-align: super;
+				height: 25px;
 				margin-right: 10px;
+				vertical-align: top;
+				line-height: 30px;
 			}
 			.numbers {
 				list-style: none;
@@ -188,16 +197,16 @@
 					float: left;
 					display: inline-block;
 					div {
-						width: 20px;
-						height: 20px;
-						margin-right: 5px;
+						width: 25px;
+						height: 25px;
+						margin-right: 8px;
 						border: 1px solid #072455;
 						border-radius: 50%;
 						color: #6a767d;
 						span {
 							display: inline-block;
 							font-size: 12px;
-							margin-top: 1px;
+							line-height: 25px;
 						}
 						cursor: pointer;
 					}
@@ -220,22 +229,22 @@
 			.limit {
 				font-size: 14px;
 				color: #778288;
-				vertical-align: super;
-				input {
-					border-radius: 15px;
-					width: 40px;
-					border: 1px solid #072455;
-					text-align: center;
-					margin-left: 10px;
-					margin-right: 10px;
+				vertical-align: bottom;
+				margin-left: 5px;
+				select {
+					margin-left: 5px;
+					width: 55px;
+					border: 1px solid #001e50;
 				}
 				margin-right: 10px;
 			}
 			.submit {
 				display: inline-block;
 				width: 50px;
-				height: 24px;
+				height: 25px;
+				line-height: 25px;
 				background: #001e50;
+				border: 1px solid #001e50;
 				color: #fff;
 				vertical-align: top;
 				border-radius: 15px;
@@ -243,7 +252,7 @@
 				cursor: pointer;
 				span {
 					display: inline-block;
-					margin-top: 3px;
+
 				}
 			}
 
