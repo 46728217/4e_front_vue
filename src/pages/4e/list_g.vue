@@ -44,6 +44,7 @@
 				<option value="0">全部</option>
 				<option value="1">已提交</option>
 				<option value="-1">未提交</option>
+				<option value="3">待审核</option>
 				<option value="2">已审核</option>
 				<option value="-2">已驳回</option>
 			</select>
@@ -53,7 +54,33 @@
 			<span>搜索</span>
 		</div>
 	</div>
-
+	<div class="cond" v-else style="min-width: auto">
+		<div class="select">
+			<span>批次</span>
+			<div class="cc" >
+				<select class="batch" v-model="cond.batch">
+					<option v-for="(item,index) in materialBatchList" v-bind:value="item.id">{{item.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="dealer" :dealer="codeNumber" style="display: none" ></div>
+		<div class="status">
+			<span>状态</span>
+			<div class="cc">
+				<select v-model.trim="cond.status">
+					<option value="0">全部</option>
+					<option value="1">已提交</option>
+					<option value="-1">未提交</option>
+					<option value="3">待审核</option>
+					<option value="2">已审核</option>
+					<option value="-2">已驳回</option>
+				</select>
+			</div>
+		</div>
+		<div class="search_btn" @click="search">
+			<span>搜索</span>
+		</div>
+	</div>
 	<div class="list">
 		<table>
 			<thead>
@@ -144,7 +171,8 @@
 				materialBatchList: [],
 				bigCommunityList: [],
 				smallCommunityList: [],
-				dealerList: []
+				dealerList: [],
+                codeNumber:0
 			}
 		},
 		created: function() {
@@ -163,7 +191,8 @@
 						that.get(that.base+"/api/dealer/code?dealerId="+that.user.dealerId, null, function(data){
 							if (data.code==200 && data.data != null) {
 								that.cond.dealer = data.data.codeNumber;
-								that.cond.enable = true;
+                                that.codeNumber = data.data.codeNumber;
+                                that.cond.enable = true;
 							}
 						}, false);
 					}
@@ -240,7 +269,9 @@
 					}
 					if (that.cond.dealer!=0)  {
 						params.dealerCode = that.cond.dealer;
-					}
+					}else if(that.codeNumber!=0){
+                        params.dealerCode = that.codeNumber;
+                    }
 					if (that.cond.status!=0) {
 						params.status = that.cond.status;
 					}

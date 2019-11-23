@@ -28,7 +28,7 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea placeholder="请填写答案" :value="item.answer.answerText"></textarea>
+								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText"></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==2" class="cccc">

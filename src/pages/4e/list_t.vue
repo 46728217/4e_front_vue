@@ -44,10 +44,39 @@
 				<option value="0">{{'全部'|dz}}</option>
 				<option value="1">{{'已提交'|dz}}</option>
 				<option value="-1">{{'未提交'|dz}}</option>
+				<option value="3">{{'待审核'|dz}}</option>
 				<option value="2">{{'已审核'|dz}}</option>
 				<option value="-2">{{'已驳回'|dz}}</option>
 			</select>
 			</div>
+		</div>
+		<div class="search_btn" @click="search">
+			<span>{{'搜索'|dz}}</span>
+		</div>
+	</div>
+	<div class="cond" v-else style="min-width: auto">
+		<div class="select">
+			<span>{{'批次'|dz}}</span>
+			<div class="cc" >
+				<select class="batch" v-model="cond.batch">
+					<option v-for="(item,index) in materialBatchList" v-bind:value="item.id">{{item.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="status">
+			<span>{{'状态'|dz}}</span>
+			<div class="cc">
+				<select v-model.trim="cond.status">
+					<option value="0">{{'全部'|dz}}</option>
+					<option value="1">{{'已提交'|dz}}</option>
+					<option value="-1">{{'未提交'|dz}}</option>
+					<option value="3">{{'待审核'|dz}}</option>
+					<option value="2">{{'已审核'|dz}}</option>
+					<option value="-2">{{'已驳回'|dz}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="dealer" :dealer="codeNumber" style="display: none" >
 		</div>
 		<div class="search_btn" @click="search">
 			<span>{{'搜索'|dz}}</span>
@@ -146,8 +175,20 @@
 				bigCommunityList: [],
 				smallCommunityList: [],
 				dealerList: [],
+				codeNumber:0,
+
 			}
 		},
+        // watch: {
+        //     'cond.batch': {
+        //         handler: function() {
+        //             console.log(this.cond.batch);
+        //
+        //             //this.cond.batch=this.cond.batch.length>8?this.cond.batch.substring(0,8):this.cond.batch;
+        //             //this.materialBatchList=this.materialBatchList[this.cond.batch];
+        //         },
+        //     }
+        // },
 		created: function() {
 			let that = this;
 			this.get(this.base+"/api/user/islogin", null, function(data){
@@ -164,6 +205,7 @@
 						that.get(that.base+"/api/dealer/code?dealerId="+that.user.dealerId, null, function(data){
 							if (data.code==200 && data.data != null) {
 								that.cond.dealer = data.data.codeNumber;
+                                that.codeNumber = data.data.codeNumber;
 								that.cond.enable = true;
 							}
 						}, false);
@@ -240,6 +282,8 @@
 					}
 					if (that.cond.dealer!=0)  {
 						params.dealerCode = that.cond.dealer;
+					}else if(that.codeNumber!=0){
+                        params.dealerCode = that.codeNumber;
 					}
 					if (that.cond.status!=0) {
 						params.status = that.cond.status;

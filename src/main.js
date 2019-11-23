@@ -12,11 +12,12 @@ import 'babel-polyfill'
 
 import 'vue-layer/lib/vue-layer.css';
 
+
 var baseKey = "base"
 
-localStorage.setItem(baseKey, 'http://localhost')
+//localStorage.setItem(baseKey, 'http://localhost')
 //localStorage.setItem(baseKey, 'http://117.78.16.42') //jieda
-//localStorage.setItem(baseKey, 'http://t4e.skyengine.cn')
+localStorage.setItem(baseKey, 'http://t4e.skyengine.cn')
 
 //localStorage.setItem(baseKey, 'http://4e.skyengine.cn')
 //localStorage.setItem(baseKey, 'https://4em.cig.com.cn');
@@ -85,7 +86,13 @@ function dz(value) {
 Vue.filter('dz', function (value) {
   return dz(value);
 })
-
+Vue.filter('sub', function (value, length) {
+    if (!value) return ''
+    if (value.length > length) {
+        return value.substring(0,length);
+    }
+    return value
+})
 Vue.filter('de', function (value, length) {
   if (!value) return ''
   if (value.length > length) {

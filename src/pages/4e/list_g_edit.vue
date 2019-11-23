@@ -29,7 +29,7 @@
 					<div class="ifooter">
 						<img src="../../assets/4e/img/close1.png" class="close1"/><span></span>
 					</div>
-					<div class="desc" style="margin-top:10px">提示：图片小于10M,支持jpg,gif,png,jpeg格式</div>
+					<div class="desc" style="margin-top:10px">提示：图片小于20M,支持jpg,gif,png,jpeg格式</div>
 
 				</div>
 			</li>
@@ -80,8 +80,8 @@ export default {
                 that.showMsg("请上传jpg,gif,png,jpeg格式图片");
                 return;
 			}
-            if(size>(1024*1024*10)){
-                that.showMsg("请上传小于10M的图片");
+            if(size>(1024*1024*10*2)){
+                that.showMsg("请上传小于20M的图片");
                 return;
             }
 			$.ajax({
@@ -92,8 +92,9 @@ export default {
                 processData: false,
                 contentType: false,
             	success: function (data) {
-                	form.parent().css({backgroundColor: '#fff',backgroundImage: 'url(\'' + data.data.path + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'});
+                	form.parent().css({backgroundColor: '#fff',backgroundImage: 'url(\'' + data.data.path + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center',cursor: 'pointer'});
                 	form.parent().attr('path', data.data.path);
+                    form.parent().attr('logimg', data.data.path);
                 	form.hide();
                 	form.parent().next(".ifooter").find("span").text(data.data.name);
                 	form.parent().next(".ifooter").find("span").attr('size',data.data.size);
@@ -143,6 +144,15 @@ export default {
 		$("body").on("click", '.nav div', function(){
 			history.go(-1);
 		})
+        //预览图片
+        $("body").on('click', ".g-list-edit li.ok .item .body", function(){
+            var url= $(this).attr("logimg");
+            let preview = that.$router.resolve({
+                name: "preview",
+                query: {logimg:url},
+            });
+            window.open(preview.href, "_blank")
+        });
 
 	},
 	methods: {

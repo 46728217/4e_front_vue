@@ -8,7 +8,10 @@
             </div>
         </div>
         <div class="title">
-            <span>问卷数据汇总表</span>
+            <span>问卷数据汇总表</span><img class="question" style="    margin-left: 10px;
+    width: 18px;
+    vertical-align: sub;
+cursor: pointer" src="../../assets/4e/img/icon-question.png">
         </div>
         <div class="first">
             <ul class="table">
@@ -153,9 +156,22 @@
 
             that.$nextTick(function(){
                 that.init();
-            })
-        },
-        mounted() {
+            });
+
+            $("body").on("click",'.wenjuan_analytics .question',function () {
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $("body").find(".dialog").remove();
+                }else{
+                    var str='<div class="dialog" style="display:none;top:0;width: 100%;height: 100%;position: absolute;background-color: rgba(0,0,0,0.5)"><div class="mask" style="width: 800px;position: absolute;left: 0;right: 0;top: 50px;margin: auto"><img style="width: 100%" src='+require("../../assets/4e/img/algorithm-desc.png")+'></div><img class="dialog-close" style="width: 25px;cursor:pointer;position: absolute;right: 10px;top: 10px;" src='+require("../../assets/4e/img/icon-delete.png")+'></div>';
+                    $("body").append(str);
+                    $("body").find(".dialog").show();
+                }
+            });
+            $("body").on("click",'.dialog .dialog-close',function () {
+                $("body").find(".dialog").remove();
+            });
+
         },
         methods: {
 
@@ -173,6 +189,12 @@
                     }
                 }, false);
                 this.parentHeight();
+            },
+            formatData(v){
+                if(v.toString().indexOf('.')>-1){
+                  return  v.toFixed(2);
+                }
+                return v;
             },
             drawLine1(data) {
                 let xAxisName=[],seriesData_dealer_count=[],seriesData_execute_count=[];
@@ -243,7 +265,7 @@
                                     label : {
                                         show: true,
                                         formatter: '{c0}%',
-                                         position: 'bottom',
+                                         position: 'right',
                                         }
                                 }
                             },
@@ -253,8 +275,9 @@
             },
             drawLine2(data) {
                 let arr=[];
+                var that=this;
                 for (var i=0;i<data.length;i++){
-                    arr.push({product:data[i].name,"邀约量":data[i].invite_count,"进店量":data[i].coming_count});
+                    arr.push({product:data[i].name,"邀约量":that.formatData(data[i].invite_count),"进店量":that.formatData(data[i].coming_count)});
                 }
                 // 基于准备好的dom，初始化echarts实例
                 let myChart2 = this.$echarts.init(document.getElementById('drawEcharts2'));
@@ -309,8 +332,9 @@
             },
             drawLine3(data) {
                 let arr=[];
+                var that=this;
                 for (var i=0;i<data.length;i++){
-                    arr.push({product:data[i].name,"店均邀约量":(data[i].invite_count/data[i].dealer_count),"店均进店量":(data[i].coming_count/data[i].dealer_count)});
+                    arr.push({product:data[i].name,"店均邀约量":that.formatData(data[i].invite_count/data[i].dealer_count),"店均进店量":that.formatData(data[i].coming_count/data[i].dealer_count)});
                 }
                 // 基于准备好的dom，初始化echarts实例
                 let myChart3 = this.$echarts.init(document.getElementById('drawEcharts3'));

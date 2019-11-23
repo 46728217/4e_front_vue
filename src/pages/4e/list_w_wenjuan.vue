@@ -63,7 +63,7 @@
 									<span class="filetype"></span>
 									<span class="download">
 										<a href="" target=_blank>下载</a>
-										<a class="close">删除</a>
+										<a class="close" style="background:none !important;">删除</a>
 									</span>
 									</div>
 								</div>
@@ -162,7 +162,7 @@
 	            		var info = form.next(".uploadinfo");
 	            		info.show();
 	            		info.find(".filename").text(data.data.name);
-	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close'>删除</a>");
+	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close' style='background: none'>删除</a>");
 	            		info.find(".filesize").text(data.data.sizeStr);
 	            		info.find(".filetype").text(data.data.type);
 	            		var item = info.parent().parent().parent();

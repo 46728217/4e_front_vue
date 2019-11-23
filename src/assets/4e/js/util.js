@@ -11,7 +11,7 @@ export default {
 			return str.replace(/[^0-9]/ig,""); 
     	},
         Vue.prototype.showMsg = function (msg) {
-            this.$layer.msg(msg, {time: 1});
+            this.$parent.$layer.msg(msg, {time: 1});
         }
         Vue.prototype.$$confirm = function (msg,fun) {
     		var that=this;
