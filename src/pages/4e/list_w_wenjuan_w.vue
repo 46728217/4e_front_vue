@@ -15,7 +15,7 @@
 			<span>驳回</span>
 		</div>
 	</div>
-	<div class="wenjuan">
+	<div class="wenjuan" id="wenjuan_list">
 		<div class="title"><span>{{info.title}}</span></div>
 		<div class="list">
 			<ul>
@@ -106,6 +106,15 @@
 			$("body").on("click", '.nav div', function(){
 				history.go(-1);
 			})
+            that.$nextTick(function(){
+                setTimeout(function () {
+                    var o = document.getElementById("wenjuan_list");
+                    var h = o.clientHeight||o.offsetHeight;
+                    console.log(h);
+                    $("#main_frame" , parent.parent.document).css('height', (h+150)+"px");
+                },2000);
+
+            })
 		},
 		methods: {
 			getInfo: function() {
@@ -229,7 +238,7 @@
 		.wenjuan {
 			min-width: 900px;
 			width: 90%;
-			height: 600px;
+			/*height: 600px;*/
 			overflow-y: auto;
 			border-top: 1px solid #00437a;
 			margin-left: 18px;

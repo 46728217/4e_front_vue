@@ -332,3 +332,7 @@ select::-ms-expand{display: none;}
 .vl-notify-content-div{
   font-size: 15px;
 }
+
+div.nav{
+  width: 60px;
+}
