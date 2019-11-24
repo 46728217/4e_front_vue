@@ -121,7 +121,7 @@ function onInput(el, ele, binding, vnode) {
       val = ele.value.replace(/[^\d]/g, '')
     }
     if (ele.value != val) {
-      alert("请您输入数字");
+      window.$vm.showMsg("请您输入数字");
     }
     ele.value = val
   }
