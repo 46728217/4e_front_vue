@@ -34,6 +34,19 @@
 								<textarea placeholder="请填写答案"></textarea>
 							</div>
 						</div>
+						<div v-if="item.type==13" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(问答题)</span>
+							</div>
+							<div class="contents" style="margin: 20px 10px">
+								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
+									<input type="radio" :value="n.optionNumber"  name="radio" class="radio"/>
+									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+								</div>
+							</div>
+						</div>
 						<div v-if="item.type==2" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
@@ -121,12 +134,27 @@
 					item.removeAttr("answer");
 				}
 			});
+            $("body").on("change", ".radio", function(){
+                var text =$("input[type='radio']:checked").val();
+                var item = $(this).parent().parent().parent().parent();
+                if (text!=undefined) {
+                    item.addClass("ok");
+                    item.attr("answer", text);
+                }else{
+                    item.removeClass("ok");
+                    item.removeAttr("answer");
+                }
+            });
+
 			$("body").on("click", ".uploadinfo .close", function(){
 				$(this).parent().parent().parent().hide();
 				var item = $(this).parent().parent().parent().parent().parent().parent();
 				item.removeClass("ok");
 				item.removeAttr("answer");
 				item.find(".preview").hide();
+                var o = document.getElementById("wenjuan_list");
+                var h = o.clientHeight||o.offsetHeight;
+                $("#main_frame" , parent.parent.document).css('height', (h+150)+"px");
 			});
 			$("body").on("change", ".upload_h", function(){
                 var dom=$(this);
@@ -260,7 +288,11 @@
 				params.data = list;
 				console.log(params);
                 that.$$confirm("确认提交?",function (index) {
-                    that.$layer.close(index);
+                    var top = that;
+                    if(parent.$vm) {
+                        top = parent.$vm;
+                    }
+                    top.$layer.close(index);
                     that.json(that.base+"/api/policy/answer", that.cc(params), function(data){
                         if (data.code==200) {
                             window.location = "/list_w_answered";

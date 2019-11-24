@@ -152,7 +152,11 @@
 				var params = {};
 				params.qaId = this.qaId;
 				params.userId = this.userId;
-                that.$$confirm("确认提交?",function (index) {
+                var top = that;
+                if(parent.$vm) {
+                    top = parent.$vm;
+                }
+                top.$$confirm("确认提交?",function (index) {
                     that.$layer.close(index);
                     that.json(that.base+"/api/policy/pass", that.cc(params), function(data){
                         if (data.code==200) {
@@ -171,7 +175,11 @@
 				params.qaId = this.qaId;
 				params.userId = this.userId;
                 that.$$confirm("确认提交?",function (index) {
-                    that.$layer.close(index);
+                    var top = that;
+                    if(parent.$vm) {
+                        top = parent.$vm;
+                    }
+                    top.$layer.close(index);
                     that.json(that.base+"/api/policy/deny", that.cc(params), function(data){
                         if (data.code==200) {
                             history.go(-1);

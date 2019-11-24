@@ -174,7 +174,11 @@ export default {
 			});
 			params.checks = checks;
             that.$$confirm("确认提交?",function (index) {
-                that.$layer.close(index);
+                var top = that;
+                if(parent.$vm) {
+                    top = parent.$vm;
+                }
+                top.$layer.close(index);
                 that.json(that.base + "/api/fawvwmaterial/verify", that.cc(params), function(data){
                     if (data.code==200) {
                         that.showMsg("提交成功");
