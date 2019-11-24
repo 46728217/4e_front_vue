@@ -11,13 +11,21 @@ export default {
 			return str.replace(/[^0-9]/ig,""); 
     	},
         Vue.prototype.showMsg = function (msg) {
-            this.$parent.$layer.msg(msg, {time: 1});
+        	var top = this;
+    		if(parent.$vm) {
+    			top = parent.$vm;
+    		}
+            top.$layer.msg(msg, {time: 1});
         }
         Vue.prototype.$$confirm = function (msg,fun) {
-    		var that=this;
-            this.$layer.confirm(msg,{btn: ['确定','取消'] }, fun, function (index) {
+    		var that = this;
+    		var top = that;
+    		if(parent.$vm) {
+    			top = parent.$vm;
+    		}
+            top.$layer.confirm(msg,{btn: ['确定','取消'] }, fun, function (index) {
             	console.log("返回");
-                that.$layer.close(index);
+                top.$layer.close(index);
 
             });
         },
