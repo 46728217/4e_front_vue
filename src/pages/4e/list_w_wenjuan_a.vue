@@ -19,14 +19,14 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                     <ul class="tr">
                         <li class="th">
                             <span style="padding-left: 15px">大区</span>
-                            <img style="vertical-align: middle" src="../../assets/4e/img/wenjuan-table-arrow.png">
+                            <!--<img style="vertical-align: middle" src="../../assets/4e/img/wenjuan-table-arrow.png">-->
                         </li>
                         <li class="th">
                             <span>执行家数</span>
                         </li>
                         <li class="th">
                             <span style="padding-left: 15px">邀约总数</span>
-                            <img style="vertical-align: middle"src="../../assets/4e/img/wenjuan-table-arrow1.png">
+                            <!--<img style="vertical-align: middle"src="../../assets/4e/img/wenjuan-table-arrow1.png">-->
                         </li>
                         <li class="th">
                             <span>进店总数</span>
@@ -74,7 +74,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 </li>
             </ul>
         </div>
-        <div class="echarts-row" >
+        <div class="echarts-row" style="margin-top: 20px">
             <div class="echarts-title"><span class="desc">执行情况</span><span class="line"></span></div>
             <div class="" id="drawEcharts1" :style="{width: '100%', height: '400px'}">
             </div>
