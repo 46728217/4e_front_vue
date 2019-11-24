@@ -92,7 +92,7 @@
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
 									<span class="download">
-										<a  href="javascript:void(0)" class="down" :name="item.answer.answerTextJson.name" :url="item.answer.answerTextJson.path">下载</a>
+										<a   :href="item.answer.answerTextJson.path" target="_blank">下载</a>
 										<a class="close" style="background: none !important;" v-if="userManage==1">删除</a>
 									</span>
 									</div>
@@ -118,11 +118,9 @@
 	import Vue from 'vue'
 	var base = localStorage.getItem("base")
 	import util_js from '@/assets/4e/js/util.js'
-    import  {BASE}  from "@/assets/4e/js/common";
 	import font_css from '@/assets/4e/css/font.css'
 	import global_css from '@/assets/4e/css/global.css'
 	Vue.use(util_js)
-
 	export default {
 		data: function(){
 			return {
@@ -186,11 +184,6 @@
 				item.removeAttr("answer");
 				item.find(".preview").hide();
 			});
-            $("body").on("click", ".uploadinfo .down", function(){
-               var url= $(this).attr("url");
-               var name=$(this).attr("name");
-                BASE.download(url,name);
-			});
 			$("body").on("change", ".upload_h", function(){
 				var form = $(this).parent();
 				var formData = new FormData(form[0]);
@@ -226,7 +219,7 @@
 	            		var info = form.next(".uploadinfo");
 	            		info.show();
 	            		info.find(".filename").text(data.data.name);
-	            		info.find(".download").html("<a   href='javascript:void(0)' class='down' name='"+data.data.name+"' url='"+data.data.path+"'>下载</a><a class='close' style='background: none !important;'>删除</a>");
+	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close' style='background: none !important;'>删除</a>");
 	            		info.find(".filesize").text(data.data.sizeStr);
 	            		info.find(".filetype").text(data.data.type);
 	            		var item = info.parent().parent().parent();

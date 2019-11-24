@@ -86,7 +86,7 @@
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
 									<span class="download">
-										<a  href="javascript:void(0)" class="down" :name="item.answer.answerTextJson.name" :url="item.answer.answerTextJson.path">下载</a>
+										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
 									</span>
 									</div>
 								</div>
@@ -114,7 +114,6 @@
 	import Vue from 'vue'
 	var base = localStorage.getItem("base")
 	import util_js from '@/assets/4e/js/util.js'
-    import  {BASE}  from "@/assets/4e/js/common";
 	import font_css from '@/assets/4e/css/font.css'
 	import global_css from '@/assets/4e/css/global.css'
 	Vue.use(util_js)
@@ -145,12 +144,7 @@
 			this.getData();
 			$("body").on("click", '.nav div', function(){
 				history.go(-1);
-			});
-            $("body").on("click", ".uploadinfo .down", function(){
-                var url= $(this).attr("url");
-                var name=$(this).attr("name");
-                BASE.download(url,name);
-            });
+			})
             that.$nextTick(function(){
                 setTimeout(function () {
                     var o = document.getElementById("wenjuan_list");
