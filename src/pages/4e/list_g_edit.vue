@@ -247,7 +247,7 @@ export default {
 							color: #001e50;
 							.car_c {
 								display: inline-block;
-								width: 70px;
+								width: 200px;
 								.car {
 									border: unset;
 									background: transparent;

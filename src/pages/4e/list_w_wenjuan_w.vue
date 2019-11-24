@@ -227,8 +227,7 @@
 		}
 		.submit {
 			display: inline-block;
-    		float: right;
-    		margin-right: 10%;
+			width: 100%;
 			margin-top: 20px;
 			text-align: center;
 			height: 25px;

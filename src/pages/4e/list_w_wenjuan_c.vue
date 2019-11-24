@@ -7,13 +7,9 @@
 			<span>返回</span>
 		</div>
 	</div>
-	<div class="submit" v-if="userManage==1">
-		<!--<div @click="submit">-->
-			<!--<span>上传提交</span>-->
-		<!--</div>-->
-	</div>
+
 	<div class="wenjuan" id="wenjuan_list">
-		<div class="title"><span>{{info.title}}</span></div>
+		<div class="title"><span>{{info.title}}</span><span  v-if="info.status==2" style="font-weight: bold;color: red;font-size: 12px;padding-left: 5px">(已驳回)</span></div>
 		<div class="list">
 			<ul>
 				<li v-for="(item, index) in data">
@@ -25,7 +21,8 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></textarea>
+								<textarea  v-if="info.status==2" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></textarea>
+								<textarea v-else disabled placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
@@ -35,7 +32,8 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText"></textarea>
+								<textarea v-if="info.status==2" placeholder="请填写答案" :value="item.answer.answerText"></textarea>
+								<textarea v-else disabled placeholder="请填写答案" :value="item.answer.answerText"></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==2" class="cccc">
@@ -45,10 +43,10 @@
 								<span class="type">(上传文件题)</span>
 							</div>
 							<div class="contents">
-								<!--<form enctype="multipart/form-data" method="post">-->
-									<!--<input name="file" type="file" class="upload_h"/>-->
-									<!--<input type="button" value="上传文件" class="upload"/>-->
-								<!--</form>-->
+								<form enctype="multipart/form-data" method="post" v-if="info.status==2">
+									<input name="file" type="file" class="upload_h"/>
+									<input type="button" value="上传文件" class="upload"/>
+								</form>
 								<div class="uploadinfo">
 									<div>
 									<span>上传文件名称：</span>
@@ -61,9 +59,9 @@
 									<div>
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
-									<span class="download">
+									<span class="download"  v-if="info.status==2">
 										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
-										<!--<a class="close" v-if="userManage==1">删除</a>-->
+										<a class="close" v-if="userManage==1">删除</a>
 									</span>
 									</div>
 								</div>
@@ -74,6 +72,11 @@
 					</div>
 				</li>
 			</ul>
+		</div>
+	</div>
+	<div class="submit" v-if="userManage==1">
+		<div @click="submit" v-if="info.status==2">
+			<span>重新提交</span>
 		</div>
 	</div>
 </div>
@@ -289,8 +292,8 @@
 		}
 		.submit {
 			display: inline-block;
-    		float: right;
-    		margin-right: 5%;
+			margin-top: 30px;
+			width: 100%;
 			text-align: center;
 			height: 25px;
 			div {
