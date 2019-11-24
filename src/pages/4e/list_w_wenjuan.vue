@@ -383,13 +383,13 @@
 			width: 90%;
 			/*height: 600px;*/
 			/*overflow-y: auto;*/
-			border-top: 1px solid #00437a;
+			/*border-top: 1px solid #00437a;*/
 			margin-left: 18px;
 			margin-top: 20px;
 			.title {
 				background: #fff;
 			    position: absolute;
-			    padding-top: 10px;
+			    /*padding-top: 10px;*/
 			    padding-right: 10px;
 			    text-align: center;
 			    font-size: 18px;
@@ -401,10 +401,8 @@
 					list-style: none;
 					width: 100%;
 					li {
-						/*margin-top: 20px;*/
 						width: 100%;
 						border-top: 1px solid #dcdddd;
-						/*border-bottom: 1px solid #dcdddd;*/
 						.item {
 							.cccc {
 								.des {
@@ -412,9 +410,8 @@
 									width: 80%;
 									color: #00437a;
 									display: inline-block;
-									margin-top: 5px;
+									margin-top: 10px;
 									.type {
-										/*margin-left: 20px;*/
 										color: #333;
 									}
 									span:nth-child(1) {

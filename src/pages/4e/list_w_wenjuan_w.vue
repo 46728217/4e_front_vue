@@ -7,20 +7,13 @@
 			<span>返回</span>
 		</div>
 	</div>
-	<div class="submit" v-if="userManage==1">
-		<div @click="pass">
-			<span>审核通过</span>
-		</div>
-		<div @click="deny">
-			<span>驳回</span>
-		</div>
-	</div>
+
 	<div class="wenjuan" id="wenjuan_list">
 		<div class="title"><span>{{info.title}}</span></div>
 		<div class="list">
 			<ul>
 				<li v-for="(item, index) in data">
-					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText">
+					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText || item.answer.answerOptions">
 						<div v-if="item.type==1 && info.category=='销售政策提报'" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
@@ -28,7 +21,7 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<input disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==0"></input>
+								<input type="text" class="input" disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></input>
 							</div>
 						</div>
 						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
@@ -38,7 +31,7 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea placeholder="请填写答案" disabled="disabled" :value="item.answer.answerText"></textarea>
+								<textarea class="textarea" placeholder="请填写答案" disabled="disabled" :value="item.answer.answerText"></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==13" class="cccc">
@@ -104,6 +97,14 @@
 					</div>
 				</li>
 			</ul>
+		</div>
+	</div>
+	<div class="submit" v-if="userManage==1">
+		<div @click="pass">
+			<span>审核通过</span>
+		</div>
+		<div @click="deny">
+			<span>驳回</span>
 		</div>
 	</div>
 </div>
@@ -195,7 +196,11 @@
                     top = parent.$vm;
                 }
                 top.$$confirm("确认提交?",function (index) {
-                    that.$layer.close(index);
+                    var top = that;
+                    if(parent.$vm) {
+                        top = parent.$vm;
+                    }
+                    top.$layer.close(index);
                     that.json(that.base+"/api/policy/pass", that.cc(params), function(data){
                         if (data.code==200) {
                             history.go(-1);
@@ -260,8 +265,8 @@
 		}
 		.submit {
 			display: inline-block;
-    		float: right;
-    		margin-right: 10%;
+			width: 100%;
+			margin-top: 20px;
 			text-align: center;
 			height: 25px;
 			div {
@@ -284,15 +289,12 @@
 		.wenjuan {
 			min-width: 900px;
 			width: 90%;
-			/*height: 600px;*/
 			overflow-y: auto;
-			border-top: 1px solid #00437a;
 			margin-left: 18px;
 			margin-top: 20px;
 			.title {
 				background: #fff;
 			    position: absolute;
-			    padding-top: 10px;
 			    padding-right: 10px;
 			    text-align: center;
 			    font-size: 18px;
@@ -313,7 +315,7 @@
 									width: 80%;
 									color: #00437a;
 									display: inline-block;
-									margin-top: 5px;
+									margin-top: 10px;
 									.type {
 										color: #333;
 									}
@@ -340,6 +342,12 @@
 										height: 100px;
 										padding: 15px;
 										border-radius: 5px 5px;
+										color: #000;
+									}
+									.input {
+										width: 100%;
+										height: 15px;
+										padding: 10px;
 										color: #000;
 									}
 									.upload {

@@ -255,7 +255,7 @@ export default {
 			})
 		},
 		parentHeight: function() {
-			$(window.parent.document).find("iframe").height(($(".g-list-show").height()+400)+'px');
+			$(window.parent.document).find("iframe").height(($(".g-list-show").height()+100)+'px');
 		},
 	}
 }
@@ -309,7 +309,7 @@ export default {
 							color: #001e50;
 							.car_c {
 								display: inline-block;
-								width: 70px;
+								width: 200px;
 								.car {
 									border: unset;
 									background: transparent;

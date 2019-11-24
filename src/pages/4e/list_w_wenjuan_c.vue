@@ -7,17 +7,13 @@
 			<span>返回</span>
 		</div>
 	</div>
-	<div class="submit" v-if="userManage==1">
-		<!--<div @click="submit">-->
-			<!--<span>上传提交</span>-->
-		<!--</div>-->
-	</div>
+
 	<div class="wenjuan" id="wenjuan_list">
-		<div class="title"><span>{{info.title}}</span></div>
+		<div class="title"><span>{{info.title}}</span><span  v-if="qaUser.verifyStatus==2" style="font-weight: bold;color: red;font-size: 12px;padding-left: 5px">(已驳回)</span></div>
 		<div class="list">
 			<ul>
 				<li v-for="(item, index) in data">
-					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText">
+					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText || item.answer.answerOptions">
 						<div v-if="item.type==1 && info.category=='销售政策提报'" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
@@ -25,8 +21,8 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<input disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==0"></input>
-								<input placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==1"></input>
+								<input type="text" class="input" disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==0"></input>
+								<input type="text" class="input" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==1"></input>
 							</div>
 						</div>
 						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
@@ -36,8 +32,8 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-if="userManage==0"></textarea>
-								<textarea placeholder="请填写答案" :value="item.answer.answerText" v-if="userManage==1"></textarea>
+								<textarea class="textarea" disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-if="userManage==0"></textarea>
+								<textarea class="textarea" placeholder="请填写答案" :value="item.answer.answerText" v-if="userManage==1"></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==13" class="cccc">
@@ -79,10 +75,10 @@
 								<span class="type">(上传文件题)</span>
 							</div>
 							<div class="contents">
-								<!--<form enctype="multipart/form-data" method="post">-->
-									<!--<input name="file" type="file" class="upload_h"/>-->
-									<!--<input type="button" value="上传文件" class="upload"/>-->
-								<!--</form>-->
+								<form enctype="multipart/form-data" method="post" v-if="info.status==2">
+									<input name="file" type="file" class="upload_h"/>
+									<input type="button" value="上传文件" class="upload"/>
+								</form>
 								<div class="uploadinfo">
 									<div>
 									<span>上传文件名称：</span>
@@ -95,10 +91,10 @@
 									<div>
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
-									<!--<span class="download">-->
-										<!--<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>-->
-										<!--<a class="close" v-if="userManage==1">删除</a>-->
-									<!--</span>-->
+									<span class="download"  v-if="info.status==2">
+										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
+										<a class="close" v-if="userManage==1">删除</a>
+									</span>
 									</div>
 								</div>
 							</div>
@@ -108,6 +104,11 @@
 					</div>
 				</li>
 			</ul>
+		</div>
+	</div>
+	<div class="submit" v-if="userManage==1">
+		<div @click="submit" v-if="info.status==2">
+			<span>重新提交</span>
 		</div>
 	</div>
 </div>
@@ -342,8 +343,8 @@
 		}
 		.submit {
 			display: inline-block;
-    		float: right;
-    		margin-right: 5%;
+			margin-top: 30px;
+			width: 100%;
 			text-align: center;
 			height: 25px;
 			div {
@@ -365,15 +366,11 @@
 		.wenjuan {
 			min-width: 900px;
 			width: 90%;
-			/*height: 600px;*/
-			/*overflow-y: auto;*/
-			border-top: 1px solid #00437a;
 			margin-left: 18px;
 			margin-top: 20px;
 			.title {
 				background: #fff;
 			    position: absolute;
-			    padding-top: 10px;
 			    padding-right: 10px;
 			    text-align: center;
 			    font-size: 18px;
@@ -385,10 +382,8 @@
 					list-style: none;
 					width: 100%;
 					li {
-						/*margin-top: 20px;*/
 						width: 100%;
 						border-top: 1px solid #dcdddd;
-						/*border-bottom: 1px solid #dcdddd;*/
 						.item {
 							.cccc {
 								.des {
@@ -396,7 +391,7 @@
 									width: 80%;
 									color: #00437a;
 									display: inline-block;
-									margin-top: 5px;
+									margin-top: 10px;
 									.type {
 
 										color: #333;
