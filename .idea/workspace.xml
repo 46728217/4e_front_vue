@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="85cc2ac5-edb0-4aa1-aad2-fb345644cbb3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_g.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_g.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_g_edit.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_g_edit.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_g_show.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_g_show.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_t.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_t.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_t_edit.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_t_edit.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_t_show.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_t_show.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan.vue" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
       <change beforePath="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_c.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_c.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue" afterPath="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,114 +21,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="list_t.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_t.vue">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="375" column="25" lean-forward="true" selection-start-line="375" selection-start-column="25" selection-end-line="375" selection-end-column="25" />
+            <state relative-caret-position="360">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
-                <marker date="1574601667016" expanded="true" signature="7961:8005" ph="//..." />
+                <element signature="e#253#275#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list_g_show.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_g_show.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3540">
-              <caret line="255" column="10" lean-forward="true" selection-start-line="255" selection-start-column="10" selection-end-line="255" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_g_edit.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_g_edit.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-390">
-              <caret line="124" column="35" lean-forward="true" selection-start-line="124" selection-start-column="35" selection-end-line="124" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_w_wenjuan_c.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="list_w_wenjuan_c.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_c.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4440">
-              <caret line="339" column="50" lean-forward="false" selection-start-line="339" selection-start-column="50" selection-end-line="339" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_t_show.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_t_show.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="273" column="14" lean-forward="true" selection-start-line="273" selection-start-column="14" selection-end-line="273" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_w_wenjuan_w.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="230" column="30" lean-forward="true" selection-start-line="230" selection-start-column="30" selection-end-line="230" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_t_verify.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_t_verify.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-184">
-              <caret line="176" column="26" lean-forward="false" selection-start-line="176" selection-start-column="26" selection-end-line="176" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_w_wenjuan.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2790">
-              <caret line="286" column="19" lean-forward="true" selection-start-line="286" selection-start-column="19" selection-end-line="286" selection-end-column="19" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <marker date="1574603062622" expanded="true" signature="6624:6640" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_w_wenjuan_a.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_a.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14700">
-              <caret line="20" column="70" lean-forward="true" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
-              <folding>
-                <marker date="1574599639114" expanded="true" signature="7514:7610" ph="..." />
-                <marker date="1574599639114" expanded="true" signature="7637:7668" ph="..." />
-                <marker date="1574599639114" expanded="true" signature="7637:7708" ph="..." />
-                <marker date="1574599639114" expanded="true" signature="7722:7733" ph="..." />
-                <marker date="1574599639114" expanded="true" signature="7832:7900" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_g_verify.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/4e/list_g_verify.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-360">
-              <caret line="179" column="18" lean-forward="false" selection-start-line="179" selection-start-column="18" selection-end-line="179" selection-end-column="18" />
+            <state relative-caret-position="870">
+              <caret line="65" column="40" lean-forward="false" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -214,7 +116,6 @@
         <option value="$PROJECT_DIR$/src/pages/4e/list_t_verify.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_a.vue" />
-        <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_g_show.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_g.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_g_edit.vue" />
@@ -222,8 +123,9 @@
         <option value="$PROJECT_DIR$/src/pages/4e/list_t_edit.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_t_show.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan.vue" />
-        <option value="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_c.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_c.vue" />
+        <option value="$PROJECT_DIR$/src/main.js" />
       </list>
     </option>
   </component>
@@ -401,12 +303,12 @@
       <workItem from="1574325078451" duration="22454000" />
       <workItem from="1574389698796" duration="33047000" />
       <workItem from="1574475147770" duration="41761000" />
-      <workItem from="1574561548859" duration="36292000" />
+      <workItem from="1574561548859" duration="36622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133554000" />
+    <option name="totallyTimeSpent" value="133884000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2869" y="-11" width="2902" height="1582" extended-state="6" />
@@ -741,16 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="19" column="2" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding>
-            <element signature="e#253#275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_g.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -770,7 +662,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_t_show.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="273" column="14" lean-forward="true" selection-start-line="273" selection-start-column="14" selection-end-line="273" selection-end-column="14" />
+          <caret line="273" column="14" lean-forward="false" selection-start-line="273" selection-start-column="14" selection-end-line="273" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -786,7 +678,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_t.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="566">
-          <caret line="375" column="25" lean-forward="true" selection-start-line="375" selection-start-column="25" selection-end-line="375" selection-end-column="25" />
+          <caret line="375" column="25" lean-forward="false" selection-start-line="375" selection-start-column="25" selection-end-line="375" selection-end-column="25" />
           <folding>
             <marker date="1574601667016" expanded="true" signature="7961:8005" ph="//..." />
           </folding>
@@ -796,7 +688,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_a.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-14700">
-          <caret line="20" column="70" lean-forward="true" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
+          <caret line="20" column="70" lean-forward="false" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
           <folding>
             <marker date="1574599639114" expanded="true" signature="7514:7610" ph="..." />
             <marker date="1574599639114" expanded="true" signature="7637:7668" ph="..." />
@@ -815,18 +707,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_c.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4440">
-          <caret line="339" column="50" lean-forward="false" selection-start-line="339" selection-start-column="50" selection-end-line="339" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_g_edit.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-390">
-          <caret line="124" column="35" lean-forward="true" selection-start-line="124" selection-start-column="35" selection-end-line="124" selection-end-column="35" />
+          <caret line="124" column="35" lean-forward="false" selection-start-line="124" selection-start-column="35" selection-end-line="124" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -834,29 +718,47 @@
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_g_show.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3540">
-          <caret line="255" column="10" lean-forward="true" selection-start-line="255" selection-start-column="10" selection-end-line="255" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="230" column="30" lean-forward="true" selection-start-line="230" selection-start-column="30" selection-end-line="230" selection-end-column="30" />
+          <caret line="255" column="10" lean-forward="false" selection-start-line="255" selection-start-column="10" selection-end-line="255" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="286" column="19" lean-forward="true" selection-start-line="286" selection-start-column="19" selection-end-line="286" selection-end-column="19" />
+        <state relative-caret-position="3150">
+          <caret line="286" column="19" lean-forward="false" selection-start-line="286" selection-start-column="19" selection-end-line="286" selection-end-column="19" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <marker date="1574603062622" expanded="true" signature="6624:6640" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="230" column="30" lean-forward="false" selection-start-line="230" selection-start-column="30" selection-end-line="230" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#253#275#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_c.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="65" column="40" lean-forward="false" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>

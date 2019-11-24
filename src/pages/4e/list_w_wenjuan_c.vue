@@ -61,10 +61,10 @@
 									<div>
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
-									<!--<span class="download">-->
-										<!--<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>-->
+									<span class="download">
+										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
 										<!--<a class="close" v-if="userManage==1">删除</a>-->
-									<!--</span>-->
+									</span>
 									</div>
 								</div>
 							</div>
