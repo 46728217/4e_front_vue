@@ -1,6 +1,6 @@
 <template>
 	<div class="e-list-o-">
-		<div class="nav" v-if="data!=null">
+		<div class="nav" v-if="data!=null" style="width: 150px">
 			<span>{{data.firstCat.name}}/{{data.secondCat.name}}</span>
 		</div>
 		<div class="list" v-if="data!=null">

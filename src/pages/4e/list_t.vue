@@ -6,6 +6,7 @@
 			<span>{{'批次'|dz}}</span>
 			<div class="cc" >
 				<select class="batch" v-model="cond.batch">
+					<option value="0">{{'全部'|dz}}</option>
 					<option v-for="(item,index) in materialBatchList" v-bind:value="item.id">{{item.name}}</option>
 				</select>
 			</div>
@@ -58,7 +59,8 @@
 		<div class="select">
 			<span>{{'批次'|dz}}</span>
 			<div class="cc" >
-				<select class="batch" v-model="cond.batch">
+				<select class="batch" v-model.trim="cond.batch">
+					<option value="0">{{'全部'|dz}}</option>
 					<option v-for="(item,index) in materialBatchList" v-bind:value="item.id">{{item.name}}</option>
 				</select>
 			</div>
@@ -228,8 +230,8 @@
 					if (data.code==200) {
 						that.materialBatchList = data.data;
 						if (data.data.length>0) {
-							that.cond.batch = data.data[0].id.toString();
-
+							// that.cond.batch = data.data[0].id.toString();
+                            that.cond.batch = 0;//默认选中全部
                             //返回一个promise对象
                             return new Promise(async resolve => {
                                 await that.getData();
