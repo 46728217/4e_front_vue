@@ -91,7 +91,7 @@
 									<div>
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
-									<span class="download"  v-if="info.status==2">
+									<span class="download"  v-if="userManage==1">
 										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
 										<a class="close" style="background: none !important;" v-if="userManage==1">删除</a>
 									</span>
@@ -107,7 +107,7 @@
 		</div>
 	</div>
 	<div class="submit" v-if="userManage==1">
-		<div @click="submit" v-if="info.status==2">
+		<div @click="submit">
 			<span>重新提交</span>
 		</div>
 	</div>
