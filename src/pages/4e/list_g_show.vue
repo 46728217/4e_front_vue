@@ -35,7 +35,7 @@
 						<span style="color:#001e50" v-if="log.verifystate==1">(已审核通过)</span>
 						<span style="color:red" v-if="log.verifystate==2 && log.ischeck==true">(被驳回)</span>
 					</div>
-					<div class="desc" style="margin-top:10px">提示：图片小于20M,支持jpg,gif,png,jpeg格式</div>
+					<div class="desc" style="margin-top:10px">提示：图片小于10M,支持jpg,gif,png,jpeg格式</div>
 				</div>
 			</li>
 			<li v-if="userManage==1">
@@ -102,8 +102,8 @@ export default {
                 that.showMsg("请上传jpg,gif,png,jpeg格式图片");
                 return;
             }
-            if(size>(1024*1024*10*2)){
-                that.showMsg("请上传小于20M的图片");
+            if(size>(1024*1024*10)){
+                that.showMsg("请上传小于10M的图片");
                 return;
             }
 			$.ajax({

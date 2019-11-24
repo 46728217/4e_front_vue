@@ -48,7 +48,7 @@
 					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{(item.name.length>35?item.name.substring(0,35)+'...':item.name)}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_time.png"/><span>{{item.addTimeStr}}</span></div>
-					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadTimes}}{{'次'|dz}}</span></div>
+					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadNum}}{{'次'|dz}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_code.png"/><span>{{item.fileCode}}</span></div>
 				</li>
 			</ul>
