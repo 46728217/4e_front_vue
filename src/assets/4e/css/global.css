@@ -294,6 +294,8 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #fff;
 }
+
+
 select{
   /*很关键：将默认的select选择框样式清除*/
   appearance:none;

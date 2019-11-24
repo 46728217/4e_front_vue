@@ -21,14 +21,52 @@
 			<ul>
 				<li v-for="(item, index) in data">
 					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText">
-						<div v-if="item.type==1" class="cccc">
+						<div v-if="item.type==1 && info.category=='销售政策提报'" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText"></textarea>
+								<input disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==0"></input>
+							</div>
+						</div>
+						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(问答题)</span>
+							</div>
+							<div class="contents">
+								<textarea placeholder="请填写答案" disabled="disabled" :value="item.answer.answerText"></textarea>
+							</div>
+						</div>
+						<div v-if="item.type==13" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(单选题)</span>
+							</div>
+							<div class="contents" style="margin: 20px 10px">
+								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
+									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions==n.optionNumber" checked="checked" disabled="disabled"/>
+									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions!=n.optionNumber"  disabled="disabled"/>
+									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+								</div>
+							</div>
+						</div>
+						<div v-if="item.type==11" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(多选题)</span>
+							</div>
+							<div class="contents" style="margin: 20px 10px">
+								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
+									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1" checked="checked"  disabled="disabled"/>
+									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1"  disabled="disabled"/>
+									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+								</div>
 							</div>
 						</div>
 						<div v-if="item.type==2" class="cccc">

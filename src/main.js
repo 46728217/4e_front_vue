@@ -130,9 +130,7 @@ function onInput(el, ele, binding, vnode) {
 }
 const numberInput = {
   inserted(el, binding, vnode) {
-    console.log(el.tagName);
-    const ele = el.tagName === 'TEXTAREA' ? el : el.querySelector('textarea')
-    ele.addEventListener('input', onInput(el, ele, binding, vnode), false)
+    el.addEventListener('input', onInput(el, el, binding, vnode), false)
   },
 }
 Vue.directive('number-input', numberInput)

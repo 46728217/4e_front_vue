@@ -25,7 +25,8 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float></textarea>
+								<input disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==0"></input>
+								<input placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==1"></input>
 							</div>
 						</div>
 						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
@@ -35,7 +36,40 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea disabled placeholder="请填写答案" :value="item.answer.answerText"></textarea>
+								<textarea disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-if="userManage==0"></textarea>
+								<textarea placeholder="请填写答案" :value="item.answer.answerText" v-if="userManage==1"></textarea>
+							</div>
+						</div>
+						<div v-if="item.type==13" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(单选题)</span>
+							</div>
+							<div class="contents" style="margin: 20px 10px">
+								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
+									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==0" disabled="disabled" checked="checked"/>
+									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==1" checked="checked"/>
+									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==0" disabled="disabled"/>
+									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==1"/>
+									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+								</div>
+							</div>
+						</div>
+						<div v-if="item.type==11" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(多选题)</span>
+							</div>
+							<div class="contents" style="margin: 20px 10px">
+								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
+									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1 && userManage==0" disabled="disabled" checked="checked"/>
+									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1 && userManage==1" checked="checked"/>
+									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==0" disabled="disabled"/>
+									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==1"/>
+									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+								</div>
 							</div>
 						</div>
 						<div v-if="item.type==2" class="cccc">
@@ -112,10 +146,29 @@
 			}, false);
 			this.getInfo();
 			this.getData();
-			$("body").on("change", "textarea", function(){
+			$("body").on("change", "textarea,input[type=text]", function(){
 				var text = $.trim($(this).val());
 				var item = $(this).parent().parent().parent();
 				if (text!="") {
+					item.addClass("ok");
+					item.attr("answer", text);
+				}else{
+					item.removeClass("ok");
+					item.removeAttr("answer");
+				}
+			});
+
+			$("body").on("change", ".radio", function(){
+				var ischeck = $(this).is(':checked');
+				var text = "";
+				$(this).parent().parent().find("input:checked").each(function(){
+					text += $(this).val()+",";
+				});
+				if (text.length>0) {
+					text = text.substr(0, text.length-1);
+				}
+				var item = $(this).parent().parent().parent().parent();
+				if (text.length>0) {
 					item.addClass("ok");
 					item.attr("answer", text);
 				}else{
@@ -373,6 +426,12 @@
 										border-radius: 5px 5px;
 										color: #000;
 									}
+									.input {
+										width: 100%;
+										height: 15px;
+										padding: 10px;
+										color: #000;
+									}
 									.upload {
 										color: #00437a;
 										width: 90px;
@@ -422,7 +481,21 @@
 				}
 			}
 		}
+	}
 
-		
+	input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	  color: gray;
+	}
+
+	input:-moz-placeholder, textarea:-moz-placeholder {
+	  color: gray;
+	}
+
+	input::-moz-placeholder, textarea::-moz-placeholder {
+	  color: gray;
+	}
+
+	input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+	  color: gray;
 	}
 </style>

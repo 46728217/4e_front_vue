@@ -21,7 +21,7 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea placeholder="请填写答案" v-number-input.float></textarea>
+								<input type="text" class="input" placeholder="请填写答案(数字)" v-number-input.float></input>
 							</div>
 						</div>
 						<div v-if="item.type==1 && info.category!='销售政策提报'" class="cccc">
@@ -31,18 +31,31 @@
 								<span class="type">(问答题)</span>
 							</div>
 							<div class="contents">
-								<textarea placeholder="请填写答案"></textarea>
+								<textarea class="textarea" placeholder="请填写答案"></textarea>
 							</div>
 						</div>
 						<div v-if="item.type==13" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(问答题)</span>
+								<span class="type">(单选题)</span>
 							</div>
 							<div class="contents" style="margin: 20px 10px">
 								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
 									<input type="radio" :value="n.optionNumber"  name="radio" class="radio"/>
+									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+								</div>
+							</div>
+						</div>
+						<div v-if="item.type==11" class="cccc">
+							<div class="des">
+								<span>{{index+1}}. </span>
+								<span>{{item.title}}</span>
+								<span class="type">(多选题)</span>
+							</div>
+							<div class="contents" style="margin: 20px 10px">
+								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
+									<input type="checkbox" :value="n.optionNumber" name="option" class="radio"/>
 									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
 								</div>
 							</div>
@@ -123,7 +136,7 @@
 			});
 			this.getInfo();
 			this.getData();
-			$("body").on("change", "textarea", function(){
+			$("body").on("change", "textarea,input[type=text]", function(){
 				var text = $.trim($(this).val());
 				var item = $(this).parent().parent().parent();
 				if (text!="") {
@@ -134,17 +147,25 @@
 					item.removeAttr("answer");
 				}
 			});
-            $("body").on("change", ".radio", function(){
-                var text =$("input[type='radio']:checked").val();
-                var item = $(this).parent().parent().parent().parent();
-                if (text!=undefined) {
-                    item.addClass("ok");
-                    item.attr("answer", text);
-                }else{
-                    item.removeClass("ok");
-                    item.removeAttr("answer");
-                }
-            });
+
+			$("body").on("change", ".radio", function(){
+				var ischeck = $(this).is(':checked');
+				var text = "";
+				$(this).parent().parent().find("input:checked").each(function(){
+					text += $(this).val()+",";
+				});
+				if (text.length>0) {
+					text = text.substr(0, text.length-1);
+				}
+				var item = $(this).parent().parent().parent().parent();
+				if (text.length>0) {
+					item.addClass("ok");
+					item.attr("answer", text);
+				}else{
+					item.removeClass("ok");
+					item.removeAttr("answer");
+				}
+			});
 
 			$("body").on("click", ".uploadinfo .close", function(){
 				$(this).parent().parent().parent().hide();
@@ -173,11 +194,11 @@
 						(name.indexOf("pptx")>-1)||
                         (name.indexOf("rar")>-1)||
 						(name.indexOf("zip")>-1))){
-                    alert("请上传图片，word，excel，ppt，zip，rar格式的文件");
+                    window.$vm.showMsg("请上传图片，word，excel，ppt，zip，rar格式的文件");
                     return;
                 }
                 if(size>(1024*1024*10*2)){
-                    alert("请上传小于20M的文件");
+                    window.$vm.showMsg("请上传小于20M的文件");
                     return;
                 }
 
@@ -217,7 +238,7 @@
                         $("#main_frame" , parent.parent.document).css('height', (h+150)+"px");
 	            	},
 	            	error: function () {
-	                	util.showMsg("上传失败");
+	                	window.$vm.showMsg("上传失败");
 	            	}
 	            });
 			});
@@ -244,7 +265,7 @@
                     str += "";
                 }
                 return str.replace(/[^\x00-\xff]/g,"01").length;
-	      },
+	      	},
             getInfo: function() {
 				var that = this;
 				this.get(this.base+"/api/policy/detail?qaId="+this.qaId, null, function(data){
@@ -314,6 +335,7 @@
 
 
 <style lang="scss" scope>
+
 	.w-list-wenjuan {
 		min-height: 600px;
 		.nav {
@@ -414,11 +436,17 @@
 									margin-left: 20px;
 									width: 600px;
 									display: inline-block;
-									textarea {
+									.textarea {
 										width: 100%;
 										height: 100px;
 										padding: 15px;
 										border-radius: 5px 5px;
+										color: #000;
+									}
+									.input {
+										width: 100%;
+										height: 15px;
+										padding: 10px;
 										color: #000;
 									}
 									.upload {
@@ -472,7 +500,21 @@
 				}
 			}
 		}
+	}
 
-		
+	input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	  color: gray;
+	}
+
+	input:-moz-placeholder, textarea:-moz-placeholder {
+	  color: gray;
+	}
+
+	input::-moz-placeholder, textarea::-moz-placeholder {
+	  color: gray;
+	}
+
+	input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+	  color: gray;
 	}
 </style>
