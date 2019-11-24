@@ -84,7 +84,7 @@
 									<span>上传文件类型：</span>
 									<span class="filetype"></span>
 									<span class="download">
-										<a href="" target=_blank>下载</a>
+										<a  href="javascript:void(0)" class="down" name="" url="">下载</a>
 										<a class="close" style="background:none !important;">删除</a>
 									</span>
 									</div>
@@ -110,6 +110,7 @@
 	import Vue from 'vue'
 	var base = localStorage.getItem("base")
     import util_js from '@/assets/4e/js/util.js'
+    import  {BASE}  from "@/assets/4e/js/common"
     import font_css from '@/assets/4e/css/font.css'
     import global_css from '@/assets/4e/css/global.css'
     Vue.use(util_js);
@@ -147,7 +148,11 @@
 					item.removeAttr("answer");
 				}
 			});
-
+            $("body").on("click", ".uploadinfo .down", function(){
+                var url= $(this).attr("url");
+                var name=$(this).attr("name");
+                BASE.download(url,name);
+            });
 			$("body").on("change", ".radio", function(){
 				var ischeck = $(this).is(':checked');
 				var text = "";
@@ -220,7 +225,7 @@
 						// }
 
 	            		info.find(".filename").text(data.data.name);
-	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close' style='background: none'>删除</a>");
+	            		info.find(".download").html("<a   href='javascript:void(0)' class='down' name='"+data.data.name+"' url='"+data.data.path+"'>下载</a><a class='close' style='background: none'>删除</a>");
 	            		info.find(".filesize").text(data.data.sizeStr);
 	            		info.find(".filetype").text(data.data.type);
 	            		var item = info.parent().parent().parent();
