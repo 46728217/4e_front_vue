@@ -67,7 +67,6 @@ export default {
 	},
 	created: function() {
 		var that = this;
-		that.parentHeight();
 		this.batch = this.$route.query.batch;
 		this.dealerId = this.$route.query.dealerid;
 		this.getCarList();
@@ -153,7 +152,9 @@ export default {
             });
             window.open(preview.href, "_blank")
         });
-
+        that.$nextTick(function(){
+            that.parentHeight();
+        })
 	},
 	methods: {
 		getCarList: function() {
