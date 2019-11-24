@@ -274,7 +274,7 @@ export default {
 			})
 		},
 		parentHeight: function() {
-			$(window.parent.document).find("iframe").height(($(".t-list-show").height()+400)+'px');
+			$(window.parent.document).find("iframe").height(($(".t-list-show").height()+100)+'px');
 		},
 	}
 }

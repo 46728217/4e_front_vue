@@ -96,7 +96,7 @@ export default {
                 	form.parent().attr('path', data.data.path);
                     form.parent().attr('logimg', data.data.path);
                 	form.hide();
-                	form.parent().next(".ifooter").find("span").text(data.data.name);
+                	form.parent().next(".ifooter").find("span").text(data.data.name.length>14?data.data.name.substring(0,14)+"...":data.data.name);
                 	form.parent().next(".ifooter").find("span").attr('size',data.data.size);
                 	form.parent().next(".ifooter").show();
                 	form.parent().parent().parent().addClass("ok");
@@ -199,7 +199,7 @@ export default {
 			})
 		},
 		parentHeight: function() {
-			$(window.parent.document).find("iframe").height(($(".g-list-edit").height()+400)+'px');
+			$(window.parent.document).find("iframe").height(($(".g-list-edit").height()+100)+'px');
 		},
 	}
 }

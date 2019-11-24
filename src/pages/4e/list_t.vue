@@ -375,7 +375,7 @@
 
 <style lang="scss" scope>
 	.t-list {
-		min-height: 600px;
+		/*min-height: 600px;*/
 		.cond {
 			width: 90%;
 			margin-left: calc(5% - 80px);
