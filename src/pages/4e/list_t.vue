@@ -230,8 +230,11 @@
 					if (data.code==200) {
 						that.materialBatchList = data.data;
 						if (data.data.length>0) {
-							// that.cond.batch = data.data[0].id.toString();
-                            that.cond.batch = 0;//默认选中全部
+							if (that.userManage==1) {
+								that.cond.batch = data.data[0].id.toString();
+							}else{
+                            	that.cond.batch = 0;//默认选中全部
+                            }
                             //返回一个promise对象
                             return new Promise(async resolve => {
                                 await that.getData();

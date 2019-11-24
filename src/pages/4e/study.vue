@@ -125,11 +125,6 @@
                 var cat_id = this.getNumber(code);
                 //this.main_url = "/list?second_cat_id="+cat_id;
                 this.main_url = this.base + pageUrl;
-                if ($(".submenu li[class=active]").data("id")==634) {
-                    $(".submenu li[class=active]").click(function(){
-                        window.location = "http://117.78.16.42/jsp/pc/interface/faw/do.jsp?method=doLogin";
-                    });
-                }
             }
         },
         created: function(){
