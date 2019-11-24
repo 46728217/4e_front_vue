@@ -45,8 +45,8 @@
 					</div>
 				</li>
 				<li style="padding-left: 5px;cursor: default;">{{usernamestr}}</li>
-				<li>
-					<div style="padding-left: 6px;" class="logout" @click="logout">
+				<li style="padding-left: 6px;">
+					<div class="logout" @click="logout">
 						<span>{{'退出'|dz}}</span>
 					</div>
 				</li>

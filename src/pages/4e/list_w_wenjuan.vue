@@ -129,6 +129,7 @@
 				item.find(".preview").hide();
 			});
 			$("body").on("change", ".upload_h", function(){
+                var dom=$(this);
 				var form = $(this).parent();
 				var formData = new FormData(form[0]);
                 var size=form.prevObject[0].files[0].size;
@@ -183,6 +184,9 @@
 	            		}else{
 	            			info.parent().next(".preview").hide();
 	            		}
+                        var o = document.getElementById("wenjuan_list");
+                        var h = o.clientHeight||o.offsetHeight;
+                        $("#main_frame" , parent.parent.document).css('height', (h+150)+"px");
 	            	},
 	            	error: function () {
 	                	util.showMsg("上传失败");
