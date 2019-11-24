@@ -75,7 +75,7 @@
 								<span class="type">(上传文件题)</span>
 							</div>
 							<div class="contents">
-								<form enctype="multipart/form-data" method="post" v-if="info.status==2">
+								<form enctype="multipart/form-data" method="post" v-if="userManage==1">
 									<input name="file" type="file" class="upload_h"/>
 									<input type="button" value="上传文件" class="upload"/>
 								</form>
