@@ -253,7 +253,7 @@
             })
 		},
 		methods: {
-		 getInfo: function() {
+		 	getInfo: function() {
 				var that = this;
 				this.get(this.base+"/api/policy/detail?qaId="+this.qaId+"&userId="+this.userId, null, function(data){
 					if (data.code==200) {
