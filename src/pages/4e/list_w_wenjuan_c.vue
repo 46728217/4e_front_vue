@@ -93,7 +93,7 @@
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
 									<span class="download"  v-if="info.status==2">
 										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
-										<a class="close" v-if="userManage==1">删除</a>
+										<a class="close" style="background: none !important;" v-if="userManage==1">删除</a>
 									</span>
 									</div>
 								</div>
@@ -219,7 +219,7 @@
 	            		var info = form.next(".uploadinfo");
 	            		info.show();
 	            		info.find(".filename").text(data.data.name);
-	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close'>删除</a>");
+	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close' style='background: none !important;'>删除</a>");
 	            		info.find(".filesize").text(data.data.sizeStr);
 	            		info.find(".filetype").text(data.data.type);
 	            		var item = info.parent().parent().parent();
