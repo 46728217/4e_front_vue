@@ -43,6 +43,7 @@
 				<li v-for="(item,index) in childMenu"><span @click="changeSubMenu(item.id, item.permissionCode, item.parentId)">{{item.name|dz}}</span></li>
 			</ul>
 		</div>
+		<app-footer></app-footer>
 	</div>
 </template>
 

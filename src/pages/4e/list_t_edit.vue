@@ -257,7 +257,7 @@ export default {
 						text-align: center;
 						.iheader {
 							height: 30px;
-							font-size: 14px;
+							font-size: 12px;
 							margin-top: 20px;
 							text-align: center;
 							color: #001e50;
@@ -267,7 +267,7 @@ export default {
 								.car {
 									border: unset;
 									background: transparent;
-									font-size: 14px;
+									font-size: 12px;
 									width: 100%;
 									color: #001e50;
 								}
@@ -279,7 +279,7 @@ export default {
 								.type {
 									border: unset;
 									background: transparent;
-									font-size: 14px;
+									font-size: 12px;
 									width: 100%;
 									color: #001e50;
 								}

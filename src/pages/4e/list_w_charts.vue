@@ -7,6 +7,9 @@
 			<span>返回</span>
 		</div>
 	</div>
+	<div class="title">
+		<span>数据统计</span>
+	</div>
 	<div class="cond">
 		<div class="dq">
 			<span>大区</span>
@@ -264,6 +267,11 @@
 				}
 				this.get(this.base + "/api/policy/detail/charts", params, function(data){
 					if (data.code==200) {
+                        $("body").find(".bar .nodata").remove();
+					    if(data.data.length==0){
+					        var  str="<div class='nodata'>暂无数据</div>";
+							$("body").find(".bar").append(str);
+						}
 						that.charts = data.data;
 						that.drawBarCharts();
 						that.drawPieCharts();
@@ -279,15 +287,42 @@
 		        var series = [{
 		        	name: '已审批',
 		        	type: 'bar',
-		        	data: []
+		        	data: [],
+                    itemStyle: {
+                        normal: {
+                            label : {
+                                show: true,
+                                position: 'top',
+
+                            }
+                        }
+                    }
 		        },{
 		        	name: '未审批',
 		        	type: 'bar',
-		        	data: []
+		        	data: [],
+                    itemStyle: {
+                        normal: {
+                            label : {
+                                show: true,
+                                position: 'top',
+
+                            }
+                        }
+                    }
 		        },{
 		        	name: '已驳回及未提交',
 		        	type: 'bar',
-		        	data: []
+		        	data: [],
+                    itemStyle: {
+                        normal: {
+                            label : {
+                                show: true,
+                                position: 'top',
+
+                            }
+                        }
+                    }
 		        }];
 		        for(var t in this.charts) {
 		        	var tmp = this.charts[t];
@@ -299,6 +334,9 @@
 
 		        // 绘制图表
 		        barChart.setOption({
+                    grid: {
+                        left: '8%', //grid 组件离容器左侧的距离。默认值是10%。
+                    },
 		        	color: ['#00427c', '#44c6f7', '#c2c9cf'],
 		            legend: {
 				        data: ['已审批', '未审批', '已驳回及未提交'],
@@ -332,7 +370,7 @@
 		        var series = [{
 		        	name: 'xxx',
 		        	type: 'pie',
-		        	radius: '70%',
+		        	radius: '60%',
 		        	center: ['50%', '50%'],
 		        }];
 		        var waiting = 0;
@@ -346,19 +384,20 @@
 		        }
 		        series[0].data = [
 		        	{name: '已审批', value: pass},
+                    {name: '未提交', value: deny},
 		        	{name: '未审批', value: waiting},
-		        	{name: '已驳回及未提交', value: deny}
+
 		        ];
 
 		        // 绘制图表
 		        pieChart.setOption({
 		        	color: ['#00427c', '#44c6f7', '#c2c9cf'],
 		            legend: {
-				        data: ['已审批', '未审批', '已驳回及未提交'],
+				        data: ['已审批', '未审批', '未提交'],
 				        x: 'center',
 				        y: 'bottom',
 				        textStyle: {
-				        	fontSize: 12
+				        	fontSize: 11
 				        }
 				    },
 				    tooltip : {
@@ -420,6 +459,17 @@
 <style lang="scss" scope>
 	.t-list-w-charts {
 		min-height: 600px;
+		.title {
+			height: 30px;
+			margin-top: 5px;
+			margin-bottom: 20px;
+			span {
+				color: #3c484d;
+				font-size: 18px;
+			}
+			padding-bottom: 10px;
+			border-bottom: 2px solid #dfe4e8;
+		}
 		.nav {
 			height: 30px;
 			div {
@@ -582,13 +632,26 @@
 			height: 400px;
 			width: 100%;
 			.bar {
+				position: relative;
 				height: 100%;
 				width: 60%;
 				display: inline-block;
+				.nodata{
+					position: absolute;
+					text-align: center;
+					height: 20px;
+					font-size: 12px;
+					color: #b4c3ce;
+					top: 0;
+					right: 0;
+					left: 0;
+					bottom: 0;
+					margin: auto;
+				}
 			}
 			.pie {
 				height: 100%;
-				width: 30%;
+				width: 35%;
 				display: inline-block;
 			}
 

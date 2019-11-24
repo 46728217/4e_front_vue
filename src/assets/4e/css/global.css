@@ -336,3 +336,9 @@ select::-ms-expand{display: none;}
 div.nav{
   width: 60px;
 }
+div.nav div{
+  height: 30px;
+}
+div.nav div img{
+  height: 35%;
+}

@@ -74,12 +74,12 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 </li>
             </ul>
         </div>
-        <div class="echarts-row">
+        <div class="echarts-row" >
             <div class="echarts-title"><span class="desc">执行情况</span><span class="line"></span></div>
             <div class="" id="drawEcharts1" :style="{width: '100%', height: '400px'}">
             </div>
         </div>
-        <div class="echarts-row">
+        <div class="echarts-row" style="margin-top: 50px;">
             <div class="echarts-row2" style="width: 48%;float: left;position: relative">
                 <div class="echarts-title" style="position: absolute"><span class="desc">邀约进店量</span><span class="line"></span></div>
                 <div class="" id="drawEcharts2" :style="{width: '100%', height: '400px'}">
@@ -214,7 +214,10 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 myChart.setOption({
                     tooltip: {
                         trigger: 'axis',
-                        formatter: '{b0}<br/>{a0}: {c0}<br />{a1}: {c1}%'
+                        formatter: '{b0}<br/>{a0}: {c0}<br />{a1}: {c1}%',
+                        textStyle:{
+                            fontSize:11
+                        }
                     },
                     legend: {
                         data: ['提报经销商数', '执行比例'],
@@ -266,6 +269,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                                         show: true,
                                         formatter: '{c0}%',
                                          position: 'right',
+                                        color:'#333'
                                         }
                                 }
                             },
@@ -291,7 +295,11 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                         x: 'right', //居右显示
                         top:0,
                     },
-                    tooltip: {},
+                    tooltip: {
+                        textStyle:{
+                            fontSize:11
+                        }
+                    },
                     dataset: {
                         dimensions: ['product', '邀约量', '进店量'],
                         source: arr
@@ -347,7 +355,11 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                     legend: {
                         x: 'right' //居右显示
                     },
-                    tooltip: {},
+                    tooltip: {
+                        textStyle:{
+                            fontSize:11
+                        }
+                    },
                     dataset: {
                         dimensions: ['product', '店均邀约量', '店均进店量'],
                         source: arr
@@ -406,7 +418,10 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                     },
                     tooltip: {
                         trigger: 'axis',
-                        formatter: '{b0}<br/>{c0}%'
+                        formatter: '{b0}<br/>{c0}%',
+                        textStyle:{
+                            fontSize:11
+                        }
                     },
                     xAxis: {
                         type: 'category',
@@ -478,12 +493,15 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                         tooltip : {
                             trigger: 'axis',
                             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                type : 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                            },
+                            textStyle:{
+                                fontSize:11
                             }
                         },
                         legend: {
                             x: 'right', //居左显示
-                            data: legendData
+                            data: legendData,
                         },
                         grid: {
                             left: '3%',
@@ -617,9 +635,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
             }
         }
         .echarts-row {
-            padding: 20px;
             height: 400px;
-            margin-top: 20px;
             .echarts-title {
                 width: 100%;
                 position: relative;

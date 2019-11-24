@@ -7,6 +7,7 @@
 			<span>返回</span>
 		</div>
 	</div>
+	<span class="reason" v-if="list.length>0 && list[0].verifystate==2 && list[0].reason!=''">被驳回理由: <span>{{list[0].reason}}</span></span>
 	<div class="list">
 		<ul>
 			<li :class="index==0?'template ok':'ok'" v-for="(log,index) in list" :data-sid="log.sid" :data-state="log.verifystate">
@@ -278,6 +279,12 @@ export default {
 				}
 			}
 		}
+		.reason {
+			display: block;
+			height: 30px;
+			font-weight: bold;
+			color: red;
+		}
 		.list {
 			width: 100%;
 			ul {
@@ -296,7 +303,7 @@ export default {
 						text-align: center;
 						.iheader {
 							height: 30px;
-							font-size: 14px;
+							font-size: 12px;
 							margin-top: 20px;
 							text-align: center;
 							color: #001e50;
@@ -306,7 +313,7 @@ export default {
 								.car {
 									border: unset;
 									background: transparent;
-									font-size: 14px;
+									font-size: 12px;
 									width: 100%;
 									color: #001e50;
 								}
@@ -318,7 +325,7 @@ export default {
 								.type {
 									border: unset;
 									background: transparent;
-									font-size: 14px;
+									font-size: 12px;
 									width: 100%;
 									color: #001e50;
 								}
