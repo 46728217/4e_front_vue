@@ -236,7 +236,7 @@
 				params.addTime = $('.year').val();
 				params.name =  $('.name input').val();
 				params.fileCode = $('.code input').val();
-				params.sortType = $('input[name=sort]').val();
+				params.sortType = $("input[type='radio']:checked").val();
 				params.pageSize = this.pageSize;
 				params.pageNumber = this.pageNumber;
 				that.cond.enable = true;

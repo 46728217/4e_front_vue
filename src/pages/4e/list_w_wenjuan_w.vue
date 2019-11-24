@@ -258,10 +258,8 @@
 					list-style: none;
 					width: 100%;
 					li {
-						margin-top: 20px;
 						width: 100%;
 						border-top: 1px solid #dcdddd;
-						border-bottom: 1px solid #dcdddd;
 						.item {
 							.cccc {
 								.des {
@@ -271,7 +269,6 @@
 									display: inline-block;
 									margin-top: 5px;
 									.type {
-										margin-left: 20px;
 										color: #333;
 									}
 									span:nth-child(1) {

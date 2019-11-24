@@ -7,11 +7,7 @@
 			<span>返回</span>
 		</div>
 	</div>
-	<div class="submit">
-		<div @click="submit">
-			<span>上传提交</span>
-		</div>
-	</div>
+
 	<div class="wenjuan">
 		<div class="title"><span>{{info.title}}</span></div>
 		<div class="list" id="wenjuan_list">
@@ -76,6 +72,11 @@
 			</ul>
 		</div>
 	</div>
+	<div class="submit">
+		<div @click="submit">
+			<span>上传提交</span>
+		</div>
+	</div>
 </div>
 </template>
 
@@ -128,6 +129,7 @@
 				item.find(".preview").hide();
 			});
 			$("body").on("change", ".upload_h", function(){
+			   // alert(this.getBLen("你好"));
 				var form = $(this).parent();
 				var formData = new FormData(form[0]);
                 var size=form.prevObject[0].files[0].size;
@@ -161,7 +163,7 @@
 	            	success: function (data) {
 	            		var info = form.next(".uploadinfo");
 	            		info.show();
-	            		info.find(".filename").text(data.data.name);
+	            		info.find(".filename").text(data.data.name.length>22?data.data.name.substring(0,22)+"...":data.data.name);
 	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close' style='background: none'>删除</a>");
 	            		info.find(".filesize").text(data.data.sizeStr);
 	            		info.find(".filetype").text(data.data.type);
@@ -198,7 +200,14 @@
 
 		},
 		methods: {
-			getInfo: function() {
+            getBLen:function(str){
+                if (str == null) return 0;
+                if (typeof str != "string"){
+                    str += "";
+                }
+                return str.replace(/[^\x00-\xff]/g,"01").length;
+	      },
+            getInfo: function() {
 				var that = this;
 				this.get(this.base+"/api/policy/detail?qaId="+this.qaId, null, function(data){
 					if (data.code==200) {
@@ -284,8 +293,9 @@
 		}
 		.submit {
 			display: inline-block;
-    		float: right;
-    		margin-right: 5%;
+			width: 100%;
+			margin: auto;
+			margin-top: 20px;
 			text-align: center;
 			height: 25px;
 			div {
@@ -327,10 +337,10 @@
 					list-style: none;
 					width: 100%;
 					li {
-						margin-top: 20px;
+						/*margin-top: 20px;*/
 						width: 100%;
 						border-top: 1px solid #dcdddd;
-						border-bottom: 1px solid #dcdddd;
+						/*border-bottom: 1px solid #dcdddd;*/
 						.item {
 							.cccc {
 								.des {
@@ -340,7 +350,7 @@
 									display: inline-block;
 									margin-top: 5px;
 									.type {
-										margin-left: 20px;
+										/*margin-left: 20px;*/
 										color: #333;
 									}
 									span:nth-child(1) {
