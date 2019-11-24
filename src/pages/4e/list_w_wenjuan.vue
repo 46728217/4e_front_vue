@@ -129,7 +129,6 @@
 				item.find(".preview").hide();
 			});
 			$("body").on("change", ".upload_h", function(){
-			   // alert(this.getBLen("你好"));
 				var form = $(this).parent();
 				var formData = new FormData(form[0]);
                 var size=form.prevObject[0].files[0].size;
@@ -163,7 +162,14 @@
 	            	success: function (data) {
 	            		var info = form.next(".uploadinfo");
 	            		info.show();
-	            		info.find(".filename").text(data.data.name.length>22?data.data.name.substring(0,22)+"...":data.data.name);
+	            		//var name="";
+                        // if(that.getBLen(data.data.name)>18){
+                         //   name=  data.data.name=data.data.name.substring(0,18)+"..."
+						// }else{
+                         //     name=data.data.name;
+						// }
+
+	            		info.find(".filename").text(data.data.name);
 	            		info.find(".download").html("<a href='"+data.data.path+"' target=_blank>下载</a><a class='close' style='background: none'>删除</a>");
 	            		info.find(".filesize").text(data.data.sizeStr);
 	            		info.find(".filetype").text(data.data.type);

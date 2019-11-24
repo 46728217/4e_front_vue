@@ -348,6 +348,9 @@
 				      	axisPointer: {    
 				        	type: 'shadow'
 				      	},
+                        textStyle:{
+                            fontSize:11
+                        }
 				    },
 				    calculable: true,
 				    xAxis: [
@@ -402,7 +405,10 @@
 				    },
 				    tooltip : {
 		                trigger: 'item',
-		                formatter: "{b} : {c} ({d}%)"
+		                formatter: "{b} : {c} ({d}%)",
+                        textStyle:{
+                            fontSize:11
+                        }
 		            },
 				    series: series
 		        });
