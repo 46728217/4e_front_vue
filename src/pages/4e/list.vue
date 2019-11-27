@@ -45,7 +45,7 @@
 			<ul>
 				<li v-for="(item,index) in data.materials">
 					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
-					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name|sub2(30)}}</div>
+					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name|sub2(25)}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_time.png"/><span>{{item.addTimeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadNum}}{{'次'|dz}}</span></div>
