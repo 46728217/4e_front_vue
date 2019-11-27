@@ -64,7 +64,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(支持图片，word，excel，ppt，zip，rar格式的文件,上传文件不能超过20M)</span>
+								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)</span>
 							</div>
 							<div class="contents">
 								<form enctype="multipart/form-data" method="post">
@@ -99,8 +99,8 @@
 		</div>
 	</div>
 	<div class="submit">
-		<div @click="submit">
-			<span>上传提交</span>
+		<div @click="submit" style="background-color: #001e50;color: white;">
+			<span >上传提交</span>
 		</div>
 	</div>
 </div>
@@ -192,9 +192,10 @@
 						(name.indexOf("xls")>-1)||
                         (name.indexOf("xlsx")>-1)||
 						(name.indexOf("pptx")>-1)||
+						(name.indexOf("pdf")>-1)||
                         (name.indexOf("rar")>-1)||
 						(name.indexOf("zip")>-1))){
-                    window.$vm.showMsg("请上传图片，word，excel，ppt，zip，rar格式的文件");
+                    window.$vm.showMsg("请上传图片，word，excel，ppt，pdf，zip，rar格式的文件");
                     return;
                 }
                 if(size>(1024*1024*10*2)){
@@ -259,13 +260,6 @@
 
 		},
 		methods: {
-            getBLen:function(str){
-                if (str == null) return 0;
-                if (typeof str != "string"){
-                    str += "";
-                }
-                return str.replace(/[^\x00-\xff]/g,"01").length;
-	      	},
             getInfo: function() {
 				var that = this;
 				this.get(this.base+"/api/policy/detail?qaId="+this.qaId, null, function(data){

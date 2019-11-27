@@ -82,7 +82,7 @@ export default {
 	},
 	methods: {
 		init: function() {
-			this.title("一汽-大众");
+			this.title("一汽-大众营销支持中心");
 			this.submenu = this.menu[this.current_left_menu_id].children;
 			var tmp = [];
 			var active = 1;

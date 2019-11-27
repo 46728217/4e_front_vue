@@ -11,7 +11,7 @@
 			<ul>
 				<li v-for="(item,index) in data.list">
 					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="go2detail(item.file_id)"></div>
-					<div class="name" @click="go2detail(item.file_id)">{{(item.file_name2.length>35?item.file_name2.substring(0,35)+'...':item.file_name2)}}</div>
+					<div class="name" @click="go2detail(item.file_id)">{{item.file_name2|sub2(30)}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_time.png"/><span>{{item.addTimeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadTimes}}次</span></div>
@@ -47,6 +47,7 @@
 	import Vue from 'vue'
 	var base = localStorage.getItem("base")
 	import util_js from '@/assets/4e/js/util.js'
+    import {BASE} from '@/assets/4e/js/common.js'
 	import font_css from '@/assets/4e/css/font.css'
 	import global_css from '@/assets/4e/css/global.css'
 	Vue.use(util_js)
@@ -72,6 +73,7 @@
 			}
 		},
 		created: function() {
+		      // console.log("========="+BASE.cutString("12g,2少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少少",30));
 			var that = this;
 			this.get(this.base+"/api/user/islogin", null, function(data){
 				if (data.code==0) {
@@ -310,9 +312,7 @@
 				    flex-direction: column;
 				    float: left;
 				    margin-bottom: 40px;
-				    
 				    font-family: "font-hy-75";
-
 					.img {
 						width: 100%;
 						height: 240px;
@@ -332,6 +332,7 @@
 						font-size: 14px;
 						color: #222222;
 						cursor: pointer;
+						word-wrap: break-word;
 					}
 					.txt {
 						width: 100%;

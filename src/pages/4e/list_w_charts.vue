@@ -54,6 +54,7 @@
 			<select v-model.trim="cond.verifystatus">
 				<option value="0">全部</option>
 				<option value="1">已审核</option>
+				<option value="3">未审核</option>
 				<option value="2">已驳回</option>
 			</select>
 			</div>
@@ -387,8 +388,8 @@
 		        }
 		        series[0].data = [
 		        	{name: '已审批', value: pass},
-                    {name: '未提交', value: deny},
-		        	{name: '未审批', value: waiting},
+                    {name: '未审批', value: waiting},
+		        	{name: '已驳回及未提交', value: deny},
 
 		        ];
 
@@ -396,7 +397,7 @@
 		        pieChart.setOption({
 		        	color: ['#00427c', '#44c6f7', '#c2c9cf'],
 		            legend: {
-				        data: ['已审批', '未审批', '未提交'],
+				        data: ['已审批', '未审批', '已驳回及未提交'],
 				        x: 'center',
 				        y: 'bottom',
 				        textStyle: {

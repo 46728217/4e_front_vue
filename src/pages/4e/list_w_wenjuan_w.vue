@@ -98,12 +98,17 @@
 				</li>
 			</ul>
 		</div>
+		<div class="reason-desc"  v-if="userManage==1">
+			<div class="title">驳回理由</div>
+			<textarea class="textarea" placeholder="请填写答案"></textarea>
+		</div>
 	</div>
+
 	<div class="submit" v-if="userManage==1">
-		<div @click="pass">
+		<div @click="pass"  style="background-color: #001e50;color: white;">
 			<span>审核通过</span>
 		</div>
-		<div @click="deny">
+		<div @click="deny"  style="background-color: #001e50;color: white;">
 			<span>驳回</span>
 		</div>
 	</div>
@@ -215,8 +220,14 @@
 			deny: function() {
                 var that=this;
 				var params = {};
+                var reason=$(".reason-desc").find(".textarea").val();
+                if(!reason){
+                    window.$vm.showMsg('请填写驳回理由');
+                    return;
+                }
 				params.qaId = this.qaId;
 				params.userId = this.userId;
+                params.reason=reason;
                 that.$$confirm("确认提交?",function (index) {
                     var top = that;
                     if(parent.$vm) {
@@ -261,6 +272,20 @@
 					margin-left: 3px;
 					color: #193461;
 				}
+			}
+		}
+		.reason-desc{
+			margin-top: 10px;
+			margin-left: 20px;
+			width: 600px;
+			display: inline-block;
+			textarea {
+				margin-top: 30px;
+				width: 100%;
+				height: 100px;
+				padding: 15px;
+				border-radius: 5px 5px;
+				color: #000;
 			}
 		}
 		.submit {

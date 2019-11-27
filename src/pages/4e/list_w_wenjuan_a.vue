@@ -25,20 +25,20 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                             <span>执行家数</span>
                         </li>
                         <li class="th">
-                            <span style="padding-left: 15px">邀约总数</span>
+                            <span style="padding-left: 15px">邀约量</span>
                             <!--<img style="vertical-align: middle"src="../../assets/4e/img/wenjuan-table-arrow1.png">-->
                         </li>
                         <li class="th">
-                            <span>进店总数</span>
+                            <span>到店量</span>
                         </li>
                         <li class="th">
-                            <span>邀约进店率</span>
+                            <span>店均邀约量</span>
                         </li>
                         <li class="th">
-                            <span>订单总数</span>
+                            <span>店均到店量</span>
                         </li>
                         <li class="th">
-                            <span>未交车总数</span>
+                            <span>订单量</span>
                         </li>
                     </ul>
                 </li>
@@ -48,23 +48,24 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
 						<li class="td li1"><img class="icon " src="../../assets/4e/img/wenjuan-table-open.png"></img><span>{{item.name}}</span></li>
 						<li class="td"><span>{{item.execute_count }}</span></li>
 						<li class="td"><span>{{item.invite_count  }}</span></li>
-						<li class="td"><span>{{item.coming_count  }}</span></li>
-						<li class="td"><span>{{item.coming_rate|addZero}}%</span></li>
-						<li class="td"><span style="color: #00B1F1">{{item.order_count }}</span></li>
-						<li class="td"><span style="color: #00B1F1">{{item.unfinished_count }}</span></li>
+						<li class="td"><span>{{item.coming_count}}</span></li>
+						<li class="td"><span>{{(item.execute_count==0?0:item.invite_count/item.execute_count*100)|addZero}}%</span></li>
+						<li class="td"><span>{{(item.execute_count==0?0:item.coming_count/item.execute_count*100)|addZero }}%</span></li>
+                        <li class="td"><span style="color: #00B1F1">{{item.order_count }}</span></li>
+
 					  </ul>
 				    	<div class="children" style="display: none">
 					    	<div class="wrap">
 							<div class="box top" style="color: #96A3A8">
 								<div class="item">车型</div>
 								<div class="item">车型订单数</div>
-								<div class="item">车型未交付数</div>
+								<!--<div class="item">车型未交付数</div>-->
 						  	</div>
 								<span  v-for="(ii,indexss) in item.carList" >
 									<div class="box bottom">
 								     <div class="item" style="border-bottom: 1px solid #dfe4e8">{{ii.name}}</div>
 								     <div class="item" style="border-bottom: 1px solid #dfe4e8;border-left: 1px solid #dfe4e8;border-right: 1px solid #dfe4e8">{{ii.car_order_count}}</div>
-								     <div class="item" style="border-bottom: 1px solid #dfe4e8">{{ii.car_unfinished_count}}</div>
+								     <!--<div class="item" style="border-bottom: 1px solid #dfe4e8">{{ii.car_unfinished_count}}</div>-->
 							        </div>
                                 </span>
 						</div>
@@ -101,11 +102,13 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
             <div class="" id="drawEcharts5" :style="{width: '90%', height: '400px',marginLeft:'5%'}">
             </div>
         </div>
+        <wenjuana-dialog class="wenjuana-dialog" style="display: none"></wenjuana-dialog>
     </div>
 </template>
 
 <script>
     import Vue from 'vue'
+    import WenjuanaDialog from './WenjuanaDialog'
     var base = localStorage.getItem("base")
     import util_js from '@/assets/4e/js/util.js'
     import font_css from '@/assets/4e/css/font.css'
@@ -126,6 +129,9 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 tableDataList: [],
                 carListlen:0
             }
+        },
+        components:{
+            WenjuanaDialog:WenjuanaDialog,
         },
         created: function(){
             var that=this;
@@ -159,17 +165,15 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
             });
 
             $("body").on("click",'.wenjuan_analytics .question',function () {
-                if($(this).hasClass("active")){
-                    $(this).removeClass("active");
-                    $("body").find(".dialog").remove();
+                if($('body').find(".wenjuana-dialog").hasClass("active")){
+                    $('body').find(".wenjuana-dialog").removeClass("active");
+                    $("body").find(".wenjuana-dialog").hide();
                 }else{
-                    var str='<div class="dialog" style="display:none;top:0;width: 100%;height: 100%;position: absolute;background-color: rgba(0,0,0,0.5)"><div class="mask" style="width: 800px;position: absolute;left: 0;right: 0;top: 50px;margin: auto"><img style="width: 100%" src='+require("../../assets/4e/img/algorithm-desc.png")+'></div><img class="dialog-close" style="width: 25px;cursor:pointer;position: absolute;right: 10px;top: 10px;" src='+require("../../assets/4e/img/icon-delete.png")+'></div>';
-                    $("body").append(str);
-                    $("body").find(".dialog").show();
+                    $("body").find(".wenjuana-dialog").show();
                 }
             });
             $("body").on("click",'.dialog .dialog-close',function () {
-                $("body").find(".dialog").remove();
+                $("body").find(".wenjuana-dialog").hide();
             });
 
         },
@@ -201,13 +205,12 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 for (var i=0;i<data.length;i++){
                     xAxisName.push(data[i].name);
                     seriesData_dealer_count.push(data[i].dealer_count);
-                    if(data[i].execute_count==0){
+                    if(data[i].dealer_count==0){
                         seriesData_execute_count.push("0");
                     }else{
-                        seriesData_execute_count.push((data[i].dealer_count/data[i].execute_count).toFixed(2));
+                        seriesData_execute_count.push((data[i].execute_count/(data[i].dealer_total||1)).toFixed(2));//少个dealer_total字段
                     }
                 }
-                console.log(seriesData_execute_count)
                 // 基于准备好的dom，初始化echarts实例
                 let myChart = this.$echarts.init(document.getElementById('drawEcharts1'));
                 // 绘制图表
@@ -220,7 +223,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                         }
                     },
                     legend: {
-                        data: ['提报经销商数', '执行比例'],
+                        data: ['提报经销商数', '执行率'],
                         x: 'right' //居右显示
                     },
                     xAxis: [
@@ -258,7 +261,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                             }
                         },
                         {
-                            name: '执行比例',
+                            name: '执行率',
                             type: 'line',
                             yAxisIndex: 1,
                             data: seriesData_execute_count,
@@ -450,7 +453,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
             drawLine5(data) {
                 if(data.length>0){
                     let xAxisData=[],legendData=[],series=[];
-                    var colorList=['#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8','#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8','#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8','#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#96A3A8','#DFE4E8'];
+                    var colorList=['#001E50','#00437A','#3C484D','#00B1F1','#637077','#96A3A8','#000066','#003333','#006666','#006699','#999966','#999999 ','#CCCC99','#CCCCCC','#0099CC','#003300','#660099','#660066','#669900','#000099'];
                     var ListArr=[];
                     var carList=[];
                     for (var n=0; n<data[0].carList.length;n++ ) {

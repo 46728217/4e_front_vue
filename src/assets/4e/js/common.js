@@ -55,5 +55,22 @@ export const BASE={
         getBlob(url, function(blob) {
             saveAs(blob, filename);
         });
-    }
+    },
+    cutString:function(str,len){
+        var strlen = 0;
+        var restr = "";
+        for (var i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) > 128) {
+                strlen += 2;
+            }
+            else {
+                strlen++;
+            }
+            restr += str.charAt(i);
+            if (strlen >= len) {
+                return restr;
+            }
+        }
+        return restr;
+    },
 }
