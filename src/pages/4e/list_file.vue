@@ -183,7 +183,7 @@
 				
 			},
 			parentHeight: function() {
-				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
+				$(window.parent.document).find("iframe").height(($(".list").height()+100)+'px');
 			},
 			changeThirdMenu: function(id) {
 				this.third_cat_id = id;

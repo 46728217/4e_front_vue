@@ -36,6 +36,7 @@
 		</div>
 		<div class="frame_main">
 			<iframe id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+			<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>
 		</div>
 		<div class="block">
 			<div class="narrow"></div>

@@ -442,7 +442,7 @@
 				this.getData();
 			},
 			parentHeight: function() {
-				$(window.parent.document).find("iframe").height(($(".t-list-w-charts").height()+200)+'px');
+				$(window.parent.document).find("iframe").height(($(".t-list-w-charts").height())+'px');
 			},
 			search: function() {
 				this.cond.enable = true;

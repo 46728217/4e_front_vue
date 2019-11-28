@@ -353,7 +353,7 @@
 				this.getData();
 			},
 			parentHeight: function() {
-				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
+				$(window.parent.document).find("iframe").height(($(".list").height()+200)+'px');
 			},
 			search: function() {
 				this.cond.enable = true;
