@@ -95,6 +95,7 @@
           width: 100%;
           height: 100%;
           position: absolute;
+          z-index: 9999;
           background-color: rgba(0,0,0,0.5);
           .mask{
               width: 600px;

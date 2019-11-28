@@ -47,7 +47,7 @@
 	</div>
 	<div class="submit" v-if="userManage==1">
 		<div @click="submit">
-			<span>审核完毕</span>
+			<span>提交</span>
 		</div>
 	</div>
 </div>
@@ -286,7 +286,7 @@ export default {
 									background-size: 100% 100%;
 									cursor: pointer;
 								}
-								border-bottom: 1px solid #001e50;
+								border-bottom: 1px solid #3796DA;
 							}
 							.right {
 								height: 60px;
@@ -337,7 +337,7 @@ export default {
 					margin-right: 10px;
 					float: left;
     				margin-top: 3px; 
-					background: url(../../assets/4e/img/checkin.png) no-repeat;
+					background: url(../../assets/4e/img/checkin1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
 					display: inline-block;
@@ -349,7 +349,7 @@ export default {
 					margin-right: 10px;
 					float: left;
     				margin-top: 3px; 
-					background: url(../../assets/4e/img/nocheck.png) no-repeat;
+					background: url(../../assets/4e/img/nocheck1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
 					display: inline-block;
@@ -369,7 +369,7 @@ export default {
 					margin-right: 10px;
 					float: left;
     				margin-top: 3px; 
-					background: url(../../assets/4e/img/checkin.png) no-repeat;
+					background: url(../../assets/4e/img/checkin1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
 					display: inline-block;
@@ -381,7 +381,7 @@ export default {
 					margin-right: 10px;
 					float: left;
     				margin-top: 3px; 
-					background: url(../../assets/4e/img/nocheck.png) no-repeat;
+					background: url(../../assets/4e/img/nocheck1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
 					display: inline-block;

@@ -203,11 +203,13 @@
                         (name.indexOf("pdf")>-1)||
                         (name.indexOf("rar")>-1)||
                         (name.indexOf("zip")>-1))){
-                    alert("请上传图片，word，excel，ppt，pdf，zip，rar格式的文件");
+                    window.$vm.showMsg("请上传图片，word，excel，ppt，pdf，zip，rar格式的文件");
+                    $(".upload_h").val("");//获取文件后清空值
                     return;
                 }
                 if(size>(1024*1024*10*2)){
-                    alert("请上传小于20M的文件");
+                    window.$vm.showMsg("请上传小于20M的文件");
+                    $(".upload_h").val("");//获取文件后清空值
                     return;
                 }
 				$.ajax({

@@ -177,12 +177,14 @@
                 var h = o.clientHeight||o.offsetHeight;
                 $("#main_frame" , parent.parent.document).css('height', (h+150)+"px");
 			});
+
 			$("body").on("change", ".upload_h", function(){
                 var dom=$(this);
 				var form = $(this).parent();
 				var formData = new FormData(form[0]);
                 var size=form.prevObject[0].files[0].size;
                 var name=form.prevObject[0].files[0].name;
+
                     if(!((name.indexOf("jpg")>-1)||
                         (name.indexOf("gif")>-1)||
                         (name.indexOf("png")>-1)||
@@ -196,10 +198,12 @@
                         (name.indexOf("rar")>-1)||
 						(name.indexOf("zip")>-1))){
                     window.$vm.showMsg("请上传图片，word，excel，ppt，pdf，zip，rar格式的文件");
+                        $(".upload_h").val("");//获取文件后清空值
                     return;
                 }
                 if(size>(1024*1024*10*2)){
                     window.$vm.showMsg("请上传小于20M的文件");
+                    $(".upload_h").val("");//获取文件后清空值
                     return;
                 }
 
