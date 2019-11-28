@@ -1,6 +1,6 @@
 <!--分析-->
 <template>
-    <div class="wenjuan_analytics"  id="wenjuan_analytics">
+    <div class="wenjuan_analytics"  id="wenjuan_analytics" style="margin-right: 15px">
         <div class="nav" style="margin-bottom: 20px">
             <div class="back" @click="back()" style="cursor: pointer;margin-bottom: 10px">
                 <img src="../../assets/4e/img/back.png"/>
@@ -57,13 +57,13 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
 				    	<div class="children" style="display: none">
 					    	<div class="wrap">
 							<div class="box top" style="color: #96A3A8">
-								<div class="item">车型</div>
-								<div class="item">车型订单数</div>
+								<div class="item" style="border: 1px solid #dfe4e8;border-bottom: none;border-right: none">车型</div>
+								<div class="item" style="border: 1px solid #dfe4e8;border-bottom: none">车型订单数</div>
 								<!--<div class="item">车型未交付数</div>-->
 						  	</div>
 								<span  v-for="(ii,indexss) in item.carList" >
 									<div class="box bottom">
-								     <div class="item" style="border-bottom: 1px solid #dfe4e8">{{ii.name}}</div>
+								     <div class="item" style="border-bottom: 1px solid #dfe4e8;border-left: 1px solid #dfe4e8;">{{ii.name}}</div>
 								     <div class="item" style="border-bottom: 1px solid #dfe4e8;border-left: 1px solid #dfe4e8;border-right: 1px solid #dfe4e8">{{ii.car_order_count}}</div>
 								     <!--<div class="item" style="border-bottom: 1px solid #dfe4e8">{{ii.car_unfinished_count}}</div>-->
 							        </div>
@@ -93,7 +93,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
             </div>
         </div>
         <div class="echarts-row" style="position: relative">
-            <div class="echarts-title" style="position: absolute;width: 95.5%"><span class="desc">邀约进店率</span><span class="line"></span></div>
+            <div class="echarts-title" style="position: absolute;width: 100%"><span class="desc">邀约进店率</span><span class="line"></span></div>
             <div class="" id="drawEcharts4" :style="{width: '100%', height: '400px'}">
             </div>
         </div>
@@ -617,7 +617,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                                 }
                                 .item:nth-child(2) {
                                     border-left: 1px solid #dfe4e8;
-                                    border-right: 1px solid #dfe4e8;
+                                  //  border-right: 1px solid #dfe4e8;
                                 }
                             }
                             .box.top {
