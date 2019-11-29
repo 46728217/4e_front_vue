@@ -19,7 +19,7 @@
                     <td>{{item.imgsize}}</td>
                     <td>{{item.installposition}}</td>
                     <td>{{item.startdescribe}}</td>
-                    <td>{{item.enddescribe}}</td>
+                    <td>{{item.id}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -56,7 +56,7 @@
     import global_css from '@/assets/4e/css/global.css'
     Vue.use(util_js)
     export default {
-        name: "platform-list",
+        name: "platform-list", //展厅物料列表
         data: function(){
             return {
                 base: base,
@@ -64,13 +64,11 @@
                 pageSize: 20,
                 pageNumber: 1,
                 pageCount: 1,
-                usettype:1
             }
         },
-        props: ["type"],
+        props: ["usettype"],
         created: function() {
-            console.log(this.type+"type");
-            this.usettype=this.type;
+            console.log(this.usettype+"usettype");
               this.getData();
         },
         methods: {
@@ -79,6 +77,7 @@
                 var params = {};
                 params.pageSize = this.pageSize;
                 params.pageNumber = this.pageNumber;
+                params.usettype = this.usettype;
                 this.get(this.base + "/api/fawvwmaterial/detail/list", params, function(data){
                     if (data.code==200) {
                         that.data = data.data;

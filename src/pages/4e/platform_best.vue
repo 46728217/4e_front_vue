@@ -62,7 +62,7 @@
 				<div class="btn close" v-show="isAdd==false">关闭</div>
 			</div>
 		</div>
-		<PlatformList :type="2"></PlatformList>
+		<PlatformList :usettype="'02'"></PlatformList>
 	</div>
 
 </template>
