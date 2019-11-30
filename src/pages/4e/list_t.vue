@@ -2,12 +2,21 @@
 <template>
 <div class="t-list" v-cloak>
 	<div class="cond" v-if="userManage==1 && (user.userName.indexOf('管理')!=-1 || user.roleId==1)">
+		<div class="year">
+			<span>{{'年份'|dz}}</span>
+			<div class="cc" >
+				<select class="year" v-model="cond.year">
+					<option value="0">{{'全部'|dz}}</option>
+					<option v-for="(item,index) in years" v-bind:value="index" v-if="item!=null && index!=0">{{index}}</option>
+				</select>
+			</div>
+		</div>
 		<div class="select">
 			<span>{{'批次'|dz}}</span>
 			<div class="cc" >
 				<select class="batch" v-model="cond.batch">
 					<option value="0">{{'全部'|dz}}</option>
-					<option v-for="(item,index) in materialBatchList" v-bind:value="item.id">{{item.name}}</option>
+					<option v-for="(item,index) in years[cond.year]" v-bind:value="item.id">{{item.name}}</option>
 				</select>
 			</div>
 		</div>
@@ -56,12 +65,21 @@
 		</div>
 	</div>
 	<div class="cond" v-else style="min-width: auto">
+		<div class="year">
+			<span>{{'年份'|dz}}</span>
+			<div class="cc" >
+				<select class="year" v-model="cond.year">
+					<option value="0">{{'全部'|dz}}</option>
+					<option v-for="(item,index) in years" v-bind:value="index" v-if="item!=null && index!=0">{{index}}</option>
+				</select>
+			</div>
+		</div>
 		<div class="select">
 			<span>{{'批次'|dz}}</span>
 			<div class="cc" >
-				<select class="batch" v-model.trim="cond.batch">
+				<select class="batch" v-model="cond.batch">
 					<option value="0">{{'全部'|dz}}</option>
-					<option v-for="(item,index) in materialBatchList" v-bind:value="item.id">{{item.name}}</option>
+					<option v-for="(item,index) in years[cond.year]" v-bind:value="item.id">{{item.name}}</option>
 				</select>
 			</div>
 		</div>
@@ -163,6 +181,7 @@
 				pageNumber: 1,
 				pageCount: 1,
 				cond: {
+					year: '0',
 					batch: '0',
 					dq: '0',
 					xq: '0',
@@ -173,7 +192,7 @@
 				},
 				user: {},
 				userManage: 0,
-				materialBatchList: [],
+				years: [],
 				bigCommunityList: [],
 				smallCommunityList: [],
 				dealerList: [],
@@ -181,16 +200,6 @@
 
 			}
 		},
-        // watch: {
-        //     'cond.batch': {
-        //         handler: function() {
-        //             console.log(this.cond.batch);
-        //
-        //             //this.cond.batch=this.cond.batch.length>8?this.cond.batch.substring(0,8):this.cond.batch;
-        //             //this.materialBatchList=this.materialBatchList[this.cond.batch];
-        //         },
-        //     }
-        // },
 		created: function() {
 			let that = this;
 			this.get(this.base+"/api/user/islogin", null, function(data){
@@ -228,7 +237,19 @@
                 that.dealerList=[];
 				this.get(this.base + "/api/fawvwmaterial/batch/list", {status:0}, function(data){
 					if (data.code==200) {
-						that.materialBatchList = data.data;
+						var years = [];
+						for(var key in data.data) {
+							var tmp = data.data[key];
+							if (years[0]==null) {
+								years[0] = [];
+							}
+							if (years[tmp.createAtStr]==null) {
+								years[tmp.createAtStr] = [];
+							}
+							years[tmp.createAtStr].push(tmp);
+							years[0].push(tmp);
+						}
+						that.years = years;
 						if (data.data.length>0) {
 							if (that.userManage==1) {
 								that.cond.batch = data.data[0].id.toString();
@@ -386,6 +407,27 @@
 			text-align: center;
 			font-size: 14px;
 			font-family: 'font-hy-55';
+			.year {
+				display: inline-block;
+				width: 124px;
+			    text-align: left;
+			    margin-right: 10px;
+				.cc {
+					width: 70%;
+					display: inline-block;
+					border-bottom: 1px solid #2e3e4d;
+					select {
+						border: none;
+						font-size: 14px;
+						width: 100%;
+						text-indent: 10px;
+					}
+					select:focus {
+						outline: none;
+					}
+				}
+				
+			}
 			.select {
 				display: inline-block;
 				width: 200px;
