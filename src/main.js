@@ -100,6 +100,25 @@ Vue.filter('de', function (value, length) {
   }
   return value
 })
+//全局过滤器 字符串超出指定的长度截取添加省略号
+Vue.filter('sub2', function (str, len) {
+    var strlen = 0;
+    var restr = "";
+    for (var i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 128) {
+            strlen += 2;
+        }
+        else {
+            strlen++;
+        }
+        restr += str.charAt(i);
+        if (strlen >= len) {
+            return restr+"...";
+        }
+    }
+    return restr;
+})
+
 
 //全局过滤器 保留两位小数
 Vue.filter('addZero',function(value){

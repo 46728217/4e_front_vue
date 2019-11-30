@@ -33,6 +33,8 @@
 		</div>
 		<div class="frame_main">
 			<iframe id="main_frame" :src="main_url" scrolling="no"  style="width: 100%;" frameborder="0"></iframe>
+			<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>
+
 		</div>
 	</div>
 </template>
@@ -107,7 +109,7 @@
                     return 0;
                 });
                 this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode, this.submenu[this.current_sub_menu_id].pageUrl);
-                this.title('一汽-大众 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
+                this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
             },
             changeLeftMenu: function(id) {
                 this.menu[id].active = 1;

@@ -126,7 +126,7 @@
 				this.getData();
 			},
 			parentHeight: function() {
-				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
+				$(window.parent.document).find("iframe").height(($(".list").height()+100)+'px');
 			},
 			sort: function() {
 				if (this.cond.sort=='0') {

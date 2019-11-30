@@ -9,6 +9,7 @@
 	</div>
 
 	<div class="wenjuan" id="wenjuan_list">
+		<div v-if="qaUser.verifyStatus==2"  style="font-weight: bold;color: red;font-size: 12px;padding-left: 5px;margin-bottom: 10px">驳回理由:{{qaUser.reason}}</div>
 		<div class="title"><span>{{info.title}}</span><span  v-if="qaUser.verifyStatus==2" style="font-weight: bold;color: red;font-size: 12px;padding-left: 5px">(已驳回)</span></div>
 		<div class="list">
 			<ul>
@@ -72,7 +73,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(上传文件题)</span>
+								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)</span>
 							</div>
 							<div class="contents">
 								<form enctype="multipart/form-data" method="post" v-if="userManage==1">
@@ -91,8 +92,8 @@
 									<div>
 									<span>上传文件类型：</span>
 									<span class="filetype">{{item.answer.answerTextJson.type}}</span>
-									<span class="download"  v-if="userManage==1">
-										<a :href="item.answer.answerTextJson.path" target=_blank>下载</a>
+									<span class="download">
+										<a   :href="item.answer.answerTextJson.path" target="_blank">下载</a>
 										<a class="close" style="background: none !important;" v-if="userManage==1">删除</a>
 									</span>
 									</div>
@@ -107,7 +108,7 @@
 		</div>
 	</div>
 	<div class="submit" v-if="userManage==1">
-		<div @click="submit">
+		<div @click="submit" style="background-color: #001e50;color: white;">
 			<span>重新提交</span>
 		</div>
 	</div>
@@ -199,13 +200,16 @@
                         (name.indexOf("xls")>-1)||
                         (name.indexOf("xlsx")>-1)||
                         (name.indexOf("pptx")>-1)||
+                        (name.indexOf("pdf")>-1)||
                         (name.indexOf("rar")>-1)||
                         (name.indexOf("zip")>-1))){
-                    alert("请上传图片，word，excel，ppt，zip，rar格式的文件");
+                    window.$vm.showMsg("请上传图片，word，excel，ppt，pdf，zip，rar格式的文件");
+                    $(".upload_h").val("");//获取文件后清空值
                     return;
                 }
                 if(size>(1024*1024*10*2)){
-                    alert("请上传小于20M的文件");
+                    window.$vm.showMsg("请上传小于20M的文件");
+                    $(".upload_h").val("");//获取文件后清空值
                     return;
                 }
 				$.ajax({

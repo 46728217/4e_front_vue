@@ -354,7 +354,7 @@ export default {
 	},
 	methods : {
 		init: function(){
-			this.title("一汽-大众");
+			this.title("一汽-大众营销支持中心");
 			ga('send', 'pageview');
 		},
 		search: function() {

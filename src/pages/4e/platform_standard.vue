@@ -62,14 +62,17 @@
 				<div class="btn close" v-show="isAdd==false">关闭</div>
 			</div>
 		</div>
+		<PlatformList :usettype="3"></PlatformList>
 	</div>
 
 </template>
 
 <script>
 	import Vue from 'vue'
-	var base = localStorage.getItem("base")
-	import util_js from '@/assets/4e/js/util.js'
+	var base = localStorage.getItem("base");
+    import PlatformList from './PlatformList'
+
+    import util_js from '@/assets/4e/js/util.js'
 	import font_css from '@/assets/4e/css/font.css'
 	import global_css from '@/assets/4e/css/global.css'
 	Vue.use(util_js)
@@ -87,6 +90,9 @@
 				userManage: 0
 			}
 		},
+        components:{
+            PlatformList:PlatformList,
+        },
 		created: function() {
 			var that = this;
 			this.get(this.base+"/api/user/islogin", null, function(data){
@@ -102,7 +108,7 @@
 			}, false);
 			this.getMaterialTypeList();
 			this.getData();
-
+            setInterval(function(){that.parentHeight();}, 1000);
 			$("body").on("click", ".addbtn", function(){
 				var point = document.createElement('img');
 				point.src = require("../../assets/4e/img/pointer.png");
@@ -292,7 +298,7 @@
 				});
 			},
 			parentHeight: function() {
-				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
+				$(window.parent.document).find("iframe").height(($(".platform-standard").height()+100)+'px');
 			}
 		}
 	}
@@ -320,7 +326,7 @@
 		}
 		.background {
 			width: 100%;
-			height: 800px;
+			/*height: 800px;*/
 			.platform {
 				background: url(/static/4e/platform_2.jpg) no-repeat;
 			    background-size: contain;

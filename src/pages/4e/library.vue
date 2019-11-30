@@ -36,6 +36,7 @@
 		</div>
 		<div class="frame_main">
 			<iframe id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+			<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>
 		</div>
 		<div class="block">
 			<div class="narrow"></div>
@@ -82,7 +83,7 @@ export default {
 	},
 	methods: {
 		init: function() {
-			this.title("一汽-大众");
+			this.title("一汽-大众营销支持中心");
 			this.submenu = this.menu[this.current_left_menu_id].children;
 			var tmp = [];
 			var active = 1;

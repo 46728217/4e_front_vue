@@ -31,9 +31,16 @@
 		<div class="frame_split">
 			<img src="../../assets/jieda/img/frame_split.png" />
 		</div>
-		<div class="frame_main">
-			<iframe id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+		<div class="frame_main" >
+			<iframe  id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+
+			<!--<iframe v-if="current_left_menu_id!=612" id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>-->
+			<!--<div class="rankling" v-else>-->
+				<!--<RankingList :current_sub_menu_id="current_sub_menu_id"></RankingList>-->
+				<!--<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>-->
+			<!--</div>-->
 		</div>
+
 	</div>
 </template>
 
@@ -42,6 +49,7 @@
     import global_css from '@/assets/4e/css/global.css'
     import Header from './header_s.vue';
     import Footer from './footer.vue';
+    import RankingList from './RankingList'
     var base = localStorage.getItem("base")
     export default {
         data: function(){
@@ -61,7 +69,8 @@
         },
         components : {
             "app-header": Header,
-            "app-footer": Footer
+            "app-footer": Footer,
+            'RankingList':RankingList
         },
         methods: {
             init: function() {
@@ -107,7 +116,7 @@
                     return 0;
                 });
                 this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode, this.submenu[this.current_sub_menu_id].pageUrl);
-                this.title('一汽-大众 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
+                this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
             },
             changeLeftMenu: function(id) {
                 this.menu[id].active = 1;
@@ -122,8 +131,10 @@
                     this.submenu[this.current_sub_menu_id].active = 0;
                     this.current_sub_menu_id = id;
                 }
-                var cat_id = this.getNumber(code);
-                //this.main_url = "/list?second_cat_id="+cat_id;
+
+                // if(this.current_left_menu_id!=612){//非排行榜
+                 //    this.main_url = this.base + pageUrl;
+				// }
                 this.main_url = this.base + pageUrl;
             }
         },

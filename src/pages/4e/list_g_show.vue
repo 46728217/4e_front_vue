@@ -100,10 +100,12 @@ export default {
             var type=form.prevObject[0].files[0].type;
             if(!(type.indexOf("image")>-1)){
                 that.showMsg("请上传jpg,gif,png,jpeg格式图片");
+                $(".upload_h").val("");//获取文件后清空值
                 return;
             }
             if(size>(1024*1024*10)){
                 that.showMsg("请上传小于10M的图片");
+                $(".upload_h").val("");//获取文件后清空值
                 return;
             }
 			$.ajax({

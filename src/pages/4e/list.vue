@@ -45,7 +45,7 @@
 			<ul>
 				<li v-for="(item,index) in data.materials">
 					<div class="img" :style="{backgroundImage: 'url(\'' + item.imageUrlOf310x198 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)"></div>
-					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{(item.name.length>35?item.name.substring(0,35)+'...':item.name)}}</div>
+					<div class="name" @click="go2detail(item.id, item.secondCatId, item.thirdCatId, item.fourCatId)">{{item.name|sub2(40)}}</div>
 					<div class="txt"><img src="../../assets/4e/img/file_size.png"/><span>{{item.fileSizeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_time.png"/><span>{{item.addTimeStr}}</span></div>
 					<div class="txt"><img src="../../assets/4e/img/file_down.png"/><span>{{item.downloadNum}}{{'次'|dz}}</span></div>
@@ -163,8 +163,8 @@
 						if (cat_id>0) {
 							that.get(that.base+"/api/cate/change?pathId="+cat_id, null, function(data){
 								if (data.code==200) {
-									$(window.parent.document).find("title").html("一汽-大众 "+data.msg);
-									$("title").html("一汽-大众 "+data.msg)
+									$(window.parent.document).find("title").html("一汽-大众营销支持中心 "+data.msg);
+									$("title").html("一汽-大众营销支持中心 "+data.msg)
 									ga('send', 'pageview');
 								}
 							});
@@ -218,7 +218,7 @@
 				}
 			},
 			parentHeight: function() {
-				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
+				$(window.parent.document).find("iframe").height(($(".list").height()+200)+'px');
 			},
 			changeThirdMenu: function(id) {
 				if (this.inner==true) {
