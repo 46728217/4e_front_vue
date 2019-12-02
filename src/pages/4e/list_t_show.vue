@@ -56,7 +56,7 @@
 		</ul>
 	</div>
 	<div class="submit" v-if="userManage==1">
-		<div @click="submit">
+		<div @click="submit" style="background-color: #001e50;color: white">
 			<span>上传提交</span>
 		</div>
 	</div>

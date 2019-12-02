@@ -49,8 +49,8 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
 						<li class="td"><span>{{item.execute_count }}</span></li>
 						<li class="td"><span>{{item.invite_count  }}</span></li>
 						<li class="td"><span>{{item.coming_count}}</span></li>
-						<li class="td"><span>{{(item.execute_count==0?0:item.invite_count/item.execute_count*100)|addZero}}%</span></li>
-						<li class="td"><span>{{(item.execute_count==0?0:item.coming_count/item.execute_count*100)|addZero }}%</span></li>
+						<li class="td"><span>{{(item.execute_count==0?0:item.invite_count/item.execute_count)|addZero}}</span></li>
+						<li class="td"><span>{{(item.execute_count==0?0:item.coming_count/item.execute_count)|addZero }}</span></li>
                         <li class="td"><span style="color: #00B1F1">{{item.order_count }}</span></li>
 
 					  </ul>

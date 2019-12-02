@@ -47,7 +47,7 @@
 		</ul>
 	</div>
 	<div class="submit">
-		<div @click="submit">
+		<div @click="submit" style="background-color: #001e50;color: white">
 			<span>上传提交</span>
 		</div>
 	</div>
