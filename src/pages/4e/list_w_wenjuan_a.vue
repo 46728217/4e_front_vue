@@ -215,7 +215,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                     if(data[i].dealer_count==0){
                         seriesData_execute_count.push("0");
                     }else{
-                        seriesData_execute_count.push((data[i].execute_count/(data[i].dealer_total||1)).toFixed(2));//少个dealer_total字段
+                        seriesData_execute_count.push((data[i].execute_count/(data[i].dealer_total||1)*100).toFixed(2));//少个dealer_total字段
                     }
                 }
                 // 基于准备好的dom，初始化echarts实例
