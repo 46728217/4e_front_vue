@@ -11,51 +11,62 @@
                             <div class="d2">计算逻辑</div>
                             <div class="d3">数据来源</div>
                         </li>
+                     <li class="body">
+                         <div class="d0">1</div>
+                         <div class="d1">经销商量</div>
+                         <div class="d2">经销商量总和</div>
+                         <div class="d3">经销商提报</div>
+                     </li>
                         <li class="body">
-                            <div class="d0">1</div>
+                            <div class="d0">2</div>
                             <div class="d1">执行加数</div>
                             <div class="d2">各家总和</div>
                             <div class="d3">经销商提报</div>
                         </li>
-
                      <li class="body">
-                         <div class="d0">2</div>
+                         <div class="d0">3</div>
+                         <div class="d1">未执行加数</div>
+                         <div class="d2">未执行总合</div>
+                         <div class="d3">经销商提报</div>
+                     </li>
+                     <li class="body">
+                         <div class="d0">4</div>
                          <div class="d1">执行率</div>
                          <div class="d2">执行家数/所辖经销商总数</div>
                          <div class="d3">计算</div>
                      </li>
                      <li class="body">
-                         <div class="d0">3</div>
+                         <div class="d0">5</div>
                          <div class="d1">邀约量</div>
                          <div class="d2">各家总和</div>
                          <div class="d3">经销商提报</div>
                      </li>
                      <li class="body">
-                         <div class="d0">4</div>
+                         <div class="d0">6</div>
                          <div class="d1">店均邀约量</div>
                          <div class="d2">邀约量/所辖经销商执行家数</div>
                          <div class="d3">计算</div>
                      </li>
                      <li class="body">
-                         <div class="d0">5</div>
+                         <div class="d0">7</div>
                          <div class="d1">到店量</div>
                          <div class="d2">各家总和</div>
                          <div class="d3">经销商提报</div>
                      </li>
                      <li class="body">
-                         <div class="d0">6</div>
+                         <div class="d0">8</div>
                          <div class="d1">店均到店量</div>
                          <div class="d2">到店量/所辖经销商执行家数</div>
                          <div class="d3">计算</div>
                      </li>
                      <li class="body">
-                         <div class="d0">7</div>
+                         <div class="d0">9</div>
                          <div class="d1">到店率</div>
                          <div class="d2">到店量/邀约量</div>
                          <div class="d3">计算</div>
                      </li>
                      <li class="body">
-                         <div class="d0">8</div>
+                         <div class="d0">10</div>
                          <div class="d1">订单量</div>
                          <div class="d2">各家订单量累计（分车型,整体）</div>
                          <div class="d3">经销商提报</div>
@@ -67,7 +78,7 @@
                          <!--<div class="d3">经销商提报</div>-->
                      <!--</li>-->
                      <li class="body">
-                         <div class="d0">9</div>
+                         <div class="d0">11</div>
                          <div class="d1">数据环比与同比</div>
                          <div class="d2">上述所有指标预留进行环比及同比的计算逻辑</div>
                          <div class="d3" style="opacity: 0;">0</div>
@@ -99,7 +110,7 @@
           background-color: rgba(0,0,0,0.5);
           .mask{
               width: 600px;
-              height: 430px;
+              height: 480px;
               background-color:#ffffff ;
               border-radius: 2px;
               position: absolute;

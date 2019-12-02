@@ -18,11 +18,17 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 <li class="head">
                     <ul class="tr">
                         <li class="th">
-                            <span style="padding-left: 15px">大区</span>
+                            <span style="">大区</span>
                             <!--<img style="vertical-align: middle" src="../../assets/4e/img/wenjuan-table-arrow.png">-->
                         </li>
                         <li class="th">
+                            <span>经销商量</span>
+                        </li>
+                        <li class="th">
                             <span>执行家数</span>
+                        </li>
+                        <li class="th">
+                            <span>未执行家数</span>
                         </li>
                         <li class="th">
                             <span style="padding-left: 15px">邀约量</span>
@@ -46,23 +52,24 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
 					<span v-for="(item,index) in tableDataList">
 					  <ul class="tr onul onulclose">
 						<li class="td li1"><img class="icon " src="../../assets/4e/img/wenjuan-table-open.png"></img><span>{{item.name}}</span></li>
-						<li class="td"><span>{{item.execute_count }}</span></li>
+						<li class="td"><span>{{item.dealer_total }}</span></li><!--大区经销商量-->
+                        <li class="td"><span>{{item.execute_count }}</span></li>
+                        <li class="td"><span>{{item.dealer_count-item.execute_count }}</span></li>
 						<li class="td"><span>{{item.invite_count  }}</span></li>
 						<li class="td"><span>{{item.coming_count}}</span></li>
 						<li class="td"><span>{{(item.execute_count==0?0:item.invite_count/item.execute_count)|addZero}}</span></li>
 						<li class="td"><span>{{(item.execute_count==0?0:item.coming_count/item.execute_count)|addZero }}</span></li>
                         <li class="td"><span style="color: #00B1F1">{{item.order_count }}</span></li>
-
 					  </ul>
 				    	<div class="children" style="display: none">
 					    	<div class="wrap">
-							<div class="box top" style="color: #96A3A8">
+							<div class="box top" style="color: #96A3A8;padding: 0 !important;">
 								<div class="item" style="border: 1px solid #dfe4e8;border-bottom: none;border-right: none">车型</div>
 								<div class="item" style="border: 1px solid #dfe4e8;border-bottom: none">车型订单数</div>
 								<!--<div class="item">车型未交付数</div>-->
 						  	</div>
 								<span  v-for="(ii,indexss) in item.carList" >
-									<div class="box bottom">
+									<div class="box bottom" style=";padding: 0 !important;">
 								     <div class="item" style="border-bottom: 1px solid #dfe4e8;border-left: 1px solid #dfe4e8;">{{ii.name}}</div>
 								     <div class="item" style="border-bottom: 1px solid #dfe4e8;border-left: 1px solid #dfe4e8;border-right: 1px solid #dfe4e8">{{ii.car_order_count}}</div>
 								     <!--<div class="item" style="border-bottom: 1px solid #dfe4e8">{{ii.car_unfinished_count}}</div>-->
@@ -557,7 +564,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                         list-style: none;
                         border-bottom: 1px solid #dfe4e8;
                         .th {
-                            width: 13.3%;
+                            width: 10%;
                             height: 50px;
                             line-height: 50px;
                             display: inline-block;
@@ -576,7 +583,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                         border-bottom: 1px solid #dfe4e8;
                         .td {
                             position: relative;
-                            width: 13.3%;
+                            width: 10%;
                             height: 40px;
                             line-height: 40px;
                             display: inline-block;
