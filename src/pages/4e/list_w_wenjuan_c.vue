@@ -75,6 +75,7 @@
 								<span>{{item.title}}</span>
 								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)</span>
 							</div>
+							<div class="progress" style="display: none"><span class="line"></span><span class="nums">0</span>%</div>
 							<div class="contents">
 								<form enctype="multipart/form-data" method="post" v-if="userManage==1">
 									<input name="file" type="file" class="upload_h"/>
@@ -184,13 +185,27 @@
 				item.removeClass("ok");
 				item.removeAttr("answer");
 				item.find(".preview").hide();
+                $(this).parent().parent().parent().parent().siblings(".progress").hide();
+                $(this).parent().parent().parent().parent().siblings(".progress").find(".line").css("width",0);
+                $(this).parent().parent().parent().parent().siblings(".progress").find(".nums").html(0);
 			});
 			$("body").on("change", ".upload_h", function(){
 				var form = $(this).parent();
 				var formData = new FormData(form[0]);
                 var size=form.prevObject[0].files[0].size;
                 var name=form.prevObject[0].files[0].name;
-
+                var names=name.split(".")[0];
+                var reg = /^[A-Za-z0-9_\u4e00-\u9fa5]+$/gi;
+                if (!reg.test(names)) {
+                    window.$vm.showMsg("请修改文件名称（只能是汉字，字母，数字，下划线组合的名称）");
+                    $(".upload_h").val("");//获取文件后清空值
+                    return;
+                }
+                if(names.length>45){
+                    window.$vm.showMsg("文件名称过长，请截取到45位以内");
+                    $(".upload_h").val("");//获取文件后清空值
+                    return;
+                }
                 if(!((name.indexOf("jpg")>-1)||
                         (name.indexOf("gif")>-1)||
                         (name.indexOf("png")>-1)||
@@ -212,6 +227,9 @@
                     $(".upload_h").val("");//获取文件后清空值
                     return;
                 }
+                form.parent().siblings(".progress").show();
+                form.parent().siblings(".progress").find(".line").css("width",0);
+                form.parent().siblings(".progress").find(".nums").html(0);
 				$.ajax({
 	                type: 'post',
 	                url: that.base+"/api/image/upload",
@@ -219,7 +237,28 @@
 	                cache: false,
 	                processData: false,
 	                contentType: false,
+                    xhr: function () { //获取ajaxSettings中的xhr对象，为它的upload属性绑定progress事件的处理函数
+                        var myXhr = $.ajaxSettings.xhr();
+                        myXhr.upload.onload = function (){
+                          //  alert('finish downloading')
+                        }
+                        myXhr.upload.onprogress = function (ev) {
+                            if(ev.lengthComputable) {
+                                var percent = ((100 * ev.loaded/ev.total).toString().split(".")[0]);
+                                 var random= Math.floor(Math.random()*5+1);
+                                var end=  percent-1;
+                                console.log(percent,ev);
+                                form.parent().siblings(".progress").find(".line").css("width",end+"px");
+                                form.parent().siblings(".progress").find(".nums").html(end);
+
+                            }
+                        }
+                       return myXhr; //xhr对象返回给jQuery使用
+                    },
 	            	success: function (data) {
+	                    if(data){
+                            form.parent().siblings(".progress").find(".nums").html(100);
+						}
 	            		var info = form.next(".uploadinfo");
 	            		info.show();
 	            		info.find(".filename").text(data.data.name);
@@ -238,9 +277,10 @@
 	            		}
 	            	},
 	            	error: function () {
-	                	util.showMsg("上传失败");
+                        window.$vm.showMsg("上传失败");
 	            	}
 	            });
+
 			});
 			$("body").on("click", '.nav div', function(){
 				history.go(-1);
@@ -390,6 +430,7 @@
 						border-top: 1px solid #dcdddd;
 						.item {
 							.cccc {
+								position: relative;
 								.des {
 									height: 30px;
 									width: 80%;
@@ -407,6 +448,21 @@
 										font-weight: bold;
 									}
 								}
+								.progress{
+									position: absolute;
+									left: 120px;
+									top: 50px;
+									color: #000;
+									.line{
+										display: inline-block;
+										height: 8px;
+										background-color: #00437a;
+									}
+									.nums{
+										display: inline-block;
+
+									}
+								}
 								.preview {
 									width: 200px;
 								    height: 158px;
@@ -418,6 +474,8 @@
 									margin-left: 20px;
 									width: 600px;
 									display: inline-block;
+									position: relative;
+
 									textarea {
 										width: 100%;
 										height: 100px;
@@ -448,7 +506,7 @@
 									}
 									.uploadinfo {
 									    height: 59px;
-									    width: 505px;
+									    width: 700px;
 									    margin-top: 30px;
 									    color: #28426c;
 									    div {
