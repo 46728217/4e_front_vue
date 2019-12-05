@@ -15,7 +15,7 @@ export default {
     		if(parent.$vm) {
     			top = parent.$vm;
     		}
-            top.$layer.msg(msg, {time: 1});
+            top.$layer.msg(msg, {time: 3});
         }
         Vue.prototype.$$confirm = function (msg,fun) {
     		var that = this;
