@@ -187,7 +187,7 @@
 				}
 			},
 			goback: function(){
-				window.location = "/list_o?second_cat_id="+this.second_cat_id;
+				window.location = "/list_o?second_cat_id="+$(window.parent.document).find("iframe").attr("src").replace("/list_o?second_cat_id=","");
 			},
 			parentHeight: function() {
 				$(window.parent.document).find("iframe").height(($(".list").height()+400)+'px');
