@@ -13,7 +13,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(item,index) in data.list">
+                <tr v-for="(item,index) in list">
                     <td>{{item.typename}}</td>
                     <td>{{item.materialname}}</td>
                     <td>{{item.imgsize}}</td>
@@ -51,6 +51,7 @@
 <script>
     import Vue from 'vue'
     var base = localStorage.getItem("base")
+    import {BASE} from '@/assets/4e/js/common.js'
     import util_js from '@/assets/4e/js/util.js'
     import font_css from '@/assets/4e/css/font.css'
     import global_css from '@/assets/4e/css/global.css'
@@ -61,6 +62,7 @@
             return {
                 base: base,
                 data:[],
+                list:[],
                 pageSize: 20,
                 pageNumber: 1,
                 pageCount: 1,
@@ -80,7 +82,11 @@
                 params.usettype = this.usettype;
                 this.get(this.base + "/api/fawvwmaterial/detail/list", params, function(data){
                     if (data.code==200) {
-                        that.data = data.data;
+                        for(var i=0;i<data.data.list.length;i++){
+                            data.data.list[i].index=i;
+                        }
+                        data.data.list.sort(BASE.compare('index'));
+                        that.list=data.data.list;
                        that.pageCount = data.data.pagination.totalPages;
                        that.pageNumber = data.data.pagination.pageNumber;
                         that.$nextTick(function(){
@@ -131,6 +137,7 @@
 
 <style scoped lang="scss">
 .platform-list{
+    margin-top: 20px;
     .list {
         padding-bottom: 30px;
         width: 90%;

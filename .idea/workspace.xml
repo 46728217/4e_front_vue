@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="85cc2ac5-edb0-4aa1-aad2-fb345644cbb3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/src/assets/4e/js/lip-zoom-mark-jquery.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/4e/js/pointer.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
+      <change beforePath="$PROJECT_DIR$/src/assets/4e/js/common.js" afterPath="$PROJECT_DIR$/src/assets/4e/js/common.js" />
       <change beforePath="$PROJECT_DIR$/src/pages/4e/PlatformList.vue" afterPath="$PROJECT_DIR$/src/pages/4e/PlatformList.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/RankingList.vue" afterPath="$PROJECT_DIR$/src/pages/4e/RankingList.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/platform_best.vue" afterPath="$PROJECT_DIR$/src/pages/4e/platform_best.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/platform_notbest.vue" afterPath="$PROJECT_DIR$/src/pages/4e/platform_notbest.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/platform_standard.vue" afterPath="$PROJECT_DIR$/src/pages/4e/platform_standard.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/platform_standard1.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/shop.vue" afterPath="$PROJECT_DIR$/src/pages/4e/shop.vue" />
-      <change beforePath="$PROJECT_DIR$/src/pages/4e/study.vue" afterPath="$PROJECT_DIR$/src/pages/4e/study.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,8 +27,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="19" column="2" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+            <state relative-caret-position="510">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#140#161#0" expanded="true" />
@@ -93,8 +83,8 @@
       <file leaf-file-name="RankingList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/4e/RankingList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="85" column="72" lean-forward="false" selection-start-line="85" selection-start-column="72" selection-end-line="85" selection-end-column="72" />
+            <state relative-caret-position="750">
+              <caret line="84" column="45" lean-forward="false" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -116,8 +106,30 @@
       <file leaf-file-name="PlatformList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/4e/PlatformList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1430">
-              <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="25" />
+            <state relative-caret-position="2370">
+              <caret line="139" column="21" lean-forward="false" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
+              <folding>
+                <element signature="e#2162#2207#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/4e/js/util.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-540">
+              <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/4e/js/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -163,8 +175,8 @@
       <find>getCommunityList</find>
       <find>background</find>
       <find>fawvwmaterial/detail/list</find>
-      <find>pageCount</find>
       <find>ccmaterial</find>
+      <find>pageCount</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/pages/4e/header.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/header_s.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/wenjuanDialog.vue" />
-        <option value="$PROJECT_DIR$/src/assets/4e/js/common.js" />
         <option value="$PROJECT_DIR$/src/pages/4e/index.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/preview.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue" />
@@ -219,9 +230,10 @@
         <option value="$PROJECT_DIR$/src/pages/4e/platform_standard1.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/platform_notbest1.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/platform_best1.vue" />
-        <option value="$PROJECT_DIR$/src/pages/4e/RankingList.vue" />
-        <option value="$PROJECT_DIR$/src/pages/4e/PlatformList.vue" />
         <option value="$PROJECT_DIR$/src/pages/4e/shop.vue" />
+        <option value="$PROJECT_DIR$/src/pages/4e/RankingList.vue" />
+        <option value="$PROJECT_DIR$/src/assets/4e/js/common.js" />
+        <option value="$PROJECT_DIR$/src/pages/4e/PlatformList.vue" />
         <option value="$PROJECT_DIR$/src/main.js" />
       </list>
     </option>
@@ -413,12 +425,12 @@
       <workItem from="1575380409773" duration="181000" />
       <workItem from="1575425308865" duration="15419000" />
       <workItem from="1575511526329" duration="15842000" />
-      <workItem from="1575597692172" duration="16102000" />
+      <workItem from="1575597692172" duration="20061000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329207000" />
+    <option name="totallyTimeSpent" value="333166000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2869" y="-11" width="2902" height="1582" extended-state="6" />
@@ -606,20 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/4e/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1437">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/4e/js/util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/list_w_wenjuan_w.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7830">
@@ -756,14 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/4e/PlatformList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1430">
-          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/platform_standard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -782,14 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/4e/platform_notbest.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3630">
-          <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/shop.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
@@ -798,18 +780,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/platform_notbest.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3630">
+          <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/4e/RankingList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="85" column="72" lean-forward="false" selection-start-line="85" selection-start-column="72" selection-end-line="85" selection-end-column="72" />
+        <state relative-caret-position="750">
+          <caret line="84" column="45" lean-forward="false" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/4e/js/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/4e/PlatformList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2370">
+          <caret line="139" column="21" lean-forward="false" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
+          <folding>
+            <element signature="e#2162#2207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/4e/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="19" column="2" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+        <state relative-caret-position="510">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#140#161#0" expanded="true" />
