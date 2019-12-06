@@ -24,27 +24,27 @@
                 </tbody>
             </table>
         </div>
-        <div class="paging" v-if="data.pagination">
-            <span class="total">{{'共'|dz}} {{data.pagination.totalPages}} {{'页'|dz}} - {{'共'|dz}}{{data.pagination.totalCount}} {{'条'|dz}} {{'数据'|dz}}</span>
-            <ul class="numbers">
-                <li class="li-first-last" @click="go2page(0)">首页</li>
-                <li><div class="prev" @click="go2prev"></div></li>
-                <li v-for="(item,index) in data.pagination.slider" :class="item==data.pagination.pageNumber?'current':''" @click="go2page(item)">
-                    <div><span>{{item}}</span></div>
-                </li>
-                <li><div class="next" @click="go2next"></div></li>
-                <li  class="li-first-last" @click="go2page(data.pagination.totalPages)">末页</li>
+        <!--<div class="paging" v-if="data.pagination">-->
+            <!--<span class="total">{{'共'|dz}} {{data.pagination.totalPages}} {{'页'|dz}} - {{'共'|dz}}{{data.pagination.totalCount}} {{'条'|dz}} {{'数据'|dz}}</span>-->
+            <!--<ul class="numbers">-->
+                <!--<li class="li-first-last" @click="go2page(0)">首页</li>-->
+                <!--<li><div class="prev" @click="go2prev"></div></li>-->
+                <!--<li v-for="(item,index) in data.pagination.slider" :class="item==data.pagination.pageNumber?'current':''" @click="go2page(item)">-->
+                    <!--<div><span>{{item}}</span></div>-->
+                <!--</li>-->
+                <!--<li><div class="next" @click="go2next"></div></li>-->
+                <!--<li  class="li-first-last" @click="go2page(data.pagination.totalPages)">末页</li>-->
 
-            </ul>
-            <span class="limit">{{'每页显示'|dz}}
-		      <select v-model.trim="pageSize">
-			    <option selected value="20">20{{'条'|dz}}</option>
-			    <option value="40">40{{'条'|dz}}</option>
-			    <option value="60">60{{'条'|dz}}</option>
-		      </select>
-	    </span>
-            <div class="platform-list-submit" @click="go2pagesize"><span>{{'确认'|dz}}</span></div>
-        </div>
+            <!--</ul>-->
+            <!--<span class="limit">{{'每页显示'|dz}}-->
+		      <!--<select v-model.trim="pageSize">-->
+			    <!--<option selected value="20">20{{'条'|dz}}</option>-->
+			    <!--<option value="40">40{{'条'|dz}}</option>-->
+			    <!--<option value="60">60{{'条'|dz}}</option>-->
+		      <!--</select>-->
+	    <!--</span>-->
+            <!--<div class="platform-list-submit" @click="go2pagesize"><span>{{'确认'|dz}}</span></div>-->
+        <!--</div>-->
     </div>
 </template>
 
@@ -70,7 +70,7 @@
         },
         props: ["usettype"],
         created: function() {
-            console.log(this.usettype+"usettype");
+            var that=this;
               this.getData();
         },
         methods: {
@@ -87,11 +87,8 @@
                         }
                         data.data.list.sort(BASE.compare('index'));
                         that.list=data.data.list;
-                       that.pageCount = data.data.pagination.totalPages;
-                       that.pageNumber = data.data.pagination.pageNumber;
-                        that.$nextTick(function(){
-                            that.parentHeight();
-                        })
+                     //  that.pageCount = data.data.pagination.totalPages;
+                     //  that.pageNumber = data.data.pagination.pageNumber;
                     }
                 });
             },
@@ -115,9 +112,6 @@
             },
             go2pagesize: function() {
                 this.getData();
-            },
-            parentHeight: function() {
-                $(window.parent.document).find("iframe").height(($(".list").height()+200)+'px');
             },
             search: function() {
                 this.cond.enable = true;
