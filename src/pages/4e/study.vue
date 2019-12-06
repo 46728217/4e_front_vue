@@ -32,13 +32,13 @@
 			<img src="../../assets/jieda/img/frame_split.png" />
 		</div>
 		<div class="frame_main" >
-			<iframe  id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+			<!--<iframe  id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>-->
 
-			<!--<iframe v-if="current_left_menu_id!=612" id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>-->
-			<!--<div class="rankling" v-else>-->
-				<!--<RankingList :current_sub_menu_id="current_sub_menu_id"></RankingList>-->
-				<!--<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>-->
-			<!--</div>-->
+			<iframe v-if="current_left_menu_id!=612" id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+			<div class="rankling" v-else>
+				<RankingList :current_sub_menu_id="current_sub_menu_id"></RankingList>
+				<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>
+			</div>
 		</div>
 
 	</div>
@@ -132,9 +132,9 @@
                     this.current_sub_menu_id = id;
                 }
 
-                // if(this.current_left_menu_id!=612){//非排行榜
-                 //    this.main_url = this.base + pageUrl;
-				// }
+                if(this.current_left_menu_id!=612){//非排行榜
+                    this.main_url = this.base + pageUrl;
+				}
                 this.main_url = this.base + pageUrl;
             }
         },

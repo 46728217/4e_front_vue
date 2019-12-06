@@ -75,15 +75,14 @@
             getData(){
                 let that = this;
                 var params = {};
-                params.pageSize = this.pageSize;
-                params.pageNumber = this.pageNumber;
+                // params.pageSize = this.pageSize;
+                // params.pageNumber = this.pageNumber;
                 params.usettype = this.usettype;
                 this.get(this.base + "/api/fawvwmaterial/detail/list", params, function(data){
                     if (data.code==200) {
                         that.data = data.data;
-
-                        that.pageCount = data.data.pagination.totalPages;
-                        that.pageNumber = data.data.pagination.pageNumber;
+                       that.pageCount = data.data.pagination.totalPages;
+                       that.pageNumber = data.data.pagination.pageNumber;
                         that.$nextTick(function(){
                             that.parentHeight();
                         })

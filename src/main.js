@@ -218,10 +218,12 @@ routes.push(adaptePath('/material_detail', 'material_detail', 'material_detail',
 
 
 routes.push(adaptePath('/platform_standard', 'platform_standard', 'platform_standard', true))
-
 routes.push(adaptePath('/platform_best', 'platform_best', 'platform_best', true))
 
 routes.push(adaptePath('/platform_notbest', 'platform_notbest', 'platform_notbest', true))
+
+
+
 routes.push(adaptePath('/preview', 'preview', 'preview', true))
 
 routes.push(adaptePath('/iframe', 'iframe', 'iframe', true))

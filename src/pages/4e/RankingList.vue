@@ -77,9 +77,10 @@
             getData(){
                 let that = this;
                 var params = {};
-                params.pageSize = this.pageSize;
-                params.pageNumber = this.pageNumber;
-                this.get(this.base + "/api/fawvwmaterial/detail/list", params, function(data){
+                // params.pageSize = this.pageSize;
+                // params.pageNumber = this.pageNumber;
+              //  params.id=this.sub_menu_id;
+                this.get(this.base + "/api/ranking/list", params, function(data){
                     if (data.code==200) {
                         that.data = data.data;
                         that.pageCount = data.data.pagination.totalPages;
