@@ -147,7 +147,7 @@
                     this.main_url = "/list_w_answered";
                     return;
                 }
-                if (menu_name=='销售政策数据采集') {
+                if (menu_name=='信息提报') {
                     this.main_url = "/list_w_manage";
                     return;
                 }
