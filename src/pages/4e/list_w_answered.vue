@@ -15,7 +15,7 @@
 			</thead>
 			<tbody>
 				<tr v-for="(item,index) in data.list">
-					<td>{{item.category}}</td>
+					<td>{{item.category=="销售政策提报"?"月度活动提报":item.category=="问卷型"?"其他提报":item.category}}</td>
 					<td>{{item.title}}</td>
 					<td>{{item.user_cnt}}</td>
 					<td v-if="item.verify_status==0">未审核</td>

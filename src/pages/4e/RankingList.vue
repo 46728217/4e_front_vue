@@ -4,22 +4,12 @@
             <table>
                 <thead>
                 <tr>
-                    <th>{{'物料种类'|dz}}</th>
-                    <th>{{'物料名称'|dz}}</th>
-                    <th>{{'尺寸规划'|dz}}</th>
-                    <th>{{'安装位置'|dz}}</th>
-                    <th>{{'开始时间'|dz}}</th>
-                    <th>{{'物料代码'|dz}}</th>
+                    <th v-for="(it,i) in titleData">{{it}}</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(item,index) in data.list">
-                    <td>{{item.typename}}</td>
-                    <td>{{item.materialname}}</td>
-                    <td>{{item.imgsize}}</td>
-                    <td>{{item.installposition}}</td>
-                    <td>{{item.startdescribe}}</td>
-                    <td>{{item.enddescribe}}</td>
+                <tr v-for="(item,index) in data">
+                    <td v-for="(its,i) in item">{{its}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -52,6 +42,7 @@
     import Vue from 'vue'
     var base = localStorage.getItem("base");
     import util_js from '@/assets/4e/js/util.js'
+    import {BASE} from '@/assets/4e/js/common.js'
     import font_css from '@/assets/4e/css/font.css'
     import global_css from '@/assets/4e/css/global.css'
     Vue.use(util_js)
@@ -64,32 +55,97 @@
                 pageSize: 20,
                 pageNumber: 1,
                 pageCount: 1,
-                sub_menu_id:0
+                sub_menu_id:0,
+                titleData:[]
             }
         },
-        props: ["current_sub_menu_id"],
+        watch: {
+            rank_id(newValue, oldValue) {
+                console.log("ranking"+newValue)
+                this.getData();
+            },
+        },
+        props: ["rank_id"],
         created: function() {
-            console.log(this.current_sub_menu_id+"current_sub_menu_id");
-            this.sub_menu_id=this.current_sub_menu_id;
+          //  console.log(this.rank_id+"rank_id");
             this.getData();
         },
         methods: {
             getData(){
                 let that = this;
                 var params = {};
+                that.titleData=[];
+                that.data=[];
                 // params.pageSize = this.pageSize;
                 // params.pageNumber = this.pageNumber;
-              //  params.id=this.sub_menu_id;
-                this.get(this.base + "/api/ranking/list", params, function(data){
+                 params.id=that.rank_id;
+                this.get(this.base + "/api/rankingFu/list", params, function(data){
                     if (data.code==200) {
-                        that.data = data.data;
-                        that.pageCount = data.data.pagination.totalPages;
-                        that.pageNumber = data.data.pagination.pageNumber;
+                            console.log(data.data);
+                            for(var key in data.data[0]){
+                                that.titleData.push(key);
+                            }
+                            that.data= data.data;
+
+                            // that.data= that.formatData(data.data);
+                            // for(var i=0;i<that.data[0].length;i++){
+                            //     for(var key in that.data[0][i]){
+                            //         that.titleData.push(key);
+                            //     }
+                            // }
+
+                       // that.pageCount = data.data.pagination.totalPages;
+                       // that.pageNumber = data.data.pagination.pageNumber;
                         that.$nextTick(function(){
                             that.parentHeight();
                         })
                     }
                 });
+            },
+            formatData(arr){
+                if(!arr)return;
+                console.log(arr);
+                var map = {},
+                    dest = [];
+                for(var i = 0; i < arr.length; i++){
+                    var ai = arr[i];
+                    if(!map[ai.rowid]){
+                        dest.push({
+                            rowid: ai.rowid,
+                            data: [ai],
+                        });
+                        map[ai.rowid] = ai;
+                    }else{
+                        for(var j = 0; j < dest.length; j++){
+                            var dj = dest[j];
+                            if(dj.rowid == ai.rowid){
+                                dj.data.push(ai);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                for(var n=0;n<dest.length;n++){
+                    var len=dest[n].data.length;
+                    dest[n].sort=len;
+                }
+               // console.log('之后');
+                var sortArr=dest.sort(BASE.compare('sort'));
+                var lastArr=[];
+                for(var m=0;m<sortArr.length;m++){
+                    var d=sortArr[m].data;
+                    var arr=[];
+                    for(var l=0;l<d.length;l++){
+                        var keys=d[l].columnname;
+                        var value=d[l].valuecent;
+                        var  obj={[keys]:value};
+                        arr.push(obj)
+                    }
+                    lastArr.push(arr);
+                }
+                    console.log(lastArr);
+                    return lastArr;
             },
             go2page: function(page) {
                 this.pageNumber = page;

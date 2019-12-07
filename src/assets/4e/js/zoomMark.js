@@ -95,7 +95,7 @@ var addCssRule = function() {
 					}
 					else if(event.which == 3){
                         console.log(mMarks);
-                       // if(localStorage.getItem("userManage")!=1)return;
+                        if(localStorage.getItem("userManage")!=1)return;
 						mContainer.publicMethods.mark(event.pageX- mContainer.offset().left,event.pageY- mContainer.offset().top);
 						settings.afterMark(mMarks);
 					}
@@ -160,11 +160,10 @@ var addCssRule = function() {
 
 				var data = mContainer.data('ZoomMarkData');
 				var position = data.imgPosition;
-              //  console.log(mContainer.width()+"==="+position.width);
-                if(mContainer.width()>=position.width&&scale<1){
-                   $('#container').ZoomMark('reset');
-                	return;
-				}
+                // if(mContainer.width()>=position.width&&scale<1){
+                 //   $('#container').ZoomMark('reset');
+                	// return;
+				// }
 				if(!x){
 					x = mContainer.width()/2;
 					y = mContainer.height()/2;
@@ -293,8 +292,17 @@ var addCssRule = function() {
 
 		function mouseWheelHandler(event,delta){
 			var scale = delta>0 ? 1.5:0.5;
-			mContainer.publicMethods.zoom(scale);
-			event.preventDefault();
+            var data = mContainer.data('ZoomMarkData');
+            var position = data.imgPosition;
+            if(mContainer.width()>=position.width&&scale<1){//当缩小到比默认图片尺寸小 重置
+               $('#container').ZoomMark('reset');
+                event.preventDefault();
+                return;
+            }else{
+                mContainer.publicMethods.zoom(scale);
+                event.preventDefault();
+			}
+
 		}
 
 		function resetImg(){

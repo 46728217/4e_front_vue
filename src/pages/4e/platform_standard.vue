@@ -62,7 +62,7 @@
 			<div class="block btnopt">
 				<div class="btn submit" v-show="isAdd==true">设置该物料</div>
 				<div class="btn cancel" v-show="isAdd==true">取消</div>
-				<div class="btn update" v-show="isAdd==false">修改</div>
+				<div class="btn update" v-show="isAdd==false && userManage==1">修改</div>
 				<div class="btn delete" v-show="isAdd==false && userManage==1">删除</div>
 				<div class="btn close" v-show="isAdd==false">关闭</div>
 			</div>
@@ -107,6 +107,7 @@
         },
 		created: function() {
 			var that = this;
+			localStorage.setItem("userManage",0);
 			this.get(this.base+"/api/user/islogin", null, function(data){
 				if (data.code==0) {
 					parent.window.location = "/login";
@@ -116,6 +117,7 @@
 				console.log(that.user);
 				if (that.user.roleId == "1") {
 					that.userManage = 1;
+					localStorage.setItem("userManage",1);
 				}
 			}, false);
 			this.getMaterialTypeList();
@@ -246,6 +248,10 @@
                 var tid = $(this).attr('tid');
                 that.isShowSetting = true;
                $(".setting").attr("markid",$(this).attr('id'));
+                if(that.userManage!=1){
+                    $(".cctype").attr("disabled",true);
+                    $(".ccmaterial").attr("disabled",true);
+                }
                 if(tid){
                     that.isAdd = false;
                     that.get(that.base+"/api/fawvwmaterial/detail?tid="+tid, null, function(data){
@@ -259,9 +265,6 @@
                                     that.materialList = data.data;
                                     that.ccmaterial= marerialid;
                                     $(".ccmaterial").change();
-                                    // $(".cctype").attr("disabled",true);
-                                    // $(".ccmaterial").attr("disabled",true);
-
                                 }
 
                             });
@@ -271,9 +274,6 @@
                     that.isAdd = true;
                     that.cctype=0;
                     that.ccmaterial= 0;
-                    // $(".cctype").attr("disabled",false);
-                    // $(".ccmaterial").attr("disabled",false);
-
 				}
 
 			});
@@ -383,7 +383,7 @@
 			display: inline-block;
 			width: 750px;
 			height: 475px;
-			background-image: url('../../assets/4e/img/transparent.png');
+			/*background-image: url('../../assets/4e/img/transparent.png');*/
 			.platform{
 				width: 100%;
 			}

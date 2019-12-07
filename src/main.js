@@ -117,6 +117,12 @@ Vue.filter('sub2', function (str, len) {
         }
     }
     return restr;
+});
+Vue.filter('splitss', function (value) {
+    if (!value) return ''
+    var v= JSON.stringify(value).split(":")[1];
+    v=v.substring(1,v.length-2);
+    return v
 })
 
 
@@ -227,6 +233,7 @@ routes.push(adaptePath('/platform_notbest', 'platform_notbest', 'platform_notbes
 routes.push(adaptePath('/preview', 'preview', 'preview', true))
 
 routes.push(adaptePath('/iframe', 'iframe', 'iframe', true))
+routes.push(adaptePath('/test_vuex', 'test_vuex', 'test_vuex', true))
 
 
 router.afterEach((to, from) => {

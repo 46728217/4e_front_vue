@@ -9,9 +9,14 @@
 				<div><img src="../../assets/4e/img/find.png"/></div>
 			</div>
 			<div class="submenu">
-				<ul>
+				<ul v-if="current_left_menu_id!=612">
 					<li v-for="(item,index) in submenu_s" :class="item.active==1?'active':''" :data-id="item.id" @click="changeSubMenu(item.id, item.permissionCode, item.pageUrl)">
 						<div><span>{{item.name|dz}}</span></div>
+					</li>
+				</ul>
+				<ul v-else>
+					<li v-for="(it,i) in ranksubmenu_s" :class="it.active==1?'active':''"  :data-id="it.id" @click="changeRankSubMenu(i,it.id)">
+						<div><span>{{it.name|dz}}</span></div>
 					</li>
 				</ul>
 			</div>
@@ -36,7 +41,9 @@
 
 			<iframe v-if="current_left_menu_id!=612" id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
 			<div class="rankling" v-else>
-				<RankingList :current_sub_menu_id="current_sub_menu_id"></RankingList>
+				<keep-alive>
+					<RankingList :rank_id="rank_id"></RankingList>
+				</keep-alive>
 				<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>
 			</div>
 		</div>
@@ -65,8 +72,15 @@
                 current_sub_menu_id : 0,
                 main_url: "",
                 changeLeft: false,
+				ranksubmenu_s:[],
+				rank_id:0,
             }
         },
+        watch: {
+            rank_id(newValue, oldValue) {
+                console.log("study:"+newValue)
+            },
+		},
         components : {
             "app-header": Header,
             "app-footer": Footer,
@@ -119,12 +133,43 @@
                 this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
             },
             changeLeftMenu: function(id) {
+                var that=this;
                 this.menu[id].active = 1;
                 this.menu[this.current_left_menu_id].active = 0;
                 this.current_left_menu_id = id;
                 this.changeLeft = true;
                 this.init();
+                if(this.current_left_menu_id==612){//排行榜
+                    that.json(this.base+"/api/ranking/list", null, function(data){
+                        if (data.code==200) {
+                           console.log(data.data);
+                           for(var i=0;i<data.data.length;i++){
+                               if(i==0){
+                                   that.rank_id= data.data[i].id;
+                                   data.data[i].active=1;
+							   }else{
+                                   data.data[i].active=0;
+                               }
+						   }
+                            that.ranksubmenu_s=data.data;
+                        }
+                    });
+                }
             },
+            changeRankSubMenu(i,id){
+                var that=this;
+                var list=this.ranksubmenu_s;
+                for(var n=0;n<list.length;n++){
+                    if(i==n){
+                        this.ranksubmenu_s[n].active = 1;
+					}else{
+                        this.ranksubmenu_s[n].active = 0;
+					}
+				}
+				that.rank_id=id;
+              //  console.log(that.rank_id);
+
+			},
             changeSubMenu: function(id, code, pageUrl) {
                 this.submenu[id].active = 1;
                 if (this.current_sub_menu_id != id) {
