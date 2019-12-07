@@ -54,7 +54,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
 						<li class="td li1"><img class="icon " src="../../assets/4e/img/wenjuan-table-open.png"></img><span>{{item.name}}</span></li>
 						<li class="td"><span>{{item.dealer_total }}</span></li><!--大区经销商量-->
                         <li class="td"><span>{{item.execute_count }}</span></li>
-                        <li class="td"><span>{{item.dealer_count-item.execute_count }}</span></li>
+                        <li class="td"><span>{{item.un_execute_count }}</span></li>
 						<li class="td"><span>{{item.invite_count  }}</span></li>
 						<li class="td"><span>{{item.coming_count}}</span></li>
 						<li class="td"><span>{{(item.execute_count==0?0:item.invite_count/item.execute_count)|addZero}}</span></li>
