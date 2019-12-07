@@ -62,6 +62,7 @@
 			<div class="block btnopt">
 				<div class="btn submit" v-show="isAdd==true">设置该物料</div>
 				<div class="btn cancel" v-show="isAdd==true">取消</div>
+				<div class="btn update" v-show="isAdd==false">修改</div>
 				<div class="btn delete" v-show="isAdd==false && userManage==1">删除</div>
 				<div class="btn close" v-show="isAdd==false">关闭</div>
 			</div>
@@ -193,7 +194,7 @@
 
 
             });
-            $("body").on('click', '.submit', function(){
+            $("body").on('click', '.submit,.update', function(){
                 if(that.cctype==0){
                     that.showMsg("请选择物料种类");
                     return;
@@ -206,17 +207,29 @@
                 var params = {};
                 params.tid = $('.ccmaterial').val();
                 var markid=$('.setting').attr('markid');
+                var unid= $('#'+markid).attr("unid");
+                if(unid!=""){//表示修改
+                    params.id=unid;
+                }
                 params.x = ($('#'+markid).css('left').replace("px",""));
                 params.y = ($('#'+markid).css('top').replace("px",""));
                 params.type = that.type;
                 that.json(that.base+'/api/location/submit', that.cc(params), function(data){
                     if (data.code==200) {
                         $("body").find("#"+markid).attr("unid",data.id).attr("tid",params.tid).attr("type",that.type);
-                        that.showMsg("添加标注点成功");
+                        if(unid!=""){//表示修改
+                            that.showMsg("修改标注点成功");
+                        }else{
+                            that.showMsg("添加标注点成功");
+                        }
                         that.isShowSetting = false;
                         history.go(0);
                     }else{
-                        that.showMsg("添加标注点失败");
+                        if(unid!=""){//表示修改
+                            that.showMsg("修改标注点失败");
+                        }else{
+                            that.showMsg("添加标注点失败");
+                        }
                     }
                 });
                 $('.setting').removeAttr('markid');
@@ -245,8 +258,8 @@
                                     that.materialList = data.data;
                                     that.ccmaterial= marerialid;
                                     $(".ccmaterial").change();
-                                    $(".cctype").attr("disabled",true);
-                                    $(".ccmaterial").attr("disabled",true);
+                                    // $(".cctype").attr("disabled",true);
+                                    // $(".ccmaterial").attr("disabled",true);
 
                                 }
 
@@ -257,8 +270,8 @@
                     that.isAdd = true;
                     that.cctype=0;
                     that.ccmaterial= 0;
-                    $(".cctype").attr("disabled",false);
-                    $(".ccmaterial").attr("disabled",false);
+                    // $(".cctype").attr("disabled",false);
+                    // $(".ccmaterial").attr("disabled",false);
 
                 }
 
