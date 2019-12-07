@@ -61,13 +61,11 @@
         },
         watch: {
             rank_id(newValue, oldValue) {
-                console.log("ranking"+newValue)
                 this.getData();
             },
         },
         props: ["rank_id"],
         created: function() {
-          //  console.log(this.rank_id+"rank_id");
             this.getData();
         },
         methods: {
@@ -81,7 +79,6 @@
                  params.id=that.rank_id;
                 this.get(this.base + "/api/rankingFu/list", params, function(data){
                     if (data.code==200) {
-                            console.log(data.data);
                             for(var key in data.data[0]){
                                 that.titleData.push(key);
                             }

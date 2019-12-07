@@ -41,9 +41,7 @@
 
 			<iframe v-if="current_left_menu_id!=612" id="main_frame" :src="main_url" style="width:100%;" scrolling="no" frameborder="0"></iframe>
 			<div class="rankling" v-else>
-				<keep-alive>
 					<RankingList :rank_id="rank_id"></RankingList>
-				</keep-alive>
 				<div class="" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>
 			</div>
 		</div>
@@ -76,11 +74,6 @@
 				rank_id:0,
             }
         },
-        watch: {
-            rank_id(newValue, oldValue) {
-                console.log("study:"+newValue)
-            },
-		},
         components : {
             "app-header": Header,
             "app-footer": Footer,
