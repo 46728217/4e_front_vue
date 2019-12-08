@@ -65,6 +65,8 @@
 				<div class="btn update" v-show="isAdd==false && userManage==1">修改</div>
 				<div class="btn delete" v-show="isAdd==false && userManage==1">删除</div>
 				<div class="btn close" v-show="isAdd==false">关闭</div>
+				<div class="btn detail" v-show="isAdd==false" >素材详情</div>
+
 			</div>
 		</div>
 		<PlatformList :usettype="3"></PlatformList>
@@ -156,6 +158,7 @@
                 var id=($('.setting').attr('markid').replace("mark_",""));
                 $('#container').ZoomMark('deleteMark',id);
 				that.isShowSetting = false;
+
                 $('.setting').removeAttr('markid');
 				that.materialList = [];
 				$(".ccsize").text('');
@@ -176,6 +179,7 @@
 			});
 			$("body").on('click', '.delete', function(){
 				that.isShowSetting = false;
+
                 var id=($('.setting').attr('markid').replace("mark_",""));
                 var unid=$("body").find("#"+$('.setting').attr('markid')).attr("unid");
                 $('#container').ZoomMark('deleteMark',id);
@@ -195,6 +199,10 @@
                 })
 
 
+			});
+            $("body").on('click', '.detail', function(){
+                 var url = "library?id="+that.cctype;
+                top.location.href=url;
 			});
 			$("body").on('click', '.submit,.update', function(){
 			    if(that.cctype==0){
@@ -225,7 +233,8 @@
                         }else{
                             that.showMsg("添加标注点成功");
                         }
-						that.isShowSetting = false;
+						 that.isShowSetting = false;
+
                         history.go(0);
 					}else{
                         if(unid!=""){//表示修改
@@ -373,7 +382,7 @@
 		.annotation-notes{
 			display: inline-block;
 			vertical-align: top;
-			width:350px;
+			width:100%;
 			height: 50px;
 			line-height: 2;
 			border: 1px solid white;
@@ -381,8 +390,10 @@
 		}
 		#container{
 			display: inline-block;
-			width: 750px;
-			height: 475px;
+			/*width: 750px;*/
+			/*height: 475px;*/
+			width: 975px;
+			height: 617.5px;
 			/*background-image: url('../../assets/4e/img/transparent.png');*/
 			.platform{
 				width: 100%;
@@ -422,8 +433,8 @@
 			border: 1px solid #e3e3e3;
 			color: #001c4c;
 			position: absolute;
-			top: 10%;
-			left: calc(50% - 250px);
+			top: 5.8%;
+			left: calc(70% - 250px);
 
 			.block {
 				width: 90%;
@@ -455,9 +466,9 @@
 
 			}
 			.btnopt {
-				width: 80%;
+				width: 90%;
 				height: 30px;
-				margin-left: 10%;
+				margin-left: 5%;
 				margin-top: 20px;
 				display: inline-block;
 				.btn {

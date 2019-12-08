@@ -65,6 +65,8 @@
 				<div class="btn update" v-show="isAdd==false && userManage==1">修改</div>
 				<div class="btn delete" v-show="isAdd==false && userManage==1">删除</div>
 				<div class="btn close" v-show="isAdd==false">关闭</div>
+				<div class="btn detail" v-show="isAdd==false" >素材详情</div>
+
 			</div>
 		</div>
 		<PlatformList :usettype="2"></PlatformList>
@@ -280,6 +282,10 @@
                 }
 
             });
+            $("body").on('click', '.detail', function(){
+                var url = "library?id="+that.cctype;
+                top.location.href=url;
+            });
             $("body").on("click",'#reset',function(){
                 $('#container').ZoomMark('reset');
             });
@@ -334,7 +340,7 @@
                 });
             },
             parentHeight: function() {
-                $(window.parent.document).find("iframe").height(($(".platform-standard").height()+100)+'px');
+                $(window.parent.document).find("iframe").height(($(".platform-notbest").height()+100)+'px');
             }
         }
     }
@@ -348,7 +354,8 @@
 		.annotation-notes{
 			display: inline-block;
 			vertical-align: top;
-			width:350px;
+			/*width:350px;*/
+			width:100%;
 			height: 50px;
 			line-height: 2;
 			border: 1px solid white;
@@ -356,8 +363,10 @@
 		}
 		#container{
 			display: inline-block;
-			width: 750px;
-			height: 475px;
+			/*width: 750px;*/
+			/*height: 475px;*/
+			width: 975px;
+			height: 617.5px;
 			/*background-image: url('../../assets/4e/img/transparent.png');*/
 			.platform{
 				width: 100%;
@@ -397,8 +406,8 @@
 			border: 1px solid #e3e3e3;
 			color: #001c4c;
 			position: absolute;
-			top: 10%;
-			left: calc(50% - 250px);
+			top: 5.8%;
+			left: calc(70% - 250px);
 
 			.block {
 				width: 90%;
@@ -430,7 +439,7 @@
 
 			}
 			.btnopt {
-				width: 80%;
+				width: 90%;
 				height: 30px;
 				margin-left: 10%;
 				margin-top: 20px;

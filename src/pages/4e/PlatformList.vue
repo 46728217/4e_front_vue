@@ -10,6 +10,7 @@
                     <th>{{'安装位置'|dz}}</th>
                     <th>{{'开始时间'|dz}}</th>
                     <th>{{'物料代码'|dz}}</th>
+                    <th>{{'操作'|dz}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -20,6 +21,7 @@
                     <td>{{item.installposition}}</td>
                     <td>{{item.startdescribe}}</td>
                     <td>{{item.id}}</td>
+                    <td style="cursor: pointer;color:#06c;" @click="libdetails(item.materialtype)">素材详情</td>
                 </tr>
                 </tbody>
             </table>
@@ -74,6 +76,11 @@
               this.getData();
         },
         methods: {
+            libdetails(id){
+                console.log(id);
+                var url = "library?id="+id;
+                top.location.href=url;
+            },
             getData(){
                 let that = this;
                 var params = {};
@@ -142,45 +149,15 @@
             thead {
                 tr {
                     height: 30px;
-
-                    th:nth-child(1) {
-                        width: 8%;
-                        img {
-                            margin-left: 10px;
-                        }
-
-                    }
-                    th:nth-child(2) {
-                        width: 8%;
-                        img {
-                            margin-left: 10px;
-                            margin-bottom: -5px;
-                        }
-                        .rotate {
-                            margin-bottom: -4px;
-                            transform: rotateZ(180deg);
-                        }
-                    }
-                    th:nth-child(3) {
-                        width: 20%;
-                    }
-                    th:nth-child(4) {
-                        width: 20%;
-                    }
-                    th:nth-child(5) {
-                        width: 8%;
-                    }
-                    th:nth-child(6) {
-                        width: 8%;
-                    }
                     th {
                         border-bottom: 1px solid #e7eaec;
                         border-right: 1px solid #e7eaec;
-                        width: 15%;
-                        text-align: center;
+                        width: 12%;
+                        text-indent:10px;
+                        text-align: left;
                         color: #b4c3ce;
-
                     }
+
                 }
 
             }
@@ -190,7 +167,6 @@
 
                     td:nth-child(1) {
                         width: 15%;
-
                     }
                     td:nth-child(2) {
                         width: 25%;
@@ -199,7 +175,7 @@
                         width: 8%;
                     }
                     td:nth-child(4) {
-                        width: 12%;
+                        width: 18%;
                     }
                     td:nth-child(5) {
                         width: 8%;
@@ -210,7 +186,8 @@
                     td {
                         border-bottom: 1px solid #e7eaec;
                         width: 15%;
-                        text-align: center;
+                        text-indent:10px;
+                        text-align: left;
                         color: #000;
                     }
                     .waiting {

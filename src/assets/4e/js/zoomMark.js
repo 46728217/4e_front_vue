@@ -94,10 +94,13 @@ var addCssRule = function() {
 						
 					}
 					else if(event.which == 3){
-                        console.log(mMarks);
-                        if(localStorage.getItem("userManage")!=1)return;
-						mContainer.publicMethods.mark(event.pageX- mContainer.offset().left,event.pageY- mContainer.offset().top);
-						settings.afterMark(mMarks);
+                        if(localStorage.getItem("userManage")!=1){
+                        	return;
+						}else{
+                            mContainer.publicMethods.mark(event.pageX- mContainer.offset().left,event.pageY- mContainer.offset().top);
+                            settings.afterMark(mMarks);
+                        	$("body").find(".mark:last").click();
+						}
 					}
 					event.preventDefault();
 				});
@@ -160,10 +163,13 @@ var addCssRule = function() {
 
 				var data = mContainer.data('ZoomMarkData');
 				var position = data.imgPosition;
-                // if(mContainer.width()>=position.width&&scale<1){
-                 //   $('#container').ZoomMark('reset');
-                	// return;
-				// }
+				console.log(mContainer.width()+"========"+position.width);
+                if((mContainer.width()*4)<=position.width&&scale>1){
+                	return;
+				}
+                if(mContainer.width()>=position.width&&scale<1){
+                    return;
+                }
 				if(!x){
 					x = mContainer.width()/2;
 					y = mContainer.height()/2;
