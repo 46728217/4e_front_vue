@@ -406,7 +406,7 @@
 			color: #001c4c;
 			position: absolute;
 			top: 5.8%;
-			left: calc(70% - 250px);
+			left: calc(20% - 250px);
 
 			.block {
 				width: 90%;

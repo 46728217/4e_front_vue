@@ -9,7 +9,8 @@
                 </thead>
                 <tbody>
                 <tr v-for="(item,index) in data">
-                    <td v-for="(its,i) in item">{{its}}</td>
+                      <td v-for="(its,i) in item">{{its}}</td>
+
                 </tr>
                 </tbody>
             </table>
@@ -82,7 +83,11 @@
                             for(var key in data.data[0]){
                                 that.titleData.push(key);
                             }
-                            that.data= data.data;
+                            var arr=[];
+                           for (let i in data.data) {
+                              arr.push(data.data[i]); //属性
+                            }
+                           that.data=arr.slice(1);
 
                             // that.data= that.formatData(data.data);
                             // for(var i=0;i<that.data[0].length;i++){
