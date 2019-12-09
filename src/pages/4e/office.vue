@@ -147,6 +147,10 @@
                     this.main_url = "/list_w_answered";
                     return;
                 }
+                if (menu_name=='信息看板') {
+                    this.main_url = "/bi_kanban";
+                    return;
+                }
                 if (menu_name=='信息提报') {
                     this.main_url = "/list_w_manage";
                     return;

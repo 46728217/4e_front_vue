@@ -23,11 +23,11 @@
                             <div class="d2">已提报执行家数总和</div>
                             <div class="d3">经销商提报</div>
                         </li>
-                     <li class="body">
-                         <div class="d0">3</div>
-                         <div class="d1">未执行家数</div>
-                         <div class="d2">未提报执行家数总和</div>
-                         <div class="d3">经销商提报</div>
+                     <li class="body" style="height: 50px;">
+                         <div class="d0" style="line-height: 50px;height: 50px;">3</div>
+                         <div class="d1" style="line-height: 50px;height: 50px;">未执行家数</div>
+                         <div class="d2" style="line-height: 1.5;height: 50px;">已提报未执行家数总和（未结束时统计为已提报经销商数,结束时统计为所有经销商数）</div>
+                         <div class="d3" style="line-height: 50px;height: 50px;">经销商提报</div>
                      </li>
                      <li class="body">
                          <div class="d0">4</div>
@@ -110,7 +110,7 @@
           background-color: rgba(0,0,0,0.5);
           .mask{
               width: 600px;
-              height: 450px;
+              height: 470px;
               background-color:#ffffff ;
               border-radius: 2px;
               position: absolute;
@@ -130,7 +130,8 @@
                   height: 20px;
                   text-align: center;
                   border-bottom: 1px solid #F1F2F4;
-                  line-height: 3;
+                  line-height: 2;
+                  font-weight: bold;font-size: 16px
               }
               .table{
                   width: 90%;

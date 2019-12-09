@@ -31,8 +31,8 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                             <span>未执行家数</span>
                         </li>
                         <li class="th">
-                            <span style="padding-left: 15px">邀约量</span>
-                            <!--<img style="vertical-align: middle"src="../../assets/4e/img/wenjuan-table-arrow1.png">-->
+                            <span>邀约量</span>
+                            <!--<img style="vertical-align: "src="../../assetsmiddle/4e/img/wenjuan-table-arrow1.png">-->
                         </li>
                         <li class="th">
                             <span>到店量</span>
@@ -100,7 +100,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
             </div>
         </div>
         <div class="echarts-row" style="position: relative">
-            <div class="echarts-title" style="position: absolute;width: 100%"><span class="desc">邀约进店率</span><span class="line"></span></div>
+            <div class="echarts-title" style="position: absolute;width: 100%"><span class="desc">到店率</span><span class="line"></span></div>
             <div class="" id="drawEcharts4" :style="{width: '100%', height: '400px'}">
             </div>
         </div>
@@ -352,7 +352,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 let arr=[];
                 var that=this;
                 for (var i=0;i<data.length;i++){
-                    arr.push({product:data[i].name,"店均邀约量":that.formatData(data[i].invite_count/data[i].dealer_count),"店均进店量":that.formatData(data[i].coming_count/data[i].dealer_count)});
+                    arr.push({product:data[i].name,"店均邀约量":that.formatData(data[i].invite_count/data[i].execute_count),"店均进店量":that.formatData(data[i].coming_count/data[i].execute_count)});
                 }
                 // 基于准备好的dom，初始化echarts实例
                 let myChart3 = this.$echarts.init(document.getElementById('drawEcharts3'));

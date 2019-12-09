@@ -62,32 +62,44 @@
         },
         watch: {
             rank_id(newValue, oldValue) {
-                this.getData();
+                if(newValue!=oldValue){
+                    this.titleData=[];
+                    this.data=[];
+                    this.getData();
+                }
+
             },
         },
         props: ["rank_id"],
         created: function() {
+            this.titleData=[];
+            this.data=[];
             this.getData();
+
         },
         methods: {
             getData(){
                 let that = this;
                 var params = {};
-                that.titleData=[];
-                that.data=[];
+
                 // params.pageSize = this.pageSize;
                 // params.pageNumber = this.pageNumber;
                  params.id=that.rank_id;
                 this.get(this.base + "/api/rankingFu/list", params, function(data){
                     if (data.code==200) {
+                        var titleList=[];
+                        that.$nextTick(function(){
                             for(var key in data.data[0]){
-                                that.titleData.push(key);
+                              titleList.push(key);
                             }
+                            that.titleData=titleList;
                             var arr=[];
-                           for (let i in data.data) {
-                              arr.push(data.data[i]); //属性
+                            for (let i in data.data) {
+                                arr.push(data.data[i]); //属性
                             }
-                           that.data=arr.slice(1);
+                            that.data=arr.slice(1);
+                            that.parentHeight();
+                        })
 
                             // that.data= that.formatData(data.data);
                             // for(var i=0;i<that.data[0].length;i++){
@@ -98,9 +110,7 @@
 
                        // that.pageCount = data.data.pagination.totalPages;
                        // that.pageNumber = data.data.pagination.pageNumber;
-                        that.$nextTick(function(){
-                            that.parentHeight();
-                        })
+
                     }
                 });
             },
@@ -195,45 +205,17 @@
             padding-bottom: 30px;
             width: 100%;
             margin-top: 20px;
+            overflow-x: auto;
             table {
                 width: 100%;
                 thead {
                     tr {
                         height: 30px;
-                        th:nth-child(1) {
-                            width: 8%;
-                            img {
-                                margin-left: 10px;
-                            }
-
-                        }
-                        th:nth-child(2) {
-                            width: 8%;
-                            img {
-                                margin-left: 10px;
-                                margin-bottom: -5px;
-                            }
-                            .rotate {
-                                margin-bottom: -4px;
-                                transform: rotateZ(180deg);
-                            }
-                        }
-                        th:nth-child(3) {
-                            width: 20%;
-                        }
-                        th:nth-child(4) {
-                            width: 20%;
-                        }
-                        th:nth-child(5) {
-                            width: 8%;
-                        }
-                        th:nth-child(6) {
-                            width: 8%;
-                        }
                         th {
                             border-bottom: 1px solid #e7eaec;
                             border-right: 1px solid #e7eaec;
-                            width: 15%;
+                            /*width: 15%;*/
+                            min-width: 100px;
                             text-align: center;
                             color: #b4c3ce;
 
@@ -244,29 +226,11 @@
                 tbody {
                     tr {
                         height: 50px;
-
-                        td:nth-child(1) {
-                            width: 15%;
-
-                        }
-                        td:nth-child(2) {
-                            width: 25%;
-                        }
-                        td:nth-child(3) {
-                            width: 8%;
-                        }
-                        td:nth-child(4) {
-                            width: 12%;
-                        }
-                        td:nth-child(5) {
-                            width: 8%;
-                        }
-                        td:nth-child(6) {
-                            width: 8%;
-                        }
                         td {
                             border-bottom: 1px solid #e7eaec;
-                            width: 15%;
+                            /*width: 15%;*/
+                            min-width: 100px;
+
                             text-align: center;
                             color: #000;
                         }

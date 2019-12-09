@@ -234,7 +234,7 @@ routes.push(adaptePath('/preview', 'preview', 'preview', true))
 
 routes.push(adaptePath('/iframe', 'iframe', 'iframe', true))
 routes.push(adaptePath('/test_vuex', 'test_vuex', 'test_vuex', true))
-
+routes.push(adaptePath('/bi_kanban', 'bi_kanban', 'bi_kanban', true))
 
 router.afterEach((to, from) => {
   ga('set', 'page', to.path);

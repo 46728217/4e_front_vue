@@ -110,6 +110,7 @@ export default {
 	width: 100%;
 	height: 100px;
 	background: #fff;
+	position: relative;
 	min-width: 1280px;
 	.jieda_logo {
 		float: left;
@@ -224,9 +225,9 @@ export default {
 	}
 	
 	.faw_logo {
-		float: right;
-		height: 100%;
-		margin-right: 2%;
+		position: absolute;
+		top: 20px;
+		right: 0;
 		img {
 			height: 70%;
 			margin-top: 15px;
