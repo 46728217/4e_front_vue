@@ -9,9 +9,14 @@
 				<div><img src="../../assets/4e/img/find.png"/></div>
 			</div>
 			<div class="submenu">
-				<ul>
+				<ul v-if="current_left_menu_id!=481">
 					<li v-for="(item,index) in submenu_s" :class="item.active==1?'active':''" :data-id="item.id" @click="changeSubMenu(item.id, item.permissionCode, item.pageUrl)">
 						<div><span>{{item.name|dz}}</span></div>
+					</li>
+				</ul>
+				<ul v-else>
+					<li v-for="(it,i) in platformsubmenu_s" :class="it.active==1?'active':''"  :data-id="it.type" @click="changePlatformSubMenu(i,it.type,it.url,it.width,it.height)">
+						<div><span>{{it.name|dz}}</span></div>
 					</li>
 				</ul>
 			</div>
@@ -32,7 +37,11 @@
 			<img src="../../assets/jieda/img/frame_split.png" />
 		</div>
 		<div class="frame_main">
-			<iframe id="main_frame" :src="main_url" scrolling="no" style="width: 100%;" frameborder="0"></iframe>
+			<iframe  v-if="current_left_menu_id!=481"  id="main_frame" :src="main_url" scrolling="no" style="width: 100%;" frameborder="0"></iframe>
+			<div class="platform" v-else >
+				<Platform @changePlatformSubMenu="changePlatformSubMenu(platform_curr_index,platform_type,platform_url,platformimg_width,platformimg_height)"  :key="timer" :platform_type="platform_type" :platform_url="platform_url" :platformimg_width="platformimg_width" :platformimg_height="platformimg_height"></Platform>
+			</div>
+
 		</div>
 	</div>
 </template>
@@ -42,6 +51,7 @@
     import global_css from '@/assets/4e/css/global.css'
     import Header from './header_s.vue';
     import Footer from './footer.vue';
+    import Platform from './Platform.vue';
     var base = localStorage.getItem("base")
     export default {
         data: function(){
@@ -57,12 +67,20 @@
                 current_sub_menu_id : 0,
                 main_url: "",
                 changeLeft: false,
+                platformsubmenu_s:[],
+                timer:'',
+                platform_curr_index:0,
+                platform_type:1,//默认第一个
+                platform_url:'/static/4e/plat_1.jpg',//图片下标
+                platformimg_width:'900px',
+                platformimg_height:'500px'
             }
         },
 
         components : {
             "app-header": Header,
-            "app-footer": Footer
+            "app-footer": Footer,
+			"Platform":Platform
         },
         methods: {
             init: function() {
@@ -111,11 +129,50 @@
                 this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
             },
             changeLeftMenu: function(id) {
+                var that=this;
                 this.menu[id].active = 1;
                 this.menu[this.current_left_menu_id].active = 0;
                 this.current_left_menu_id = id;
                 this.changeLeft = true;
                 this.init();
+                if(this.current_left_menu_id==481){//展厅
+                    var arr=[
+                        {"type":"1","url":"/static/4e/plat_1.jpg","name":"1型","width":"900px","height":"500px"},
+                        {"type":"2","url":"/static/4e/plat_2.jpg","name":"2型","width":"900px","height":"573px"},
+                        {"type":"7","url":"/static/4e/plat_7.jpg","name":"3/4型","width":"900px","height":"608px"},
+                        {"type":"3","url":"/static/4e/plat_3.jpg","name":"1伞","width":"900px","height":"652px"},
+                        {"type":"4","url":"/static/4e/plat_4.jpg","name":"2大伞","width":"900px","height":"580px"},
+                        {"type":"5","url":"/static/4e/plat_5.jpg","name":"2小伞","width":"900px","height":"500px"},
+                        {"type":"6","url":"/static/4e/plat_6.jpg","name":"4伞","width":"900px","height":"796px"},
+                        ];
+                    for(var i=0;i<arr.length;i++){
+                        if(i==0){
+                            that.platform_type= arr[i].type;
+                            arr[i].active=1;
+                        }else{
+                            arr[i].active=0;
+                        }
+                    }
+                    that.platformsubmenu_s=arr;
+                }
+            },
+            changePlatformSubMenu(i,type,url,width,height){
+
+                var that=this;
+                this.timer = new Date().getTime();
+                var list=this.platformsubmenu_s;
+                for(var n=0;n<list.length;n++){
+                    if(i==n){
+                        this.platformsubmenu_s[n].active = 1;
+                    }else{
+                        this.platformsubmenu_s[n].active = 0;
+                    }
+                }
+                that.platform_curr_index=i;
+                that.platform_type=type;
+                that.platform_url=url;
+                that.platformimg_width=width;
+                that.platformimg_height=height;
             },
             changeSubMenu: function(id, code, pageUrl) {
                 this.submenu[id].active = 1;
@@ -131,18 +188,18 @@
                         window.location = "https://4em.cig.com.cn/jsp/pc/interface/faw/do.jsp?method=doLogin";
                     });
                 }
-                if (this.current_sub_menu_id==482) {
-                    this.main_url = "/platform_standard";
-                    return;
-                }
-                if (this.current_sub_menu_id==483) {
-                    this.main_url = "/platform_best";
-                    return;
-                }
-                if (this.current_sub_menu_id==484) {
-                    this.main_url = "/platform_notbest";
-                    return;
-                }
+                // if (this.current_sub_menu_id==482) {
+                //     this.main_url = "/platform_standard";
+                //     return;
+                // }
+                // if (this.current_sub_menu_id==483) {
+                //     this.main_url = "/platform_best";
+                //     return;
+                // }
+                // if (this.current_sub_menu_id==484) {
+                //     this.main_url = "/platform_notbest";
+                //     return;
+                // }
             }
         },
         created: function(){
