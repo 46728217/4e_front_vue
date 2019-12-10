@@ -240,6 +240,12 @@
                             }
                         }
                     },
+                    grid: {
+                        left: '2.5%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
                     toolbox: {
                     },
                     legend: {
@@ -249,7 +255,7 @@
                     xAxis: [
                         {
                             type: 'category',
-                            data: ['产品与品牌','CRM营销','服务营销','汽车金融','其他业务','区域事业部','二手车营销','企业标识','全民打CALL','电商专区','捷达品牌物料',''],
+                            data: ['产品与品牌','CRM营销','服务营销','汽车金融','其他业务','区域事业部','二手车营销','企业标识','全民打CALL','电商专区','捷达品牌物料','活动专区'],
                             axisPointer: {
                                 type: 'shadow'
                             }
@@ -341,12 +347,12 @@
                         x:'right',
                         data:['上传量']
                     },
-                    // grid: {
-                    //     left: '3%',
-                    //     right: '4%',
-                    //     bottom: '3%',
-                    //     containLabel: true
-                    // },
+                    grid: {
+                        left: '2.5%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
                     xAxis : [
                         {
                             type : 'category',
