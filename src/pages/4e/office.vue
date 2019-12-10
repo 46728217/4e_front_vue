@@ -147,10 +147,10 @@
                     this.main_url = "/list_w_answered";
                     return;
                 }
-                if (menu_name=='信息看板') {
-                    this.main_url = "/bi_kanban";
-                    return;
-                }
+                // if (menu_name=='信息看板') {
+                //     this.main_url = "/bi_kanban";
+                //     return;
+                // }
                 if (menu_name=='信息提报') {
                     this.main_url = "/list_w_manage";
                     return;
@@ -246,7 +246,7 @@
 	.e-office {
 		letter-spacing: 1px;
 		width: 100%;
-		min-width: 1280px;
+		min-width: 1400px;
 		height: 100%;
 		.tab {
 			height: 50px;

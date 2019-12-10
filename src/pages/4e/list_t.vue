@@ -108,7 +108,7 @@
 			<thead>
 				<tr>
 				<th>{{'提交批次'|dz}}<img src='../../assets/4e/img/list.png'></th>
-				<th>{{'经销商'|dz}}'
+				<th>{{'经销商'|dz}}
 				<img src='../../assets/4e/img/sort.png' @click="sort" v-if="cond.sort=='1'" class="rotate">
 				<img src='../../assets/4e/img/sort.png' @click="sort" v-if="cond.sort=='0'"></th>
 				<th>{{'大区'|dz}}</th>
