@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<PlatformList :usettype="type"></PlatformList>
-		<div style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 0 0">©一汽-大众汽车有限公司 版权所有</div>
+		<div style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 20px 0">©一汽-大众汽车有限公司 版权所有</div>
 	</div>
 
 </template>
@@ -342,7 +342,7 @@
 				});
 			},
 			parentHeight: function() {
-				$(window.parent.document).find("iframe").height(($(".platform-standard").height()+100)+'px');
+				$(window.parent.document).find("iframe").height(($(".platform").height()+200)+'px');
 			}
 		}
 	}

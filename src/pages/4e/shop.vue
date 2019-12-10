@@ -73,7 +73,7 @@
                 platform_type:1,//默认第一个
                 platform_url:'/static/4e/plat_1.jpg',//图片下标
                 platformimg_width:'900px',
-                platformimg_height:'500px'
+                platformimg_height:'462px'
             }
         },
 
@@ -137,14 +137,13 @@
                 this.init();
                 if(this.current_left_menu_id==481){//展厅
                     var arr=[
-                        {"type":"1","url":"/static/4e/plat_1.jpg","name":"1型","width":"900px","height":"500px"},
+                        {"type":"1","url":"/static/4e/plat_1.jpg","name":"1型","width":"900px","height":"462px"},
                         {"type":"2","url":"/static/4e/plat_2.jpg","name":"2型","width":"900px","height":"573px"},
-                        {"type":"7","url":"/static/4e/plat_7.jpg","name":"3/4型","width":"900px","height":"608px"},
-                        {"type":"3","url":"/static/4e/plat_3.jpg","name":"1伞","width":"900px","height":"652px"},
-                        {"type":"4","url":"/static/4e/plat_4.jpg","name":"2大伞","width":"900px","height":"580px"},
-                        {"type":"5","url":"/static/4e/plat_5.jpg","name":"2小伞","width":"900px","height":"500px"},
-                        {"type":"6","url":"/static/4e/plat_6.jpg","name":"4伞","width":"900px","height":"796px"},
-                        ];
+                        {"type":"7","url":"/static/4e/plat_7.jpg","name":"3/4型","width":"900px","height":"607px"},
+                        {"type":"3","url":"/static/4e/plat_3.jpg","name":"1伞","width":"900px","height":"650px"},
+                        {"type":"4","url":"/static/4e/plat_4.jpg","name":"2大伞","width":"900px","height":"579px"},
+                        {"type":"5","url":"/static/4e/plat_5.jpg","name":"2小伞","width":"900px","height":"487px"},
+                        {"type":"6","url":"/static/4e/plat_6.jpg","name":"4伞","width":"900px","height":"794px"}];
                     for(var i=0;i<arr.length;i++){
                         if(i==0){
                             that.platform_type= arr[i].type;
