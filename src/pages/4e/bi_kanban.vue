@@ -43,8 +43,14 @@
             </div>
             <div class="echarts-row2" style="width: 48%;float: right;position: relative">
                 <div class="echarts-title" style="position: absolute"><span class="desc">流量情况分析</span><span class="line"></span></div>
-                <div class="" id="drawEcharts2" :style="{width: '100%', height: '400px'}">
-                </div>
+                <!--<div class="" id="drawEcharts2" :style="{width: '100%', height: '400px'}"> </div>-->
+                <ul class="traffic-analysis">
+                    <li><div class="circle">300M</div><div class="desc">最高峰值</div></li>
+                    <li><div class="circle">100M</div><div class="desc">平均峰值</div></li>
+                    <li><div class="circle">100G</div><div class="desc">总流量</div></li>
+                    <li><div class="circle">60G</div><div class="desc">平均流量</div></li>
+                </ul>
+
             </div>
         </div>
         <div class="echarts-row">
@@ -114,7 +120,7 @@
 
             that.$nextTick(function(){
                 that.drawLine1();
-                that.drawLine2();
+               // that.drawLine2();
                 that.drawLine3();
                 that.drawLine4();
                 that.parentHeight();
@@ -513,6 +519,35 @@
                     width: 100%;
                     height: 100%;
                     border-bottom: 3px solid #DFE4E8;
+                }
+            }
+            .traffic-analysis{
+                margin-top: 50px;
+                list-style:none;
+                width: 100%;
+                li{
+                    margin: 10px;
+                    display: inline-block;
+                    width: 40%;
+                    height: 150px;
+                    .circle{
+                        margin: auto;
+                        width: 110px;
+                        height:110px;
+                        line-height: 110px;
+                        text-align: center;
+                        border-radius: 100%;
+                        color: #42B3F0;
+                        font-size: 24px;
+                        letter-spacing:2px;
+                        border: 1px solid #42B3F0;
+                    }
+                    .desc{
+                        margin-top: 10px;
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
                 }
             }
         }
