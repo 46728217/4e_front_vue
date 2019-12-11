@@ -63,7 +63,7 @@
 				<div class="btn update" @click="submit_updateClick"v-show="isAdd==false && userManage==1">修改</div>
 				<div class="btn delete" @click="deleteClick" v-show="isAdd==false && userManage==1">删除</div>
 				<div class="btn close"  @click="closeClick"v-show="isAdd==false">关闭</div>
-				<div class="btn detail" v-show="isAdd==false" >素材详情</div>
+				<div class="btn detail"  v-show="isAdd==false" >素材详情</div>
 
 			</div>
 		</div>
@@ -98,6 +98,7 @@
 				userManage: 0,
                 cctype:0,
                 ccmaterial:0,
+				code:'',
                 platformimg:'',
                 imgWidth:'',
                 imgHeight:''
@@ -111,7 +112,6 @@
         },
 		created: function() {
 			var that = this;
-            console.log(that.platform_type+"==888888="+that.platform_url+"==="+that.platformimg_width+"==="+that.platformimg_height);
             that.platformimg=that.platform_url;
             that.type=that.platform_type;
             that.imgWidth=that.platformimg_width;
@@ -163,8 +163,19 @@
 			});
 
             $("body").on('click', '.detail', function(){
-                var url = "library?id="+that.cctype;
-                top.location.href=url;
+                var code=that.code;
+                if (code=="") {
+                    that.showMsg('暂无素材关联');
+                    return;
+                }
+                that.get(that.base+"/api/search/code?filecode="+code, null, function(data){
+                    if(data.code==0) {
+                        that.showMsg("未找到您输入编码对应的素材");
+                        return;
+                    }
+                    var material = data.data;
+                    that.detail(material.id);
+                });
             });
 
 			$("body").on("click", ".mark", function(){
@@ -183,6 +194,7 @@
                             var marerialid = data.data.id;
                           //  $(".cctype").val(materialtype);
                             that.cctype=materialtype;
+                            that.code=data.data.code;
                             that.get(that.base+"/api/fawvwmaterial/location/list?usetype="+that.type+"&tid="+materialtype, null, function(data){
                                 if (data.code==200) {
                                     that.materialList = data.data;
@@ -211,6 +223,17 @@
 
 		},
 		methods: {
+            detail: function(id, activity_id) {
+                this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
+                    if (data.code==200) {
+                        var url = "/library?id="+id;
+                        if (activity_id!=null) {
+                            url += "&activityId="+activity_id;
+                        }
+                        top.window.open(url,'_blank')
+                    }
+                });
+            },
             submit_updateClick(){
                 var that=this;
                 if(that.cctype==0){

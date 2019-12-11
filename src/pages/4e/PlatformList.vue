@@ -21,7 +21,7 @@
                     <td>{{item.installposition}}</td>
                     <td>{{item.startdescribe}}</td>
                     <td>{{item.id}}</td>
-                    <td style="cursor: pointer;color:#06c;" @click="libdetails(item.materialtype)">素材详情</td>
+                    <td style="cursor: pointer;color:#06c;" @click="libdetails(item.code)">素材详情</td>
                 </tr>
                 </tbody>
             </table>
@@ -76,10 +76,33 @@
               this.getData();
         },
         methods: {
-            libdetails(id){
-                console.log(id);
-                var url = "library?id="+id;
-                top.location.href=url;
+            libdetails(code){
+             //   code=code||'1110000YH33VT';
+                var that=this;
+                if (code=='') {
+                    this.showMsg('暂无素材关联');
+                    return;
+                }
+                this.get(this.base+"/api/search/code?filecode="+code, null, function(data){
+                    if(data.code==0) {
+                        that.showMsg("未找到您输入编码对应的素材");
+                        return;
+                    }
+                    var material = data.data;
+                    that.detail(material.id);
+                });
+            },
+            detail: function(id, activity_id) {
+                this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
+                    if (data.code==200) {
+                        var url = "/library?id="+id;
+                        if (activity_id!=null) {
+                            url += "&activityId="+activity_id;
+                        }
+                        //top.window.location.href=url;
+                        top.window.open(url,'_blank');
+                    }
+                });
             },
             getData(){
                 let that = this;
