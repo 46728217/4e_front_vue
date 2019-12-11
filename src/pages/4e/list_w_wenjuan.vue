@@ -354,6 +354,7 @@
                         if (data.code==200) {
                             //window.location = "/list_w_answered";
                             $(parent.document).find("li[data-id=683]").click();
+                            $(parent.document).find("li[data-id=674]").click();
                         }else{
                             parent.window.location = "/login";
                         }
