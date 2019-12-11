@@ -162,7 +162,7 @@
 				}
 			});
 
-            $("body").on('click', '.detail', function(){
+            $("body").off('click',".detail").on('click', '.detail', function(){
                 var code=that.code;
                 if (code=="") {
                     that.showMsg('暂无素材关联');
@@ -178,7 +178,7 @@
                 });
             });
 
-			$("body").unbind('click',".mark").on("click", ".mark", function(){
+			$("body").off('click',".mark").on("click", ".mark", function(){
                 var tid = $(this).attr('tid');
                 that.isShowSetting = true;
                $(".setting").attr("markid",$(this).attr('id'));
