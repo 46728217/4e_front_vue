@@ -44,11 +44,11 @@
 			<div class="block">
 				<span>开始时间:</span>
 				<div class="cc">
-					<input class="component ccstarttime" type="text"/>
+					<span class="component ccstarttime"></span>
 				</div>
 			</div>
 			<div class="block">
-				<span>物料代码:</span>
+				<span>素材编码:</span>
 				<div class="cc">
 					<span class="component ccmaterialcode"></span>
 				</div>
@@ -67,7 +67,7 @@
 
 			</div>
 		</div>
-		<PlatformList :usettype="type"></PlatformList>
+		<PlatformList ref="child" :usettype="type"></PlatformList>
 		<div style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 20px 0">©一汽-大众汽车有限公司 版权所有</div>
 	</div>
 
@@ -157,7 +157,7 @@
 					$(".ccsize").text(item.imgsize);
 					$(".cclocation").text(item.installposition);
 					$(".ccstarttime").text(item.startdescribe);
-					$(".ccmaterialcode").text(item.id);
+					$(".ccmaterialcode").text(item.code);
 					$(".bg").css({backgroundImage: 'url(\'' + item.thumb1 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'});
 				}
 			});
@@ -178,7 +178,7 @@
                 });
             });
 
-			$("body").on("click", ".mark", function(){
+			$("body").unbind('click',".mark").on("click", ".mark", function(){
                 var tid = $(this).attr('tid');
                 that.isShowSetting = true;
                $(".setting").attr("markid",$(this).attr('id'));
@@ -223,6 +223,9 @@
 
 		},
 		methods: {
+            parentFun(){
+                this.$refs.child.test();//父组件调用子组件方法
+            },
             detail: function(id, activity_id) {
                 this.get(this.base+"/api/cate/change?materialId="+id, null, function(data){
                     if (data.code==200) {
@@ -484,4 +487,10 @@
 		}
 	}
 
+	/*ie11 css hack*/
+	@media all and (-ms-high-contrast:none) {
+		*::-ms-backdrop, select{
+			border: none;
+		}
+	}
 </style>

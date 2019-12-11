@@ -58,12 +58,12 @@
             <div class="" id="drawEcharts3" :style="{width: '100%', height: '400px'}">
             </div>
         </div>
-        <div class="echarts-row">
+        <div class="echarts-row"  style="margin-top: 50px">
             <div class="echarts-title" style="width: 100%"><span class="desc" style="width: 180px">素材上传分析-区域事业部</span><span class="line"></span></div>
             <div class="" id="drawEcharts4" :style="{width: '100%', height: '400px'}">
             </div>
         </div>
-        <div class="div-table">
+        <div class="div-table" style="margin-top: 50px">
             <div class="table-title" style="width: 100%"><span class="desc" style="width: 150px">素材下载TOP10</span><span class="line"></span></div>
             <div class="btn-export">导出</div>
             <div class="list">
@@ -604,7 +604,7 @@
                                 width: 12%;
                                 text-indent:10px;
                                 text-align: center;
-                                color: #b4c3ce;
+                                color: #00437A;
                             }
 
                         }
@@ -639,5 +639,10 @@
             }
         }
     }
-
+    /*ie11 css hack*/
+    @media all and (-ms-high-contrast:none) {
+        *::-ms-backdrop, select{
+            border: none;
+        }
+    }
 </style>

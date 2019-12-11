@@ -9,7 +9,7 @@
                     <th>{{'尺寸规划'|dz}}</th>
                     <th>{{'安装位置'|dz}}</th>
                     <th>{{'开始时间'|dz}}</th>
-                    <th>{{'物料代码'|dz}}</th>
+                    <th>{{'素材编码'|dz}}</th>
                     <th>{{'操作'|dz}}</th>
                 </tr>
                 </thead>
@@ -20,7 +20,7 @@
                     <td>{{item.imgsize}}</td>
                     <td>{{item.installposition}}</td>
                     <td>{{item.startdescribe}}</td>
-                    <td>{{item.id}}</td>
+                    <td>{{item.code}}</td>
                     <td style="cursor: pointer;color:#06c;" @click="libdetails(item.code)">素材详情</td>
                 </tr>
                 </tbody>
@@ -76,6 +76,9 @@
               this.getData();
         },
         methods: {
+            test(){
+                alert(1);
+            },
             libdetails(code){
              //   code=code||'1110000YH33VT';
                 var that=this;
