@@ -15,7 +15,8 @@
 			</thead>
 			<tbody>
 				<tr v-for="(item,index) in data.list">
-					<td>{{item.category=="销售政策提报"?"月度活动提报":item.category=="问卷型"?"其他提报":item.category}}</td>
+					<!--<td>{{item.category=="销售政策提报"?"月度活动提报":item.category=="问卷型"?"其它提报":item.category}}</td>-->
+					<td>{{item.category}}</td>
 					<td>{{item.title}}</td>
 					<td>{{item.userCnt}}</td>
 					<td v-if="item.status==1">未开始</td>
@@ -25,7 +26,7 @@
 					<td>{{item.endTimeStr}}</td>
 					<td>
 						<span @click="charts(item.id)">数据统计</span>
-						<span @click="analytics(item.id)" v-if="item.category=='销售政策提报'">问卷分析</span>
+						<span @click="analytics(item.id)" v-if="item.category=='月度活动提报'">问卷分析</span>
 						<span @click="exports(item.id)">导出</span>
 					</td>
 				</tr>
