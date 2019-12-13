@@ -3,7 +3,7 @@
 	<div class="platform-standard" style="position: relative;">
 		<div class="annotation-notes" style="width:80%;">
 			<p>标注说明:</p>
-			<p>鼠标滚轮放大缩小图片，左键按住可拖动，右键添加标记</p>
+			<p>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</p>
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
@@ -309,7 +309,7 @@
                 $(".ccstarttime").text('');
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
-                $('#container').ZoomMark('reset');
+               // $('#container').ZoomMark('reset');
 			},
             deleteClick(){
                 var that=this;
@@ -337,7 +337,7 @@
                 $(".ccstarttime").text('');
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
-                $('#container').ZoomMark('reset');
+               // $('#container').ZoomMark('reset');
 			},
 			getData: function() {
 				var that = this;
@@ -427,8 +427,8 @@
 			}
 
 			#reset{
-				bottom:5px;
-				left: 5px;
+				top:5px;
+				right: 5px;
 			}
 			#reset:before{
 				/*background-image: url(../../assets/4e/img/reset.png);*/
