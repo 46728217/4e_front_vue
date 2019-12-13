@@ -414,6 +414,7 @@
 					border: 1px solid #001e50;
 				}
 				margin-right: 10px;
+				display: inline-block;
 			}
 			.submit {
 				display: inline-block;
