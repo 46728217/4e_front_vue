@@ -7,7 +7,7 @@
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
-			<button id="reset" class="lipButton">还原</button>
+			<button id="reset" class="lipButton">查看全景图</button>
 		</div>
 
 		<div class="setting" v-show="isShowSetting==true">
@@ -63,7 +63,7 @@
 				<div class="btn update" @click="submit_updateClick"v-show="isAdd==false && userManage==1">修改</div>
 				<div class="btn delete" @click="deleteClick" v-show="isAdd==false && userManage==1">删除</div>
 				<div class="btn close"  @click="closeClick"v-show="isAdd==false">关闭</div>
-				<div class="btn detail"  v-show="isAdd==false" >素材详情</div>
+				<div class="btn detail"  v-show="isAdd==false" >探索更多</div>
 
 			</div>
 		</div>
@@ -179,6 +179,19 @@
             });
 
 			$("body").off('click',".mark").on("click", ".mark", function(){
+               // $('#container').ZoomMark('zoom',2);//放大两倍
+			    var imgWidth=$('#container').css("width").replace("px","");
+                var imgPosition=Number(imgWidth/2).toFixed(2);//获取图片中间位置的x坐标
+				var currMask=Number($(this).css("left").replace("px",""));//获取当前标记点的x坐标
+               // console.log(imgPosition+"===="+currMask);
+				if(currMask>=imgPosition){
+				    console.log("放左边");
+                    $(".setting").css("left",Number(currMask-50-500)+"px");//弹窗放左边 距离标记点左边50像素的位置;（减去弹窗宽度）
+				}else{
+                    console.log("放右边");
+                    $(".setting").css("left",Number(currMask+50)+"px");//弹窗放右边 距离标记点右边50像素的位置;
+                }
+
                 var tid = $(this).attr('tid');
                 that.isShowSetting = true;
                $(".setting").attr("markid",$(this).attr('id'));
@@ -296,6 +309,7 @@
                 $(".ccstarttime").text('');
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
+                $('#container').ZoomMark('reset');
 			},
             deleteClick(){
                 var that=this;
@@ -323,6 +337,7 @@
                 $(".ccstarttime").text('');
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
+                $('#container').ZoomMark('reset');
 			},
 			getData: function() {
 				var that = this;
@@ -400,28 +415,27 @@
 				width: 100%;
 			}
 			.lipButton{
-				width:50px;
-				height: 60px;
-				background-color: rgba(9,7,35,0.9);
+				width:100px;
+				height: 30px;
+				background-color: #6bc8f4;
 				position: absolute;
-
-				color:#FFF;
+				color:white;
 				border-width: 0px;
-				border-radius: 10px;
-				font-size: 10px;
+				border-radius: 5px;
+				font-size: 12px;
 				z-index: 999;
 			}
 
 			#reset{
-				top:5px;
-				right: 5px;
+				bottom:5px;
+				left: 5px;
 			}
 			#reset:before{
-				background-image: url(../../assets/4e/img/reset.png);
-				content: '';
-				width: 36px;
-				height: 36px;
-				display: block;
+				/*background-image: url(../../assets/4e/img/reset.png);*/
+				/*content: '';*/
+				/*width: 36px;*/
+				/*height: 36px;*/
+				/*display: block;*/
 			}
 			.mark:hover{
 				cursor: pointer;
@@ -434,8 +448,8 @@
 			border: 1px solid #e3e3e3;
 			color: #001c4c;
 			position: absolute;
-			top: 5.8%;
-			left: calc(30% - 250px);
+			top: 15%;
+			/*left: calc(30% - 250px);*/
 
 			.block {
 				width: 90%;

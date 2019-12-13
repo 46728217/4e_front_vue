@@ -21,7 +21,7 @@
                     <td>{{item.installposition}}</td>
                     <td>{{item.startdescribe}}</td>
                     <td>{{item.code}}</td>
-                    <td style="cursor: pointer;color:#06c;" @click="libdetails(item.code)">素材详情</td>
+                    <td style="cursor: pointer;color:#06c;" @click="libdetails(item.code)">探索更多</td>
                 </tr>
                 </tbody>
             </table>

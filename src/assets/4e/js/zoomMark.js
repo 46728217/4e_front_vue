@@ -100,6 +100,7 @@ var addCssRule = function() {
                             mContainer.publicMethods.mark(event.pageX- mContainer.offset().left,event.pageY- mContainer.offset().top);
                             settings.afterMark(mMarks);
                         	$("body").find(".mark:last").click();
+                            $("body").find(".mark:last").css("background-image",'url("/static/4e/pointer-active.png")');
 						}
 					}
 					event.preventDefault();
