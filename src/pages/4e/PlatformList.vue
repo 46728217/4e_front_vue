@@ -9,8 +9,8 @@
                     <th>{{'尺寸规划'|dz}}</th>
                     <th>{{'安装位置'|dz}}</th>
                     <th>{{'开始时间'|dz}}</th>
-                    <th>{{'素材编码'|dz}}</th>
-                    <th>{{'操作'|dz}}</th>
+                    <th>{{'物料代码'|dz}}</th>
+                    <th>{{'物料图示'|dz}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,7 +21,7 @@
                     <td>{{item.installposition}}</td>
                     <td>{{item.startdescribe}}</td>
                     <td>{{item.code}}</td>
-                    <td style="cursor: pointer;color:#06c;" @click="libdetails(item.code)">探索更多</td>
+                    <td style="cursor: pointer;color:#06c;" :style="{backgroundImage: 'url(\'' + item.thumb1 + '\')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"  @click="libdetails(item.code)"></td>
                 </tr>
                 </tbody>
             </table>

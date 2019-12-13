@@ -11,6 +11,9 @@
 		</div>
 
 		<div class="setting" v-show="isShowSetting==true">
+			<img class="cancel setting-close-btn" @click="cancelClick" v-show="isAdd==true" src='../../assets/4e/img/platform-setting-close-btn.png'>
+			<img class="closeClick setting-close-btn" @click="closeClick"v-show="isAdd==false" src='../../assets/4e/img/platform-setting-close-btn.png'>
+
 			<div class="block">
 				<span>物料种类:</span>
 				<div class="cc">
@@ -48,7 +51,7 @@
 				</div>
 			</div>
 			<div class="block">
-				<span>素材编码:</span>
+				<span>物料代码:</span>
 				<div class="cc">
 					<span class="component ccmaterialcode"></span>
 				</div>
@@ -59,10 +62,10 @@
 			</div>
 			<div class="block btnopt">
 				<div class="btn submit" @click="submit_updateClick" v-show="isAdd==true">设置该物料</div>
-				<div class="btn cancel" @click="cancelClick" v-show="isAdd==true">取消</div>
+				<!--<div class="btn cancel" @click="cancelClick" v-show="isAdd==true">取消</div>-->
 				<div class="btn update" @click="submit_updateClick"v-show="isAdd==false && userManage==1">修改</div>
 				<div class="btn delete" @click="deleteClick" v-show="isAdd==false && userManage==1">删除</div>
-				<div class="btn close"  @click="closeClick"v-show="isAdd==false">关闭</div>
+				<!--<div class="btn close"  @click="closeClick"v-show="isAdd==false">关闭</div>-->
 				<div class="btn detail"  v-show="isAdd==false" >探索更多</div>
 
 			</div>
@@ -179,7 +182,6 @@
             });
 
 			$("body").off('click',".mark").on("click", ".mark", function(){
-               // $('#container').ZoomMark('zoom',2);//放大两倍
 			    var imgWidth=$('#container').css("width").replace("px","");
                 var imgPosition=Number(imgWidth/2).toFixed(2);//获取图片中间位置的x坐标
 				var currMask=Number($(this).css("left").replace("px",""));//获取当前标记点的x坐标
@@ -199,6 +201,7 @@
                     $(".cctype").attr("disabled",true);
                     $(".ccmaterial").attr("disabled",true);
                 }
+               // $('#container').ZoomMark('zoom',2);//放大两倍
                 if(tid){
                     that.isAdd = false;
                     that.get(that.base+"/api/fawvwmaterial/detail?tid="+tid, null, function(data){
@@ -337,7 +340,7 @@
                 $(".ccstarttime").text('');
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
-               // $('#container').ZoomMark('reset');
+                //$('#container').ZoomMark('reset');
 			},
 			getData: function() {
 				var that = this;
@@ -427,8 +430,8 @@
 			}
 
 			#reset{
-				top:5px;
-				right: 5px;
+				bottom:5px;
+				left: 5px;
 			}
 			#reset:before{
 				/*background-image: url(../../assets/4e/img/reset.png);*/
@@ -450,7 +453,14 @@
 			position: absolute;
 			top: 15%;
 			/*left: calc(30% - 250px);*/
+			.setting-close-btn{
+				width: 25px;
+				position: absolute;
+				top: 5px;
+				right: 10px;
+				cursor: pointer;
 
+			}
 			.block {
 				width: 90%;
 				margin-left: 5%;
