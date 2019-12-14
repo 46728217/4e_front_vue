@@ -7,33 +7,35 @@
             <!--</div>-->
             <div class="menu">
                 <div class="item">时间维度：</div>
-                <div class="item radio"><span class="img"></span><span class="desc">昨天</span></div>
-                <div class="item radio"><span class="img"></span><span class="desc">最近7天</span></div>
-                <div class="item radio"><span class="img"></span><span class="desc">最近一个月</span></div>
+                <div class="item radio"><span class="img active"></span><span class="desc" :data-t="yesterday">昨天</span></div>
+                <div class="item radio"><span class="img"></span><span class="desc" :data-t="lastWeek">最近7天</span></div>
+                <div class="item radio"><span class="img"></span><span class="desc" :data-t="lastMonth">最近一个月</span></div>
                 <div class="item">
                     <span>{{'时间段'|dz}}</span>
                     <div class="cc">
-                        <select>
-                            <option value="1">{{'2019-10-10'|dz}}</option>
-                        </select>
+                        <input type="text" class="startdate" v-model="start"/>
                     </div>
                 </div>
                 <div class="item">
                     <span>{{'至'|dz}}</span>
                     <div class="cc">
-                        <select>
-                            <option value="1">{{'2019-10-12'|dz}}</option>
-                        </select>
+                        <input type="text" class="enddate" v-model="end"/>
                     </div>
+                </div>
+                <div class="search_btn" @click="getData">
+                    <span>查询</span>
                 </div>
             </div>
         </div>
+        <div class="loadding" v-show="isLoading">
+            <div>数据加载中</div>
+        </div>
         <div class="title">
-            <div class="item"><div class="top">浏览量（PV）</div><div class="bottom">4407</div></div>
-            <div class="item"><div class="top">独立访客(UV)</div><div class="bottom">2966</div></div>
-            <div class="item"><div class="top">访客次数</div><div class="bottom">1704</div></div>
-            <div class="item"><div class="top">平均页面停留时长</div><div class="bottom">55.21</div></div>
-            <div class="item"><div class="top">跳出率</div><div class="bottom">27.70%</div></div>
+            <div class="item"><div class="top">浏览量（PV）</div><div class="bottom">{{data.base.pv}}</div></div>
+            <div class="item"><div class="top">独立访客(UV)</div><div class="bottom">{{data.base.uv}}</div></div>
+            <div class="item"><div class="top">访客次数</div><div class="bottom">{{data.base.visitCount}}</div></div>
+            <div class="item"><div class="top">平均页面停留时长</div><div class="bottom">{{data.base.avgVisitTime}}</div></div>
+            <div class="item"><div class="top">跳出率</div><div class="bottom">{{data.base.avgExitRate}}</div></div>
         </div>
         <div class="echarts-row" style="margin-top: 50px;">
             <div class="echarts-row2" style="width: 48%;float: left;position: relative">
@@ -45,10 +47,10 @@
                 <div class="echarts-title" style="position: absolute"><span class="desc">流量情况分析</span><span class="line"></span></div>
                 <!--<div class="" id="drawEcharts2" :style="{width: '100%', height: '400px'}"> </div>-->
                 <ul class="traffic-analysis">
-                    <li><div class="circle">300M</div><div class="desc">最高峰值</div></li>
-                    <li><div class="circle">100M</div><div class="desc">平均峰值</div></li>
-                    <li><div class="circle">100G</div><div class="desc">总流量</div></li>
-                    <li><div class="circle">60G</div><div class="desc">平均流量</div></li>
+                    <li><div class="circle">{{data.kssCdnStat.maxBandWidth}}</div><div class="desc">最高峰值</div></li>
+                    <li><div class="circle">{{data.kssCdnStat.avgBandWidth}}</div><div class="desc">平均峰值</div></li>
+                    <li><div class="circle">{{data.kssCdnStat.totalFlowData}}</div><div class="desc">总流量</div></li>
+                    <li><div class="circle">{{data.kssCdnStat.avgFlowData}}</div><div class="desc">平均流量</div></li>
                 </ul>
 
             </div>
@@ -78,14 +80,14 @@
 
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr v-for="(item,index) in [1,2,3,4,5,7]">
-                        <td>{{index}}</td>
-                        <td>{{index}}</td>
-                        <td>{{index}}</td>
-                        <td>{{index}}</td>
-                        <td style="cursor: pointer;color:#00B1F1;">{{index}}</td>
-                    </tr>
+                    <tbody id="topList">
+                        <tr v-for="(item,index) in data.top10List">
+                            <td>{{item.first_name}}</td>
+                            <td>{{item.second_name}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.fileCode}}</td>
+                            <td>{{item.download_times}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -106,31 +108,119 @@
         name: "bi_kanban",
         data: function(){
             return {
-                imgsrc:'nocheck1'
+                isLoading : false,
+                base: base,
+                imgsrc:'nocheck1',
+                yesterday: '',
+                lastWeek: '',
+                lastMonth: '',
+                start: '2019-10-01',
+                end: '2019-11-01',
+                data: {
+                    base: {
+                        pv: 0,
+                        uv: 0,
+                        visitCount: 0,
+                        avgVisitTime: 0,
+                        avgExitRate: 0
+                    },
+                    kssCdnStat: {
+                        maxBandWidth: '0M',
+                        avgBandWidth: '0M',
+                        totalFlowData: '0M',
+                        avgFlowData: '0M'
+                    },
+                    userLoginStat: {
+                        names: [''],
+                        login_counts: ['0'],
+                        dealer_counts: ['0']
+                    },
+                    materialStat: {
+                        names: [],
+                        view_times: [''],
+                        download_times: [],
+                        upload_counts: []
+                    },
+                    sybMaterialStat: {
+                        names: [],
+                        upload_counts: []
+                    },
+                    top10List: []
+                }
             }
         },
         created: function() {
+            //昨天
+            var yesterday = new Date();
+            yesterday.setTime(yesterday.getTime()-24*60*60*1000);
+            yesterday = yesterday.getFullYear()+"-" + (yesterday.getMonth()+1) + "-" + yesterday.getDate();
+            this.yesterday = yesterday+":"+yesterday;
+            //近7天
+            var lastWeek = new Date();
+            lastWeek.setTime(lastWeek.getTime()-7*24*60*60*1000);
+            lastWeek = lastWeek.getFullYear()+"-" + (lastWeek.getMonth()+1) + "-" + lastWeek.getDate();
+            this.lastWeek = lastWeek+":"+yesterday;
+            //近一个月
+            var lastMonth = new Date();
+            lastMonth.setTime(lastMonth.getTime()-30*24*60*60*1000);
+            lastMonth = lastMonth.getFullYear()+"-" + (lastMonth.getMonth()+1) + "-" + lastMonth.getDate();
+            this.lastMonth = lastMonth+":"+yesterday;
             var that=this;
             $("body").on("click",'.radio',function () {
                 if(!$(this).find(".img").hasClass("active")){
                     $(this).find(".img").addClass("active");
                     $(this).siblings(".radio").find(".img").removeClass("active");
+                    var date = $(this).find(".img").next('span').data('t').split(':');
+                    that.start = date[0];
+                    that.end = date[1];
+                    that.getData();
                 }
-            })
-
-            that.$nextTick(function(){
-                that.drawLine1();
-               // that.drawLine2();
-                that.drawLine3();
-                that.drawLine4();
-                that.parentHeight();
-
             });
+
+            //设置加载动画
+            var timer = 1;
+            setInterval(function(){
+                var html = "数据加载中";
+                if (timer%5==0) {
+                    timer = 0;
+                }
+                var tmp = html;
+                for(var i=0;i<timer;i++) {
+                    tmp += ".";
+                }
+                $(".loadding div").html(tmp);
+                timer ++;
+            }, 500);
+
+            //默认加载昨天数据
+            var date = this.yesterday.split(':');
+            this.start = date[0];
+            this.end = date[1];
+            this.getData();
 
         },
         methods: {
+            getData() {
+                this.isLoading = true;
+                var that = this;
+                this.get(this.base + "/api/ga/analytics?start="+this.start+"&end="+this.end, null, function(data){
+                    if (data.code == 200) {
+                        that.isLoading = false;
+                        that.data = data.data;
+                        that.drawLine1();
+                        that.drawLine3();
+                        that.drawLine4();
+                        setTimeout(function(){
+                            that.parentHeight();
+                        }, 300);
+                    }else{
+                        that.showMsg("获取分析数据失败");
+                    }
+                })
+            },
 
             drawLine1(){
+                var that = this;
                 // 基于准备好的dom，初始化echarts实例
                 let myChart = this.$echarts.init(document.getElementById('drawEcharts1'));
                 // 绘制图表
@@ -158,13 +248,13 @@
                     },
                     yAxis: {
                         type: 'category',
-                        data: ['RSD1','RSD2','RSD3','RSD4','RSD5','RSD6','总部']
+                        data: that.data.userLoginStat.names
                     },
                     series: [
                         {
-                            name: '用户次数',
+                            name: '登录次数',
                             type: 'bar',
-                            data: [132, 29, 24, 10, 144, 630,944],
+                            data: that.data.userLoginStat.login_counts,
                             itemStyle: {
                                 normal: {
                                     color: '#00437A',
@@ -178,7 +268,7 @@
                         {
                             name: '用户量',
                             type: 'bar',
-                            data: [319, 28, 31, 124, 114, 687,944],
+                            data: that.data.userLoginStat.dealer_counts,
                             itemStyle: {
                                 normal: {
                                     color: '#00B1F1',
@@ -192,47 +282,9 @@
                     ]
                 });
             },
-            drawLine2(){
-                // 基于准备好的dom，初始化echarts实例
-                let myChart = this.$echarts.init(document.getElementById('drawEcharts2'));
-                // 绘制图表
-                myChart.setOption({
-                    color: ['#001E50', '#00437A', '#637077','#96A3A8','#C2CACF','#DFE4E8','#00B0F0'],
-                    tooltip : {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        top:'50',
-                        orient: 'vertical',
-                        x: 'right',
-                        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-                    },
-                    series : [
-                        {
-                            name: '访问来源',
-                            type: 'pie',
-                            radius : '55%',
-                            center: ['50%', '60%'],
-                            data:[
-                                {value:335, name:'直接访问'},
-                                {value:310, name:'邮件营销'},
-                                {value:234, name:'联盟广告'},
-                                {value:135, name:'视频广告'},
-                                {value:1548, name:'搜索引擎'}
-                            ],
-                            itemStyle: {
-                                emphasis: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                }
-                            }
-                        }
-                    ]
-                });
-            },
+
             drawLine3(){
+                var that = this;
                 // 基于准备好的dom，初始化echarts实例
                 let myChart = this.$echarts.init(document.getElementById('drawEcharts3'));
                 // 绘制图表
@@ -261,7 +313,7 @@
                     xAxis: [
                         {
                             type: 'category',
-                            data: ['产品与品牌','CRM营销','服务营销','汽车金融','其他业务','区域事业部','二手车营销','企业标识','全民打CALL','电商专区','捷达品牌物料','活动专区'],
+                            data: that.data.materialStat.names,
                             axisPointer: {
                                 type: 'shadow'
                             }
@@ -270,23 +322,12 @@
                     yAxis: [
                         {
                             type: 'value',
-                            //name: '水量',
-                            min: 0,
-                            max: 250,
-                            // interval: 50,
-                            // axisLabel: {
-                            //     formatter: '{value} ml'
-                            // }
                         },
                         {
-                           //  type: 'value',
-                          //  name: '温度',
-                          //   min: 0,
-                          //   max: 25,
-                          //   interval: 5,
-                            // axisLabel: {
-                            //     formatter: '{value} °C'
-                            // }
+                            type: 'value',
+                        },
+                        {
+                            type: 'value',
                         }
                     ],
                     series: [
@@ -294,7 +335,7 @@
                             name:'浏览量',
                             type:'bar',
                             barWidth: 30,//柱图宽度
-                            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                            data:that.data.materialStat.view_times,
                             itemStyle: {
                                 normal: {
                                     color: '#00437A',
@@ -308,7 +349,7 @@
                         {
                             name:'上传量',
                             type:'line',
-                            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                            data:that.data.materialStat.upload_counts,
                             itemStyle: {
                                 normal: {
                                     color: '#C2CACF',
@@ -323,7 +364,7 @@
                             name:'下载量',
                             type:'line',
                             yAxisIndex: 1,
-                            data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2],
+                            data:that.data.materialStat.download_times,
                             itemStyle: {
                                 normal: {
                                     color: '#00B1F1',
@@ -337,7 +378,9 @@
                     ]
                 });
             },
+
             drawLine4(){
+                var that = this;
                 // 基于准备好的dom，初始化echarts实例
                 let myChart = this.$echarts.init(document.getElementById('drawEcharts4'));
                 // 绘制图表
@@ -362,7 +405,7 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data : ['RSD1', 'RSD2', 'RSD3', 'RSD4', 'RSD5', 'RSD6'],
+                            data : that.data.sybMaterialStat.names,
                             axisTick: {
                                 alignWithLabel: true
                             }
@@ -378,10 +421,25 @@
                             name:'上传量',
                             type:'bar',
                             barWidth: 37,//柱图宽度
-                            data:[10, 52, 200, 334, 390, 330]
+                            data:that.data.sybMaterialStat.upload_counts
                         }
                     ]
                 });
+            },
+
+            drawList() {
+                var html = "";
+                for(var i=0;i<this.data.top10List;i++) {
+                    var item = this.data.top10List[i];
+                    html += "<tr>";
+                    html += "<td>"+item.first_name+"</td>";
+                    html += "<td>"+item.second_name+"</td>";
+                    html += "<td>"+item.name+"</td>";
+                    html += "<td>"+item.fileCode+"</td>";
+                    html += "<td>"+item.download_times+"</td>";
+                    html += "</tr>";
+                }
+                $("#topList").html(html);
             },
             back: function() {
                 this.$router.go(-1);//返回上一层
@@ -397,6 +455,16 @@
 <style scoped lang="scss">
     .bi_kanban{
         margin: 20px;
+        .loadding {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            div {
+                display: inline-block;
+                font-size: 16px;
+                margin-top: 30px;
+            }
+        }
         .nav {
             height: 30px;
             width: 100%;
@@ -424,21 +492,39 @@
                 font-family: 'font-hy-55';
                 .item{
                     display: inline-block;
+                    height: 19px;
                     .cc {
                         width: 124px;
+                        height: 100%;
                         display: inline-block;
                         border-bottom: 1px solid #2e3e4d;
-                        select {
+                        input {
                             border: none;
                             width: 100%;
-                            text-indent: 10px;
+                            text-align: center;
                             color: #2e3e4d;
                             font-size: 14px;
                             font-family: 'font-hy-55';
                         }
-                        select:focus {
+                        input:focus {
                             outline: none;
                         }
+                    }
+                }
+                .search_btn {
+                    width: 60px;
+                    height: 30px;
+                    display: inline-block;
+                    margin-left: 27px;
+                    background: #001e50;
+                    border-radius: 20px;
+                    color: #fff;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    text-align: center;
+                    span {
+                        margin-top: 5px;
+                        display: inline-block;
                     }
                 }
                 .radio{
@@ -532,15 +618,15 @@
                     height: 150px;
                     .circle{
                         margin: auto;
-                        width: 110px;
-                        height:110px;
-                        line-height: 110px;
+                        width: 100px;
+                        height:100px;
+                        padding: 10px;
+                        line-height: 100px;
                         text-align: center;
                         border-radius: 100%;
                         color: #42B3F0;
-                        font-size: 24px;
-                        letter-spacing:2px;
-                        border: 1px solid #42B3F0;
+                        font-size: 22px;
+                        border: 2px solid #42B3F0;
                     }
                     .desc{
                         margin-top: 10px;
@@ -619,6 +705,10 @@
                                 text-indent:10px;
                                 text-align: center;
                                 color: #000;
+                            }
+                            td:nth(5) {
+                                cursor: pointer;
+                                color:#00B1F1;
                             }
                             .waiting {
                                 color: #c2cacf;
