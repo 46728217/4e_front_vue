@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="div-table" style="margin-top: 50px">
-            <div class="table-title" style="width: 100%"><span class="desc" style="width: 150px">素材下载TOP10</span><span class="line"></span></div>
+            <div class="table-title" style="width: 100%"><span class="desc" style="width: 150px;font-weight: bold">素材下载TOP10</span><span class="line"></span></div>
             <div class="btn-export">导出</div>
             <div class="list">
                 <table>
@@ -232,7 +232,7 @@
                         }
                     },
                     legend: {
-                        data: ['用户次数', '用户量'],
+                        data: ['登录次数', '用户量'],
                         x: 'right', //居右显示
                         top:0,
                     },
@@ -325,9 +325,11 @@
                         },
                         {
                             type: 'value',
+                            "show": false,
                         },
                         {
                             type: 'value',
+                            "show": false,
                         }
                     ],
                     series: [
@@ -599,6 +601,7 @@
                     text-align: center;
                     height: 100%;
                     border-bottom: 3px solid #00B1F1;
+                    font-weight: bold;
                 }
                 .line {
                     display: inline-block;

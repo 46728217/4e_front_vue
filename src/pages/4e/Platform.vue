@@ -229,6 +229,11 @@
 
 			});
             $("body").on("click",'#reset',function(){
+                if(that.isAdd){
+                    that.cancelClick();
+                }else{
+                    that.closeClick();
+                }
                 $('#container').ZoomMark('reset');
             });
             setTimeout(function () {
