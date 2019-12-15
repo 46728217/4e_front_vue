@@ -10,19 +10,32 @@
                 <div class="item radio"><span class="img active"></span><span class="desc" :data-t="yesterday">昨天</span></div>
                 <div class="item radio"><span class="img"></span><span class="desc" :data-t="lastWeek">最近7天</span></div>
                 <div class="item radio"><span class="img"></span><span class="desc" :data-t="lastMonth">最近一个月</span></div>
+                <!--<div class="item">-->
+                    <!--<span>{{'时间段'|dz}}</span>-->
+                    <!--<div class="cc">-->
+                        <!--<input type="text" class="startdate" v-model="start"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="item">-->
+                    <!--<span>{{'至'|dz}}</span>-->
+                    <!--<div class="cc">-->
+                        <!--<input type="text" class="enddate" v-model="end"/>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="item">
                     <span>{{'时间段'|dz}}</span>
-                    <div class="cc">
-                        <input type="text" class="startdate" v-model="start"/>
-                    </div>
+                    <el-date-picker
+                            size="mini"
+                            v-model="datepickerValue"
+                            type="daterange"
+                            value-format="yyyy-MM-dd"
+                            range-separator="至"
+                            start-placeholder="开始日期"
+                            @change="changeData"
+                            end-placeholder="结束日期">
+                    </el-date-picker>
                 </div>
-                <div class="item">
-                    <span>{{'至'|dz}}</span>
-                    <div class="cc">
-                        <input type="text" class="enddate" v-model="end"/>
-                    </div>
-                </div>
-                <div class="search_btn" @click="getData">
+                <div class="search_btn" @click="searchData">
                     <span>查询</span>
                 </div>
             </div>
@@ -67,7 +80,7 @@
         </div>
         <div class="div-table" style="margin-top: 50px">
             <div class="table-title" style="width: 100%"><span class="desc" style="width: 150px;font-weight: bold">素材下载TOP10</span><span class="line"></span></div>
-            <div class="btn-export">导出</div>
+            <div class="btn-export" @click="exportClick">导出</div>
             <div class="list">
                 <table>
                     <thead>
@@ -116,6 +129,7 @@
                 lastMonth: '',
                 start: '2019-10-01',
                 end: '2019-11-01',
+                datepickerValue:[],
                 data: {
                     base: {
                         pv: 0,
@@ -139,13 +153,15 @@
                         names: [],
                         view_times: [''],
                         download_times: [],
-                        upload_counts: []
+                        upload_counts: [],
+                        avgFileSize:[]
                     },
                     sybMaterialStat: {
                         names: [],
                         upload_counts: []
                     },
-                    top10List: []
+                    top10List: [],
+                    export:false,
                 }
             }
         },
@@ -166,13 +182,17 @@
             lastMonth = lastMonth.getFullYear()+"-" + (lastMonth.getMonth()+1) + "-" + lastMonth.getDate();
             this.lastMonth = lastMonth+":"+yesterday;
             var that=this;
+            var yesterdayFormat =that.getDay(-1, '-');//获取昨天的日期，num就是-1， 前天的就是-2，依次类推。
+            that.datepickerValue=[yesterdayFormat,yesterdayFormat];
             $("body").on("click",'.radio',function () {
+
                 if(!$(this).find(".img").hasClass("active")){
                     $(this).find(".img").addClass("active");
                     $(this).siblings(".radio").find(".img").removeClass("active");
                     var date = $(this).find(".img").next('span').data('t').split(':');
                     that.start = date[0];
                     that.end = date[1];
+                    that.datepickerValue=[that.start,that.end];
                     that.getData();
                 }
             });
@@ -199,11 +219,57 @@
             this.getData();
 
         },
+        watch: {
+            // datepickerValue(newValue, oldValue) {
+            //     var that=this;
+            //     if(newValue!=oldValue){
+            //     }
+            //
+            // },
+        },
         methods: {
-            getData() {
+            exportClick(){
+                var that=this;
+                that.export=true;
+                var url=this.base + "/api/ga/analytics?start="+this.start+"&end="+this.end+'&export='+this.export;
+                window.open(url);
+            },
+            changeData(){
+                var that=this;
+                if(that.datepickerValue.length!=0){
+                    $("body").find(".radio").each(function () {
+                        $(this).find(".img").removeClass("active");
+                        $(this).attr("disabled",true);
+                    });
+                }
+            },
+            searchData(){
+                var that=this;
+                if(!that.datepickerValue){
+                    that.showMsg("请选择时间段");
+                    return;
+                }
+                that.start = that.datepickerValue[0];
+                that.end = that.datepickerValue[1];
+                that.getData();
+            },
+            getDay(num, str) {
+                var today = new Date();
+                var nowTime = today.getTime();
+                var ms = 24*3600*1000*num;
+                today.setTime(parseInt(nowTime + ms));
+                var oYear = today.getFullYear();
+                var oMoth = (today.getMonth() + 1).toString();
+                if (oMoth.length <= 1) oMoth = '0' + oMoth;
+                var oDay = today.getDate().toString();
+                if (oDay.length <= 1) oDay = '0' + oDay;
+                return oYear + str + oMoth + str + oDay;
+            },
+                getData() {
                 this.isLoading = true;
                 var that = this;
-                this.get(this.base + "/api/ga/analytics?start="+this.start+"&end="+this.end, null, function(data){
+
+                this.get(this.base + "/api/ga/analytics?start="+this.start+"&end="+this.end+'&exprot='+this.exprot, null, function(data){
                     if (data.code == 200) {
                         that.isLoading = false;
                         that.data = data.data;
@@ -254,6 +320,7 @@
                         {
                             name: '登录次数',
                             type: 'bar',
+                            barCategoryGap:0,
                             data: that.data.userLoginStat.login_counts,
                             itemStyle: {
                                 normal: {
@@ -268,6 +335,7 @@
                         {
                             name: '用户量',
                             type: 'bar',
+                            barCategoryGap:0,
                             data: that.data.userLoginStat.dealer_counts,
                             itemStyle: {
                                 normal: {
@@ -291,6 +359,7 @@
                 myChart.setOption({
                     tooltip: {
                         trigger: 'axis',
+                        formatter: '{b0}<br/>{a1}: {c1}<br />{a3}:{c3}',
                         axisPointer: {
                             type: 'cross',
                             crossStyle: {
@@ -376,6 +445,17 @@
                                     }
                                 }
                             },
+                        },
+                        {
+                            name:'平均文件大小',
+                            type: 'line',
+                            symbolSize: 0, // symbol的大小设置为0
+                            showSymbol: false, // 不显示symbol
+                            lineStyle: {
+                                width: 0, // 线宽是0
+                                color: 'rgba(0, 0, 0, 0)' // 线的颜色是透明的
+                            },
+                            data:that.data.materialStat.avgFileSize,
                         }
                     ]
                 });
