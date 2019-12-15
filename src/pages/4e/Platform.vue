@@ -182,50 +182,56 @@
             });
 
 			$("body").off('click',".mark").on("click", ".mark", function(){
-			    var imgWidth=$('#container').css("width").replace("px","");
-                var imgPosition=Number(imgWidth/2).toFixed(2);//获取图片中间位置的x坐标
-				var currMask=Number($(this).css("left").replace("px",""));//获取当前标记点的x坐标
-               // console.log(imgPosition+"===="+currMask);
-				if(currMask>=imgPosition){
-				    console.log("放左边");
-                    $(".setting").css("left",Number(currMask-50-500)+"px");//弹窗放左边 距离标记点左边50像素的位置;（减去弹窗宽度）
-				}else{
-                    console.log("放右边");
-                    $(".setting").css("left",Number(currMask+50)+"px");//弹窗放右边 距离标记点右边50像素的位置;
-                }
-
-                var tid = $(this).attr('tid');
-                that.isShowSetting = true;
-               $(".setting").attr("markid",$(this).attr('id'));
-                if(that.userManage!=1){
-                    $(".cctype").attr("disabled",true);
-                    $(".ccmaterial").attr("disabled",true);
-                }
                // $('#container').ZoomMark('zoom',2);//放大两倍
-                if(tid){
-                    that.isAdd = false;
-                    that.get(that.base+"/api/fawvwmaterial/detail?tid="+tid, null, function(data){
-                        if (data.code==200) {
-                            var materialtype = data.data.materialtype;
-                            var marerialid = data.data.id;
-                          //  $(".cctype").val(materialtype);
-                            that.cctype=materialtype;
-                            that.code=data.data.code;
-                            that.get(that.base+"/api/fawvwmaterial/location/list?usetype="+that.type+"&tid="+materialtype, null, function(data){
-                                if (data.code==200) {
-                                    that.materialList = data.data;
-                                    that.ccmaterial= marerialid;
-                                    $(".ccmaterial").change();
-                                }
+				var ts=this;
+			//	setTimeout(function () {
+                    var imgWidth=$('#container').css("width").replace("px","");
+                    var imgPosition=Number(imgWidth/2).toFixed(2);//获取图片中间位置的x坐标
+                    var currMask=Number($(ts).css("left").replace("px",""));//获取当前标记点的x坐标
+                    var currMasky=Number($(ts).css("top").replace("px",""));//获取当前标记点的y坐标
+                    // console.log("x:"+imgPosition+"====y"+currMasky);
+                 //   $('#container').ZoomMark('move',currMask/10,currMasky/10);//放大两倍
+                    if(currMask>=imgPosition){
+                        console.log("放左边");
+                        $(".setting").css("left",Number(currMask-50-500)+"px");//弹窗放左边 距离标记点左边50像素的位置;（减去弹窗宽度）
+                    }else{
+                        console.log("放右边");
+                        $(".setting").css("left",Number(currMask+50)+"px");//弹窗放右边 距离标记点右边50像素的位置;
+                    }
 
-                            });
-                        }
-                    })
-				}else{//新增标记点 弹窗打开
-                    that.isAdd = true;
-                    that.cctype=0;
-                    that.ccmaterial= 0;
-				}
+                    var tid = $(ts).attr('tid');
+                    that.isShowSetting = true;
+                    $(".setting").attr("markid",$(ts).attr('id'));
+                    if(that.userManage!=1){
+                        $(".cctype").attr("disabled",true);
+                        $(".ccmaterial").attr("disabled",true);
+                    }
+                    if(tid){
+                        that.isAdd = false;
+                        that.get(that.base+"/api/fawvwmaterial/detail?tid="+tid, null, function(data){
+                            if (data.code==200) {
+                                var materialtype = data.data.materialtype;
+                                var marerialid = data.data.id;
+                                //  $(".cctype").val(materialtype);
+                                that.cctype=materialtype;
+                                that.code=data.data.code;
+                                that.get(that.base+"/api/fawvwmaterial/location/list?usetype="+that.type+"&tid="+materialtype, null, function(data){
+                                    if (data.code==200) {
+                                        that.materialList = data.data;
+                                        that.ccmaterial= marerialid;
+                                        $(".ccmaterial").change();
+                                    }
+
+                                });
+                            }
+                        })
+                    }else{//新增标记点 弹窗打开
+                        that.isAdd = true;
+                        that.cctype=0;
+                        that.ccmaterial= 0;
+                    }
+              //  },1000);
+
 
 			});
             $("body").off('click',"#reset").on("click",'#reset',function(){
@@ -317,6 +323,7 @@
                 $(".ccstarttime").text('');
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
+                $('#container').ZoomMark('reset');
 			},
             deleteClick(){
                 var that=this;
@@ -345,6 +352,7 @@
                 $(".ccstarttime").text('');
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
+                $('#container').ZoomMark('reset');
 			},
 			getData: function() {
 				var that = this;
