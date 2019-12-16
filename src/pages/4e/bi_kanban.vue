@@ -367,7 +367,21 @@
                 myChart.setOption({
                     tooltip: {
                         trigger: 'axis',
-                        formatter: '{b0}<br/>{a1}: {c1}<br />{a3}:{c3}',
+                        formatter: function (item) {
+                            console.log(item);
+                             for(var i=0;i<item.length;i++){
+                                 if(item[i].seriesName=="浏览量"){
+                                     return  `${item[i].name}<br/>
+                                              浏览量：${item[i].value} <br/>
+                                              平均文件大小：${item[item.length-1].value}
+                                              `;
+                                 }else{
+                                     return  `${item[i].name}<br/>
+                                              平均文件大小：${item[item.length-1].value}
+                                              `;
+                                 }
+                             }
+                        },
                         extraCssText:'border-radius:20px;text-align: center;',
                         // axisPointer: {
                         //     type: 'cross',
@@ -408,7 +422,7 @@
                         {
                             type: 'value',
                             "show": false,
-                        }
+                        },
                     ],
                     series: [
                         {
@@ -435,7 +449,7 @@
                                     color: '#C2CACF',
                                     label : {
                                         show: true,
-                                        position: 'top',
+                                        position: 'left',
                                     }
                                 }
                             },
@@ -443,14 +457,13 @@
                         {
                             name:'下载量',
                             type:'line',
-                            yAxisIndex: 1,
                             data:that.data.materialStat.download_times,
                             itemStyle: {
                                 normal: {
                                     color: '#00B1F1',
                                     label : {
                                         show: true,
-                                        position: 'top',
+                                        position: 'right',
                                     }
                                 }
                             },
@@ -458,13 +471,15 @@
                         {
                             name:'平均文件大小',
                             type: 'line',
-                            symbolSize: 0, // symbol的大小设置为0
-                            showSymbol: false, // 不显示symbol
+                             symbolSize: 0, // symbol的大小设置为0
+                             showSymbol: false, // 不显示symbol
                             lineStyle: {
                                 width: 0, // 线宽是0
                                 color: 'rgba(0, 0, 0, 0)' // 线的颜色是透明的
                             },
                             data:that.data.materialStat.avgFileSize,
+
+
                         }
                     ]
                 });
@@ -780,7 +795,7 @@
                 padding-bottom: 30px;
                 width: 100%;
                 margin-top: 20px;
-                margin-left: calc(10% - 100px);
+                /*margin-left: calc(10% - 100px);*/
                 table {
                     width: 100%;
                     thead {
@@ -789,10 +804,25 @@
                             th {
                                 border-bottom: 1px solid #e7eaec;
                                 border-right: 1px solid #e7eaec;
-                                width: 12%;
-                                text-indent:10px;
+                                /*width: 12%;*/
+                                /*text-indent:10px;*/
                                 text-align: center;
                                 color: #00437A;
+                            }
+                            th:nth-child(1){
+                                width: 5%;
+                            }
+                            th:nth-child(2){
+                                width: 5%;
+                            }
+                            th:nth-child(3){
+                                width: 20%;
+                            }
+                            th:nth-child(4){
+                                width: 4%;
+                            }
+                            th:nth-child(5){
+                                width: 3%;
                             }
 
                         }
@@ -803,14 +833,25 @@
                             height: 50px;
                             td {
                                 border-bottom: 1px solid #e7eaec;
-                                width: 15%;
-                                text-indent:10px;
+                                /*width: 15%;*/
+                                /*text-indent:10px;*/
                                 text-align: center;
                                 color: #000;
                             }
-                            td:nth(5) {
-                                cursor: pointer;
-                                color:#00B1F1;
+                            td:nth-child(1){
+                                width: 5%;
+                            }
+                            td:nth-child(2){
+                                width: 5%;
+                            }
+                            th:nth-child(3){
+                                width: 20%;
+                            }
+                            td:nth-child(4){
+                                width: 4%;
+                            }
+                            td:nth-child(5){
+                                width: 3%;
                             }
                             .waiting {
                                 color: #c2cacf;

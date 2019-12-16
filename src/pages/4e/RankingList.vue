@@ -1,5 +1,16 @@
 <template>
     <div class="ranking-list">
+        <div class="cond">
+            <div class="name">
+                <!--<span>{{'销售代码'|dz}}</span>-->
+                <input type="text" placeholder="销售代码"/>
+            </div>
+
+            <div class="search_btn">
+                <span>{{'搜索'|dz}}</span>
+            </div>
+        </div>
+
         <div class="list">
             <table>
                 <thead>
@@ -201,6 +212,46 @@
 
 <style scoped lang="scss">
     .ranking-list{
+        .cond {
+            color: #2e3e4d;
+            font-size: 14px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'font-hy-55';
+            float: right;
+            .name {
+                margin-left: 20px;
+                color: #000000;
+                display: inline-block;
+                input {
+                    background: transparent;
+                    border: unset;
+                    color: #000000;
+                    border-bottom: 1px solid #2e3e4d;
+                    border-top: none \9;/*IE6.7.8.9.10都生效*/
+                    border-left: none \9;
+                    border-right: none \9;
+                }
+            }
+
+            .search_btn {
+                width: 60px;
+                height: 30px;
+                display: inline-block;
+                margin-left: 27px;
+                background: #2e3e4d;
+                border-radius: 20px;
+                color: #fff;
+                vertical-align: middle;
+                cursor: pointer;
+                span {
+                    margin-top: 5px;
+                    display: inline-block;
+                }
+            }
+
+        }
         .list {
             padding-bottom: 30px;
             width: 100%;
@@ -334,4 +385,9 @@
 
         }
     }
+    input::-webkit-input-placeholder {
+        text-align: center;
+        color: #ccc;
+    }
+
 </style>
