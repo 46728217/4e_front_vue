@@ -35,9 +35,9 @@
                             end-placeholder="结束日期">
                     </el-date-picker>
                 </div>
-                <div class="search_btn" @click="searchData">
-                    <span>查询</span>
-                </div>
+                <!--<div class="search_btn" @click="searchData">-->
+                    <!--<span>查询</span>-->
+                <!--</div>-->
             </div>
         </div>
         <div class="loadding" v-show="isLoading">
@@ -236,11 +236,18 @@
             },
             changeData(){
                 var that=this;
-                if(that.datepickerValue.length!=0){
+                console.log(that.datepickerValue);
+                if(that.datepickerValue!=null){
                     $("body").find(".radio").each(function () {
                         $(this).find(".img").removeClass("active");
                         $(this).attr("disabled",true);
                     });
+                    that.start = that.datepickerValue[0];
+                    that.end = that.datepickerValue[1];
+                    that.getData();
+                }else{
+                    that.showMsg("请选择时间段");
+                    return;
                 }
             },
             searchData(){

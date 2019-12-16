@@ -8,6 +8,8 @@
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
 			<button id="reset" class="lipButton">查看全景图</button>
+			<div class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料
+			</div>
 		</div>
 
 		<div class="setting" v-show="isShowSetting==true">
@@ -183,21 +185,26 @@
 
 			$("body").off('click',".mark").on("click", ".mark", function(){
                // $('#container').ZoomMark('zoom',2);//放大两倍
+
+				$(".describe").hide();
 				var ts=this;
-			//	setTimeout(function () {
+                $(ts).css("background-image",'url("/static/4e/pointer-active.png")');
+                 if($(ts).css('background-image').indexOf("pointer-active")>-1){
+                     $(ts).siblings(".mark").css("background-image",'url("/static/4e/pointer.png")');
+				 }
                     var imgWidth=$('#container').css("width").replace("px","");
                     var imgPosition=Number(imgWidth/2).toFixed(2);//获取图片中间位置的x坐标
                     var currMask=Number($(ts).css("left").replace("px",""));//获取当前标记点的x坐标
                     var currMasky=Number($(ts).css("top").replace("px",""));//获取当前标记点的y坐标
                     // console.log("x:"+imgPosition+"====y"+currMasky);
-                 //   $('#container').ZoomMark('move',currMask/10,currMasky/10);//放大两倍
-                    if(currMask>=imgPosition){
-                        console.log("放左边");
-                        $(".setting").css("left",Number(currMask-50-500)+"px");//弹窗放左边 距离标记点左边50像素的位置;（减去弹窗宽度）
-                    }else{
-                        console.log("放右边");
-                        $(".setting").css("left",Number(currMask+50)+"px");//弹窗放右边 距离标记点右边50像素的位置;
-                    }
+                   //   $('#container').ZoomMark('move',currMask/10,currMasky/10);//放大两倍
+                   //  if(currMask>=imgPosition){
+                   //      console.log("放左边");
+                   //      $(".setting").css("left",Number(currMask-50-500)+"px");//弹窗放左边 距离标记点左边50像素的位置;（减去弹窗宽度）
+                   //  }else{
+                   //      console.log("放右边");
+                   //      $(".setting").css("left",Number(currMask+50)+"px");//弹窗放右边 距离标记点右边50像素的位置;
+                   //  }
 
                     var tid = $(ts).attr('tid');
                     that.isShowSetting = true;
@@ -230,7 +237,7 @@
                         that.cctype=0;
                         that.ccmaterial= 0;
                     }
-              //  },1000);
+
 
 
 			});
@@ -324,6 +331,12 @@
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
                 $('#container').ZoomMark('reset');
+
+                $("body").find(".mark").each(function () {
+                       $(this).css("background-image",'url("/static/4e/pointer.png")');
+                });
+                $(".describe").show();
+
 			},
             deleteClick(){
                 var that=this;
@@ -353,7 +366,12 @@
                 $(".ccmaterialcode").text('');
                 $(".bg").removeAttr('style');
                 $('#container').ZoomMark('reset');
-			},
+                $("body").find(".mark").each(function () {
+                    $(this).css("background-image",'url("/static/4e/pointer.png")');
+                });
+                $(".describe").show();
+
+            },
 			getData: function() {
 				var that = this;
 				localStorage.removeItem("mMarks");
@@ -441,6 +459,19 @@
 				z-index: 999;
 			}
 
+			.describe{
+				position: absolute;
+				width: 200px;
+				height: 10px;
+				bottom: 15px;
+				left: 0;
+				right: 0;
+				margin: auto;
+				color: #b4c3ce;
+				img{
+					width: 20px;
+				}
+			}
 			#reset{
 				bottom:5px;
 				left: 5px;
@@ -457,16 +488,17 @@
 			}
 		}
 		.setting {
-			width: 500px;
+			width: 430px;
 			height: 550px;
-			background: #fff;
+			background: white;
 			border: 1px solid #e3e3e3;
 			color: #001c4c;
 			position: absolute;
-			top: 15%;
-			/*left: calc(30% - 250px);*/
+			opacity: 0.93;
+			top:70px;
+			left: calc(30% - 60px);
 			.setting-close-btn{
-				width: 25px;
+				width: 20px;
 				position: absolute;
 				top: 5px;
 				right: 10px;
@@ -488,11 +520,12 @@
 						border: unset;
 						width: 100%;
 						display: inline-block;
+						text-align: left;
 					}
 				}
 				.bg {
 					height: 200px;
-					width: 66%;
+					width: 77%;
 					background: #6bc8f4;
 					display: inline-block;
     				vertical-align: top;
