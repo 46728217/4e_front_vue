@@ -327,7 +327,8 @@
                         {
                             name: '登录次数',
                             type: 'bar',
-                            barCategoryGap:0,
+                            barGap:0,
+                            barWidth: 20,//柱图宽度
                             data: that.data.userLoginStat.login_counts,
                             itemStyle: {
                                 normal: {
@@ -342,7 +343,7 @@
                         {
                             name: '用户量',
                             type: 'bar',
-                            barCategoryGap:0,
+                            barWidth: 20,//柱图宽度
                             data: that.data.userLoginStat.dealer_counts,
                             itemStyle: {
                                 normal: {
@@ -367,16 +368,17 @@
                     tooltip: {
                         trigger: 'axis',
                         formatter: '{b0}<br/>{a1}: {c1}<br />{a3}:{c3}',
-                        axisPointer: {
-                            type: 'cross',
-                            crossStyle: {
-                                color: '#999'
-                            }
-                        }
+                        extraCssText:'border-radius:20px;text-align: center;',
+                        // axisPointer: {
+                        //     type: 'cross',
+                        //     crossStyle: {
+                        //         color: '#999'
+                        //     }
+                        // }
                     },
                     grid: {
                         left: '2.5%',
-                        right: '4%',
+                        right: '-20',
                         bottom: '3%',
                         containLabel: true
                     },
@@ -419,7 +421,7 @@
                                     color: '#00437A',
                                     label : {
                                         show: true,
-                                        position: 'right',
+                                        position: 'top',
                                     }
                                 }
                             },
@@ -433,7 +435,7 @@
                                     color: '#C2CACF',
                                     label : {
                                         show: true,
-                                        position: 'right',
+                                        position: 'top',
                                     }
                                 }
                             },
@@ -448,7 +450,7 @@
                                     color: '#00B1F1',
                                     label : {
                                         show: true,
-                                        position: 'right',
+                                        position: 'top',
                                     }
                                 }
                             },
@@ -477,6 +479,7 @@
                     color: ['#00437A'],
                     tooltip : {
                         trigger: 'axis',
+                        extraCssText:'border-radius:20px;text-align: center;',
                         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
                             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         }
@@ -486,8 +489,8 @@
                         data:['上传量']
                     },
                     grid: {
-                        left: '2.5%',
-                        right: '4%',
+                        left: '2.7%',
+                        right: '0',
                         bottom: '3%',
                         containLabel: true
                     },
@@ -510,7 +513,16 @@
                             name:'上传量',
                             type:'bar',
                             barWidth: 37,//柱图宽度
-                            data:that.data.sybMaterialStat.upload_counts
+                            data:that.data.sybMaterialStat.upload_counts,
+                            itemStyle: {
+                                normal: {
+                                    color: '#00437A',
+                                    label : {
+                                        show: true,
+                                        position: 'top',
+                                    }
+                                }
+                            },
                         }
                     ]
                 });
@@ -644,7 +656,7 @@
         }
         .title{
             margin-top: 40px;
-            border-top: 2px solid #D2D2D2;
+            border-top: 1px solid #969696;
             border-bottom: 2px solid #42B3F0;
             display: -webkit-flex;
             display: flex;
@@ -656,7 +668,7 @@
                 height: 70px;
                 .top{
                     height: 40%;
-                    color: #D2D2D2;
+                    color: #969696;
                     font-weight: bold;
                     letter-spacing:1px;
                 }
@@ -715,14 +727,14 @@
                         text-align: center;
                         border-radius: 100%;
                         color: #42B3F0;
-                        font-size: 22px;
+                        font-size: 18px;
                         border: 2px solid #42B3F0;
                     }
                     .desc{
                         margin-top: 10px;
                         text-align: center;
                         font-weight: bold;
-                        font-size: 16px;
+                        /*font-size: 16px;*/
                     }
                 }
             }
@@ -766,7 +778,7 @@
             }
             .list {
                 padding-bottom: 30px;
-                width: 95%;
+                width: 100%;
                 margin-top: 20px;
                 margin-left: calc(10% - 100px);
                 table {
