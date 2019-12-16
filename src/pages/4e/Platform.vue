@@ -43,7 +43,9 @@
 			<div class="block">
 				<span>安装位置:</span>
 				<div class="cc">
-					<span class="component cclocation"></span>
+					<img style="    display: inline-block;width: 17px;vertical-align: top;"  src='../../assets/4e/img/shizi-icon.png'>
+					<span style="display: inline-block;width: 20px;vertical-align: top;">AO</span>
+					<span style="width: 80%" class="component cclocation"></span>
 				</div>
 			</div>
 			<div class="block">
@@ -521,6 +523,7 @@
 						width: 100%;
 						display: inline-block;
 						text-align: left;
+						color: #555;
 					}
 				}
 				.bg {
