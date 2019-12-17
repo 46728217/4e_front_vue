@@ -1,6 +1,6 @@
 <!--新标准展厅平面图例-->
 <template>
-	<div class="platform-standard" style="position: relative;">
+	<div class="platform-standard" style="position: relative;text-align: center;">
 		<div class="annotation-notes" style="width:80%;">
 			<p>标注说明:</p>
 			<p>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</p>
@@ -10,70 +10,71 @@
 			<button id="reset" class="lipButton">查看全景图</button>
 			<div class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料
 			</div>
+			<div class="setting" v-show="isShowSetting==true">
+				<img class="cancel setting-close-btn" @click="cancelClick" v-show="isAdd==true" src='../../assets/4e/img/platform-setting-close-btn.png'>
+				<img class="closeClick setting-close-btn" @click="closeClick"v-show="isAdd==false" src='../../assets/4e/img/platform-setting-close-btn.png'>
+
+				<div class="block">
+					<span>物料种类:</span>
+					<div class="cc">
+						<select class="component cctype" v-model="cctype">
+							<option value="0">请选择</option>
+							<option v-for="(item,index) in typeList" :value="item.tid">{{item.typename}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="block">
+					<span>物料名称:</span>
+					<div class="cc">
+						<select class="component ccmaterial" v-model="ccmaterial">
+							<option value="0">请选择</option>
+							<option v-for="(item,index) in materialList" :value="item.id">{{item.materialname}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="block">
+					<span>尺寸规划:</span>
+					<div class="cc">
+						<span class="component ccsize"></span>
+					</div>
+				</div>
+				<div class="block">
+					<span>安装位置:</span>
+					<div class="cc">
+						<img style="    display: inline-block;width: 17px;vertical-align: top;"  src='../../assets/4e/img/shizi-icon.png'>
+						<span style="display: inline-block;width: 20px;vertical-align: top;">AO</span>
+						<span style="width: 75%" class="component cclocation"></span>
+					</div>
+				</div>
+				<div class="block">
+					<span>开始时间:</span>
+					<div class="cc">
+						<span class="component ccstarttime"></span>
+					</div>
+				</div>
+				<div class="block">
+					<span>物料代码:</span>
+					<div class="cc">
+						<span class="component ccmaterialcode"></span>
+					</div>
+				</div>
+				<div class="block">
+					<span>物料图示:</span>
+					<div class="bg"></div>
+				</div>
+				<div class="block btnopt">
+					<div class="btn submit" @click="submit_updateClick" v-show="isAdd==true">设置该物料</div>
+					<!--<div class="btn cancel" @click="cancelClick" v-show="isAdd==true">取消</div>-->
+					<div class="btn update" @click="submit_updateClick"v-show="isAdd==false && userManage==1">修改</div>
+					<div class="btn delete" @click="deleteClick" v-show="isAdd==false && userManage==1">删除</div>
+					<!--<div class="btn close"  @click="closeClick"v-show="isAdd==false">关闭</div>-->
+					<div class="btn detail"  v-show="isAdd==false" >探索更多</div>
+
+				</div>
+			</div>
 		</div>
 
-		<div class="setting" v-show="isShowSetting==true">
-			<img class="cancel setting-close-btn" @click="cancelClick" v-show="isAdd==true" src='../../assets/4e/img/platform-setting-close-btn.png'>
-			<img class="closeClick setting-close-btn" @click="closeClick"v-show="isAdd==false" src='../../assets/4e/img/platform-setting-close-btn.png'>
 
-			<div class="block">
-				<span>物料种类:</span>
-				<div class="cc">
-					<select class="component cctype" v-model="cctype">
-						<option value="0">请选择</option>
-						<option v-for="(item,index) in typeList" :value="item.tid">{{item.typename}}</option>
-					</select>
-				</div>
-			</div>
-			<div class="block">
-				<span>物料名称:</span>
-				<div class="cc">
-					<select class="component ccmaterial" v-model="ccmaterial">
-						<option value="0">请选择</option>
-						<option v-for="(item,index) in materialList" :value="item.id">{{item.materialname}}</option>
-					</select>
-				</div>
-			</div>
-			<div class="block">
-				<span>尺寸规划:</span>
-				<div class="cc">
-					<span class="component ccsize"></span>
-				</div>
-			</div>
-			<div class="block">
-				<span>安装位置:</span>
-				<div class="cc">
-					<img style="    display: inline-block;width: 17px;vertical-align: top;"  src='../../assets/4e/img/shizi-icon.png'>
-					<span style="display: inline-block;width: 20px;vertical-align: top;">AO</span>
-					<span style="width: 75%" class="component cclocation"></span>
-				</div>
-			</div>
-			<div class="block">
-				<span>开始时间:</span>
-				<div class="cc">
-					<span class="component ccstarttime"></span>
-				</div>
-			</div>
-			<div class="block">
-				<span>物料代码:</span>
-				<div class="cc">
-					<span class="component ccmaterialcode"></span>
-				</div>
-			</div>
-			<div class="block">
-				<span>物料图示:</span>
-				<div class="bg"></div>
-			</div>
-			<div class="block btnopt">
-				<div class="btn submit" @click="submit_updateClick" v-show="isAdd==true">设置该物料</div>
-				<!--<div class="btn cancel" @click="cancelClick" v-show="isAdd==true">取消</div>-->
-				<div class="btn update" @click="submit_updateClick"v-show="isAdd==false && userManage==1">修改</div>
-				<div class="btn delete" @click="deleteClick" v-show="isAdd==false && userManage==1">删除</div>
-				<!--<div class="btn close"  @click="closeClick"v-show="isAdd==false">关闭</div>-->
-				<div class="btn detail"  v-show="isAdd==false" >探索更多</div>
-
-			</div>
-		</div>
 		<PlatformList ref="child" :usettype="type"></PlatformList>
 		<div style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 20px 0">©一汽-大众汽车有限公司 版权所有</div>
 	</div>
@@ -427,7 +428,6 @@
 
 <style lang="scss" scope>
 	.platform-standard {
-		position: relative;
 		width: 100%;
 		min-height: 400px;
 		.annotation-notes{
@@ -488,77 +488,77 @@
 			.mark:hover{
 				cursor: pointer;
 			}
-		}
-		.setting {
-			width: 370px;
-			height: 470px;
-			background: white;
-			border: 1px solid #e3e3e3;
-			color: #001c4c;
-			position: absolute;
-			opacity: 0.93;
-			top:70px;
-			right: 0;
-			//left: calc(30% - 60px);
-			left:532px;
-			.setting-close-btn{
-				width: 20px;
+			.setting {
+				z-index: 9999;
+				width: 370px;
+				height: 470px;
+				background: white;
+				border: 1px solid #e3e3e3;
+				color: #001c4c;
 				position: absolute;
-				top: 5px;
-				right: 10px;
-				cursor: pointer;
+				opacity: 0.93;
+				top:0;
+				right: 0;
+				.setting-close-btn{
+					width: 20px;
+					position: absolute;
+					top: 5px;
+					right: 10px;
+					cursor: pointer;
 
-			}
-			.block {
-				width: 90%;
-				margin-left: 5%;
-				margin-top: 15px;
-				text-align: center;
-				.cc {
-					display: inline-block;
-					width: 70%;
-					border: unset;
-					margin-left: 3%;
-					border-bottom: 1px solid #00437a;
-					.component {
-						border: unset;
-						width: 100%;
+				}
+				.block {
+					width: 90%;
+					margin-left: 5%;
+					margin-top: 15px;
+					text-align: center;
+					.cc {
 						display: inline-block;
-						text-align: left;
-						color: #555;
+						width: 70%;
+						border: unset;
+						margin-left: 3%;
+						border-bottom: 1px solid #00437a;
+						.component {
+							border: unset;
+							width: 100%;
+							display: inline-block;
+							text-align: left;
+							color: #555;
+						}
+					}
+					.bg {
+						height: 120px;
+						width: 70%;
+						background: #6bc8f4;
+						display: inline-block;
+						vertical-align: top;
+						margin-top: 2px;
+						margin-left: 3%;
+					}
+
+
+				}
+				.btnopt {
+					width: 90%;
+					height: 30px;
+					margin-left: 5%;
+					margin-top: 10px;
+					display: inline-block;
+					.btn {
+						color: #fff;
+						display: inline-block;
+						margin: 10px;
+						background: #6bc8f4;
+						width: 80px;
+						height: 20px;
+						border-radius: 5px 5px;
+						cursor: pointer;
 					}
 				}
-				.bg {
-					height: 120px;
-					width: 70%;
-					background: #6bc8f4;
-					display: inline-block;
-    				vertical-align: top;
-    				margin-top: 2px;
-    				margin-left: 3%;
-				}
-
 
 			}
-			.btnopt {
-				width: 90%;
-				height: 30px;
-				margin-left: 5%;
-				margin-top: 10px;
-				display: inline-block;
-				.btn {
-					color: #fff;
-					display: inline-block;
-					margin: 10px;
-					background: #6bc8f4;
-					width: 80px;
-					height: 20px;
-					border-radius: 5px 5px;
-					cursor: pointer;
-				}
-			}
-			
 		}
+
 	}
 
 	/*ie11 css hack*/

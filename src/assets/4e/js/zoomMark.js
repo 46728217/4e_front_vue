@@ -104,7 +104,7 @@ var addCssRule = function() {
                             $(".describe").show();
 						}
 					}
-					event.preventDefault();
+					//event.preventDefault();//注释掉 会影响select change事件
 				});
 				mContainer.mousemove(function(event){
 					if(mousePosition.isMouseDown){

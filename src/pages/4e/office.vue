@@ -42,6 +42,7 @@
 <script>
     import font_css from '@/assets/4e/css/font.css'
     import global_css from '@/assets/4e/css/global.css'
+    import {BASE} from '@/assets/4e/js/common.js'
     import Header from './header_s.vue';
     import Footer from './footer.vue';
     var base = localStorage.getItem("base")
@@ -192,7 +193,7 @@
                             var item = data.data[key];
                             item.ico = that.base+"/static/pc/adminStyles/images/ico_dark/ico"+item.id+".png";
                             item.icoblue = that.base+"/static/pc/adminStyles/images/ico_blue/ico"+item.id+".png";
-
+                            item.index=Number(key);
                             switch(item['level']) {
                                 case 2:
                                     if (menu[item['id']]==null) {
@@ -224,6 +225,13 @@
                                     break;
                             }
                         }
+                        // var arr = []
+                        // for (let n in menu) {
+                        //     arr.push(menu[n]); //属性
+                        // }
+                        // var sortArr=arr.sort(BASE.compare('index'));
+                        // console.log(arr);
+
                         that.menu = menu;
 
                         that.$nextTick(function(){

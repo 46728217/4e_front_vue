@@ -73,11 +73,11 @@ export const BASE={
         }
         return restr;
     },
-     compare(val,sort) {//json对象根据某个key进行排序  降序
+     compare(val) {//升序
        return function (a, b) {
          var value1 = a[val];
          var value2 = b[val];
-         return value2 - value1;
+         return value1 - value2;
      }
   },
 }
