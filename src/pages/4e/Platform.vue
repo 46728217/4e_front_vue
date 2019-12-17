@@ -45,7 +45,7 @@
 				<div class="cc">
 					<img style="    display: inline-block;width: 17px;vertical-align: top;"  src='../../assets/4e/img/shizi-icon.png'>
 					<span style="display: inline-block;width: 20px;vertical-align: top;">AO</span>
-					<span style="width: 80%" class="component cclocation"></span>
+					<span style="width: 75%" class="component cclocation"></span>
 				</div>
 			</div>
 			<div class="block">
@@ -490,8 +490,8 @@
 			}
 		}
 		.setting {
-			width: 430px;
-			height: 550px;
+			width: 370px;
+			height: 470px;
 			background: white;
 			border: 1px solid #e3e3e3;
 			color: #001c4c;
@@ -499,7 +499,8 @@
 			opacity: 0.93;
 			top:70px;
 			right: 0;
-			/*left: calc(30% - 60px);*/
+			//left: calc(30% - 60px);
+			left:532px;
 			.setting-close-btn{
 				width: 20px;
 				position: absolute;
@@ -515,7 +516,7 @@
 				text-align: center;
 				.cc {
 					display: inline-block;
-					width: 300px;
+					width: 70%;
 					border: unset;
 					margin-left: 3%;
 					border-bottom: 1px solid #00437a;
@@ -528,8 +529,8 @@
 					}
 				}
 				.bg {
-					height: 200px;
-					width: 77%;
+					height: 120px;
+					width: 70%;
 					background: #6bc8f4;
 					display: inline-block;
     				vertical-align: top;
@@ -543,7 +544,7 @@
 				width: 90%;
 				height: 30px;
 				margin-left: 5%;
-				margin-top: 20px;
+				margin-top: 10px;
 				display: inline-block;
 				.btn {
 					color: #fff;
