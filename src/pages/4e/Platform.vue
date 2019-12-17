@@ -498,7 +498,8 @@
 			position: absolute;
 			opacity: 0.93;
 			top:70px;
-			left: calc(30% - 60px);
+			right: 0;
+			/*left: calc(30% - 60px);*/
 			.setting-close-btn{
 				width: 20px;
 				position: absolute;

@@ -119,8 +119,8 @@
                             //     }
                             // }
 
-                       // that.pageCount = data.data.pagination.totalPages;
-                       // that.pageNumber = data.data.pagination.pageNumber;
+                       that.pageCount = data.data.pagination.totalPages;
+                       that.pageNumber = data.data.pagination.pageNumber;
 
                     }
                 });

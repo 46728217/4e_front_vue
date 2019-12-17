@@ -446,7 +446,7 @@
                             data:that.data.materialStat.upload_counts,
                             itemStyle: {
                                 normal: {
-                                    color: '#C2CACF',
+                                    color: '#00437A',
                                     label : {
                                         show: true,
                                         position: 'left',
