@@ -70,7 +70,7 @@
             init: function() {
                 var menu_id = this.$route.params.menu_id;
                 if (menu_id) {
-                    this.current_left_menu_id = menu_id;
+                    this.current_left_menu_id ="."+ menu_id;
                 }
                 this.submenu = this.menu[this.current_left_menu_id].children;
                 var tmp = [];
@@ -166,10 +166,10 @@
         created: function(){
             var that = this;
             if (this.$route.query.leftId!=null) {
-                this.current_left_menu_id = this.$route.query.leftId;
+                this.current_left_menu_id ="."+this.$route.query.leftId;
             }
             if (this.$route.query.subId!=null) {
-                this.current_sub_menu_id = this.$route.query.subId;
+                this.current_sub_menu_id = "."+this.$route.query.subId;
             }
             this.get(this.base+"/api/user/islogin", null, function(data){
                 if (data.code==0) {
