@@ -53,7 +53,7 @@
 					</div>
 				</div>
 				<div class="block">
-					<span>物料代码:</span>
+					<span>素材代码:</span>
 					<div class="cc">
 						<span class="component ccmaterialcode"></span>
 					</div>
