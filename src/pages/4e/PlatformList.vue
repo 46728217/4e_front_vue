@@ -118,8 +118,9 @@
                         for(var i=0;i<data.data.list.length;i++){
                             data.data.list[i].index=i;
                         }
-                        data.data.list.sort(BASE.compare('index'));
+                        data.data.list.sort(BASE.compare('index'));//升序
                         that.list=data.data.list;
+                        console.log(that.list);
                      //  that.pageCount = data.data.pagination.totalPages;
                      //  that.pageNumber = data.data.pagination.pageNumber;
                     }

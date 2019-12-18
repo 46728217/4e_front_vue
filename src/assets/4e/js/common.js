@@ -73,11 +73,11 @@ export const BASE={
         }
         return restr;
     },
-     compare(val) {//升序
+     compare(val) {
        return function (a, b) {
          var value1 = a[val];
          var value2 = b[val];
-         return value1 - value2;
+          return value2 - value1;
      }
   },
 }
