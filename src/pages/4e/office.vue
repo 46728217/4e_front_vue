@@ -111,7 +111,7 @@
                 });
                 this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode, this.submenu[this.current_sub_menu_id].pageUrl);
                 this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
-               if(this.current_left_menu_id==629||this.current_left_menu_id==631){
+               if(this.current_left_menu_id==".629"||this.current_left_menu_id==".631"){
                    $(".endbanquan").hide();
 			   }else{
                    $(".endbanquan").show();
@@ -189,10 +189,14 @@
                     if (data.code==200) {
                         var menu = {};
                         var active = 1;
+                        for(var i=0;i<data.data.length;i++){
+                            data.data[i].id="."+data.data[i].id;
+                            data.data[i].parentId="."+data.data[i].parentId;
+						}
                         for(var key in data.data) {
                             var item = data.data[key];
-                            item.ico = that.base+"/static/pc/adminStyles/images/ico_dark/ico"+item.id+".png";
-                            item.icoblue = that.base+"/static/pc/adminStyles/images/ico_blue/ico"+item.id+".png";
+                            item.ico = that.base+"/static/pc/adminStyles/images/ico_dark/ico"+(item.id.split(".")[1])+".png";
+                            item.icoblue = that.base+"/static/pc/adminStyles/images/ico_blue/ico"+(item.id.split(".")[1])+".png";
                             item.index=Number(key);
                             switch(item['level']) {
                                 case 2:
@@ -225,15 +229,7 @@
                                     break;
                             }
                         }
-                        // var arr = []
-                        // for (let n in menu) {
-                        //     arr.push(menu[n]); //属性
-                        // }
-                        // var sortArr=arr.sort(BASE.compare('index'));
-                        // console.log(arr);
-
                         that.menu = menu;
-
                         that.$nextTick(function(){
                           if(JSON.stringify(that.menu) != "{}"){
                               that.init();
@@ -243,7 +239,7 @@
                     }
                 }
             });
-            $('body').on('click', "li[data-id=634]", function(){
+            $('body').on('click', "li[data-id='.634']", function(){
                 window.location = "https://4em.cig.com.cn/jsp/pc/interface/faw/do.jsp?method=doLogin2019";
             });
         }
