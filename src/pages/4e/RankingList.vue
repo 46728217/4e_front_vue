@@ -21,21 +21,20 @@
                 <tbody>
                 <tr v-for="(item,index) in data">
                       <td v-for="(its,i) in item">{{its}}</td>
-
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div class="paging" v-if="data.pagination">
-            <span class="total">{{'共'|dz}} {{data.pagination.totalPages}} {{'页'|dz}} - {{'共'|dz}}{{data.pagination.totalCount}} {{'条'|dz}} {{'数据'|dz}}</span>
+        <div class="paging" v-if="dataPagination">
+            <span class="total">{{'共'|dz}} {{dataPagination.totalPages}} {{'页'|dz}} - {{'共'|dz}}{{dataPagination.totalCount}} {{'条'|dz}} {{'数据'|dz}}</span>
             <ul class="numbers">
                 <li class="li-first-last" @click="go2page(0)">首页</li>
                 <li><div class="prev" @click="go2prev"></div></li>
-                <li v-for="(item,index) in data.pagination.slider" :class="item==data.pagination.pageNumber?'current':''" @click="go2page(item)">
+                <li v-for="(item,index) in dataPagination.slider" :class="item==dataPagination.pageNumber?'current':''" @click="go2page(item)">
                     <div><span>{{item}}</span></div>
                 </li>
                 <li><div class="next" @click="go2next"></div></li>
-                <li  class="li-first-last" @click="go2page(data.pagination.totalPages)">末页</li>
+                <li  class="li-first-last" @click="go2page(dataPagination.totalPages)">末页</li>
 
             </ul>
             <span class="limit">{{'每页显示'|dz}}
@@ -68,7 +67,8 @@
                 pageNumber: 1,
                 pageCount: 1,
                 sub_menu_id:0,
-                titleData:[]
+                titleData:[],
+                dataPagination:{}
             }
         },
         watch: {
@@ -76,6 +76,10 @@
                 if(newValue!=oldValue){
                     this.titleData=[];
                     this.data=[];
+                    this.dataPagination={};
+                    this.pageSize=20;
+                    this.pageNumber=1;
+                    this.pageCount=1;
                     this.getData();
                 }
 
@@ -83,8 +87,6 @@
         },
         props: ["rank_id"],
         created: function() {
-            this.titleData=[];
-            this.data=[];
             this.getData();
 
         },
@@ -92,9 +94,8 @@
             getData(){
                 let that = this;
                 var params = {};
-
-                // params.pageSize = this.pageSize;
-                // params.pageNumber = this.pageNumber;
+                params.pageSize = this.pageSize;
+                params.pageNumber = this.pageNumber;
                  params.id=that.rank_id;
                 this.get(this.base + "/api/rankingFu/list", params, function(data){
                     if (data.code==200) {
@@ -104,11 +105,12 @@
                               titleList.push(key);
                             }
                             that.titleData=titleList;
-                            var arr=[];
-                            for (let i in data.data) {
-                                arr.push(data.data[i]); //属性
+                            that.data=[];
+                            for(var k=0;k<data.data.list.length;k++){
+                                var item=data.data.list[k];
+                                var values= Object.values(item);
+                                that.data.push(values);
                             }
-                            that.data=arr.slice(1);
                             that.parentHeight();
                         })
 
@@ -118,7 +120,7 @@
                             //         that.titleData.push(key);
                             //     }
                             // }
-
+                       that.dataPagination=data.data.pagination;
                        that.pageCount = data.data.pagination.totalPages;
                        that.pageNumber = data.data.pagination.pageNumber;
 

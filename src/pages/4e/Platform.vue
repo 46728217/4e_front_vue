@@ -6,7 +6,7 @@
 			<p>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</p>
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
-			<img  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
+			<img id="platform"  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
 			<button id="reset" class="lipButton">查看全景图</button>
 			<div class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料
 			</div>

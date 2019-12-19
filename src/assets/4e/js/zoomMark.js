@@ -107,6 +107,26 @@ var addCssRule = function() {
 					//event.preventDefault();//注释掉 会影响select change事件
 				});
 				mContainer.mousemove(function(event){
+                    var odiv=document.getElementById('container');//获取div
+                    var containerLeft=odiv.getBoundingClientRect().left.toString().split('.')[0];
+                    var containerTop=odiv.getBoundingClientRect().top.toString().split('.')[0];
+                    var containerRight=odiv.getBoundingClientRect().right.toString().split('.')[0];
+                    var containerBottom=odiv.getBoundingClientRect().bottom.toString().split('.')[0];
+                    console.log("container=======left:"+containerLeft+" top:"+containerTop+"  right:"+containerRight+" bottom:"+containerBottom);
+
+                    var platform=document.getElementById('platform');//获取图片
+                    var platformLeft=platform.getBoundingClientRect().left.toString().split('.')[0];
+                    var platformTop=platform.getBoundingClientRect().top.toString().split('.')[0];
+                    var platformRight=platform.getBoundingClientRect().right.toString().split('.')[0];
+                    var platformBottom=platform.getBoundingClientRect().bottom.toString().split('.')[0];
+                    console.log("platform======left:"+platformLeft+" top:"+platformTop+"  right:"+platformRight+" bottom:"+platformBottom);
+					if(platformLeft<containerLeft){
+						console.log("超出左边界");
+					}
+                    if(platformTop<containerTop){
+                        console.log("超出上边界");
+                    }
+
 					if(mousePosition.isMouseDown){
 						var positionX=event.pageX- mContainer.offset().left; //获取当前鼠标相对img的X坐标  
      					var positionY=event.pageY- mContainer.offset().top; //获取当前鼠标相对img的Y坐标 
@@ -213,6 +233,7 @@ var addCssRule = function() {
 					mMarks[i].y = y + mMarks[i].y;
 				}
 				updateMarksPosition(mMarks);
+
 			},
 			changeSettings: function(options){
 				var data = mContainer.data('ZoomMarkData');
