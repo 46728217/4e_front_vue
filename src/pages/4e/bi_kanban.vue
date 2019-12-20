@@ -691,6 +691,7 @@
                     height: 60%;
                     color: #42B3F0;
                     font-size: 28px;
+                    font-weight: 500;
                     letter-spacing:2px;
                 }
                 border-right: 1px solid #D5D5D5;

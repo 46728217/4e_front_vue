@@ -13,7 +13,7 @@
 		<div class="list" id="wenjuan_list">
 			<ul>
 				<li v-for="(item, index) in data">
-					<div class="item" :data-id="item.id" :data-type="item.type">
+					<div class="item" :data-id="item.id" :data-type="item.type" :class="item.isRequired==1?'isRequired':''">
 						<div v-if="item.type==1 && info.category=='月度活动提报'" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
@@ -42,7 +42,7 @@
 							</div>
 							<div class="contents" style="margin: 20px 10px">
 								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
-									<input type="radio" :value="n.optionNumber"  name="radio" class="radio"/>
+									<input type="radio" :value="n.optionNumber"  :name="'radio'+item.id" class="radio"/>
 									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
 								</div>
 							</div>
@@ -326,6 +326,14 @@
 			    var that=this;
 				var params = {};
 				params.qaId = this.qaId;
+                //  var isRequired= $(".item.isRequired").length;//必填
+                //  var isRequiredok= $(".item.isRequired.ok").length;//必填  判断必填的是否都ok
+                // console.log("总共有"+isRequired+"个必填"+"，您还有"+(isRequired-isRequiredok)+"个未答");
+                // if (isRequired!=isRequiredok) {
+                //     this.showMsg("您有题必填题目，请完成回答后提交");
+                //     return;
+                // }
+
 				var item_length = $(".item").length;
 				var ok_length = $(".ok").length;
 				if (ok_length!=item_length) {

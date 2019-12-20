@@ -2,11 +2,11 @@
     <div class="ranking-list">
         <div class="cond">
             <div class="name">
-                <!--<span>{{'销售代码'|dz}}</span>-->
-                <input type="text" placeholder="销售代码"/>
+                <span>{{'销售代码'|dz}}</span>
+                <input v-model="names" type="text" placeholder=""/>
             </div>
 
-            <div class="search_btn">
+            <div class="search_btn" @click="searchClick">
                 <span>{{'搜索'|dz}}</span>
             </div>
         </div>
@@ -68,7 +68,8 @@
                 pageCount: 1,
                 sub_menu_id:0,
                 titleData:[],
-                dataPagination:{}
+                dataPagination:{},
+                names:''
             }
         },
         watch: {
@@ -91,6 +92,10 @@
 
         },
         methods: {
+            searchClick(){
+                var that=this;
+                console.log(that.names);
+            },
             getData(){
                 let that = this;
                 var params = {};
@@ -242,7 +247,7 @@
                 height: 30px;
                 display: inline-block;
                 margin-left: 27px;
-                background: #2e3e4d;
+                background: #001e50;
                 border-radius: 20px;
                 color: #fff;
                 vertical-align: middle;

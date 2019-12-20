@@ -45,10 +45,10 @@
 							</div>
 							<div class="contents" style="margin: 20px 10px">
 								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
-									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==0" disabled="disabled" checked="checked"/>
-									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==1" checked="checked"/>
-									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==0" disabled="disabled"/>
-									<input type="radio" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==1"/>
+									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id"class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==0" disabled="disabled" checked="checked"/>
+									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==1" checked="checked"/>
+									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==0" disabled="disabled"/>
+									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==1"/>
 									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
 								</div>
 							</div>
