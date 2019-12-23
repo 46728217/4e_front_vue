@@ -95,6 +95,42 @@
             searchClick(){
                 var that=this;
                 console.log(that.names);
+                var params = {};
+                params.delName = this.names;
+                this.get(this.base + "/api/rankingFu/search/del", params, function(data){
+                    if(data){
+                        var params = {};
+                        params.pageSize = that.pageSize;
+                        params.pageNumber = that.pageNumber;
+                        params.id=that.rank_id;
+                        params.delName = that.names;
+                        that.get(that.base + "/api/rankingFu/search", params, function(data){
+                            if (data.code==200) {
+                                var titleList=[];
+                                that.$nextTick(function(){
+                                    for(var key in data.data[0]){
+                                        titleList.push(key);
+                                    }
+                                    that.titleData=titleList;
+                                    that.data=[];
+                                    for(var k=0;k<data.data.list.length;k++){
+                                        var item=data.data.list[k];
+                                        var values= Object.values(item);
+                                        that.data.push(values);
+                                    }
+                                    that.parentHeight();
+                                })
+                            }
+                        });
+                    }else {
+                        if(that.names.toString().trim()==""){
+                            that.getData();
+                        }else{
+                            that.showMsg("没有该销售代码！");
+                        }
+                    }
+                });
+
             },
             getData(){
                 let that = this;
@@ -110,7 +146,7 @@
                               titleList.push(key);
                             }
                             that.titleData=titleList;
-                            that.data=[];
+
                             for(var k=0;k<data.data.list.length;k++){
                                 var item=data.data.list[k];
                                 var values= Object.values(item);

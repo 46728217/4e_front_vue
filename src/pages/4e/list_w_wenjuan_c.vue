@@ -14,12 +14,12 @@
 		<div class="list">
 			<ul>
 				<li v-for="(item, index) in data">
-					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText || item.answer.answerOptions">
+					<div class="item ok" :data-id="item.id" :data-type="item.type" :answer="item.answer.answerText || item.answer.answerOptions" :class="item.isRequired==1?'isRequired':''">
 						<div v-if="item.type==1 && info.category=='月度活动提报'" class="cccc">
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(问答题)</span>
+								<span class="type">(问答题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
 							</div>
 							<div class="contents">
 								<input type="text" class="input" disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-number-input.float v-if="userManage==0"></input>
@@ -30,7 +30,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(问答题)</span>
+								<span class="type">(问答题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
 							</div>
 							<div class="contents">
 								<textarea class="textarea" disabled="disabled" placeholder="请填写答案" :value="item.answer.answerText" v-if="userManage==0"></textarea>
@@ -41,7 +41,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(单选题)</span>
+								<span class="type">(单选题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
 							</div>
 							<div class="contents" style="margin: 20px 10px">
 								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
@@ -57,7 +57,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(多选题)</span>
+								<span class="type">(多选题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
 							</div>
 							<div class="contents" style="margin: 20px 10px">
 								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
@@ -73,7 +73,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)</span>
+								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
 							</div>
 							<div class="progress" style="display: none"><span class="line"></span><span class="nums">0</span>%</div>
 							<div class="contents">
@@ -157,7 +157,8 @@
 					item.attr("answer", text);
 				}else{
 					item.removeClass("ok");
-					item.removeAttr("answer");
+					//item.removeAttr("answer");
+                    item.attr("answer", '');
 				}
 			});
 
@@ -176,15 +177,17 @@
 					item.attr("answer", text);
 				}else{
 					item.removeClass("ok");
-					item.removeAttr("answer");
+					//item.removeAttr("answer");
+                    item.attr("answer", '');
 				}
 			});
 			$("body").on("click", ".uploadinfo .close", function(){
 				$(this).parent().parent().parent().hide();
 				var item = $(this).parent().parent().parent().parent().parent().parent();
 				item.removeClass("ok");
-				item.removeAttr("answer");
-				item.find(".preview").hide();
+			//	item.removeAttr("answer");
+                item.attr("answer", '{"path":"","size":"","name":"","type":"","sizeStr":""}');
+                item.find(".preview").hide();
                 $(this).parent().parent().parent().parent().siblings(".progress").hide();
                 $(this).parent().parent().parent().parent().siblings(".progress").find(".line").css("width",0);
                 $(this).parent().parent().parent().parent().siblings(".progress").find(".nums").html(0);
@@ -330,14 +333,22 @@
 			submit: function() {
 				var params = {};
 				params.qaId = this.qaId;
-				var item_length = $(".item").length;
-				var ok_length = $(".ok").length;
-				if (ok_length!=item_length) {
-					this.showMsg("您有题目未完成，请完成回答后提交");
-					return;
-				}
+                var isRequired= $(".item.isRequired").length;//必填
+                var isRequiredok= $(".item.isRequired.ok").length;//必填  判断必填的是否都ok
+                console.log("总共有"+isRequired+"个必填"+"，您还有"+(isRequired-isRequiredok)+"个未答");
+                if (isRequired!=isRequiredok) {
+                    this.showMsg("您有必答题目，请完成回答后提交");
+                    return;
+                }
+
+				// var item_length = $(".item").length;
+				// var ok_length = $(".ok").length;
+				// if (ok_length!=item_length) {
+				// 	this.showMsg("您有题目未完成，请完成回答后提交");
+				// 	return;
+				// }
 				var list = [];
-				var items = $(".ok");
+				var items = $(".item");
 				items.each(function(){
 					var item = $(this);
 					var tmp = {};
