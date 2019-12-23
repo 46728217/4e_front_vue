@@ -73,7 +73,7 @@
 									<input diabled="diabled" name="file" type="file" class="upload_h"/>
 									<input type="button" value="上传文件" class="upload"/>
 								</form>
-								<div class="uploadinfo">
+								<div class="uploadinfo" v-show="item.answer.answerTextJson.name!=''">
 									<div>
 									<span>上传文件名称：</span>
 									<span class="filename">{{item.answer.answerTextJson.name}}</span>
