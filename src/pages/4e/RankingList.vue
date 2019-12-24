@@ -75,8 +75,6 @@
         watch: {
             rank_id(newValue, oldValue) {
                 if(newValue!=oldValue){
-                    this.titleData=[];
-                    this.data=[];
                     this.dataPagination={};
                     this.pageSize=20;
                     this.pageNumber=1;
@@ -137,7 +135,6 @@
             },
             getData(){
                 let that = this;
-                this.data=[];
                 var params = {};
                 params.pageSize = this.pageSize;
                 params.pageNumber = this.pageNumber;
@@ -150,7 +147,7 @@
                               titleList.push(key);
                             }
                             that.titleData=titleList;
-
+                            that.data=[];
                             for(var k=0;k<data.data.list.length;k++){
                                 var item=data.data.list[k];
                                 var values= Object.values(item);
