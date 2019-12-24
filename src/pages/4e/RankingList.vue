@@ -137,6 +137,7 @@
             },
             getData(){
                 let that = this;
+                this.data=[];
                 var params = {};
                 params.pageSize = this.pageSize;
                 params.pageNumber = this.pageNumber;
