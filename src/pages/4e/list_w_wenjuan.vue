@@ -18,7 +18,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(问答题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
+								<span class="type">(问答题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
 							<div class="contents">
 								<input type="text" class="input" placeholder="请填写答案(数字)" v-number-input.float></input>
@@ -28,7 +28,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(问答题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
+								<span class="type">(问答题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
 							<div class="contents">
 								<textarea class="textarea" placeholder="请填写答案"></textarea>
@@ -38,7 +38,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(单选题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
+								<span class="type">(单选题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
 							<div class="contents" style="margin: 20px 10px">
 								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
@@ -51,7 +51,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(多选题)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
+								<span class="type">(多选题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
 							<div class="contents" style="margin: 20px 10px">
 								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
@@ -64,7 +64,7 @@
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
-								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)<span style="color: red">{{item.isRequired==1?"必填":"非必填"}}</span></span>
+								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
 							<div class="progress" style="display: none"><span class="line"></span><span class="nums">0</span>%</div>
 							<div class="contents">
@@ -464,6 +464,11 @@
 									.type {
 										color: #333;
 									}
+                                    .isreq{
+                                        font-size: 18px;
+                                        vertical-align: text-top;
+                                        color: red;
+                                    }
 									span:nth-child(1) {
 										margin-right: 6px;
 									}

@@ -119,7 +119,10 @@
                                         that.data.push(values);
                                     }
                                     that.parentHeight();
-                                })
+                                });
+                                that.dataPagination=data.data.pagination;
+                                that.pageCount = data.data.pagination.totalPages;
+                                that.pageNumber = data.data.pagination.pageNumber;
                             }
                         });
                     }else {
