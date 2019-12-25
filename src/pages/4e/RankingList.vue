@@ -139,7 +139,7 @@
                 params.pageSize = this.pageSize;
                 params.pageNumber = this.pageNumber;
                  params.id=that.rank_id;
-                this.get(this.base + "/api/rankingFu/list", params, function(data){
+                this.get(this.base + "/api/rankingFu/search", params, function(data){
                     if (data.code==200) {
                         var titleList=[];
                         that.$nextTick(function(){
