@@ -1,10 +1,9 @@
 <!--新标准展厅平面图例-->
 <template>
 	<div class="platform-standard" style="position: relative;text-align: center;">
-		<div class="annotation-notes" style="width:80%;">
-			<p>标注说明:</p>
-			<p>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</p>
-			<p>车型摆放、物料摆放仅作示意，请以店内实际情况为准</p>
+		<div class="annotation-notes" style="width:85%;">
+			<p v-show="userManage==1" style="display: inline-block;float: left"><span style="color: red">标注说明:</span><span>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</span></p>
+			<p style="display: inline-block;float: right">车型摆放、物料摆放仅作示意，请以店内实际情况为准</p>
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img id="platform"  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
@@ -434,7 +433,6 @@
 		.annotation-notes{
 			display: inline-block;
 			vertical-align: top;
-			height: 75px;
 			line-height: 2;
 			border: 1px solid white;
 			margin: 10px 20px;

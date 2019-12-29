@@ -168,9 +168,9 @@
     margin-top: 20px;
     .list {
         padding-bottom: 30px;
-        width: 90%;
+        width: 98%;
         margin-top: 20px;
-        margin-left: calc(10% - 100px);
+        /*margin-left: calc(10% - 100px);*/
         table {
             width: 100%;
             thead {
@@ -179,52 +179,28 @@
                     th {
                         border-bottom: 1px solid #e7eaec;
                         border-right: 1px solid #e7eaec;
-                        width: 12%;
-                        text-indent:10px;
+                        text-indent:0px;
                         text-align: left;
                         color: #b4c3ce;
                     }
-                    th:nth-child(2) {
-                    width: 15%;
-                    }
-                    th:nth-child(3) {
-                        width: 15%;
-                    }
-                    th:nth-child(4) {
-                        width: 25%;
-                    }
-
                 }
 
             }
             tbody {
                 tr {
                     height: 50px;
-
-                    /*td:nth-child(1) {*/
-                        /*width: 15%;*/
-                    /*}*/
-                    /*td:nth-child(2) {*/
-                        /*width: 25%;*/
-                    /*}*/
-                    /*td:nth-child(3) {*/
-                        /*width: 8%;*/
-                    /*}*/
-                    /*td:nth-child(4) {*/
-                        /*width: 18%;*/
-                    /*}*/
-                    /*td:nth-child(5) {*/
-                        /*width: 8%;*/
-                    /*}*/
-                    /*td:nth-child(6) {*/
-                        /*width: 8%;*/
-                    /*}*/
                     td {
                         border-bottom: 1px solid #e7eaec;
-                        /*width: 15%;*/
+                        width: 10%;
                         text-indent:0px;
                         text-align: left;
                         color: #000;
+                    }
+                    td:nth-child(3){
+                        width: 20%;
+                    }
+                    td:nth-child(4){
+                        width: 20%;
                     }
                     .waiting {
                         color: #c2cacf;
