@@ -1,7 +1,7 @@
 <!--新标准展厅平面图例-->
 <template>
 	<div class="platform-standard" style="position: relative;text-align: center;">
-		<div class="annotation-notes" style="width:85%;">
+		<div class="annotation-notes">
 			<p v-show="userManage==1" style="display: inline-block;float: left"><span style="color: red">标注说明:</span><span>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</span></p>
 			<p style="display: inline-block;float: right">车型摆放、物料摆放仅作示意，请以店内实际情况为准</p>
 		</div>
@@ -431,6 +431,7 @@
 		width: 100%;
 		min-height: 400px;
 		.annotation-notes{
+            width: 85%;
 			display: inline-block;
 			vertical-align: top;
 			line-height: 2;
@@ -565,4 +566,17 @@
 			border: none;
 		}
 	}
+    /* 1600*900分辨率下*/
+    @media screen and (max-width: 1600px) and (min-width: 1367px) {
+        .platform-standard .annotation-notes{
+           width: 72% !important;
+       }
+    }
+    /* 1920*1080分辨率下 */
+
+    @media screen and (max-width: 1920px) and (min-width: 1601px) {
+        .platform-standard .annotation-notes{
+            width: 58% !important;
+        }
+    }
 </style>
