@@ -136,15 +136,17 @@
                     that.json(this.base+"/api/ranking/list", null, function(data){
                         if (data.code==200) {
                            console.log(data.data);
-                           for(var i=0;i<data.data.length;i++){
+                            that.ranksubmenu_s=[];
+                           for(var i=0;i<(data.data.length>6?6:data.data.length);i++){
                                if(i==0){
                                    that.rank_id= data.data[i].id;
                                    data.data[i].active=1;
 							   }else{
                                    data.data[i].active=0;
                                }
+                               that.ranksubmenu_s.push(data.data[i]);
 						   }
-                            that.ranksubmenu_s=data.data;
+                           // that.ranksubmenu_s=data.data;
                         }
                     });
                 }

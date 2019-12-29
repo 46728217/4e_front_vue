@@ -392,7 +392,7 @@
                     },
                     grid: {
                         left: '2.5%',
-                        right: '-20',
+                        right: '0',
                         bottom: '3%',
                         containLabel: true
                     },
