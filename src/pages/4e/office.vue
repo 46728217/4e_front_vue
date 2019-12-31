@@ -32,7 +32,10 @@
 			<img src="../../assets/4e/img/frame_split.png" />
 		</div>
 		<div class="frame_main">
-			<iframe id="main_frame" :src="main_url" scrolling="no"  style="width: 100%;" frameborder="0"></iframe>
+
+			<iframe v-if="(main_url.indexOf('kanban')>-1)" v-bind:style="{'height':'1000px'}" id="main_frame" :src="main_url" scrolling="no"  style="width: 100%;" frameborder="0"></iframe>
+			<iframe v-else  id="main_frame" :src="main_url" scrolling="no"  style="width: 100%;" frameborder="0"></iframe>
+
 			<div class="endbanquan" style="color:#96a3a8;font-size: 14px;text-align: center;width: 100%;padding:40px 0 60px">©一汽-大众汽车有限公司 版权所有</div>
 
 		</div>

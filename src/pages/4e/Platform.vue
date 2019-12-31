@@ -2,14 +2,15 @@
 <template>
 	<div class="platform-standard" style="position: relative;text-align: center;">
 		<div class="annotation-notes">
-			<p v-show="userManage==1" style="display: inline-block;float: left"><span style="color: red">标注说明:</span><span>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</span></p>
-			<p style="display: inline-block;float: right">车型摆放、物料摆放仅作示意，请以店内实际情况为准</p>
+			<p v-show="userManage==1" style="text-align: left"><span style="color: red">标注说明:</span><span>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</span></p>
+			<div  style="display: inline-block;float: right;text-align: right;" class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料
+			</div>
+			<p style="display: inline-block;float: left">车型摆放、物料摆放仅作示意，请以店内实际情况为准</p>
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img id="platform"  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
 			<button id="reset" class="lipButton">查看全景图</button>
-			<div class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料
-			</div>
+
 			<div class="setting" v-show="isShowSetting==true">
 				<img class="cancel setting-close-btn" @click="cancelClick" v-show="isAdd==true" src='../../assets/4e/img/platform-setting-close-btn.png'>
 				<img class="closeClick setting-close-btn" @click="closeClick"v-show="isAdd==false" src='../../assets/4e/img/platform-setting-close-btn.png'>
@@ -431,12 +432,18 @@
 		width: 100%;
 		min-height: 400px;
 		.annotation-notes{
-            width: 85%;
+            width: 900px;
 			display: inline-block;
 			vertical-align: top;
 			line-height: 2;
 			border: 1px solid white;
-			margin: 10px 20px;
+			margin: auto;
+			.describe{
+				width: 200px;
+				img{
+					width: 20px;
+				}
+			}
 		}
 		#container{
 			display: inline-block;
@@ -460,19 +467,7 @@
 				z-index: 999;
 			}
 
-			.describe{
-				position: absolute;
-				width: 200px;
-				height: 10px;
-				bottom: 15px;
-				left: 0;
-				right: 0;
-				margin: auto;
-				color: #b4c3ce;
-				img{
-					width: 20px;
-				}
-			}
+
 			#reset{
 				bottom:5px;
 				left: 5px;
@@ -566,17 +561,17 @@
 			border: none;
 		}
 	}
-    /* 1600*900分辨率下*/
-    @media screen and (max-width: 1600px) and (min-width: 1367px) {
-        .platform-standard .annotation-notes{
-           width: 72% !important;
-       }
-    }
-    /* 1920*1080分辨率下 */
+    /*!* 1600*900分辨率下*!*/
+    /*@media screen and (max-width: 1600px) and (min-width: 1367px) {*/
+        /*.platform-standard .annotation-notes{*/
+           /*width: 72% !important;*/
+       /*}*/
+    /*}*/
+    /*!* 1920*1080分辨率下 *!*/
 
-    @media screen and (max-width: 1920px) and (min-width: 1601px) {
-        .platform-standard .annotation-notes{
-            width: 58% !important;
-        }
-    }
+    /*@media screen and (max-width: 1920px) and (min-width: 1601px) {*/
+        /*.platform-standard .annotation-notes{*/
+            /*width: 58% !important;*/
+        /*}*/
+    /*}*/
 </style>
