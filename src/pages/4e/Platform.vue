@@ -2,10 +2,9 @@
 <template>
 	<div class="platform-standard" style="position: relative;text-align: center;">
 		<div class="annotation-notes">
-			<p v-show="userManage==1" style="text-align: left"><span style="color: red">标注说明:</span><span>右键添加标记，鼠标滚轮放大缩小图片，左键按住可拖动</span></p>
-			<div  style="display: inline-block;float: right;text-align: right;" class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料
-			</div>
-			<p style="display: inline-block;float: left">车型摆放、物料摆放仅作示意，请以店内实际情况为准</p>
+			<p v-if="userManage==1" style="text-align: left">管理员操作权限：点击右键添加标记，可编辑、删除标记。</p>
+			<p class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料，鼠标滚轮放大缩小图片，左键按住可拖动。</p>
+			<p style="text-align: left"><span style="color: red">*</span>车型摆放、物料摆放仅作示意，请以店内实际情况为准。</p>
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img id="platform"  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
@@ -439,7 +438,8 @@
 			border: 1px solid white;
 			margin: auto;
 			.describe{
-				width: 200px;
+				text-align: left;
+				width: 100%;
 				img{
 					width: 20px;
 				}
