@@ -4,6 +4,7 @@
  * @param rules {string} CSS样式规则
  * @param index {number} 插入规则的位置, 靠后的规则会覆盖靠前的，默认在后面插入
  */
+
 var addCssRule = function() {
  // 创建一个 style， 返回其 stylesheet 对象
  function createStyleSheet() {
@@ -25,6 +26,7 @@ var addCssRule = function() {
 
 
 ;(function($){
+    var top = this;
 	$.fn.ZoomMark = function(method){
 		var settings = {
 			'markList':[],
@@ -76,7 +78,7 @@ var addCssRule = function() {
 				mContainer.css('text-align','left');
                 // var markStyle = 'width:20px;height:20px;position:absolute;transform:translate(-50%,-50%);'
 					// +'color:#FFF;text-align:center;line-height:20px;opacity:0.6;';
-              var  markStyle='width:30px;height:30px;position:absolute;transform:translate(-50%,-50%);background-image: url("/static/4e/pointer.png");background-size: 100%;background-repeat: no-repeat;';
+              var  markStyle='width:20px;height:20px;position:absolute;transform:translate(-50%,-50%);background-image: url("/static/4e/pointer.png");background-size: 100%;background-repeat: no-repeat;';
 				addCssRule('.mark',markStyle,0);
 				addCssRule('.mark:hover','cursor:hand',0);
 				//绑定鼠标事件
@@ -97,11 +99,20 @@ var addCssRule = function() {
                         if(localStorage.getItem("userManage")!=1){
                         	return;
 						}else{
+                        	var len=$("body").find(".mark.news").length;
+                        	if(len>=1){
+                                if(parent.$vm) {
+                                    top = parent.$vm;
+                                }
+                                top.$layer.msg("请设置当前物料", {time: 3});
+                        		return;
+							}
                             mContainer.publicMethods.mark(event.pageX- mContainer.offset().left,event.pageY- mContainer.offset().top);
                             settings.afterMark(mMarks);
                         	$("body").find(".mark:last").click();
                             $("body").find(".mark:last").css("background-image",'url("/static/4e/pointer-active.png")');
-                            $(".describe").show();
+                            $("body").find(".mark:last").addClass("news");
+                          //  $(".describe").show();
 						}
 					}
 					//event.preventDefault();//注释掉 会影响select change事件

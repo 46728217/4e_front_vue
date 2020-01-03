@@ -321,7 +321,7 @@
                     },
                     yAxis: {
                         type: 'category',
-                        data: that.data.userLoginStat.names
+                        data: that.data.userLoginStat.names.reverse()
                     },
                     series: [
                         {
@@ -329,7 +329,7 @@
                             type: 'bar',
                             barGap:0,
                             barWidth: 20,//柱图宽度
-                            data: that.data.userLoginStat.login_counts,
+                            data: that.data.userLoginStat.login_counts.reverse(),
                             itemStyle: {
                                 normal: {
                                     color: '#00437A',
@@ -344,7 +344,7 @@
                             name: '用户量',
                             type: 'bar',
                             barWidth: 20,//柱图宽度
-                            data: that.data.userLoginStat.dealer_counts,
+                            data: that.data.userLoginStat.dealer_counts.reverse(),
                             itemStyle: {
                                 normal: {
                                     color: '#00B1F1',
@@ -408,6 +408,9 @@
                             data: that.data.materialStat.names,
                             axisPointer: {
                                 type: 'shadow'
+                            },
+                            axisLabel:{
+                                rotate:20
                             }
                         }
                     ],

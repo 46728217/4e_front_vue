@@ -4,7 +4,7 @@
 		<div class="annotation-notes">
 			<p v-if="userManage==1" style="text-align: left">管理员操作权限：点击右键添加标记，可编辑、删除标记。</p>
 			<p class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料，鼠标滚轮放大缩小图片，左键按住可拖动。</p>
-			<p style="text-align: left"><span style="color: red">*</span>车型摆放、物料摆放仅作示意，请以店内实际情况为准。</p>
+			<p style="text-align: left;color: red"><span >*</span>车型摆放、物料摆放仅作示意，请以店内实际情况为准。</p>
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img id="platform"  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
@@ -188,8 +188,13 @@
 
 			$("body").off('click',".mark").on("click", ".mark", function(){
                // $('#container').ZoomMark('zoom',2);//放大两倍
-
-				$(".describe").hide();
+				//$(".describe").hide();
+				if(!$(this).hasClass("news")){//说明点击的是非新增的
+                  //  that.showMsg("旧的");
+                    $("body").find(".mark.news").remove();
+				}else{
+                   // that.showMsg("新的");
+				}
 				var ts=this;
                 $(ts).css("background-image",'url("/static/4e/pointer-active.png")');
                  if($(ts).css('background-image').indexOf("pointer-active")>-1){
@@ -239,6 +244,11 @@
                         that.isAdd = true;
                         that.cctype=0;
                         that.ccmaterial= 0;
+                        $(".ccsize").text('');
+                        $(".cclocation").text('');
+                        $(".ccstarttime").text('');
+                        $(".ccmaterialcode").text('');
+                        $(".bg").removeAttr('style');
                     }
 
 
@@ -338,7 +348,7 @@
                 $("body").find(".mark").each(function () {
                        $(this).css("background-image",'url("/static/4e/pointer.png")');
                 });
-                $(".describe").show();
+              //  $(".describe").show();
 
 			},
             deleteClick(){
@@ -372,7 +382,7 @@
                 $("body").find(".mark").each(function () {
                     $(this).css("background-image",'url("/static/4e/pointer.png")');
                 });
-                $(".describe").show();
+              //  $(".describe").show();
 
             },
 			getData: function() {
@@ -431,7 +441,7 @@
 		width: 100%;
 		min-height: 400px;
 		.annotation-notes{
-            width: 900px;
+            width:1030px;
 			display: inline-block;
 			vertical-align: top;
 			line-height: 2;

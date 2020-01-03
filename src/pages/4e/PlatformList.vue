@@ -168,7 +168,7 @@
     margin-top: 20px;
     .list {
         padding-bottom: 30px;
-        width: 98%;
+        width: 99%;
         margin-top: 20px;
         /*margin-left: calc(10% - 100px);*/
         table {
@@ -180,7 +180,7 @@
                         border-bottom: 1px solid #e7eaec;
                         border-right: 1px solid #e7eaec;
                         text-indent:0px;
-                        text-align: left;
+                        text-align: center;
                         color: #b4c3ce;
                     }
                 }
@@ -193,7 +193,7 @@
                         border-bottom: 1px solid #e7eaec;
                         width: 10%;
                         text-indent:0px;
-                        text-align: left;
+                        text-align: center;
                         color: #000;
                     }
                     td:nth-child(3){
