@@ -1,6 +1,6 @@
 <template>
 	<div class="e-list-">
-		<div class="tab" v-if="data.catListSize>0">
+		<div class="tab" v-if="data.catListSize>1">
 			<ul>
 				<li v-if="data.catListSize>0" v-for="(item,index) in data.catList" @click="changeThirdMenu(item.id)" :data-id="item.id" :class="index==0?'first':''">
 					<span v-if="inner==true" :class="item.id==four_cat_id || index==four_cat_id?'current':''">{{item.name|dz}}</span>
