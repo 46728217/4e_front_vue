@@ -34,15 +34,16 @@ export default {
 	methods: {
 		go2back: function() {
 		   var url= localStorage.getItem("base");
-		   if(url.indexOf("t4e.skyengine.cn")>-1){
-               window.location = "http://t4e.skyengine.cn/jsp/admin/index.jsp";
-           }else if(url.indexOf("4e.skyengine.cn")>-1){
-               window.location = "http://4e.skyengine.cn/jsp/admin/index.jsp";
-		   }else if(url.indexOf("4em.cig.com.cn")>-1){
-               window.location = "https://4em.cig.com.cn/jsp/admin/index.jsp";
-           }else if(url.indexOf("localhost")>-1) {
-               window.location = "http://localhost/jsp/admin/index.jsp";
-           }
+            window.location = "/jsp/admin/index.jsp";
+           // if(url.indexOf("t4e.skyengine.cn")>-1){
+           //     window.location = "http://t4e.skyengine.cn/jsp/admin/index.jsp";
+           // }else if(url.indexOf("4e.skyengine.cn")>-1){
+           //     window.location = "http://4e.skyengine.cn/jsp/admin/index.jsp";
+           // }else if(url.indexOf("4em.cig.com.cn")>-1){
+           //     window.location = "https://4em.cig.com.cn/jsp/admin/index.jsp";
+           // }else if(url.indexOf("localhost")>-1) {
+           //     window.location = "http://localhost/jsp/admin/index.jsp";
+           // }
 		}
 	}
 }
