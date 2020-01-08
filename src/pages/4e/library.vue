@@ -297,17 +297,23 @@ export default {
 					var second = 0;
 					var third = 0;
 					var four = 0;
-					if (path.length>=1) {
-						first = path[0];
+					if(that.$route.query.subId!=null){
+                        that.current_left_menu_id =  that.$route.query.menuId;
+                        that.current_sub_menu_id = that.$route.query.subId;
+					}else{
+                        if (path.length>=1) {
+                            first = path[0];
+                        }
+                        if (path.length>=2) {
+                            second = path[1];
+                            that.current_left_menu_id = second;
+                        }
+                        if (path.length>=3) {
+                            third = path[2];
+                            that.current_sub_menu_id = third;
+                        }
 					}
-					if (path.length>=2) {
-						second = path[1];
-						that.current_left_menu_id = second;
-					}
-					if (path.length>=3) {
-						third = path[2];
-						that.current_sub_menu_id = third;
-					}
+
 				}
 			}, false);
 		}

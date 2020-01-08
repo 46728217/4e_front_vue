@@ -111,7 +111,7 @@
 				</li>
 				<div class="tab_more">
 					<div>
-						<a href="/library?menuId=545&subId=548">{{'全部列表'|dz}}</a>
+						<a href="/library?menuId=466&subId=470">{{'全部列表'|dz}}</a>
 					</div>
 				</div>
 			</ul>
