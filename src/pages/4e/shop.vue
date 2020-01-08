@@ -184,7 +184,7 @@
                 this.main_url = this.base + pageUrl;
                 if ($(".submenu li[class=active]").data("id")==634) {
                     $(".submenu li[class=active]").click(function(){
-                        window.location = "https://4em.cig.com.cn/jsp/pc/interface/faw/do.jsp?method=doLogin";
+                        window.location = "/jsp/pc/interface/faw/do.jsp?method=doLogin";
                     });
                 }
                 // if (this.current_sub_menu_id==482) {
