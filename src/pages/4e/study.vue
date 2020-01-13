@@ -123,7 +123,13 @@
                     return 0;
                 });
                 this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode, this.submenu[this.current_sub_menu_id].pageUrl);
-                this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
+                if(this.current_left_menu_id==612){
+                    this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name);
+
+                }else{
+                    this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name+"|"+this.submenu[this.current_sub_menu_id].name);
+
+                }
             },
             changeLeftMenu: function(id) {
                 var that=this;
