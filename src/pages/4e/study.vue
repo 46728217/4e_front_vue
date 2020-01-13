@@ -117,12 +117,14 @@
                     this.submenu[key] = item;
                     tmp.push(item);
                 }
-                this.submenu_s = tmp.sort(function(a, b){
-                    if (a.sortId>b.sortId) return 1;
-                    if (a.sortId<b.sortId) return -1;
-                    return 0;
-                });
-                this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode, this.submenu[this.current_sub_menu_id].pageUrl);
+                if(tmp.length>0){
+                    this.submenu_s = tmp.sort(function(a, b){
+                        if (a.sortId>b.sortId) return 1;
+                        if (a.sortId<b.sortId) return -1;
+                        return 0;
+                    });
+                    this.changeSubMenu(this.current_sub_menu_id, this.submenu[this.current_sub_menu_id].permissionCode, this.submenu[this.current_sub_menu_id].pageUrl);
+				}
                 if(this.current_left_menu_id==612){
                     this.title('一汽-大众营销支持中心 '+this.menu[this.current_left_menu_id].name);
 
