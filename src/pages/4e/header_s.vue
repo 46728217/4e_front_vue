@@ -151,7 +151,7 @@ export default {
 	width: 100%;
 	height: 180px;
 
-	min-width: 1280px;
+	min-width: 1375px;
 	background: url(../../assets/4e/img/header_bg.png) no-repeat;
 	background-size: cover;
 	.menu {
