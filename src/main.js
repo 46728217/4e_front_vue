@@ -240,7 +240,15 @@ routes.push(adaptePath('/bi_kanban', 'bi_kanban', 'bi_kanban', true))
 router.afterEach((to, from) => {
   ga('set', 'page', to.path);
 })
-
+/* 路由异常错误处理，尝试解析一个异步组件时发生错误，重新渲染目标页面 */
+router.onError((error) => {
+    const pattern = /Loading chunk (\d)+ failed/g;
+    const isChunkLoadFailed = error.message.match(pattern);
+    const targetPath = router.history.pending.fullPath;
+    if (isChunkLoadFailed) {
+        router.replace(targetPath);
+    }
+});
 Vue.prototype.$layer = layer(Vue);
 Vue.use(vPage);
 

@@ -7,7 +7,7 @@
 			<div class="cc" >
 				<select class="year" v-model="cond.year">
 					<option value="0">{{'全部'|dz}}</option>
-					<option v-for="(item,index) in years" v-bind:value="index" v-if="item!=null && index!=0">{{index}}</option>
+					<option v-for="(item,index) in years" v-bind:value="index" v-if="item!=null && index!=0">{{index.split(".")[1]}}</option>
 				</select>
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 			<div class="cc" >
 				<select class="year" v-model="cond.year">
 					<option value="0">{{'全部'|dz}}</option>
-					<option v-for="(item,index) in years" v-bind:value="index" v-if="item!=null && index!=0">{{index}}</option>
+					<option v-for="(item,index) in years" v-bind:value="index" v-if="item!=null && index!=0">{{index.split(".")[1]}}</option>
 				</select>
 			</div>
 		</div>
@@ -228,6 +228,14 @@
 
         },
 		methods: {
+            sortByKey(obj) {
+                const newkey = Object.keys(obj).sort().reverse();
+                var newObj = {};//创建一个新的对象，用于存放排好序的键值对
+                for (var i = 0; i < newkey.length; i++) {//遍历newkey数组
+                    newObj[newkey[i]] = obj[newkey[i]];//向新创建的对象中按照排好的顺序依次增加键值对
+                }
+                return newObj;
+            },
 			getFawvwMaterialBatchList: async function() {
 				var that = this;
                 that.dealerList=[];
@@ -235,7 +243,8 @@
 					if (data.code==200) {
 						var years = [];
 						for(var key in data.data) {
-							var tmp = data.data[key];
+                            data.data[key].createAtStr="."+data.data[key].createAtStr;
+                            var tmp = data.data[key];
 							if (years[0]==null) {
 								years[0] = [];
 							}
@@ -245,8 +254,8 @@
 							years[tmp.createAtStr].push(tmp);
 							years[0].push(tmp);
 						}
-						that.years = years;
-						if (data.data.length>0) {
+                        that.years = that.sortByKey(years);
+                        if (data.data.length>0) {
                             if (that.userManage==1) {
                                 that.cond.batch = data.data[0].id.toString();
                             }else{

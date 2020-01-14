@@ -2,20 +2,20 @@
 <template>
 	<div class="platform-standard" style="position: relative;text-align: center;">
 		<div class="annotation-notes">
-			<p v-if="userManage==1" style="text-align: left">管理员操作权限：点击右键添加标记，可编辑、删除标记。</p>
-			<p class="describe">点击展厅中<img  src='../../assets/4e/img/pointer.png'>查看对应物料，鼠标滚轮放大缩小图片，左键按住可拖动。</p>
-			<p style="text-align: left;color: red"><span >*</span>车型摆放、物料摆放仅作示意，请以店内实际情况为准。</p>
+			<p v-if="userManage==1" style="text-align: left">{{'管理员操作权限：点击右键添加标记，可编辑、删除标记。'|dz}}</p>
+			<p class="describe">{{'点击展厅中'|dz}}<img  src='../../assets/4e/img/pointer.png'>{{'查看对应物料'|dz}}，{{'鼠标滚轮放大缩小图片'|dz}}，{{'左键按住可拖动'|dz}}。</p>
+			<p style="text-align: left;color: red"><span >*</span>{{'车型摆放'|dz}}、{{'物料摆放仅作示意'|dz}}，{{'请以店内实际情况为准'|dz}}。</p>
 		</div>
 		<div id="container" style="padding: 1px;;border:1px solid #aaa;position: relative" :style="{width: imgWidth, height: imgHeight}" >
 			<img id="platform"  class="platform" :src="platformimg" :style="{width: imgWidth, height: imgHeight}"  >
-			<button id="reset" class="lipButton">查看全景图</button>
+			<button id="reset" class="lipButton">{{'查看全景图'|dz}}</button>
 
 			<div class="setting" v-show="isShowSetting==true">
 				<img class="cancel setting-close-btn" @click="cancelClick" v-show="isAdd==true" src='../../assets/4e/img/platform-setting-close-btn.png'>
 				<img class="closeClick setting-close-btn" @click="closeClick"v-show="isAdd==false" src='../../assets/4e/img/platform-setting-close-btn.png'>
 
 				<div class="block">
-					<span>物料种类:</span>
+					<span>{{'物料种类:'|dz}}</span>
 					<div class="cc">
 						<select class="component cctype" v-model="cctype">
 							<option value="0">请选择</option>
@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="block">
-					<span>物料名称:</span>
+					<span>{{'物料名称:'|dz}}</span>
 					<div class="cc">
 						<select class="component ccmaterial" v-model="ccmaterial">
 							<option value="0">请选择</option>
@@ -33,13 +33,13 @@
 					</div>
 				</div>
 				<div class="block">
-					<span>尺寸规划:</span>
+					<span>{{'尺寸规划:'|dz}}</span>
 					<div class="cc">
 						<span class="component ccsize"></span>
 					</div>
 				</div>
 				<div class="block">
-					<span>安装位置:</span>
+					<span>{{'安装位置:'|dz}}</span>
 					<div class="cc">
 						<img style="    display: inline-block;width: 17px;vertical-align: top;"  src='../../assets/4e/img/shizi-icon.png'>
 						<span style="display: inline-block;width: 20px;vertical-align: top;">AO</span>
@@ -47,28 +47,28 @@
 					</div>
 				</div>
 				<div class="block">
-					<span>开始时间:</span>
+					<span>{{'开始时间:'|dz}}</span>
 					<div class="cc">
 						<span class="component ccstarttime"></span>
 					</div>
 				</div>
 				<div class="block">
-					<span>素材编码:</span>
+					<span>{{'素材编码:'|dz}}</span>
 					<div class="cc">
 						<span class="component ccmaterialcode"></span>
 					</div>
 				</div>
 				<div class="block">
-					<span>物料图示:</span>
+					<span>{{'物料图示:'|dz}}</span>
 					<div class="bg"></div>
 				</div>
 				<div class="block btnopt">
-					<div class="btn submit" @click="submit_updateClick" v-show="isAdd==true">设置该物料</div>
+					<div class="btn submit" @click="submit_updateClick" v-show="isAdd==true">{{'设置该物料'|dz}}</div>
 					<!--<div class="btn cancel" @click="cancelClick" v-show="isAdd==true">取消</div>-->
-					<div class="btn update" @click="submit_updateClick"v-show="isAdd==false && userManage==1">修改</div>
-					<div class="btn delete" @click="deleteClick" v-show="isAdd==false && userManage==1">删除</div>
+					<div class="btn update" @click="submit_updateClick"v-show="isAdd==false && userManage==1">{{'修改'|dz}}</div>
+					<div class="btn delete" @click="deleteClick" v-show="isAdd==false && userManage==1">{{'删除'|dz}}</div>
 					<!--<div class="btn close"  @click="closeClick"v-show="isAdd==false">关闭</div>-->
-					<div class="btn detail"  v-show="isAdd==false" >探索更多</div>
+					<div class="btn detail"  v-show="isAdd==false" >{{'探索更多'|dz}}</div>
 
 				</div>
 			</div>
