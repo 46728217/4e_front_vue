@@ -49,7 +49,7 @@
 									<input :id="'radio'+item.id+n.optionNumber"style="vertical-align: bottom" type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==1" checked="checked"/>
 									<input :id="'radio'+item.id+n.optionNumber"style="vertical-align: bottom" type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==0" disabled="disabled"/>
 									<input :id="'radio'+item.id+n.optionNumber"style="vertical-align: bottom" type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==1"/>
-									<label :for="'radio'+item.id+n.optionNumber"style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+									<label :for="'radio'+item.id+n.optionNumber"style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 									<input :id="'checked'+item.id+n.optionNumber"style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1 && userManage==1" checked="checked"/>
 									<input :id="'checked'+item.id+n.optionNumber"style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==0" disabled="disabled"/>
 									<input :id="'checked'+item.id+n.optionNumber"style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==1"/>
-									<label :for="'checked'+item.id+n.optionNumber"style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+									<label :for="'checked'+item.id+n.optionNumber"style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
 								</div>
 							</div>
 						</div>

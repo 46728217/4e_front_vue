@@ -43,7 +43,7 @@
 							<div class="contents" style="margin: 5px 20px">
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
 									<input :id="'radio'+item.id+n.optionNumber" style="vertical-align: bottom" type="radio" :value="n.optionNumber"  :name="'radio'+item.id" class="radio"/>
-									<label :for="'radio'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+									<label :for="'radio'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
 								</div>
 							</div>
 						</div>
@@ -56,7 +56,7 @@
 							<div class="contents" style="margin: 5px 20px">
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
 									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: bottom"type="checkbox" :value="n.optionNumber" name="option" class="radio"/>
-									<label :for="'checked'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+									<label :for="'checked'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
 								</div>
 							</div>
 						</div>

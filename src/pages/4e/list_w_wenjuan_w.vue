@@ -44,7 +44,7 @@
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
 									<input :id="'radio'+item.id+n.optionNumber" type="radio"style="vertical-align: bottom"  :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions==n.optionNumber" checked="checked" disabled="disabled"/>
 									<input :id="'radio'+item.id+n.optionNumber" type="radio"style="vertical-align: bottom"  :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber"  disabled="disabled"/>
-									<label :for="'radio'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+									<label :for="'radio'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
 								</div>
 							</div>
 						</div>
@@ -58,7 +58,7 @@
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
 									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1" checked="checked"  disabled="disabled"/>
 									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: bottom"  type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1"  disabled="disabled"/>
-									<label :for="'checked'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+									<label :for="'checked'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
 								</div>
 							</div>
 						</div>
