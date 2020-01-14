@@ -40,10 +40,10 @@
 								<span>{{item.title}}</span>
 								<span class="type">(单选题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
-							<div class="contents" style="margin: 20px 10px">
-								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
-									<input type="radio" :value="n.optionNumber"  :name="'radio'+item.id" class="radio"/>
-									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+							<div class="contents" style="margin: 5px 20px">
+								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
+									<input :id="'radio'+item.id+n.optionNumber" style="vertical-align: bottom" type="radio" :value="n.optionNumber"  :name="'radio'+item.id" class="radio"/>
+									<label :for="'radio'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
 								</div>
 							</div>
 						</div>
@@ -53,10 +53,10 @@
 								<span>{{item.title}}</span>
 								<span class="type">(多选题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
-							<div class="contents" style="margin: 20px 10px">
-								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
-									<input type="checkbox" :value="n.optionNumber" name="option" class="radio"/>
-									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+							<div class="contents" style="margin: 5px 20px">
+								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
+									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: bottom"type="checkbox" :value="n.optionNumber" name="option" class="radio"/>
+									<label :for="'checked'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
 								</div>
 							</div>
 						</div>

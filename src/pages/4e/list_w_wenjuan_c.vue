@@ -43,13 +43,13 @@
 								<span>{{item.title}}</span>
 								<span class="type">(单选题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
-							<div class="contents" style="margin: 20px 10px">
-								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
-									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id"class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==0" disabled="disabled" checked="checked"/>
-									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==1" checked="checked"/>
-									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==0" disabled="disabled"/>
-									<input type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==1"/>
-									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+							<div class="contents" style="margin:5px 20px">
+								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
+									<input :id="'radio'+item.id+n.optionNumber" style="vertical-align: bottom" type="radio" :value="n.optionNumber" :name="'radio'+item.id"class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==0" disabled="disabled" checked="checked"/>
+									<input :id="'radio'+item.id+n.optionNumber"style="vertical-align: bottom" type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions==n.optionNumber && userManage==1" checked="checked"/>
+									<input :id="'radio'+item.id+n.optionNumber"style="vertical-align: bottom" type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==0" disabled="disabled"/>
+									<input :id="'radio'+item.id+n.optionNumber"style="vertical-align: bottom" type="radio" :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber && userManage==1"/>
+									<label :for="'radio'+item.id+n.optionNumber"style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
 								</div>
 							</div>
 						</div>
@@ -59,13 +59,13 @@
 								<span>{{item.title}}</span>
 								<span class="type">(多选题)<span class="isreq" >{{item.isRequired==1?"*":""}}</span></span>
 							</div>
-							<div class="contents" style="margin: 20px 10px">
-								<div v-for="(n, index) in item.optionList" style="display: inline-block;margin-left: 20px">
-									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1 && userManage==0" disabled="disabled" checked="checked"/>
-									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1 && userManage==1" checked="checked"/>
-									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==0" disabled="disabled"/>
-									<input type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==1"/>
-									<label style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
+							<div class="contents" style="margin: 5px 20px">
+								<div v-for="(n, index) in item.optionList" style="display: block;margin-bottom: 10px">
+									<input :id="'checked'+item.id+n.optionNumber"style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1 && userManage==0" disabled="disabled" checked="checked"/>
+									<input :id="'checked'+item.id+n.optionNumber"style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1 && userManage==1" checked="checked"/>
+									<input :id="'checked'+item.id+n.optionNumber"style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==0" disabled="disabled"/>
+									<input :id="'checked'+item.id+n.optionNumber"style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1 && userManage==1"/>
+									<label :for="'checked'+item.id+n.optionNumber"style="color: #333">{{n.optionNumber}}.{{n.content}}</label>
 								</div>
 							</div>
 						</div>
