@@ -11,6 +11,7 @@
 		<div class="cond">
 			<div class="select">
 				<select class="year" v-model.trim="cond.year">
+					<option value="2020">2020</option>
 					<option value="2019">2019</option>
 					<option value="2018">2018</option>
 					<option value="2017">2017</option>
@@ -97,7 +98,7 @@
 				pageCount: 1,
 				title: '',
 				cond: {
-					year: new Date().getFullYear(),
+				//	year: new Date().getFullYear(),
 					name: '',
 					code: '',
 					sort: '',
