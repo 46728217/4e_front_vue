@@ -283,7 +283,8 @@ export default {
 		}
 		.reason {
 			display: block;
-			height: 30px;
+			height: auto;
+			margin-bottom: 10px;
 			font-weight: bold;
 			color: red;
 		}
