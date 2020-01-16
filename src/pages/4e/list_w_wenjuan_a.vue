@@ -148,7 +148,7 @@ cursor: pointer" src="../../assets/4e/img/icon-question.png">
                 $(this).siblings('.children').slideToggle("slow");
                 var o = document.getElementById("wenjuan_analytics");
                 var h = o.clientHeight||o.offsetHeight;
-                var childrenLen=that.carListlen*55;//获取子类的总高度
+                var childrenLen=that.carListlen*50;//获取子类的总高度
                 console.log(childrenLen+"========");
 
                 if($(this).hasClass("onulclose")){
