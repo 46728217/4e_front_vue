@@ -1,7 +1,7 @@
 <!--广告素材提报管理页面-->
 <template>
 <div class="g-list" v-cloak>
-	<div class="cond" v-if="userManage==1 && (user.userName.indexOf('管理')!=-1 || user.roleId==1)">
+	<div class="cond" v-if="userManage==1">
 		<div class="year">
 			<span>{{'年份'|dz}}</span>
 			<div class="cc" >
@@ -20,20 +20,36 @@
 				</select>
 			</div>
 		</div>
-		<div class="dq">
-			<span>大区</span>
+		<div class="dq" v-if="bigCommunityList.length>1">
+			<span>{{'大区'|dz}}</span>
 			<div class="cc">
 			<select v-model.trim="cond.dq" @change="getCommunityList(cond.dq)">
-				<option value="0">全部</option>
+				<option value="0">{{'全部'|dz}}</option>
 				<option  v-for="item in bigCommunityList" v-bind:value="item.id">{{item.name}}</option>
 			</select>
 			</div>
 		</div>
-		<div class="xq">
-			<span>小区</span>
+		<div class="dq" v-if="bigCommunityList.length==1">
+			<span>{{'大区'|dz}}</span>
+			<div class="cc">
+			<select style="background:lightgray" v-model.trim="cond.dq" @change="getCommunityList(cond.dq)">
+				<option v-for="item in bigCommunityList" v-bind:value="item.id">{{item.name}}</option>
+			</select>
+			</div>
+		</div>
+		<div class="xq" v-if="bigCommunityList.length==1 && smallCommunityList.length==1">
+			<span>{{'小区'|dz}}</span>
+			<div class="cc">
+			<select style="background:lightgray" v-model.trim="cond.xq" @change="getDealerList(cond.xq)">
+				<option selected="selected" v-for="item in smallCommunityList" v-bind:value="item.id">{{item.name}}</option>
+			</select>
+			</div>
+		</div>
+		<div class="xq" v-else>
+			<span>{{'小区'|dz}}</span>
 			<div class="cc">
 			<select v-model.trim="cond.xq" @change="getDealerList(cond.xq)">
-				<option value="0">全部</option>
+				<option  value="0">{{'全部'|dz}}</option>
 				<option v-for="item in smallCommunityList" v-bind:value="item.id">{{item.name}}</option>
 			</select>
 			</div>
@@ -274,18 +290,30 @@
 					}
 				})
 			},
-			getCommunityList: async function(parentId) {
-				var that = this;
+			getCommunityList:async function(parentId) {
+				let that = this;
                 that.dealerList=[];
                 that.smallCommunityList=[];
 				this.get(this.base + "/api/dealer/community/list", {parentId: parentId}, function(data){
 					if (data.code==200) {
 						if (parentId==0) {
 							that.bigCommunityList = data.data;
+							if (that.bigCommunityList.length==1) {
+								that.cond.dq = that.bigCommunityList[0].id;
+								that.getCommunityList(that.cond.dq);
+							}else{
+								that.cond.dq = 0;//默认选中全部
+							}
 						}else{
 							that.smallCommunityList = data.data;
+							if (that.smallCommunityList.length==1) {
+								that.cond.xq = that.smallCommunityList[0].id;
+								that.getDealerList(that.cond.xq);
+							}else{
+								that.cond.xq = 0;//默认选中全部
+							}
 						}
-                        that.cond.xq = 0;//默认选中全部
+                        
                         that.cond.dealer = 0;//默认选中全部
 					}
 				})

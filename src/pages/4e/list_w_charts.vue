@@ -11,7 +11,7 @@
 		<span>数据统计</span>
 	</div>
 	<div class="cond">
-		<div class="dq">
+		<div class="dq" v-if="bigCommunityList.length>1">
 			<span>大区</span>
 			<div class="cc">
 			<select v-model.trim="cond.dq" @change="getCommunityList(cond.dq)">
@@ -20,7 +20,23 @@
 			</select>
 			</div>
 		</div>
-		<div class="xq">
+		<div class="dq" v-if="bigCommunityList.length==1">
+			<span>大区</span>
+			<div class="cc">
+			<select style="background:lightgray" disabled=disabled v-model.trim="cond.dq" @change="getCommunityList(cond.dq)">
+				<option  v-for="item in bigCommunityList" v-bind:value="item.id">{{item.name}}</option>
+			</select>
+			</div>
+		</div>
+		<div class="xq" v-if="bigCommunityList.length==1 && smallCommunityList.length==1">
+			<span>小区</span>
+			<div class="cc">
+			<select style="background:lightgray" disabled=disabled v-model.trim="cond.xq" @change="getDealerList(cond.xq)">
+				<option v-for="item in smallCommunityList" v-bind:value="item.id">{{item.name}}</option>
+			</select>
+			</div>
+		</div>
+		<div class="xq" v-else>
 			<span>小区</span>
 			<div class="cc">
 			<select v-model.trim="cond.xq" @change="getDealerList(cond.xq)">
@@ -178,25 +194,40 @@
 				that.user = data.data;
 			});
 			this.getCommunityList(0);
-			that.getData();
-			that.getCharts();
 			$("body").on("click", '.nav div', function(){
 				history.go(-1);
 			})
 		},
 		methods: {
-			getCommunityList: function(parentId) {
-				var that = this;
-                  that.dealerList=[];
-                  that.smallCommunityList=[];
+			getCommunityList:async function(parentId) {
+				let that = this;
+                that.dealerList=[];
+                that.smallCommunityList=[];
 				this.get(this.base + "/api/dealer/community/list", {parentId: parentId}, function(data){
 					if (data.code==200) {
 						if (parentId==0) {
 							that.bigCommunityList = data.data;
+							if (that.bigCommunityList.length==1) {
+								that.cond.dq = that.bigCommunityList[0].id;
+								that.getCommunityList(that.cond.dq);
+								that.cond.enable = true;
+							}else{
+								that.cond.dq = 0;//默认选中全部
+								that.getData();
+								that.getCharts();
+							}
 						}else{
 							that.smallCommunityList = data.data;
+							if (that.smallCommunityList.length==1) {
+								that.cond.xq = that.smallCommunityList[0].id;
+								that.getDealerList(that.cond.xq);
+								that.cond.enable = true;
+							}else{
+								that.cond.xq = 0;//默认选中全部
+							}
+							that.getData();
+							that.getCharts();
 						}
-                        that.cond.xq = 0;//默认选中全部
                         that.cond.dealer = 0;//默认选中全部
 					}
 				})
