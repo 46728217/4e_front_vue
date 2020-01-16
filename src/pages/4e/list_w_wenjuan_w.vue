@@ -42,9 +42,9 @@
 							</div>
 							<div class="contents" style="margin: 5px 20px">
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
-									<input :id="'radio'+item.id+n.optionNumber" type="radio"style="vertical-align: bottom"  :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions==n.optionNumber" checked="checked" disabled="disabled"/>
-									<input :id="'radio'+item.id+n.optionNumber" type="radio"style="vertical-align: bottom"  :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber"  disabled="disabled"/>
-									<label :for="'radio'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
+									<input :id="'radio'+item.id+n.optionNumber" type="radio"style="vertical-align: top;margin-top: 2.5px;"  :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions==n.optionNumber" checked="checked" disabled="disabled"/>
+									<input :id="'radio'+item.id+n.optionNumber" type="radio"style="vertical-align: top;margin-top: 2.5px;"  :value="n.optionNumber" :name="'radio'+item.id" class="radio" v-if="item.answer.answerOptions!=n.optionNumber"  disabled="disabled"/>
+									<label :for="'radio'+item.id+n.optionNumber" style="color: #333;vertical-align: top;"><span style="display: inline-block;vertical-align: top">{{n.optionNumber}}.</span>&nbsp;&nbsp;<span style="display: inline-block;width: 90%">{{n.content}}</span></label>
 								</div>
 							</div>
 						</div>
@@ -56,9 +56,9 @@
 							</div>
 							<div class="contents" style="margin: 5px 20px">
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
-									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: bottom" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1" checked="checked"  disabled="disabled"/>
-									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: bottom"  type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1"  disabled="disabled"/>
-									<label :for="'checked'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
+									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: top;margin-top: 2.5px;" type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)>-1" checked="checked"  disabled="disabled"/>
+									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: top;margin-top: 2.5px;"  type="checkbox" :value="n.optionNumber" name="radio" class="radio" v-if="item.answer.answerOptions.indexOf(n.optionNumber)==-1"  disabled="disabled"/>
+									<label :for="'checked'+item.id+n.optionNumber" style="color: #333;vertical-align: top"><span style="display: inline-block;vertical-align: top">{{n.optionNumber}}.</span>&nbsp;&nbsp;<span style="display: inline-block;width: 90%">{{n.content}}</span></label>
 								</div>
 							</div>
 						</div>
@@ -68,7 +68,7 @@
 								<span>{{item.title}}</span>
 								<span class="type">(上传文件题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
-							<div class="contents">
+							<div class="contents" style="width: 70%">
 								<form enctype="multipart/form-data" method="post" style="opacity: 0;visibility:hidden">
 									<input diabled="diabled" name="file" type="file" class="upload_h"/>
 									<input type="button" value="上传文件" class="upload"/>
@@ -337,7 +337,7 @@
 							.cccc {
 								.des {
 									height: 30px;
-									width: 80%;
+									width: 100%;
 									color: #00437a;
 									display: inline-block;
 									margin-top: 10px;
@@ -365,7 +365,7 @@
 								.contents {
 									margin-top: 10px;
 									margin-left: 20px;
-									width: 600px;
+									width: 90%;
 									display: inline-block;
 									textarea {
 										width: 100%;

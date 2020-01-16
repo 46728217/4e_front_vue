@@ -21,7 +21,7 @@
 								<span class="type">(问答题)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
 							<div class="contents">
-								<input type="text" class="input" placeholder="请填写答案(数字)" v-number-input.float></input>
+								<input type="text" class="input month-input" placeholder="请填写答案(数字)" v-number-input.float></input>
 							</div>
 						</div>
 						<div v-if="item.type==1 && info.category!='月度活动提报'" class="cccc">
@@ -34,7 +34,7 @@
 								<textarea class="textarea" placeholder="请填写答案"></textarea>
 							</div>
 						</div>
-						<div v-if="item.type==13" class="cccc">
+						<div v-if="item.type==13" class="cccc" :class="item.title=='是否已执行'?'iszhixing':''">
 							<div class="des">
 								<span>{{index+1}}. </span>
 								<span>{{item.title}}</span>
@@ -42,8 +42,8 @@
 							</div>
 							<div class="contents" style="margin: 5px 20px">
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
-									<input :id="'radio'+item.id+n.optionNumber" style="vertical-align: bottom" type="radio" :value="n.optionNumber"  :name="'radio'+item.id" class="radio"/>
-									<label :for="'radio'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
+									<input :conetent="n.content" :title="item.title" :id="'radio'+item.id+n.optionNumber" style="vertical-align: top;margin-top: 2.5px;" type="radio" :value="n.optionNumber"  :name="'radio'+item.id" class="radio"/>
+									<label :for="'radio'+item.id+n.optionNumber" style="color: #333;vertical-align: top"><span style="display: inline-block;vertical-align: top">{{n.optionNumber}}.</span>&nbsp;&nbsp;<span style="display: inline-block;width: 90%">{{n.content}}</span></label>
 								</div>
 							</div>
 						</div>
@@ -55,8 +55,8 @@
 							</div>
 							<div class="contents" style="margin: 5px 20px">
 								<div v-for="(n, index) in item.optionList" style="display:block;margin-bottom: 10px">
-									<input :id="'checked'+item.id+n.optionNumber" style="vertical-align: bottom"type="checkbox" :value="n.optionNumber" name="option" class="radio"/>
-									<label :for="'checked'+item.id+n.optionNumber" style="color: #333">{{n.optionNumber}}.&nbsp;&nbsp;{{n.content}}</label>
+									<input  :id="'checked'+item.id+n.optionNumber" style="vertical-align: top;margin-top: 2.5px;"type="checkbox" :value="n.optionNumber" name="option" class="radio"/>
+									<label :for="'checked'+item.id+n.optionNumber" style="color: #333;vertical-align: top"><span style="display: inline-block;vertical-align: top">{{n.optionNumber}}.</span>&nbsp;&nbsp;<span style="display: inline-block;width: 90%">{{n.content}}</span></label>
 								</div>
 							</div>
 						</div>
@@ -67,7 +67,7 @@
 								<span class="type">(支持图片，word，excel，ppt，pdf，zip，rar格式的文件,上传文件不能超过20M)<span class="isreq">{{item.isRequired==1?"*":""}}</span></span>
 							</div>
 							<div class="progress" style="display: none"><span class="line"></span><span class="nums">0</span>%</div>
-							<div class="contents">
+							<div class="contents" style="width: 70%">
 								<form enctype="multipart/form-data" method="post">
 									<input name="file" type="file" class="upload_h"/>
 									<input type="button" value="上传文件" class="upload"/>
@@ -151,6 +151,24 @@
 			});
 
 			$("body").on("change", ".radio", function(){
+			    var title=$(this).attr("title");
+			    var conetent=$(this).attr("conetent");
+
+			    if(title=="是否已执行"&&conetent=="否"){
+                    $(this).parent().parent().parent().attr("conetent",conetent);
+                    var items = $(".month-input");
+                    items.each(function(){
+                        $(this).val("");
+                        $(this).parent().parent().parent().attr("answer",'');
+                        $(this).attr("disabled","disabled");
+                    });
+				}else{
+                    $(this).parent().parent().parent().attr("conetent",conetent);
+                    var items = $(".month-input");
+                    items.each(function(){
+                        $(this).removeAttr("disabled");
+                    });
+				}
 				var ischeck = $(this).is(':checked');
 				var text = "";
 				$(this).parent().parent().find("input:checked").each(function(){
@@ -332,10 +350,18 @@
                  var isRequired= $(".item.isRequired").length;//必填
                  var isRequiredok= $(".item.isRequired.ok").length;//必填  判断必填的是否都ok
                 console.log("总共有"+isRequired+"个必填"+"，您还有"+(isRequired-isRequiredok)+"个未答");
-                if (isRequired!=isRequiredok) {
-                    this.showMsg("您有必答题目，请完成回答后提交");
-                    return;
-                }
+				var iszhixing=$(".iszhixing").length;
+				var iszhixingcontent=$(".iszhixing").attr("conetent");
+				console.log(iszhixingcontent);
+                if(iszhixing>0&&iszhixingcontent=="否"){//直接跳过
+                     console.log("直接跳过验证");
+				}else{
+                    if (isRequired!=isRequiredok) {
+                        this.showMsg("您有必答题目，请完成回答后提交");
+                        return;
+                    }
+				}
+
 
 				// var item_length = $(".item").length;
 				// var ok_length = $(".ok").length;
@@ -457,7 +483,7 @@
 								position: relative;
 								.des {
 									height: 30px;
-									width: 80%;
+									width: 100%;
 									color: #00437a;
 									display: inline-block;
 									margin-top: 10px;
@@ -501,7 +527,7 @@
 								.contents {
 									margin-top: 10px;
 									margin-left: 20px;
-									width: 600px;
+									width:90%;
 									display: inline-block;
 									.textarea {
 										width: 100%;
