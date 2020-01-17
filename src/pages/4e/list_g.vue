@@ -147,7 +147,7 @@
 					<td class="deny" v-if="item.count>0 && item.verifystate==2">已驳回</td>
 					<td v-if="item.count==0"></td>
 					
-					<td class="active" v-if="item.count>0 && item.verifystate==0 && userManage==1 && (item.bigCommunityName+'管理'==user.userName || user.roleId==1)" @click="verify(item.dealerid, item.batchid)">审核</td>
+					<td class="active" v-if="item.count>0 && item.verifystate==0 && userManage==1" @click="verify(item.dealerid, item.batchid)">审核</td>
 					<td class="active" v-else-if="item.count>0" @click="show(item.dealerid, item.batchid)">查看</td>
 					<td class="active" v-else-if="item.count==0 && userManage==0 && item.dealerid==user.dealerId" @click="edit(item.dealerid, item.batchid)">提报</td>
 					<td v-else></td>
