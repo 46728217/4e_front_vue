@@ -332,7 +332,7 @@
 				var params = {};
 				params.pageSize = this.pageSize;
 				params.pageNumber = this.pageNumber;
-               // params.addtime = that.cond.year.split(".")[1];
+                params.addtime = that.cond.year.split(".")[1];
                 params.batchId = that.cond.batch;
 				params.orderBy = that.cond.sort;
 				if (this.cond.enable == true) {
