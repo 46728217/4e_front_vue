@@ -297,6 +297,7 @@
 	            		}else{
 	            			info.parent().next(".preview").hide();
 	            		}
+	            		that.parentHeight();
 	            	},
 	            	error: function () {
                         window.$vm.showMsg("上传失败");
