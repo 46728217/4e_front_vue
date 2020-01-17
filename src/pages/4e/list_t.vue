@@ -322,7 +322,7 @@
 			},
 			getDealerList: function(smallCommunityId) {
 				let that = this;
-				this.get(this.base + "/api/dealer/list", {smallCommunityId: smallCommunityId}, function(data){
+				this.get(this.base + "/api/dealer/list", {type:1,batchId :that.cond.batch,smallCommunityId: smallCommunityId}, function(data){
 					if (data.code==200) {
 						that.dealerList = data.data;
                         that.cond.dealer = 0;//默认选中全部

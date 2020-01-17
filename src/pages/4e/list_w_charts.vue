@@ -234,7 +234,7 @@
 			},
 			getDealerList: function(smallCommunityId) {
 				var that = this;
-				this.get(this.base + "/api/dealer/list", {smallCommunityId: smallCommunityId}, function(data){
+				this.get(this.base + "/api/dealer/list", {type:3,batchId :that.id,smallCommunityId: smallCommunityId}, function(data){
 					if (data.code==200) {
 						that.dealerList = data.data;
                         that.cond.dealer = 0;//默认选中全部
