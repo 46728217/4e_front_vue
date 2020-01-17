@@ -32,7 +32,7 @@
 		<div class="dq" v-if="bigCommunityList.length==1">
 			<span>{{'大区'|dz}}</span>
 			<div class="cc">
-			<select style="background:lightgray" v-model.trim="cond.dq" @change="getCommunityList(cond.dq)">
+			<select style="background:lightgray" disabled=disabled v-model.trim="cond.dq" @change="getCommunityList(cond.dq)">
 				<option v-for="item in bigCommunityList" v-bind:value="item.id">{{item.name}}</option>
 			</select>
 			</div>
@@ -40,7 +40,7 @@
 		<div class="xq" v-if="bigCommunityList.length==1 && smallCommunityList.length==1">
 			<span>{{'小区'|dz}}</span>
 			<div class="cc">
-			<select style="background:lightgray" v-model.trim="cond.xq" @change="getDealerList(cond.xq)">
+			<select style="background:lightgray" disabled=disabled v-model.trim="cond.xq" @change="getDealerList(cond.xq)">
 				<option selected="selected" v-for="item in smallCommunityList" v-bind:value="item.id">{{item.name}}</option>
 			</select>
 			</div>
