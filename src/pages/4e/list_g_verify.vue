@@ -332,7 +332,7 @@ export default {
 					margin-left: 10px;
 					margin-right: 10px;
 					float: left;
-    				margin-top: 3px; 
+    				/*margin-top: 3px; */
 					background: url(../../assets/4e/img/checkin1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
@@ -344,7 +344,7 @@ export default {
 					margin-left: 10px;
 					margin-right: 10px;
 					float: left;
-    				margin-top: 3px; 
+    				/*margin-top: 3px; */
 					background: url(../../assets/4e/img/nocheck1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
@@ -364,7 +364,7 @@ export default {
 					margin-left: 10px;
 					margin-right: 10px;
 					float: left;
-    				margin-top: 3px; 
+    				/*margin-top: 3px; */
 					background: url(../../assets/4e/img/checkin1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
@@ -376,7 +376,7 @@ export default {
 					margin-left: 10px;
 					margin-right: 10px;
 					float: left;
-    				margin-top: 3px; 
+    				/*margin-top: 3px; */
 					background: url(../../assets/4e/img/nocheck1.png) no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
