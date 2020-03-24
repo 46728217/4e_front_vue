@@ -169,17 +169,29 @@
             //昨天
             var yesterday = new Date();
             yesterday.setTime(yesterday.getTime()-24*60*60*1000);
-            yesterday = yesterday.getFullYear()+"-" + (yesterday.getMonth()+1) + "-" + yesterday.getDate();
+            var month = yesterday.getMonth()+1;
+            if (month<10) {
+                month = '0'+month;
+            }
+            yesterday = yesterday.getFullYear()+"-" + month + "-" + yesterday.getDate();
             this.yesterday = yesterday+":"+yesterday;
             //近7天
             var lastWeek = new Date();
             lastWeek.setTime(lastWeek.getTime()-7*24*60*60*1000);
-            lastWeek = lastWeek.getFullYear()+"-" + (lastWeek.getMonth()+1) + "-" + lastWeek.getDate();
+            var month = lastWeek.getMonth()+1;
+            if (month<10) {
+                month = '0'+month;
+            }
+            lastWeek = lastWeek.getFullYear()+"-" + month + "-" + lastWeek.getDate();
             this.lastWeek = lastWeek+":"+yesterday;
             //近一个月
             var lastMonth = new Date();
             lastMonth.setTime(lastMonth.getTime()-30*24*60*60*1000);
-            lastMonth = lastMonth.getFullYear()+"-" + (lastMonth.getMonth()+1) + "-" + lastMonth.getDate();
+            var month = lastMonth.getMonth()+1;
+            if (month<10) {
+                month = '0'+month;
+            }
+            lastMonth = lastMonth.getFullYear()+"-" + month + "-" + lastMonth.getDate();
             this.lastMonth = lastMonth+":"+yesterday;
             var that=this;
             var yesterdayFormat =that.getDay(-1, '-');//获取昨天的日期，num就是-1， 前天的就是-2，依次类推。

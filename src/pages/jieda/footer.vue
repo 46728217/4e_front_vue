@@ -48,7 +48,7 @@ export default {
 export default {
 	methods: {
 		go2back: function() {
-			window.location = "http://117.78.16.42/jsp/admin/index.jsp";
+			window.location = "/jsp/admin/index.jsp";
 		}
 	}
 }

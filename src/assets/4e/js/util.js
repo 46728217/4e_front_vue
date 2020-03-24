@@ -46,6 +46,10 @@ export default {
 	            },
 	            crossDomain: true,
 				success: function(data){
+        			if ((typeof data === 'string' || data instanceof String) && data.substr(0,2) == "/*") {
+			          data = data.substring(2, txt.length - 2);
+			          data = eval('('+data+')');
+			        }
 					cb(data);
 				}
 			});
@@ -65,6 +69,10 @@ export default {
 	            },
 	            crossDomain: true,
 				success: function(data){
+        			if ((typeof data === 'string' || data instanceof String) && data.substr(0,2) == "/*") {
+			          data = data.substring(2, txt.length - 2);
+			          data = eval('('+data+')');
+			        }
 					cb(data);
 				}
 			});
@@ -81,6 +89,10 @@ export default {
 	            },
 	            crossDomain: true,
 				success: function(data){
+        			if ((typeof data === 'string' || data instanceof String) && data.substr(0,2) == "/*") {
+			          data = data.substring(2, txt.length - 2);
+			          data = eval('('+data+')');
+			        }
 					cb(data);
 				}
 			});
@@ -100,6 +112,10 @@ export default {
 					crossDomain: true,
 					async: false,
 					success: function(data) {
+        				if ((typeof data === 'string' || data instanceof String) && data.substr(0,2) == "/*") {
+				          data = data.substring(2, txt.length - 2);
+				          data = eval('('+data+')');
+				        }
 						console.log(data.data);
 						localStorage.setItem("dz_list", JSON.stringify(data.data));
 						dz_list = data.data;

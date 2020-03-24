@@ -929,9 +929,6 @@ export default {
 						color: #727272;
 					}
 				}
-                li:nth-child(1) {
-                    opacity: 0;
-                }
 				.line {
 					width: 1px;
 					height: 27px;

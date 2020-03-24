@@ -20,7 +20,11 @@ export const BASE={
             xhr.responseType = 'blob';
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    cb(xhr.response);
+                    var data = xhr.response;
+                    if ((typeof data === 'string' || data instanceof String) && data.substr(0,2) == "/*") {
+                      data = data.substring(2, txt.length - 2);
+                    }
+                    cb(data);
                 }
             };
             xhr.send();
